@@ -1,11 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+var webpack = require("webpack");
 
 module.exports = {
   entry: {
     index: './src/js/index.js',
-    print: './src/js/print.js'
+    print: './src/js/print.js',
+    facebook: './src/js/facebook.js'
   },
   module: {
     rules: [
@@ -22,13 +24,25 @@ module.exports = {
           'file-loader'
         ]
       }
+    ],
+    loaders: [
+      {
+        test: /\.html$/,
+        loader : 'handlebars'
+      }
     ]
+
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'chatbrick',
-      template: './src/html/index.html'
+      template: './src/html/index.html',
+      filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/html/facebook.html',
+      filename: 'facebook.html',
     })
   ],
   output: {

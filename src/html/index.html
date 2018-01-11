@@ -1,9 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>chatbrick</title>
-  </head>
-  <body>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>chatbrick</title>
+
+  <script>
+    function statusChangeCallback(response) {
+      console.log('statusChangeCallback');
+      console.log(response);
+      if (response.status === 'connected') {
+        alert('connected!');
+        testAPI();
+
+      } else if (response.status === 'not_authorized') {
+        document.getElementById('status').innerHTML = 'Please log ' +
+          'into this app.';
+      } else {
+        document.getElementById('status').innerHTML = 'Please log ' +
+          'into Facebook.';
+      }
+    }
+
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '407913036308389',
+        cookie: true,
+        xfbml: true,
+        version: 'v2.11'
+      });
+
+      FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
+      });
+
+    };
+
+    // Load the SDK asynchronously
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=407913036308389&version=v2.11";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function testAPI() {
+      console.log('Welcome! Fetching your information.... ');
+      FB.api('/', function (response) {
+        console.log('Successful login for: ' + response.name);
+        document.getElementById('status').innerHTML =
+          'Thanks for logging in, ' + response.name + '!';
+      });
+    }
+
+    function login() {
+      FB.login(function(response) {
+
+        // handle the response
+        console.log("Response goes here!");
+        console.log(response)
+      });
+    }
+  </script>
+</head>
+
+
+<body>
+<button onclick="javascript:login();">Login Facebook</button>
+<div id="fb-login" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with"
+     data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+</body>
 </html>

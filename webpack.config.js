@@ -22,13 +22,21 @@ module.exports = {
           'file-loader'
         ]
       }
+    ],
+    loaders: [
+      {
+        test: /\.html$/,
+        loader : 'handlebars'
+      }
     ]
+
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'chatbrick',
-      template: './src/html/index.html'
+      template: './src/html/index.html',
+      filename: 'index.html',
     })
   ],
   output: {

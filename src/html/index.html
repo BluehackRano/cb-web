@@ -23,7 +23,7 @@
 
     window.fbAsyncInit = function () {
       FB.init({
-        appId: '407913036308389',
+        appId: '134243977372890',
         cookie: true,
         xfbml: true,
         version: 'v2.11'
@@ -60,14 +60,17 @@
         // handle the response
         console.log("Response goes here!");
         console.log(response)
-      });
+      }, {scope: 'public_profile, pages_manage_cta, pages_manage_instant_articles,' +
+      'pages_messaging, pages_messaging_subscriptions, pages_messaging_phone_number'});
     }
   </script>
 </head>
 
 
-<body>
+<body id="content">
 <button onclick="javascript:login();">Login Facebook</button>
+<div id="greeting">{{test}}</div>
+<div id="greeting2">{{test2}}</div>
 <div id="fb-login" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with"
      data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 </body>

@@ -37,6 +37,11 @@ module.exports = {
       title: 'chatbrick',
       template: './src/html/index.html',
       filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './src/html/connect_linkedin.html',
+      filename: 'connect_linkedin.html',
     })
   ],
   output: {

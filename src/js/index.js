@@ -23,4 +23,24 @@ function component() {
   return element;
 }
 
+var $ = require('jquery');
+var Mustache = require('mustache');
+var htmltest = $('#content').html();
+
+// console.log(htmltest)
+
+// htmltest({test: "Luke"})
+// var htmltest2 = $('#greeting2').html();
+// Mustache.parse(htmltest);
+// var rendered = Mustache.render(htmltest, {test: "Luke"});
+// $('#content').html(rendered);
+
+// var Handlebars = require('handlebars');
+// var template = Handlebars.compile(htmltest);
+// template({test: "Luke"});
+
+
+// console.log(htmltest);
+// var template = Handlebars.compile(htmltest);
+// template({greeting: "test"});
 // document.body.appendChild(component());

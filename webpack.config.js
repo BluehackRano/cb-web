@@ -6,8 +6,8 @@ module.exports = {
   entry: {
     index: './src/js/index.js',
     print: './src/js/print.js',
-    my_chatbot_list: './src/js/my_chatbot_list.js',
-    my_chatbot_list: './src/js/my_chatbot_create.js'
+    my_chatbot_list: './src/js/my_chatbot_list.js', 
+    my_chatbot_create: './src/js/my_chatbot_create.js'
   },
   module: {
     rules: [

@@ -17,11 +17,12 @@ header zone
 
 div.wrapper_header {
     width:880px;
-    height:309px;
+    height:180px;
     display: table;
     /*background-color:red;*/
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 67px;
 }
 
 div.top_01 #logo {
@@ -89,14 +90,20 @@ content zone
 #content {
     background-color: #f3f3f3;
 }
+
+._connect_linkedin_section {
+    height:627px;
+    background-color: #f3f3f3;
+}
+
 #section_01 {
     width:880px;
-    height:627px;
+    height:auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
-#section_01 div.content_title {
+div.content_title {
     width: auto;
     height: 27px;
     font-family: NotoSansCJKkr;
@@ -112,12 +119,12 @@ content zone
     margin-bottom: 18px;
 }
 
-._login_wrapper {
+._connect_linkedin_wrapper {
     height: 470px;
     background-color: #ffffff;
 }
 
-#article_01 {
+._article {
     width:880px;
     height:auto;
     display: table;
@@ -128,11 +135,11 @@ content zone
     border-top: 1px solid #000000;
 }
 
-#article_01 div.wrapper {
+._article div.wrapper {
     margin-top: 61px;
     margin-left: 90px;
 }
-#article_01 div.article_title {
+._article div.article_title {
     width: 121px;
     height: 27px;
     font-family: NotoSansCJKkr;
@@ -153,7 +160,7 @@ content zone
     margin-top: 34px;
 }
 
-#article_01 div.article_context {
+._article div.article_context {
 
     width: 700px;
     height: 60px;
@@ -169,7 +176,7 @@ content zone
     margin-top: 29.2px;
 }
 
-#article_01 a.linkedin_membership {
+._article a.linkedin_membership {
     width: 114px;
     height: 18px;
     font-family: NotoSansCJKkr;
@@ -193,7 +200,7 @@ hr.article_line {
 
 }
 
-#article_01 div.article_clause_title {
+._article div.article_clause_title {
     width: 700px;
     height: 26px;
     font-family: NotoSansCJKkr;
@@ -208,7 +215,7 @@ hr.article_line {
     margin-top: 30px;
 }
 
-#article_01 div.article_clause_context {
+._article div.article_clause_context {
     width: 700px;
     height: 24px;
     font-family: NotoSansCJKkr;
@@ -300,6 +307,11 @@ div.botlist #my_bot {
     padding-bottom:11px;
 }
 
+._baseInfo_section {
+    height: 403px;
+    background-color: #f3f3f3;
+    margin-bottom: 45px;
+}
 #article_baseInfo {
     width:880px;
     height:358px;
@@ -310,6 +322,126 @@ div.botlist #my_bot {
     background-color: #ffffff;
 
     border-top: 1px solid #000000;
+}
+
+#section_02 {
+    width:880px;
+    height:auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+._choice_set_section {
+    height: 597px;
+    background-color: #f3f3f3;
+    margin-bottom: 78px;
+}
+
+._choice_set_wrapper {
+    height: 552px;
+    background-color: #ffffff;
+
+}
+
+div.set_list {
+    height: 394px;
+}
+
+div.set_list div.set_item {
+    width: 200px;
+    /*width: 33.3%;*/
+    float: left;
+}
+
+#set_hackathon {
+    margin-right: 45px;
+}
+#set_designer_portfolio {
+    margin-right: 45px;
+}
+
+div.set_list div.set_item_img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+
+}
+
+div.set_list div.set_item_name {
+    width: auto;
+    height: 22px;
+    font-family: NotoSansCJKkr;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+
+    margin-top: 9px;
+    margin-bottom: 25px;
+}
+
+div.set_list div.set_item_context {
+    width: auto;
+    height: 67px;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+
+    padding-top:6px;
+    border-top: 1px solid #d8d8d8;
+    margin-bottom: 40px;
+}
+
+div.set_list div.set_item_event {
+    width:200px;
+    height:32px;
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+}
+
+div.set_list div.set_choice {
+    width: 120px;
+    height: 32px;
+    background-color: #fd6246;
+    float: left;
+    margin-right: 4px;
+
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+div.set_list div.set_preview {
+    width:60px;
+    height: 32px;
+    background-color: #e94d50;
+    float: left;
+
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 /*

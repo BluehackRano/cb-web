@@ -7,7 +7,7 @@ chatbrick web
 npm install
 ```
 
-## Run command
+## Test run command
 ```shell
 npm run build
 ```

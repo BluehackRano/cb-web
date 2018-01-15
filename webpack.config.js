@@ -8,7 +8,8 @@ module.exports = {
     print: './src/js/print.js',
     my_chatbot_list: './src/js/my_chatbot_list.js', 
     my_chatbot_create: './src/js/my_chatbot_create.js',
-    connect_linkedin: './src/js/connect_linkedin.js'
+    connect_linkedin: './src/js/connect_linkedin.js',
+    select_brick: './src/js/select_brick.js'
   },
   module: {
     rules: [
@@ -64,6 +65,11 @@ module.exports = {
       title: 'chatbrick',
       template: './src/html/my_chatbot_create.html',
       filename: 'my_chatbot_create.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './src/html/select_brick.html',
+      filename: 'select_brick.html',
     })
   ],
   output: {

@@ -4,12 +4,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: './src/js/index.js',
-    print: './src/js/print.js',
-    my_chatbot_list: './src/js/my_chatbot_list.js', 
-    my_chatbot_create: './src/js/my_chatbot_create.js',
-    connect_linkedin: './src/js/connect_linkedin.js',
-    select_brick: './src/js/select_brick.js'
+
+    // start script
+    index: './src/index.js'
+    // print: './src/js/print.js',
+    // my_chatbot_list: './src/js/my_chatbot_list.js',
+    // my_chatbot_create: './src/js/my_chatbot_create.js',
+    // connect_linkedin: './src/js/connect_linkedin.js',
+    // select_brick: './src/js/select_brick.js'
   },
   module: {
     rules: [
@@ -30,7 +32,7 @@ module.exports = {
     loaders: [
       {
         test: /\.html$/,
-        loader : 'handlebars'
+        loader : 'handlebars-loader'
       },
       {
         test: /\.js$/,
@@ -48,32 +50,34 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'chatbrick',
-      template: './src/html/index.html',
+      template: './public/index.html',
       filename: 'index.html',
     }),
-    new HtmlWebpackPlugin({
-      title: 'chatbrick',
-      template: './src/html/connect_linkedin.html',
-      filename: 'connect_linkedin.html',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'chatbrick',
-      template: './src/html/my_chatbot_list.html',
-      filename: 'my_chatbot_list.html',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'chatbrick',
-      template: './src/html/my_chatbot_create.html',
-      filename: 'my_chatbot_create.html',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'chatbrick',
-      template: './src/html/select_brick.html',
-      filename: 'select_brick.html',
-    })
+    // new HtmlWebpackPlugin({
+    //   title: 'chatbrick',
+    //   template: './src/html/connect_linkedin.html',
+    //   filename: 'connect_linkedin.html',
+    // }),
+    // new HtmlWebpackPlugin({
+    //   title: 'chatbrick',
+    //   template: './src/html/my_chatbot_list.html',
+    //   filename: 'my_chatbot_list.html',
+    // }),
+    // new HtmlWebpackPlugin({
+    //   title: 'chatbrick',
+    //   template: './src/html/my_chatbot_create.html',
+    //   filename: 'my_chatbot_create.html',
+    // }),
+    // new HtmlWebpackPlugin({
+    //   title: 'chatbrick',
+    //   template: './src/html/select_brick.html',
+    //   filename: 'select_brick.html',
+    // })
   ],
   output: {
+    // 파일을 합치고 ./public/bundle.js 에 저장한다
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: __dirname + '/public'
+    // path: path.resolve(__dirname, 'dist')
   }
 };

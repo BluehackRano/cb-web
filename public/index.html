@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>chatbrick</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script>
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
       console.log(response);
       if (response.status === 'connected') {
         alert('connected!');
+        // window.location.href = 'http://www.localhost:3000/hello';
+        // window.location.href  = 'https://www.chatbrick.io/hello';
 //        FB.logout();
         testAPI();
 
       } else if (response.status === 'not_authorized') {
-        document.getElementById('status').innerHTML = 'Please log ' +
-          'into this app.';
+        // window.location.href  = 'https://www.chatbrick.io';
+        // window.location.href = 'http://www.localhost:3000';
       } else {
-        document.getElementById('status').innerHTML = 'Please log ' +
-          'into Facebook.';
+        // window.location.href  = 'https://www.chatbrick.io';
+        // window.location.href = 'http://www.localhost:3000';
       }
     }
 
@@ -49,16 +51,24 @@
     function testAPI() {
       console.log('Welcome! Fetching your information.... ');
       FB.api('/me', function (response) {
-        console.log('Successful login for: ' + JSON.stringify(response));
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
+        var jsonRes = JSON.stringify(response);
+        console.log('Successful login for: ' + jsonRes);
+        $.ajax({
+          url : 'http://chatbrick.io/api/login',
+          type : 'POST',
+          dataType: 'JSON',
+          data : { fb_id : jsonRes.id},
+          success : function(data) {
+            alert('data =>' + JSON.stringify(data));
+          }
+        });
       });
 
-      FB.api('/1525764490823361/accounts', function (response) {
+      FB.api('/1111672078935704/accounts', function (response) {
         console.log('Successful page info for: ' + JSON.stringify(response));
       });
 
-      FB.api('/1525764490823361/permissions', function (response) {
+      FB.api('/1111672078935704/permissions', function (response) {
         console.log('Successful permissions info for: ' + JSON.stringify(response));
       });
     }
@@ -83,5 +93,5 @@
 <div id="greeting2">{{test2}}</div>
 <div id="fb-login" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with"
      data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-<script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script></body>
+<script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script></body>
 </html>

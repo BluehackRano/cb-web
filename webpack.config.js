@@ -58,21 +58,26 @@ module.exports = {
       template: './public/view/connect_linkedin.html',
       filename: 'connect_linkedin.html',
     }),
-    // new HtmlWebpackPlugin({
-    //   title: 'chatbrick',
-    //   template: './src/html/my_chatbot_list.html',
-    //   filename: 'my_chatbot_list.html',
-    // }),
-    // new HtmlWebpackPlugin({
-    //   title: 'chatbrick',
-    //   template: './src/html/my_chatbot_create.html',
-    //   filename: 'my_chatbot_create.html',
-    // }),
-    // new HtmlWebpackPlugin({
-    //   title: 'chatbrick',
-    //   template: './src/html/select_brick.html',
-    //   filename: 'select_brick.html',
-    // })
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './public/view/connect_platform.html',
+      filename: 'connect_platform.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './public/view/my_chatbot_list.html',
+      filename: 'my_chatbot_list.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './public/view/my_chatbot_create.html',
+      filename: 'my_chatbot_create.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './public/view/select_brick.html',
+      filename: 'select_brick.html',
+    })
   ],
   output: {
     // 파일을 합치고 ./public/bundle.js 에 저장한다

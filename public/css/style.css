@@ -532,6 +532,16 @@ select_brick
 }
 
 /*
+connect_platform
+*/
+._fb_messenger_section {
+    height: 274px;
+    background-color: #ffffff;
+}
+
+
+
+/*
 footer zone
 */
 #footer {

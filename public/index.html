@@ -10,6 +10,7 @@
       console.log(response);
       if (response.status === 'connected') {
         alert('connected!');
+//        FB.logout();
         testAPI();
 
       } else if (response.status === 'not_authorized') {
@@ -47,10 +48,18 @@
 
     function testAPI() {
       console.log('Welcome! Fetching your information.... ');
-      FB.api('/', function (response) {
-        console.log('Successful login for: ' + response.name);
+      FB.api('/me', function (response) {
+        console.log('Successful login for: ' + JSON.stringify(response));
         document.getElementById('status').innerHTML =
           'Thanks for logging in, ' + response.name + '!';
+      });
+
+      FB.api('/1525764490823361/accounts', function (response) {
+        console.log('Successful page info for: ' + JSON.stringify(response));
+      });
+
+      FB.api('/1525764490823361/permissions', function (response) {
+        console.log('Successful permissions info for: ' + JSON.stringify(response));
       });
     }
 
@@ -61,7 +70,8 @@
         console.log("Response goes here!");
         console.log(response)
       }, {scope: 'public_profile, pages_manage_cta, pages_manage_instant_articles,' +
-      'pages_messaging, pages_messaging_subscriptions, pages_messaging_phone_number'});
+      'pages_messaging, pages_messaging_subscriptions, pages_messaging_phone_number,' +
+      'manage_pages, pages_show_list,read_insights'});
     }
   </script>
 </head>
@@ -73,5 +83,5 @@
 <div id="greeting2">{{test2}}</div>
 <div id="fb-login" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with"
      data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-<script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script></body>
+<script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script><script type="text/javascript" src="index.bundle.js"></script></body>
 </html>

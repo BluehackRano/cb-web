@@ -2,7 +2,7 @@
   "name": "chatbrick-web",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "/server/app.js",
   "scripts": {
     "watch": "webpack --watch",
     "clean": "rm -rf build public/bundle.js",

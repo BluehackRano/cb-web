@@ -121,7 +121,7 @@ var htmltest = $('#content').html();
 // console.log(htmltest);
 // var template = Handlebars.compile(htmltest);
 // template({greeting: "test"});
-document.body.appendChild(component());
+// document.body.appendChild(component());
 
 /***/ }),
 /* 1 */

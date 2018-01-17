@@ -53,11 +53,11 @@ module.exports = {
       template: './public/index.html',
       filename: 'index.html',
     }),
-    // new HtmlWebpackPlugin({
-    //   title: 'chatbrick',
-    //   template: './src/html/connect_linkedin.html',
-    //   filename: 'connect_linkedin.html',
-    // }),
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './public/view/connect_linkedin.html',
+      filename: 'connect_linkedin.html',
+    }),
     // new HtmlWebpackPlugin({
     //   title: 'chatbrick',
     //   template: './src/html/my_chatbot_list.html',

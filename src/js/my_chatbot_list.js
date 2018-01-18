@@ -1,10 +1,10 @@
 'use strict';
 
-import testIcon from '../images/test_img.png';
-import createIcon from '../images/img-create-bot-nor.png';
-import hackathonIcon from '../images/img-hackathon.png';
-import designerPortFolioIcon from '../images/img-designer-portfolio-01.png';
-import bricksIcon from '../images/img-bricks.png';
+import testIcon from '../../public/images/test_img.png';
+import createIcon from '../../public/images/img-create-bot-nor.png';
+import hackathonIcon from '../../public/images/img-hackathon.png';
+import designerPortFolioIcon from '../../public/images/img-designer-portfolio-01.png';
+import bricksIcon from '../../public/images/img-bricks.png';
 var $ = require('jquery');
 
 $(document).ready(function () {

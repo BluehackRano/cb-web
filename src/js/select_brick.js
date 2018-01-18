@@ -1,4 +1,4 @@
-import brick_Icon_01 from '../images/img-brick-01.png';
+import brick_Icon_01 from '../../public/images/img-brick-01.png';
 
 var image_Brick_Icon_01 = new Image();
 image_Brick_Icon_01.src = brick_Icon_01;

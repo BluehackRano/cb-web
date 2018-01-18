@@ -1,6 +1,6 @@
 'use strict';
 
-import previewIcon from '../images/btn-preview-01-nor.png';
+import previewIcon from '../../public/images/btn-preview-01-nor.png';
 
 var $  = require('jquery');
 var imagePreview = new Image();

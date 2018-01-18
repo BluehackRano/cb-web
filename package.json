@@ -7,7 +7,7 @@
     "watch": "webpack --watch",
     "clean": "rm -rf build public/bundle.js",
     "build": "babel server --out-dir build && webpack",
-    "start": "node ./build/main.js",
+    "start": "node ./build/app.js",
     "development": "NODE_ENV=development node ./build/main.js"
   },
   "repository": {

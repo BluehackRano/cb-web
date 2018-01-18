@@ -534,12 +534,208 @@ select_brick
 /*
 connect_platform
 */
-._fb_messenger_section {
-    height: 274px;
-    background-color: #ffffff;
+
+._messenger_section {
+    height: auto;
+}
+
+._messenger_wrapper {
+    height: auto;
+}
+
+#article_fb {
+    padding-bottom: 36px;
+}
+
+._fb_messenger_wrapper {
+    height: auto;
+}
+
+.messenger_set {
+    height: auto;
+    width: auto;
+    /*margin-bottom: 40px;*/
+    /*border-bottom: solid 1px #eaeaea;*/
+}
+
+.messenger_img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    float: left;
+}
+
+.messenger_text {
+    width: 596px;
+    height: auto;
+    float: left;
+    display: block;
+    text-align: center;
+    padding-top: 19px;
+    padding-bottom: 17px;
+}
+.messenger_title {
+    width: 94px;
+    height: 20px;
+    font-family: NotoSansCJKkr;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-bottom: 6px;
+}
+
+.messenger_context {
+    width: 137px;
+    height: 18px;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-bottom: 55px;
+}
+
+.fb_page_set {
+    height: 58px;
+    width: 596px;
+    float: left;
+    border-bottom: solid 2px #e9e9e9;
+    margin-left: 104px;
+    margin-bottom: 10px;
+}
+
+.fb_page_img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    float: left;
+}
+
+.fb_page_text {
+    width: 534px;
+    height: auto;
+    margin-left: 12px;
+    float: left;
+}
+
+.fb_page_title {
+    width: 87px;
+    height: auto;
+    font-family: NotoSansCJKkr;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    float: left;
+
+    padding-top: 12px;
+    padding-bottom: 23px;
+}
+
+.fb_page_btn {
+    width: 140px;
+    height: 32px;
+    border: solid 3px #000000;
+
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+    float: right;
 }
 
 
+._telegram_messenger_wrapper {
+    height: auto;
+}
+
+#article_telegram {
+    width:880px;
+    height:auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+}
+
+._telegram_messenger_wrapper {
+    margin-left: 90px;
+    margin-right: 90px;
+    margin-bottom: 99px;
+    padding-top: 41px;
+    border-top: 1px solid #eaeaea;
+}
+
+.tg_content {
+    margin-top: 53px;
+    width: 500px;
+    height: auto;
+    margin-left: 104px;
+    /*margin-right: 190px;*/
+}
+
+.tg_content_title {
+    width: auto;
+    height: 20px;
+    font-family: NotoSansCJKkr;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    /*margin-bottom: 15px;*/
+}
+
+.tgInputText {
+    width: 500px;
+    height: 25px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #000000;
+    /*margin-top: 15px;*/
+    padding-bottom:7px;
+    padding-top: 25px;
+}
+
+.tg_content_context {
+    width: auto;
+    height: 72px;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    margin-top: 15px;
+}
 
 /*
 footer zone

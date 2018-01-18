@@ -6,12 +6,12 @@ module.exports = {
   entry: {
 
     // start script
-    index: './src/index.js'
+    index: './src/index.js',
     // print: './src/js/print.js',
-    // my_chatbot_list: './src/js/my_chatbot_list.js',
-    // my_chatbot_create: './src/js/my_chatbot_create.js',
-    // connect_linkedin: './src/js/connect_linkedin.js',
-    // select_brick: './src/js/select_brick.js'
+    my_chatbot_list: './src/js/my_chatbot_list.js',
+    my_chatbot_create: './src/js/my_chatbot_create.js',
+    connect_linkedin: './src/js/connect_linkedin.js',
+    select_brick: './src/js/select_brick.js'
   },
   module: {
     rules: [
@@ -47,7 +47,7 @@ module.exports = {
 
   },
   devServer: {
-    headers: { "Access-Control-Allow-Origin": "http://localhost:3000" }
+    headers: { "Access-Control-Allow-Origin": "*" }
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -83,9 +83,9 @@ module.exports = {
     })
   ],
   output: {
-    // 파일을 합치고 ./public/bundle.js 에 저장한다
     filename: '[name].bundle.js',
-    path: __dirname + '/public'
-    // path: path.resolve(__dirname, 'dist')
+    // path: __dirname + '/public',
+    // path: __dirname + '/dist'
+    path: path.resolve(__dirname, 'dist')
   }
 };

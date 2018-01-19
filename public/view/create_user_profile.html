@@ -31,8 +31,10 @@
 </header>
 
 <div id="content">
+
+	<!--프로필정보 영역-->
 	<div class="wrapper_section _user_profile_section">
-		<section id="section_01">
+		<section id="section_01" class="_profile_section">
 			<div class="content_title">
 				<p>
 					사용자 데이터 입력 _ 프로필정보 (PROFILE)
@@ -66,20 +68,294 @@
 						</div>
 
 						<div class="user_profile_data_area">
-							<div class="baseInfo_01 article_title">
-								<p>
-									이름
-								</p>
+							<div class="article_title_profile">
+								이름을 입력해주세요
 							</div>
-							<input type="text" id="baseInfo_name" class="baseInputText" placeholder="가나다">
+							<input type="text" id="user_profile_data_name" class="baseInputText_02" placeholder="가나다">
 
-							<div class="baseInfo_02 article_title">
-								<p>
-									설명
-								</p>
+							<div class="article_title_profile">
+									전문분야를 입력해주세요
 							</div>
-							<input type="text" id="baseInfo_context_01" class="baseInputText" placeholder="가나다">
-							<input type="text" id="baseInfo_context_02" class="baseInputText" placeholder="가나다">
+							<input type="text" id="user_profile_data_professional" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+									거주국가 및 지역을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_data_location" class="baseInputText_02" placeholder="페이스북에 등록한 거주 국가및 지역정보를 Default로 표현">
+
+							<div class="article_title_profile">
+									나를 표현할 수 있는 URL(홈페이지, 링크드인, SNS 등)을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_data_appeal" class="baseInputText_02" placeholder="자신을">
+
+							<div class="article_title_profile">
+									방문자가 연락할 수 있는 이메일 주소를 입력해주세요
+							</div>
+							<input type="text" id="user_profile_data_email" class="baseInputText_02" placeholder="자신을">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--사용자 데이터 입력 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_02" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 기본정보
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_02" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								챗봇에 방문하였을 때, 처음으로 보내는 메세지
+							</div>
+							<input type="text" id="user_profile_start_message_01" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_start_message_02" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_start_message_03" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
+							</div>
+							<input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02" placeholder="가나다">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--업무경험 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_03" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 업무경험 (WORK)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_03" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								[01] 등록할 업무경험 회사의 이름을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_name_01" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[01] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_term_01" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[01] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_major_01" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[02] 등록할 업무경험 회사의 이름을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_name_02" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[02] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_term_02" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[02] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_major_02" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[03] 등록할 업무경험 회사의 이름을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_name_03" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[03] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_term_03" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[03] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
+							</div>
+							<input type="text" id="user_profile_company_major_03" class="baseInputText_02" placeholder="가나다">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--사용자 데이터 입력 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_04" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 보유기술 및 능력 (SPECIALTIES)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_04" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								[01] 등록할 보유기술 및 능력의 이름을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_skill_name_01" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[01] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+							</div>
+							<input type="text" id="user_profile_skill_info_01_1" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_skill_info_01_2" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[02] 등록할 보유기술 및 능력의 이름을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_skill_name_02" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[02] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+							</div>
+							<input type="text" id="user_profile_skill_info_02_1" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_skill_info_02_2" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[03] 등록할 보유기술 및 능력의 이름을 입력해주세요
+							</div>
+							<input type="text" id="user_profile_skill_name_03" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								[03] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+							</div>
+							<input type="text" id="user_profile_skill_info_03_1" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_skill_info_03_2" class="baseInputText_02" placeholder="가나다">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--사용자 자기소개 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_05" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 간략한 자기소개 (SUMMARY)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_05" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								[01] 간략한 자기소개를 입력해주세요
+							</div>
+							<input type="text" id="user_profile_self_introduction_01_1" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_self_introduction_01_2" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_self_introduction_01_3" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_self_introduction_01_4" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_self_introduction_01_5" class="baseInputText_02" placeholder="가나다">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--사용자 포트폴리오 영역-->
+	<div class="wrapper_section _user_profile_section" id="portfolio_endline">
+		<section id="section_06" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 포트폴리오 (PORTFOLIO)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_06" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								[01] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_01" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[02] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_02" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[03] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_03" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[04] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_04" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[05] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_05" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[06] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_06" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[07] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_07" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[08] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_08" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[09] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_09" class="baseInputText_02" placeholder="가나다">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[10] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_10" class="baseInputText_02" placeholder="가나다">
 						</div>
 
 					</div>
@@ -88,6 +364,21 @@
 		</section>
 	</div>
 </div>
+
+<footer id="footer">
+	<div class="bottom_common">
+		<div id="pre_page">
+			<p>
+				이전
+			</p>
+		</div>
+		<div id="next_page" align="center">
+			<p>
+				다음
+			</p>
+		</div>
+	</div>
+</footer>
 
 </body>
 </html>

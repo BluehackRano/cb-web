@@ -140,7 +140,8 @@ div.content_title {
     margin-left: 90px;
 }
 ._article div.article_title {
-    width: 121px;
+    /*width: 121px;*/
+    width: auto;
     height: 27px;
     font-family: NotoSansCJKkr;
     font-size: 18px;
@@ -151,6 +152,21 @@ div.content_title {
     letter-spacing: normal;
     text-align: left;
     color: #000000;
+}
+._article div.article_title_profile {
+    width: auto;
+    height: 27px;
+    font-family: NotoSansCJKkr;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-top: 31px;
 }
 
 #btn_linkedin {
@@ -197,7 +213,6 @@ hr.article_line {
     border-bottom-color: #eaeaea;
     margin-top: 37px;
     margin-right: 90px;
-
 }
 
 ._article div.article_clause_title {
@@ -307,6 +322,16 @@ div.botlist #my_bot {
     padding-bottom:11px;
 }
 
+.baseInputText_02 {
+    width: 700px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #000000;
+    margin-top: 11px;
+    padding-bottom:11px;
+}
+
 ._baseInfo_section {
     height: 403px;
     background-color: #f3f3f3;
@@ -330,7 +355,38 @@ div.botlist #my_bot {
     display: table;
     margin-left: auto;
     margin-right: auto;
+}
 
+#section_03 {
+    width:880px;
+    height:auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#section_04 {
+    width:880px;
+    height:auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#section_05 {
+    width:880px;
+    height:auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#section_06 {
+    width:880px;
+    height:auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ._choice_set_section {
@@ -856,13 +912,19 @@ create apikey
 /*
 create user profile
 */
-._user_profile_section {
+div._user_profile_section {
     height: auto;
     background-color: #f3f3f3;
 }
 
+._profile_section {
+    margin-top: 45px;
+}
+
 ._user_profile_wrapper {
     height: auto;
+    padding-bottom: 88px;
+    background-color: #ffffff;
 }
 
 .user_profile_photo_area {
@@ -933,6 +995,21 @@ create user profile
     color: #000000;
 }
 
+.user_profile_data_area {
+    margin-top: 20px;
+}
+
+hr.user_profile_line {
+    /*width: 700px;*/
+    border-bottom: 1px;
+    border-bottom-color: #eaeaea;
+    margin-top: 61px;
+    margin-right: 90px;
+}
+
+#portfolio_endline {
+    margin-bottom: 78px;
+}
 
 /*
 footer zone

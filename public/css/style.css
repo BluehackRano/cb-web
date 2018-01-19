@@ -676,6 +676,7 @@ connect_platform
     margin-left: auto;
     margin-right: auto;
     background-color: #ffffff;
+    margin-bottom: 82px;
 }
 
 ._telegram_messenger_wrapper {
@@ -736,6 +737,202 @@ connect_platform
     color: #000000;
     margin-top: 15px;
 }
+
+/*
+create apikey
+*/
+._apikey_section {
+    height: auto;
+    margin-bottom: 78px;
+}
+
+._apikey_wrapper {
+    height: auto;
+}
+
+.api_set {
+    /*height: 305px;*/
+    height: auto;
+    margin-top: 82px;
+}
+
+.api_title {
+    width: 157px;
+    height: 223px;
+    margin-top: 18px;
+    margin-right: 71px;
+    float: left;
+}
+
+.api_img {
+    width: 86px;
+    height: 84px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.api_name {
+    margin-top: 5px;
+    font-family: NotoSansCJKkr;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+}
+
+.api_content {
+    width: 500px;
+    height: auto;
+    float: left;
+}
+
+.api_content_context {
+    width: 500px;
+    height: auto;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-bottom: 24px;
+}
+
+.api_content_key_title {
+    height: 20px;
+    font-family: NotoSansCJKkr;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.apikeyInputText {
+    width: 500px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #000000;
+    margin-top: 15px;
+    padding-bottom:7px;
+}
+
+.create_apikey_link {
+    width: 94px;
+    height: 18px;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #d0021b;
+    margin-top: 7px;
+}
+
+.apikey_underline {
+    width: 700px;
+    border-bottom: 1px;
+    border-bottom-color: #eaeaea;
+    margin-top: 76px;
+    margin-right: 90px;
+}
+
+/*
+create user profile
+*/
+._user_profile_section {
+    height: auto;
+    background-color: #f3f3f3;
+}
+
+._user_profile_wrapper {
+    height: auto;
+}
+
+.user_profile_photo_area {
+    height: 203px;
+
+    border-bottom: solid 1px #eaeaea;
+    margin-right: 90px;
+}
+
+.user_profile_img {
+    height: 142px;
+    width: 142px;
+    object-fit: contain;
+    float: left;
+}
+
+.user_profile_photo_guild_area {
+    margin-left: 41px;
+    float: left;
+}
+
+.user_profile_photo_title {
+    width: 517px;
+    height: auto;
+
+    font-family: NotoSansCJKkr;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.user_profile_photo_context {
+    width: 517px;
+    height: auto;
+
+    font-family: NotoSansCJKkr;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-top: 10px;
+    margin-bottom: 18px;
+}
+
+.user_profile_photo_upload_btn {
+    width: 140px;
+    height: 32px;
+    border: solid 3px #000000;
+
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+}
+
 
 /*
 footer zone

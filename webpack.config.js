@@ -11,7 +11,8 @@ module.exports = {
     my_chatbot_list: './src/js/my_chatbot_list.js',
     my_chatbot_create: './src/js/my_chatbot_create.js',
     connect_linkedin: './src/js/connect_linkedin.js',
-    select_brick: './src/js/select_brick.js'
+    select_brick: './src/js/select_brick.js',
+    create_apikey: './src/js/create_apikey.js'
   },
   module: {
     rules: [
@@ -80,6 +81,16 @@ module.exports = {
       title: 'chatbrick',
       template: './public/view/select_brick.html',
       filename: 'select_brick.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './public/view/create_apikey.html',
+      filename: 'create_apikey.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'chatbrick',
+      template: './public/view/create_user_profile.html',
+      filename: 'create_user_profile.html',
     })
   ],
   output: {

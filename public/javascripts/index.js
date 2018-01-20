@@ -1,7 +1,7 @@
-import _ from  'lodash';
-import '../public/css/style.css';
-import printMe from './js/print';
-import testIcon from '../public/images/test_img.png';
+// import _ from  'lodash';
+// import '../public/css/style.css';
+// import printMe from './js/print';
+// import testIcon from '../public/images/test_img.png';
 
 function component() {
   var element = document.createElement('div');
@@ -23,9 +23,14 @@ function component() {
   return element;
 }
 
-var $ = require('jquery');
-var Mustache = require('mustache');
-var htmltest = $('#content').html();
+// var $ = require('jquery');
+var hw = document.getElementById('hw');
+hw.addEventListener('click', function(){
+  alert('Hello world');
+})
+// console.log($(hw).html());
+// var Mustache = require('mustache');
+// var htmltest = $('#content').html();
 
 // console.log(htmltest)
 

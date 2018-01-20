@@ -5,14 +5,12 @@
   <title>chatbrick</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script>
+
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
       console.log(response);
       if (response.status === 'connected') {
-        alert('connected!2');
-        // window.location.href = 'http://www.localhost:3000/hello';
-        // window.location.href  = 'https://www.chatbrick.io/hello';
-//        FB.logout();
+        // alert('connected!2');
         getFBAPI();
 
       } else if (response.status === 'not_authorized') {
@@ -24,43 +22,24 @@
       }
     }
 
-    window.fbAsyncInit = function () {
-      FB.init({
-        appId: '134243977372890',
-        cookie: true,
-        xfbml: true,
-        version: 'v2.11'
-      });
-
-      FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
-      });
-
-    };
-
-    // Load the SDK asynchronously
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=407913036308389&version=v2.11";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
     function getFBAPI() {
       console.log('Welcome! Fetching your information.... ');
       FB.api('/me', function (response) {
-        var jsonRes = JSON.stringify(response);
-        console.log('Successful login for: ' + jsonRes);
+        console.log('Successful login for: ' + response.id);
+
         $.ajax({
           url : 'https://chatbrick.io/api/login/',
           type : 'POST',
           dataType: 'JSON',
-          data : { fb_id : jsonRes.id},
-          success : function(data) {
-            alert('data =>' + JSON.stringify(data));
+          crossDomain: true,
+          // xhrFields: { withCredentials: true },
+          data : { fb_id : response.id},
+          success : function(data, textStatus, xhr) {
 
+            var Cookies = xhr.getResponseHeader('Set-Cookie');
+            console.log('Cookies=>' + Cookies);
+
+            // window.location.href = "/chatbot/list";
           }
         });
       });
@@ -90,6 +69,9 @@
 
 <body id="content">
 <button onclick="javascript:login();">Login Facebook</button>
+<input type="button" id="hw" value="Hello world" />
+<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
+<script type="text/javascript" src="/public/javascripts/index.js"></script>
 </body>
 
 </html>

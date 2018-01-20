@@ -1,49 +1,24 @@
 {
-  "name": "chatbrick-web",
-  "version": "1.0.0",
-  "description": "",
-  "main": "/server/app.js",
+  "name": "cb-web",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "watch": "webpack --watch",
-    "clean": "rm -rf build public/bundle.js",
-    "build": "babel server --out-dir build && webpack",
-    "start": "node ./build/app.js",
-    "development": "NODE_ENV=development node ./build/main.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kyewonseo/chatbrick-web.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kyewonseo/chatbrick-web/issues"
-  },
-  "homepage": "https://github.com/kyewonseo/chatbrick-web#readme",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.17",
-    "css-loader": "^0.28.8",
-    "file-loader": "^1.1.6",
-    "html-webpack-plugin": "^2.30.1",
-    "style-loader": "^0.19.1",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.0"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "babel-preset-env": "^1.6.1",
-    "body-parser": "^1.18.2",
+    "body-parser": "~1.17.1",
     "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "cookies": "^0.7.1",
+    "debug": "~2.6.3",
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
+    "express": "~4.15.2",
     "fs": "0.0.1-security",
-    "handlebars": "^4.0.11",
-    "handlebars-loader": "^1.6.0",
+    "iconv": "^2.3.0",
+    "jade": "~1.11.0",
     "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
-    "morgan": "^1.9.0",
-    "mustache": "^2.3.0"
+    "morgan": "~1.8.1",
+    "request": "^2.83.0",
+    "serve-favicon": "~2.4.2"
   }
 }

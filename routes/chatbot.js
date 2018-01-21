@@ -5,10 +5,10 @@ var request = require('request');
 // var APIClient = require('../public/javascripts/APIClient');
 
 
-router.get('/list', (req, res) => {
+router.get('/create', (req, res) => {
 
   fs.readFile('views/my_chatbot_list.html', function (err, data) {
-    routerResponse.render('my_chatbot_list')
+    res.render('my_chatbot_create')
   })
 
   var routerResponse = res;
@@ -19,68 +19,28 @@ router.get('/list', (req, res) => {
   //     console.log("err getbrickListAPI");
   //   } else {
   //     var result = JSON.parse(body);
+  //     var setList = JSON.stringify(result.data);
   //     console.log(result.success);
+  //     // console.log('setData =>' + setData);
+  //
   //     if (result.success) {
-  //       // fs.readFile('views/my_chatbot_list.html', function (err, data) {
-  //       //   routerResponse.render('my_chatbot_list')
+  //       // fs.readFile('views/my_chatbot_create.html', function (err, data) {
+  //       //   routerResponse.render('my_chatbot_create')
   //       // })
   //     } else {
   //       console.log(result.msg);
   //     }
   //
-  //     fs.readFile('views/my_chatbot_list.html', function (err, data) {
-  //       routerResponse.render('my_chatbot_list')
+  //     fs.readFile('views/my_chatbot_create.html', function (err, data) {
+  //       routerResponse.render('my_chatbot_create');
   //     })
   //   }
   // })
 });
 
-// var imageHackathon= '';
-// var imageDesignerPortFolio = '';
-// var imageBricks = '';
-// var sampleData = {
-//   data: [
-//     {
-//       image: imageHackathon,
-//       name: "해커톤 프로젝트 1",
-//       context: "해커톤 내용입니다"
-//     },
-//     {
-//       image: imageDesignerPortFolio,
-//       name: "디자인 포토폴리오 1",
-//       context: "디자인 포토폴리오 내용입니다."
-//     },
-//     {
-//       image: imageBricks,
-//       name: "브릭 프로젝트 1",
-//       context: "브릭 프로젝트 내용입니다."
-//     }
-//   ]
-// }
-//
-// var botlist = $('#botlist');
-// var createMyBot = (`<div id="my_bot">` +
-// `<img src="` + imageCreate + `"+ id="bot_image" alt="bot image">` +
-// `<div id="bot_name">` + "CREATE BOT" + `</div>` +
-// `</div>`);
-//
-// sampleData.data.forEach(function (item) {
-//   var myBot = (
-//     `<div id="my_bot">` +
-//     `<img src="` + item.image + `"+ id="bot_image" alt="bot image">` +
-//     `<div id="bot_name">` + item.name + `</div>` +
-//     `<div id="bot_context">` + item.context + `</div>` +
-//     `</div>`
-//   );
-//
-//   console.log(item);
-//   botlist.append(myBot);
-// })
-// botlist.append(createMyBot);
-
-router.get('/create', (req, res) => {
-  fs.readFile('views/my_chatbot_create', function (err, data) {
-    res.render('my_chatbot_create')
+router.get('/list', (req, res) => {
+  fs.readFile('views/my_chatbot_list', function (err, data) {
+    res.render('my_chatbot_list')
   })
 });
 

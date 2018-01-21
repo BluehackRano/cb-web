@@ -1,9 +1,6 @@
 'use strict';
 
-import previewIcon from '../../public/images/btn-preview-01-nor.png';
-
 var $  = require('jquery');
-var imagePreview = new Image();
 imagePreview.src = previewIcon;
 
 var hackathon_choice = $('#hackathon_choice');

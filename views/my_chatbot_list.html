@@ -3,15 +3,14 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title>Title</title>
-  <!--<link rel="stylesheet" href="../css/style.css">-->
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-  <script src="../public/javascripts/index.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 </head>
 <body>
 <header id="header">
   <div class="wrapper wrapper_header">
     <div class="top_01 top_common">
-      <img id="logo" src="../images/test_img.png" alt="logo">
+      <img id="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
       <img id="login_logo" src="../images/test_img.png" alt="login_logo">
       <!--<div id="login_name" name="login_name"></div>-->
       <img id="login_dropdown" alt="login_dropdown">
@@ -46,7 +45,50 @@
 </div>
 
 <footer id="footer"></footer>
+<script>
+  var botlist = $('#botlist');
+  var createMyBot = (`<div id="create_my_bot">` +
+    `<img src="../public/images/img-create-bot-nor.png"+ id="bot_image" alt="bot image">` +
+    `<div id="bot_name">` + "CREATE BOT" + `</div>` +
+    `</div>`);
 
-<script type="text/javascript" src="/public/javascripts/my_chatbot_list.js"></script>
+  // sampleData.data.forEach(function (item) {
+  //   var myBot = (
+  //     `<div id="my_bot">` +
+  //     `<img src="` + item.image + `"+ id="bot_image" alt="bot image">` +
+  //     `<div id="bot_name">` + item.name + `</div>` +
+  //     `<div id="bot_context">` + item.context + `</div>` +
+  //     `</div>`
+  //   );
+  //
+  //   console.log(item);
+  //   botlist.append(myBot);
+  // })
+  botlist.append(createMyBot);
+
+  var create_my_bot = $('#create_my_bot');
+  var my_bot = $('#my_bot');
+
+  create_my_bot.click(function () {
+    create_my_bot.css('background-color','#ffffff');
+    window.location.href = '/chatbot/create';
+  });
+  create_my_bot.hover(function () {
+    create_my_bot.css('background-color','#e7e7e7');
+  }, function () {
+    create_my_bot.css('background-color','#f3f3f3');
+  });
+
+  my_bot.click(function () {
+    my_bot.css('background-color','#ffffff');
+
+  });
+  my_bot.hover(function () {
+    my_bot.css('background-color','#e7e7e7');
+  }, function () {
+    my_bot.css('background-color','#f3f3f3');
+  });
+</script>
+<!--<script type="text/javascript" src="/public/javascripts/my_chatbot_list.js"></script>-->
 </body>
 </html>

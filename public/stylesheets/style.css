@@ -3,6 +3,9 @@
     /*background: url("../images/test_img.png");*/
 }
 
+.brick_choice.black {
+    background-color: #000000;
+}
 body {
     background-color: #f3f3f3;
 }
@@ -249,6 +252,12 @@ hr.article_line {
     margin-left: 10px;
 }
 
+#create_my_bot {
+    height: 318px;
+    float: left;
+    width: 25%
+}
+
 div.botlist #my_bot {
     /*width: 200px;*/
     height: 318px;
@@ -256,7 +265,7 @@ div.botlist #my_bot {
     width: 25%
 }
 
-#my_bot #bot_image {
+#bot_image {
     width: auto;
     height: 200px;
     object-fit: contain;
@@ -264,7 +273,7 @@ div.botlist #my_bot {
     margin: 0 auto;}
 
 
-#my_bot #bot_name {
+#bot_name {
     width: auto;
     height: 20px;
     font-family: NotoSansCJKkr;
@@ -278,7 +287,7 @@ div.botlist #my_bot {
     color: #000000;
 }
 
-#my_bot #bot_context {
+#bot_context {
     width: auto;
     height: 60px;
     font-family: NotoSansCJKkr;

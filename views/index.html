@@ -35,21 +35,13 @@
           crossDomain: true,
           // xhrFields: { withCredentials: true },
           data : { fb_id : response.id},
-          success : function(data, textStatus, xhr) {
+          success : function(data, textStatus, res) {
 
             // var Cookies = xhr.getResponseHeader('Set-Cookie');
             // console.log('Cookies=>' + Cookies);
 
-            $.ajax({
-              url : 'https://www.chatbrick.io/api/brick/',
-              type : 'GET',
-              success : function (data, textStatus, xhr) {
-                alert('res=>' + JSON.stringify(xhr));
-                window.location.href = "/chatbot/list";
-              }
-            })
-
-            // window.location.href = "/chatbot/list";
+            //TODO: LOGIN SUCCESS/FAIL 처리
+            window.location.href = "/chatbot/list";
           }
         });
       });

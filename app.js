@@ -9,6 +9,8 @@ var cookieSession = require('cookie-session');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var chatbot = require('./routes/chatbot');
+var designerPortfolio = require('./routes/designer_portfolio');
+var bricks = require('./routes/bricks');
 
 var app = express();
 app.use(cookieParser())
@@ -31,6 +33,8 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/chatbot', chatbot);
+app.use('/designerPortfolio', designerPortfolio);
+app.use('/bricks', bricks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

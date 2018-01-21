@@ -7,28 +7,32 @@ var request = require('request');
 
 router.get('/list', (req, res) => {
 
+  fs.readFile('views/my_chatbot_list.html', function (err, data) {
+    routerResponse.render('my_chatbot_list')
+  })
+
   var routerResponse = res;
   var url = 'https://www.chatbrick.io/api/brick/';
-  request.get(url, function (err, res, body) {
-    console.log('body =>' + body);
-    if (err) {
-      console.log("err getbrickListAPI");
-    } else {
-      var result = JSON.parse(body);
-      console.log(result.success);
-      if (result.success) {
-        // fs.readFile('views/my_chatbot_list.html', function (err, data) {
-        //   routerResponse.render('my_chatbot_list')
-        // })
-      } else {
-        console.log(result.msg);
-      }
-
-      fs.readFile('views/my_chatbot_list.html', function (err, data) {
-        routerResponse.render('my_chatbot_list')
-      })
-    }
-  })
+  // request.get(url, function (err, res, body) {
+  //   console.log('body =>' + body);
+  //   if (err) {
+  //     console.log("err getbrickListAPI");
+  //   } else {
+  //     var result = JSON.parse(body);
+  //     console.log(result.success);
+  //     if (result.success) {
+  //       // fs.readFile('views/my_chatbot_list.html', function (err, data) {
+  //       //   routerResponse.render('my_chatbot_list')
+  //       // })
+  //     } else {
+  //       console.log(result.msg);
+  //     }
+  //
+  //     fs.readFile('views/my_chatbot_list.html', function (err, data) {
+  //       routerResponse.render('my_chatbot_list')
+  //     })
+  //   }
+  // })
 });
 
 // var imageHackathon= '';
@@ -74,5 +78,10 @@ router.get('/list', (req, res) => {
 // })
 // botlist.append(createMyBot);
 
+router.get('/create', (req, res) => {
+  fs.readFile('views/my_chatbot_create', function (err, data) {
+    res.render('my_chatbot_create')
+  })
+});
 
 module.exports = router;

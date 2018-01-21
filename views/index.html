@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>chatbrick</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script>
 
@@ -36,8 +37,17 @@
           data : { fb_id : response.id},
           success : function(data, textStatus, xhr) {
 
-            var Cookies = xhr.getResponseHeader('Set-Cookie');
-            console.log('Cookies=>' + Cookies);
+            // var Cookies = xhr.getResponseHeader('Set-Cookie');
+            // console.log('Cookies=>' + Cookies);
+
+            $.ajax({
+              url : 'https://www.chatbrick.io/api/brick/',
+              type : 'GET',
+              success : function (data, textStatus, xhr) {
+                alert('res=>' + JSON.stringify(xhr));
+                window.location.href = "/chatbot/list";
+              }
+            })
 
             // window.location.href = "/chatbot/list";
           }
@@ -72,6 +82,7 @@
 <input type="button" id="hw" value="Hello world" />
 <script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 <script type="text/javascript" src="/public/javascripts/index.js"></script>
+
 </body>
 
 </html>

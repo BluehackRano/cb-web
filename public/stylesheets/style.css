@@ -6,6 +6,12 @@
 .brick_choice.black {
     background-color: #000000;
 }
+
+#file {
+    width:142px;
+    height:142px;
+}
+
 body {
     background-color: #f3f3f3;
 }
@@ -483,9 +489,10 @@ div.set_list div.set_item_event {
 div.set_list div.set_choice {
     width: 120px;
     height: 32px;
+    /*border: solid 1px #fd6246;*/
     background-color: #fd6246;
     float: left;
-    margin-right: 4px;
+    /*margin-right: 4px;*/
 
     font-family: NotoSansCJKkr;
     font-size: 12px;
@@ -1002,6 +1009,28 @@ div._user_profile_section {
     letter-spacing: normal;
     text-align: center;
     color: #000000;
+}
+
+.user_profile_photo_upload_btn .btn_file {
+    display: inline-block;
+    /*border: 1px solid #000;*/
+    width: 140px;
+    height: 32px;
+    /*font-size: 0.8em;*/
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.user_profile_photo_upload_btn input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0
 }
 
 .user_profile_data_area {

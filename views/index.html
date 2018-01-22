@@ -5,7 +5,7 @@
   <title>chatbrick</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script>
+  <script type="text/javascript">
 
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
@@ -15,10 +15,10 @@
         getFBAPI();
 
       } else if (response.status === 'not_authorized') {
-         window.location.href  = 'https://www.chatbrick.io';
+//         window.location.href  = 'https://www.chatbrick.io';
         // window.location.href = 'http://www.localhost:3000';
       } else {
-         window.location.href  = 'https://www.chatbrick.io';
+//         window.location.href  = 'https://www.chatbrick.io';
         // window.location.href = 'http://www.localhost:3000';
       }
     }
@@ -29,16 +29,17 @@
         console.log('Successful login for: ' + response.id);
 
         $.ajax({
-          url : 'https://chatbrick.io/api/login/',
+          url : 'https://www.chatbrick.io/api/login/',
           type : 'POST',
-          dataType: 'JSON',
           crossDomain: true,
-          // xhrFields: { withCredentials: true },
+          xhrFields: { withCredentials: true },
           data : { fb_id : response.id},
           success : function(data, textStatus, res) {
+            console.log(data);
 
             // var Cookies = xhr.getResponseHeader('Set-Cookie');
             // console.log('Cookies=>' + Cookies);
+
 
             //TODO: LOGIN SUCCESS/FAIL 처리
             window.location.href = "/chatbot/list";

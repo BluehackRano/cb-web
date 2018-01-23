@@ -42,7 +42,7 @@
 
 
             //TODO: LOGIN SUCCESS/FAIL 처리
-//            window.location.href = "/chatbot/list";
+            window.location.href = "/chatbot/list";
           }
         });
       });
@@ -57,9 +57,6 @@
     }
 
     function login() {
-
-      $(this).css('background-color','#bd292c');
-
       FB.login(function (response) {
 
         // handle the response

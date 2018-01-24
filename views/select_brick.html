@@ -121,6 +121,19 @@
   })
 
 
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
+
+  pre_page.click( function () {
+    $(this).css('background-color','#bd292c');
+    window.location.href = '/chatbot/create';
+  });
+
+  next_page.click( function () {
+    $(this).css('background-color','#bd292c');
+    window.location.href = '/bricks/create';
+  });
+
 </script>
 <script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
 </body>

@@ -239,40 +239,40 @@
   var set_designer_portfolio = $('#set_designer_portfolio');
   var set_bricks = $('#set_bricks');
 
-  set_hackathon.hide();
-  set_designer_portfolio.hide();
-  set_bricks.hide();
+//  set_hackathon.hide();
+//  set_designer_portfolio.hide();
+//  set_bricks.hide();
 
-  $.ajax({
-    url : 'https://www.chatbrick.io/api/brick/',
-    type : 'GET',
-    crossDomain: true,
-    xhrFields: { withCredentials: true },
-    success : function(body, status, res) {
-
-      console.log(body.data[0].name);
-      if (status == "success") {
-        //TODO: TEST CODE
-        set_bricks.show();
-
-        body.data.forEach( function (item) {
-          if (item.type == "hackathon") {
-            set_hackathon.show();
-            $('#hackathon_context').text(item.desc);
-
-          } else if (item.type == "portfolio") {
-            set_designer_portfolio.show();
-            $('#designer_portfolio_context').text(item.desc);
-
-          } else if (item.type == "bricks") {
-            set_bricks.show();
-            $('#bricks_context').text(item.desc);
-
-          }
-        })
-      }
-    }
-  });
+//  $.ajax({
+//    url : 'https://www.chatbrick.io/api/brick/',
+//    type : 'GET',
+//    crossDomain: true,
+//    xhrFields: { withCredentials: true },
+//    success : function(body, status, res) {
+//
+//      console.log(body.data[0].name);
+//      if (status == "success") {
+//        //TODO: TEST CODE
+//        set_bricks.show();
+//
+//        body.data.forEach( function (item) {
+//          if (item.type == "hackathon") {
+//            set_hackathon.show();
+//            $('#hackathon_context').text(item.desc);
+//
+//          } else if (item.type == "portfolio") {
+//            set_designer_portfolio.show();
+//            $('#designer_portfolio_context').text(item.desc);
+//
+//          } else if (item.type == "bricks") {
+//            set_bricks.show();
+//            $('#bricks_context').text(item.desc);
+//
+//          }
+//        })
+//      }
+//    }
+//  });
 
 
 

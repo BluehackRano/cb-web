@@ -1351,6 +1351,140 @@ hr.landing_underline {
 }
 
 /*
+brick api zone
+*/
+#brick_api_section {
+    margin-top: 45px;
+    margin-bottom: 78px;
+}
+
+div._brick_api_section {
+    height: auto;
+    background-color: #f3f3f3;
+}
+
+._brick_api_wrapper {
+    height: auto;
+    padding-bottom: 80px;
+    background-color: #ffffff;
+}
+
+.brick_api_item_area {
+    height: 38px;
+    width: auto;
+    margin-bottom: 28px;
+}
+
+.brick_api_item_name {
+    height: 32px;
+    width: 78px;
+    margin-right: 35px;
+
+    float: left;
+}
+
+.brick_api_item_name p {
+    display: table-cell;
+    text-align: left;
+    /*vertical-align: middle;*/
+
+    font-family: NotoSansCJKkr;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+.brick_api_item_tag_area {
+    width: 382px;
+    height: 38px;
+
+    border-bottom: 2px solid #000000;
+    float: left;
+}
+
+.brick_api_item_tag {
+    width: auto;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #000000;
+    padding-left: 10px;
+    padding-right: 30px;
+    margin-right: 6px;
+    float: left;
+}
+
+.brick_api_item_tag p {
+    text-align:center;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.brick_api_item_btn_area {
+    width: 176px;
+    height: 32px;
+
+    float: left;
+    margin-left: 29px;
+}
+
+.brick_api_item_btn_motify {
+    width: 100px;
+    height: 32px;
+    background-color: #fd6246;
+    display:table;
+
+    float: left;
+    margin-right: 6px;
+}
+
+.brick_api_item_btn_motify p {
+    display:table-cell;
+    vertical-align:middle;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.brick_api_item_btn_delete {
+    width: 70px;
+    height: 32px;
+    background-color: #d0021b;
+    display:table;
+
+    float: left;
+}
+
+.brick_api_item_btn_delete p {
+    display:table-cell;
+    vertical-align:middle;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+/*
 footer zone
 */
 #footer {

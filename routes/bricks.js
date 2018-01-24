@@ -9,4 +9,10 @@ router.get('/list', (req, res) => {
   })
 });
 
+router.get('/create', (req, res) => {
+
+  fs.readFile('views/create_brick_api', function (err, data) {
+    res.render('create_brick_api')
+  })
+});
 module.exports = router;

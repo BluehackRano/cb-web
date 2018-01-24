@@ -42,7 +42,7 @@
 			</div>
 		</section>
 	</div>
-
+</div>
 <footer id="footer"></footer>
 
 <script>
@@ -52,22 +52,64 @@
   `<div class="bot_name">` + "CREATE BOT" + `</div>` +
   `</div>`);
 
-  // sampleData.data.forEach(function (item) {
-  //   var myBot = (
-  //     `<div id="my_bot">` +
-  //     `<img src="` + item.image + `"+ id="bot_image" alt="bot image">` +
-  //     `<div id="bot_name">` + item.name + `</div>` +
-  //     `<div id="bot_context">` + item.context + `</div>` +
-  //     `</div>`
-  //   );
-  //
-  //   console.log(item);
-  //   botlist.append(myBot);
-  // })
-  botlist.append(createMyBot);
+  $.ajax({
+    url : 'https://www.chatbrick.io/api/brick/',
+    type : 'GET',
+    async: false,
+    crossDomain: true,
+    xhrFields: { withCredentials: true },
+    success : function(body, status, res) {
+      if (body.success) {
+        body.data.forEach(function (item, index, array) {
+
+          var bot_img = "";
+          switch (item.type) {
+            case "hackathon":
+              bot_img = "../public/images/img-hackathon.png";
+              break;
+            case "portfolio":
+              bot_img = "../public/images/img-designer-portfolio-01.png";
+              break;
+            case "bricks":
+              bot_img = "../public/images/img-bricks.png";
+              break;
+          }
+
+          var myBot = (
+            `<div id="my_bot`+index+`" class="my_bot">` +
+            `<img src="` + bot_img + `"+ class="bot_image" alt="bot image">` +
+            `<div class="bot_name">` + item.name + `</div>` +
+            `<div class="bot_context">` + item.desc + `</div>` +
+            `</div>`
+          );
+
+          botlist.append(myBot);
+
+          $(document).on('click',"#my_bot"+index, function () {
+            $(this).css('background-color', '#ffffff');
+            //edit page
+          });
+
+          $("#my_bot"+index).on({
+            mouseenter: function () {
+              //stuff to do on mouse enter
+              $(this).css('background-color', '#e7e7e7');
+            },
+            mouseleave: function () {
+              //stuff to do on mouse leave
+              $(this).css('background-color', '#f3f3f3');
+            }
+          });
+        });
+        botlist.append(createMyBot);
+      }
+    }
+  });
 
   var create_my_bot = $('#create_my_bot');
   var my_bot = $('#my_bot');
+  console.log(botlist);
+
 
   create_my_bot.click(function () {
     create_my_bot.css('background-color', '#ffffff');
@@ -77,16 +119,6 @@
     create_my_bot.css('background-color', '#e7e7e7');
   }, function () {
     create_my_bot.css('background-color', '#f3f3f3');
-  });
-
-  my_bot.click(function () {
-    my_bot.css('background-color', '#ffffff');
-
-  });
-  my_bot.hover(function () {
-    my_bot.css('background-color', '#e7e7e7');
-  }, function () {
-    my_bot.css('background-color', '#f3f3f3');
   });
 
 </script>

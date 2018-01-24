@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Title</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head>
+<body>
+<header id="header">
+	<div class="wrapper wrapper_header">
+		<div class="top_01 top_common">
+			<img id="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+			<img id="login_logo" src="../images/test_img.png" alt="login_logo">
+			<!--<div id="login_name" name="login_name"></div>-->
+			<img id="login_dropdown" alt="login_dropdown">
+		</div>
+
+		<div class="top_02 top_common">
+			<div class="top_02 title_area">
+				<div id="title">CREAT CHATBOT</div>
+				<div id="sub_title">| 데이터 정보 입력하기</div>
+			</div>
+			<div id="context">
+				<p>
+					{{사용자가 선택한 세트}}에 {{사용자의 이름}}님의 데이터 정보를 입력하는 단계에요.
+					SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더
+					{{사용자의 이름}}에 잘어울리는 챗봇으로 만들어보세요.
+				</p>
+			</div>
+		</div>
+	</div>
+</header>
+
+<div id="content">
+
+	<!--사용자 데이터 입력 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_01" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 기본정보
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_02" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								챗봇에 방문하였을 때, 처음으로 보내는 메세지
+							</div>
+							<input type="text" id="user_profile_start_message_01" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_start_message_02" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_start_message_03" class="baseInputText_02" placeholder="가나다">
+
+							<div class="article_title_profile">
+								방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
+							</div>
+							<input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02" placeholder="가나다">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--브릭 수정 영역-->
+	<div id="brick_api_section" class="wrapper_section _brick_api_section">
+		<section id="section_02" class="_brick_api_section">
+			<div class="content_title">
+				<p>
+					브릭 수정
+				</p>
+			</div>
+			<div class="wrapper_article _brick_api_wrapper">
+				<article id="article_03" class="_article">
+					<div class="wrapper">
+
+						<!--브릭 아이템 영역-->
+						<div class="brick_api_item_area">
+							<div class="brick_api_item_name">
+								<p>날씨정보</p>
+							</div>
+							<!--브릭 아이템 태그 영역-->
+							<div class="brick_api_item_tag_area">
+								<div class="brick_api_item_tag">
+									<p>weather</p>
+								</div>
+
+								<div class="brick_api_item_tag">
+									<p>재난상황정보</p>
+								</div>
+
+								<div class="brick_api_item_tag">
+									<p>재난</p>
+								</div>
+							</div>
+							<!--브릭 아이템 버튼 영역-->
+							<div class="brick_api_item_btn_area">
+								<div class="brick_api_item_btn_motify">
+									<p>수정하기</p>
+								</div>
+
+								<div class="brick_api_item_btn_delete">
+									<p>삭제</p>
+								</div>
+							</div>
+						</div>
+
+						<!--브릭 아이템 영역-->
+						<div class="brick_api_item_area">
+							<div class="brick_api_item_name">
+								<p>날씨정보</p>
+							</div>
+							<!--브릭 아이템 태그 영역-->
+							<div class="brick_api_item_tag_area">
+								<div class="brick_api_item_tag">
+									<p>weather</p>
+								</div>
+
+								<div class="brick_api_item_tag">
+									<p>재난상황정보</p>
+								</div>
+
+								<div class="brick_api_item_tag">
+									<p>재난</p>
+								</div>
+							</div>
+
+							<!--브릭 아이템 버튼 영역-->
+							<div class="brick_api_item_btn_area">
+								<div class="brick_api_item_btn_motify">
+									<p>수정하기</p>
+								</div>
+
+								<div class="brick_api_item_btn_delete">
+									<p>삭제</p>
+								</div>
+							</div>
+						</div>
+
+						<!--브릭 아이템 영역-->
+						<div class="brick_api_item_area">
+							<div class="brick_api_item_name">
+								<p>날씨정보</p>
+							</div>
+							<!--브릭 아이템 태그 영역-->
+							<div class="brick_api_item_tag_area">
+								<div class="brick_api_item_tag">
+									<p>weather</p>
+								</div>
+
+								<div class="brick_api_item_tag">
+									<p>재난상황정보</p>
+								</div>
+
+								<div class="brick_api_item_tag">
+									<p>재난</p>
+								</div>
+							</div>
+
+							<!--브릭 아이템 버튼 영역-->
+							<div class="brick_api_item_btn_area">
+								<div class="brick_api_item_btn_motify">
+									<p>수정하기</p>
+								</div>
+
+								<div class="brick_api_item_btn_delete">
+									<p>삭제</p>
+								</div>
+							</div>
+						</div>
+
+						<!--브릭 아이템 영역-->
+						<div class="brick_api_item_area">
+							<div class="brick_api_item_name">
+								<p>날씨정보</p>
+							</div>
+							<!--브릭 아이템 태그 영역-->
+							<div class="brick_api_item_tag_area">
+								<div class="brick_api_item_tag">
+									<p>weather</p>
+								</div>
+
+								<div class="brick_api_item_tag">
+									<p>재난상황정보</p>
+								</div>
+
+								<div class="brick_api_item_tag">
+									<p>재난</p>
+								</div>
+							</div>
+
+							<!--브릭 아이템 버튼 영역-->
+							<div class="brick_api_item_btn_area">
+								<div class="brick_api_item_btn_motify">
+									<p>수정하기</p>
+								</div>
+
+								<div class="brick_api_item_btn_delete">
+									<p>삭제</p>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+</div>
+
+<footer id="footer">
+	<div class="bottom_common">
+		<div id="pre_page">
+			<p>
+				이전
+			</p>
+		</div>
+		<div id="next_page" align="center">
+			<p>
+				다음
+			</p>
+		</div>
+	</div>
+</footer>
+
+</body>
+<script type="text/javascript">
+
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
+
+  pre_page.click( function () {
+    $(this).css('background-color','#bd292c');
+
+  });
+
+  next_page.click( function () {
+    $(this).css('background-color','#bd292c');
+//    document.location.hash = {test:'111', test2:'222'};
+//		var test = {test1:'11', test2:'222'};
+    document.location.href = '/bricks/list';
+
+  });
+
+
+
+</script>
+<script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+</html>

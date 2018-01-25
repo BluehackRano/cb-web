@@ -1710,7 +1710,196 @@ hr.modal_device_underline {
 }
 
 .close_modal_img {
-    float: left;
     position: absolute;
     top: 71px;
+    float: right;
+}
+
+.close_modal_brick_api_img {
+    position: absolute;
+    top: 71px;
+    float: right;
+    margin-left: 700px;
+}
+
+.modal_brick_api_summary {
+    width: 700px;
+    height: 140px;
+
+    border-bottom: 1px solid #eaeaea;
+}
+
+.modal_brick_api_img {
+    width: 86px;
+    height: 84px;
+
+    margin-right: 52px;
+
+    float: left;
+}
+
+.modal_brick_api_summary_text {
+    width: 532px;
+    height: 97px;
+    float: left;
+}
+
+.modal_brick_api_title {
+    width: 148px;
+    height: 59px;
+    font-family: NotoSansCJKkr;
+    font-size: 40px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.modal_brick_api_desc {
+    width: 87px;
+    height: 27px;
+    font-family: NotoSansCJKkr;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.modal_brick_api_context {
+    width: 700px;
+    height: 167px;
+    margin-top: 36px;
+    margin-bottom: 50px;
+}
+
+.modal_brick_api_context_01 {
+    width: 700px;
+    height: 69px;
+    margin-bottom: 29px;
+}
+
+.modal_brick_api_guild {
+    width: 700px;
+    height: 27px;
+
+    font-family: NotoSansCJKkr;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-bottom: 7px;
+}
+
+.modal_brick_api_item_tag_area {
+    width: 700px;
+    height: 35px;
+
+    border-bottom: 2px solid #000000;
+    float: left;
+}
+
+.modal_brick_api_item_tag {
+    width: auto;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #000000;
+    padding-left: 10px;
+    /*padding-right: 30px;*/
+    margin-right: 6px;
+    float: left;
+}
+
+.modal_brick_api_item_tag p {
+    text-align:center;
+    font-family: NotoSansCJKkr;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+
+    float: left;
+}
+
+.modal_brick_api_item_del_img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+
+    float: left;
+}
+
+.modalInputText {
+    width: 700px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #000000;
+    margin-top: 5px;
+    padding-bottom:11px;
+}
+
+.modal_left_btn {
+    display:table;
+    width: 346px;
+    height: 50px;
+    background-color: #fd6246;
+
+    float: left;
+    margin-right: 8px;
+}
+
+.modal_left_btn p {
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+
+    font-family: NotoSansCJKkr;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.modal_right_btn {
+    display:table;
+    width: 346px;
+    height: 50px;
+    background-color: #646464;
+
+    float: left;
+}
+
+.modal_right_btn p {
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+
+    font-family: NotoSansCJKkr;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
 }

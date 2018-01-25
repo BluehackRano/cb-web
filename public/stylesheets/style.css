@@ -1,3 +1,8 @@
+/*@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+*/
+
+@import url(//google.com/get/noto/#sans-kore);
+
 .hello {
     color: red;
     /*background: url("../images/test_img.png");*/
@@ -37,21 +42,64 @@ div.wrapper_header {
     margin-bottom: 67px;
 }
 
-div.top_01 #logo {
+.top_common {
+    width:880px;
+    height:auto;
+    display: table;
+    /*background-color:red;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo {
     display: inline-block;
     float: left;
 }
 
-div.top_01 #login_logo {
-    display: inline-block;
+.top_user_profile_common {
+    /*width: 200px;*/
+    width: auto;
+    height: auto;
     float: right;
 }
-/*#login_name {*/
-    /*text-align: right;*/
-/*}*/
-div.top_01 #login_dropdown {
+
+.login_logo {
+
+    width: 30px;
+    height: 30px;
     display: inline-block;
-    float: right;
+    float: left;
+}
+.login_name {
+    display:table;
+    width: auto;
+    height: 30px;
+    float: left;
+
+    margin-left: 8px;
+    margin-right: 11px;
+}
+
+.login_name p {
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+
+    text-align: center;
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+.login_dropdown {
+    width: 24px;
+    height: 30px;
+    object-fit: contain;
+    float: left;
 }
 
 div.top_02 {
@@ -63,7 +111,7 @@ div.top_02 #title {
     font-size:40px;
     font-weight:900;
     color: #000000;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     text-align: left;
     float:left;
 }
@@ -74,7 +122,7 @@ div.top_02 #sub_title {
     font-size:20px;
     font-weight:900;
     color: #000000;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     float:left;
     text-align: left;
     margin-left: 28px;
@@ -84,7 +132,7 @@ div.top_02 #sub_title {
 div.top_02 #context {
     width: 810px;
     height: 40px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -118,7 +166,7 @@ content zone
 div.content_title {
     width: auto;
     height: 27px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -155,7 +203,7 @@ div.content_title {
     /*width: 121px;*/
     width: auto;
     height: 27px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -168,7 +216,7 @@ div.content_title {
 ._article div.article_title_profile {
     width: auto;
     height: 27px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -192,7 +240,7 @@ div.content_title {
 
     width: 700px;
     height: 60px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -207,7 +255,7 @@ div.content_title {
 ._article a.linkedin_membership {
     width: 114px;
     height: 18px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -230,7 +278,7 @@ hr.article_line {
 ._article div.article_clause_title {
     width: 700px;
     height: 26px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
@@ -245,7 +293,7 @@ hr.article_line {
 ._article div.article_clause_context {
     width: 700px;
     height: 24px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -285,7 +333,7 @@ div.botlist .my_bot {
 .bot_name {
     width: auto;
     height: 20px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -299,7 +347,7 @@ div.botlist .my_bot {
 .bot_context {
     width: auto;
     height: 60px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -313,7 +361,7 @@ div.botlist .my_bot {
 .article_title {
     width: 34px;
     height: 27px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -448,7 +496,7 @@ div.set_list div.set_item_img {
 div.set_list div.set_item_name {
     width: auto;
     height: 22px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -465,7 +513,7 @@ div.set_list div.set_item_name {
 div.set_list div.set_item_context {
     width: auto;
     height: 67px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -497,7 +545,7 @@ div.set_list div.set_choice {
     float: left;
     /*margin-right: 4px;*/
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -559,7 +607,7 @@ select_brick
 .brick_name {
     width: auto;
     height: 20px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     text-align: center;
     color: #000000;
@@ -586,7 +634,7 @@ select_brick
     display: block;
     /*margin: 0 auto;*/
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     text-align: center;
     color: #ffffff;
@@ -638,6 +686,8 @@ connect_platform
     height: 80px;
     object-fit: contain;
     float: left;
+
+    margin-right: 24px;
 }
 
 .messenger_text {
@@ -652,7 +702,7 @@ connect_platform
 .messenger_title {
     width: 94px;
     height: 20px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 14px;
     font-weight: 900;
     font-style: normal;
@@ -668,7 +718,7 @@ connect_platform
 .messenger_context {
     width: 137px;
     height: 18px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -707,7 +757,7 @@ connect_platform
 .fb_page_title {
     width: 87px;
     height: auto;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 14px;
     font-weight: 900;
     font-style: normal;
@@ -727,7 +777,7 @@ connect_platform
     height: 32px;
     border: solid 3px #000000;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -773,7 +823,7 @@ connect_platform
 .tg_content_title {
     width: auto;
     height: 20px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 14px;
     font-weight: 900;
     font-style: normal;
@@ -801,7 +851,7 @@ connect_platform
 .tg_content_context {
     width: auto;
     height: 72px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -849,7 +899,7 @@ create apikey
 
 .api_name {
     margin-top: 5px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -869,7 +919,7 @@ create apikey
 .api_content_context {
     width: 500px;
     height: auto;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -884,7 +934,7 @@ create apikey
 
 .api_content_key_title {
     height: 20px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 14px;
     font-weight: 900;
     font-style: normal;
@@ -908,7 +958,7 @@ create apikey
 .create_apikey_link {
     width: 94px;
     height: 18px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -969,7 +1019,7 @@ div._user_profile_section {
     width: 517px;
     height: auto;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -984,7 +1034,7 @@ div._user_profile_section {
     width: 517px;
     height: auto;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 14px;
     font-weight: normal;
     font-style: normal;
@@ -1003,7 +1053,7 @@ div._user_profile_section {
     height: 32px;
     border: solid 3px #000000;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -1132,7 +1182,7 @@ landing page
     width: auto;
     height: 20px;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: bold;
     font-style: normal;
@@ -1154,7 +1204,7 @@ landing page
     width: 340px;
     height: auto;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -1205,7 +1255,7 @@ landing page
     width: 340px;
     height: auto;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -1388,7 +1438,7 @@ div._brick_api_section {
     text-align: left;
     /*vertical-align: middle;*/
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 14px;
     font-weight: 900;
     font-style: normal;
@@ -1419,7 +1469,7 @@ div._brick_api_section {
 
 .brick_api_item_tag p {
     text-align:center;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -1450,7 +1500,7 @@ div._brick_api_section {
 .brick_api_item_btn_motify p {
     display:table-cell;
     vertical-align:middle;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -1473,7 +1523,7 @@ div._brick_api_section {
 .brick_api_item_btn_delete p {
     display:table-cell;
     vertical-align:middle;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -1506,7 +1556,7 @@ div.bottom_common #pre_page {
     height: 52px;
     background-color: #ff753c;
     text-align: center;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     color: #ffffff;
@@ -1521,7 +1571,7 @@ div.bottom_common #next_page {
     height: 52px;
     background-color: #fd6246;
     text-align: center;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     color: #ffffff;
@@ -1568,7 +1618,7 @@ modal zone
 .modal_title {
     width: auto;
     height: 59px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 40px;
     font-weight: 900;
     font-style: normal;
@@ -1582,7 +1632,7 @@ modal zone
 .modal_context {
     width: auto;
     height: 54px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -1605,7 +1655,7 @@ modal zone
     text-align:center;
     vertical-align:middle;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -1647,7 +1697,7 @@ modal zone
 .modal_device_set_title {
     width: 119px;
     height: 29px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 20px;
     font-weight: 900;
     font-style: normal;
@@ -1662,7 +1712,7 @@ modal zone
 .modal_device_set_name {
     width: 118px;
     height: 22px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: normal;
     font-style: normal;
@@ -1696,7 +1746,7 @@ hr.modal_device_underline {
 .modal_device_context_desc {
     width: auto;
     height: auto;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -1747,7 +1797,7 @@ hr.modal_device_underline {
 .modal_brick_api_title {
     width: 148px;
     height: 59px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 40px;
     font-weight: 900;
     font-style: normal;
@@ -1761,7 +1811,7 @@ hr.modal_device_underline {
 .modal_brick_api_desc {
     width: 87px;
     height: 27px;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -1789,7 +1839,7 @@ hr.modal_device_underline {
     width: 700px;
     height: 27px;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -1823,7 +1873,7 @@ hr.modal_device_underline {
 
 .modal_brick_api_item_tag p {
     text-align:center;
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -1868,7 +1918,7 @@ hr.modal_device_underline {
     text-align:center;
     vertical-align:middle;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;
@@ -1893,7 +1943,7 @@ hr.modal_device_underline {
     text-align:center;
     vertical-align:middle;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
     font-style: normal;

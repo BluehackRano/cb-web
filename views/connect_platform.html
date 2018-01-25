@@ -3,16 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
 </head>
 <body>
 <header id="header">
 	<div class="wrapper wrapper_header">
 		<div class="top_01 top_common">
-			<img id="logo" src="../images/test_img.png" alt="logo">
-			<img id="login_logo" src="../images/test_img.png" alt="login_logo">
-			<!--<div id="login_name" name="login_name"></div>-->
-			<img id="login_dropdown" alt="login_dropdown">
+			<img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+
+			<div class="top_01 top_user_profile_common">
+				<img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+				<div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+				<img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png" alt="login_dropdown">
+			</div>
 		</div>
 
 		<div class="top_02 top_common">
@@ -45,7 +50,7 @@
 
 					<div class="wrapper _fb_messenger_wrapper">
 						<div class="messenger_set">
-							<img src="http://localhost:63342/cb-web/dist/5fae83177ae663a55094e3b89b5255ee.png"
+							<img src="../public/images/img-fb-messenger.png"
 									 id="img_fb_messenger" class="messenger_img">
 							<div class="messenger_text">
 								<div class="messenger_title">
@@ -57,79 +62,25 @@
 							</div>
 						</div>
 
-						<!--fb_page_set_item-->
-						<div class="fb_page_set">
-							<img src="http://localhost:63342/cb-web/dist/5fae83177ae663a55094e3b89b5255ee.png"
-									 class="fb_page_img">
-							<div class="fb_page_text">
-								<div class="fb_page_title">
-									Bluehack 01
-								</div>
-								<div class="fb_page_btn">
-									<p>
-										연결하기
-									</p>
-								</div>
-							</div>
-						</div>
 
-						<div class="fb_page_set">
-							<img src="http://localhost:63342/cb-web/dist/5fae83177ae663a55094e3b89b5255ee.png"
-									 class="fb_page_img">
-							<div class="fb_page_text">
-								<div class="fb_page_title">
-									Bluehack 01
-								</div>
-								<div class="fb_page_btn">
-									<p>
-										연결하기
-									</p>
-								</div>
-							</div>
-						</div>
+						<div id="fb_page_list">
 
-						<div class="fb_page_set">
-							<img src="http://localhost:63342/cb-web/dist/5fae83177ae663a55094e3b89b5255ee.png"
-									 class="fb_page_img">
-							<div class="fb_page_text">
-								<div class="fb_page_title">
-									Bluehack 01
-								</div>
-								<div class="fb_page_btn">
-									<p>
-										연결하기
-									</p>
-								</div>
-							</div>
-						</div>
+							<!--fb_page_set_item 영역-->
+							<!--<div class="fb_page_set">-->
+								<!--<img src="../public/images/test_img.png"-->
+										 <!--class="fb_page_img">-->
+								<!--<div class="fb_page_text">-->
+									<!--<div class="fb_page_title">-->
+										<!--Bluehack 01-->
+									<!--</div>-->
+									<!--<div class="fb_page_btn">-->
+										<!--<p>-->
+											<!--연결하기-->
+										<!--</p>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
 
-						<div class="fb_page_set">
-							<img src="http://localhost:63342/cb-web/dist/5fae83177ae663a55094e3b89b5255ee.png"
-									 class="fb_page_img">
-							<div class="fb_page_text">
-								<div class="fb_page_title">
-									Bluehack 01
-								</div>
-								<div class="fb_page_btn">
-									<p>
-										연결하기
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="fb_page_set">
-							<img src="http://localhost:63342/cb-web/dist/5fae83177ae663a55094e3b89b5255ee.png"
-									 class="fb_page_img">
-							<div class="fb_page_text">
-								<div class="fb_page_title">
-									Bluehack 01
-								</div>
-								<div class="fb_page_btn">
-									<p>
-										연결하기
-									</p>
-								</div>
-							</div>
 						</div>
 					</div>
 				</article>
@@ -139,7 +90,7 @@
 					<article id="article_telegram">
 						<div class="wrapper _telegram_messenger_wrapper">
 							<div class="messenger_set">
-								<img src="http://localhost:63342/cb-web/dist/5fae83177ae663a55094e3b89b5255ee.png"
+								<img src="../public/images/img-tele-messenger.png"
 										 id="img_telegram__messenger" class="messenger_img">
 								<div class="messenger_text">
 									<div class="messenger_title">
@@ -190,5 +141,68 @@
 		</div>
 	</div>
 </footer>
+
+<script type="text/javascript">
+
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+  var fb_page_list = $('#fb_page_list');
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'GET',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            login_logo.attr("src", body.facebook.fb_profile);
+            login_name.text(body.facebook.fb_name);
+
+            console.log('body.facebook.fb_id=>' + body.facebook.fb_id);
+
+            FB.api(body.facebook.fb_id+'/accounts', function (response) {
+              console.log('Successful page info for: ' + JSON.stringify(response));
+              console.log('data length: ' + response.data.length);
+              console.log('access_token[0]: ' + response.data[0].access_token);
+              console.log('name[0]: ' + response.data[0].name);
+
+              response.data.forEach(function (item, index, array) {
+                var fb_messager = (
+                  `<div class="fb_page_set">`+
+                  `<img src="../public/images/test_img.png" class="fb_page_img">`+
+                  `<div class="fb_page_text">`+
+                  `<div class="fb_page_title">`+item.name+`</div>`+
+                  `<div class="fb_page_btn">`+
+                  `<p> 연결하기 </p>`+
+                  `</div>`+
+                  `</div>`+
+                  `</div>`
+                );
+
+                fb_page_list.append(fb_messager);
+              });
+
+            });
+          }
+        }
+      });
+
+    } else if (response.status === 'not_authorized') {
+
+    } else {
+
+    }
+  }
+
+
+</script>
+<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 </body>
 </html>

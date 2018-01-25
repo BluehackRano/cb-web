@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var chatbot = require('./routes/chatbot');
 var designerPortfolio = require('./routes/designer_portfolio');
 var bricks = require('./routes/bricks');
+var platform = require('./routes/platform');
 
 var app = express();
 app.use(cookieParser())
@@ -35,6 +36,7 @@ app.use('/users', users);
 app.use('/chatbot', chatbot);
 app.use('/designerPortfolio', designerPortfolio);
 app.use('/bricks', bricks);
+app.use('/platform', platform);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

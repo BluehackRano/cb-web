@@ -11,10 +11,13 @@
 <header id="header">
   <div class="wrapper wrapper_header">
     <div class="top_01 top_common">
-      <img id="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
-      <img id="login_logo" src="../images/test_img.png" alt="login_logo">
-      <!--<div id="login_name" name="login_name"></div>-->
-      <img id="login_dropdown" alt="login_dropdown">
+      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+
+      <div class="top_01 top_user_profile_common">
+        <img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png" alt="login_dropdown">
+      </div>
     </div>
 
     <div class="top_02 top_common">
@@ -168,118 +171,6 @@
   </div>
 </div>
 
-<button id="myBtn">Open Modal</button>
-
-<!--디폴트 모양 팝업-->
-
-<!--<div id="modal" class="modal">-->
-<!--&lt;!&ndash; Modal content &ndash;&gt;-->
-<!--<div class="modal-content">-->
-
-<!--<div class="modal_title">확인</div>-->
-<!--<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 비로그인, 잘못입력된 항목)</div>-->
-<!--<div id="modal_one_btn" class="modal_one_btn">-->
-<!--<p>확인</p></div>-->
-<!--</div>-->
-<!--</div>-->
-
-
-<!--디바이스 모양 팝업-->
-
-<!--<div id="modal" class="modal">-->
-<!--&lt;!&ndash; Modal content &ndash;&gt;-->
-<!--<div class="modal-content">-->
-
-<!--<div class="modal_device_wapper">-->
-<!--<img src="../public/images/img-device.png" id="modal_device_img" class="device_img">-->
-<!--<div class="modal_device_content">-->
-<!--<div class="modal_device_set_content">-->
-
-<!--<div class="modal_device_set_title_area">-->
-<!--<div class="modal_device_set_title">-->
-<!--| SET DEMO-->
-<!--</div>-->
-<!--<div class="modal_device_set_name">-->
-<!--: HACKATHON-->
-<!--</div>-->
-<!--</div>-->
-<!--<img src="../public/images/img-hackathon.png" class="modal_device_set_img">-->
-<!--</div>-->
-
-<!--<hr class="modal_device_underline">-->
-<!--<div class="modal_device_context_desc">-->
-<!--Build a Facebook bot without coding. Launch a full-featured <br>-->
-<!--chatbot in 7 minutes. We believe in the power of chatbots to<br>-->
-<!--strengthen your connection to your audience—whether <br>-->
-<!--that's your customers, readers, fans, or others. <br>-->
-<!--And we're committed to making that as easy as we can.-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<img src="../public/images/btn-close-nor.png" id="close_modal_img" class="close_modal_img">-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-
-<!--브릭 api 관련 팝업-->
-
-<div id="modal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <img src="../public/images/btn-close-nor.png" id="close_modal_img" class="close_modal_brick_api_img">
-    <div class="modal_brick_api_wapper">
-      <div class="modal_brick_api_summary">
-        <img src="../public/images/img-brick-02.png" class="modal_brick_api_img">
-        <div class="modal_brick_api_summary_text">
-          <div class="modal_brick_api_title">날씨정보</div>
-          <div class="modal_brick_api_desc">데이터 수정</div>
-        </div>
-      </div>
-
-      <div class="modal_brick_api_context">
-
-        <div class="modal_brick_api_context_01">
-          <div class="modal_brick_api_guild">
-            WEATHER BRICK 을 불러올 때, 사용할 키워드를 입력해주세요
-          </div>
-
-          <!--브릭 아이템 태그 영역-->
-          <div class="modal_brick_api_item_tag_area">
-            <div class="modal_brick_api_item_tag">
-              <p>weather</p>
-              <img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">
-            </div>
-
-            <div class="modal_brick_api_item_tag">
-              <p>재난상황정보</p>
-              <img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">
-            </div>
-          </div>
-        </div>
-
-        <div class="modal_brick_api_context_02">
-          <div class="modal_brick_api_guild">
-            사용자가 날씨를 조회할 지역을 어떤 문장으로 물어볼까요?
-          </div>
-          <input type="text" class="modalInputText" placeholder="가나다">
-        </div>
-
-      </div>
-
-      <div class="modal_brick_api_two_btn_area">
-        <div id="modal_left_btn" class="modal_left_btn">
-          <p>저장</p>
-        </div>
-
-        <div id="modal_right_btn" class="modal_right_btn">
-          <p>취소</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <footer id="footer">
   <div class="bottom_common">
     <div id="pre_page">
@@ -296,54 +187,72 @@
 </footer>
 
 <script type="text/javascript">
+
+  var baseInfo_name = $('#baseInfo_name');
+  var baseInfo_context;
+  var baseInfo_context_01 = $('#baseInfo_context_01');
+  var baseInfo_context_02 = $('#baseInfo_context_02');
+
+  checkForHash();
+
+  function checkForHash() {
+    if(document.location.hash){
+      var hashLocation = document.location.hash;
+      hashLocation = hashLocation.replace("#","");
+
+      var hashValues = hashLocation.split("&");
+      var hashName = hashValues[0];
+      var hashDesc1 = hashValues[1];
+      var hashDesc2 = hashValues[2];
+      console.log('hashName=>' + hashName + 'hashDesc1=>' + hashDesc1 + 'hashDesc2=>' + hashDesc2);
+      baseInfo_name.text(hashName);
+      baseInfo_context_01.text(hashDesc1);
+      baseInfo_context_02.text(hashDesc2);
+
+      baseInfo_context = baseInfo_context_01.val() + " " + baseInfo_context_02.val();
+    } else {
+      console.log('no hash!');
+    }
+  }
+
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+
+  $.ajax({
+    url: 'https://www.chatbrick.io/api/login/',
+    type: 'GET',
+    async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
+    success: function (body, status, res) {
+      if (body.success) {
+        login_logo.attr("src", body.facebook.fb_profile);
+        login_name.text(body.facebook.fb_name);
+      }
+    }
+  });
+
   var set_list = $('#set_list');
   var set_hackathon = $('#set_hackathon');
   var set_designer_portfolio = $('#set_designer_portfolio');
   var set_bricks = $('#set_bricks');
 
-  //  set_hackathon.hide();
-  //  set_designer_portfolio.hide();
-  //  set_bricks.hide();
-
-  //  $.ajax({
-  //    url : 'https://www.chatbrick.io/api/brick/',
-  //    type : 'GET',
-  //    crossDomain: true,
-  //    xhrFields: { withCredentials: true },
-  //    success : function(body, status, res) {
-  //
-  //      console.log(body.data[0].name);
-  //      if (status == "success") {
-  //        //TODO: TEST CODE
-  //        set_bricks.show();
-  //
-  //        body.data.forEach( function (item) {
-  //          if (item.type == "hackathon") {
-  //            set_hackathon.show();
-  //            $('#hackathon_context').text(item.desc);
-  //
-  //          } else if (item.type == "portfolio") {
-  //            set_designer_portfolio.show();
-  //            $('#designer_portfolio_context').text(item.desc);
-  //
-  //          } else if (item.type == "bricks") {
-  //            set_bricks.show();
-  //            $('#bricks_context').text(item.desc);
-  //
-  //          }
-  //        })
-  //      }
-  //    }
-  //  });
-
-
   var hackathon_choice = $('#hackathon_choice');
   var designer_portfolio_choice = $('#designer_portfolio_choice');
   var bricks_choice = $('#bricks_choice');
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
 
   hackathon_choice.click(function () {
     set_list.val("hackathon_choice");
     $(this).css('background-color', '#000000');
+    next_page.css('background-color', '#fd6246');
+    next_page.hover(function () {
+      next_page.css('background-color', '#fb7c7e');
+    }, function () {
+      next_page.css('background-color', '#fd6246');
+    });
     // $(this).text('선택해제 하기');
 
     designer_portfolio_choice.css('background-color', '#ff753c');
@@ -356,6 +265,12 @@
   designer_portfolio_choice.click(function () {
     set_list.val("designer_portfolio_choice");
     $(this).css('background-color', '#000000');
+    next_page.css('background-color', '#fd6246');
+    next_page.hover(function () {
+      next_page.css('background-color', '#fb7c7e');
+    }, function () {
+      next_page.css('background-color', '#fd6246');
+    });
     // $(this).text('선택해제 하기');
 
     hackathon_choice.css('background-color', '#ff753c');
@@ -367,6 +282,12 @@
   bricks_choice.click(function () {
     set_list.val("bricks_choice");
     $(this).css('background-color', '#000000');
+    next_page.css('background-color', '#fd6246');
+    next_page.hover(function () {
+      next_page.css('background-color', '#fb7c7e');
+    }, function () {
+      next_page.css('background-color', '#fd6246');
+    });
     // $(this).text('선택해제 하기');
 
     designer_portfolio_choice.css('background-color', '#ff753c');
@@ -375,52 +296,59 @@
     // hackathon_choice.text('세트선택하기');
   });
 
-  var pre_page = $('#pre_page');
-  var next_page = $('#next_page');
+
+  if (set_list.val() != "hackathon_choice"
+    && set_list.val() != "designer_portfolio_choice"
+    && set_list.val() != "bricks_choice") {
+    next_page.css('background-color', '#c0c0c0');
+  } else {
+    next_page.hover(function () {
+      next_page.css('background-color', '#fb7c7e');
+    }, function () {
+      next_page.css('background-color', '#fd6246');
+    });
+  }
 
   pre_page.click(function () {
     $(this).css('background-color', '#bd292c');
     window.location.href = '/chatbot/list';
   });
+  pre_page.hover(function () {
+    pre_page.css('background-color', '#fb7c7e');
+  }, function () {
+    pre_page.css('background-color', '#ff753c');
+  });
+
 
   next_page.click(function () {
     $(this).css('background-color', '#bd292c');
 
+    var hashData = baseInfo_name.val() + '&' + baseInfo_context_01.val() + '&' + baseInfo_context_02.val();
+    var request_query = '?baseInfo_name='+baseInfo_name.val()+'&baseInfo_context='+baseInfo_context_01.val() + baseInfo_context_02.val();
+
+    console.log('request_query=>' + request_query);
+
     if (set_list.val() == "hackathon_choice") {
-      // window.location.href = '/chatbot/list';
+      // window.location.href = '/platform/connect';
+      console.log(hashData);
+      document.location.hash = hashData;
+
     } else if (set_list.val() == "designer_portfolio_choice") {
-      window.location.href = '/designerPortfolio/create';
+      // console.log(request_query);
+      window.location.href = '/designerPortfolio/create'+request_query;
+      document.location.hash = hashData;
+
     } else if (set_list.val() == "bricks_choice") {
-      window.location.href = '/bricks/list';
+      window.location.href = '/bricks/list'+request_query;
+      document.location.hash = hashData;
+
     } else {
-      //TODO: next_page dim처리하기
+      next_page.css('background-color', '#c0c0c0');
     }
   });
-
-
-  var modal = document.getElementById('modal');
-  var btn = document.getElementById('myBtn');
-  var modal_one_btn = document.getElementById('modal_one_btn');
-  var close_modal_img = document.getElementById('close_modal_img');
-
-  btn.onclick = function () {
-    modal.style.display = "block";
-  }
-  close_modal_img.onclick = function () {
-    modal.style.display = "none";
-  }
-  //  modal_one_btn.onclick = function () {
-  //    modal.style.display = "none";
-  //  }
-  //  window click close modal event
-  //  window.onclick = function(event) {
-  //    if (event.target == modal) {
-  //      modal.style.display = "none";
-  //    }
-  //  }
 </script>
 
 <!--<script type="text/javascript" src="/public/javascripts/my_chatbot_create.js"></script>-->
-<script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+<!--<script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>-->
 </body>
 </html>

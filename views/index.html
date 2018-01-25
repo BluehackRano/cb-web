@@ -12,39 +12,54 @@
       console.log(response);
       if (response.status === 'connected') {
         // alert('connected!2');
-        getFBAPI();
+        // getFBAPI();
+        window.location.href = '/chatbot/list';
 
       } else if (response.status === 'not_authorized') {
-//         window.location.href  = 'https://www.chatbrick.io';
+        window.location.href  = '/';
         // window.location.href = 'http://www.localhost:3000';
       } else {
-//         window.location.href  = 'https://www.chatbrick.io';
+        window.location.href  = '/';
         // window.location.href = 'http://www.localhost:3000';
       }
     }
 
-    function getFBAPI() {
+    function getFBAPI(authResponse) {
       console.log('Welcome! Fetching your information.... ');
       FB.api('/me', function (response) {
-        console.log('Successful login for: ' + response.id);
 
-        $.ajax({
-          url: 'https://www.chatbrick.io/api/login/',
-          type: 'POST',
-          crossDomain: true,
-          xhrFields: {withCredentials: true},
-          data: {fb_id: response.id},
-          success: function (data, textStatus, res) {
-            console.log(data);
+        console.log('/me API =>' + JSON.stringify(response));
+        var fb_id = response.id;
+        var fb_name = response.name;
+        console.log('Successful login for: ' + fb_id);
+        console.log('Successful login for: ' + JSON.stringify(response));
 
-            // var Cookies = xhr.getResponseHeader('Set-Cookie');
-            // console.log('Cookies=>' + Cookies);
+        FB.api(fb_id + '/picture', function (res) {
+
+          console.log('PICTURE->'+ JSON.stringify(res));
+
+          var fb_profile =  res.data.url;
+          $.ajax({
+            url: 'https://www.chatbrick.io/api/login/',
+            type: 'POST',
+            // async: false,
+            crossDomain: true,
+            xhrFields: {withCredentials: true},
+            data: {
+              fb_id: fb_id,
+              fb_profile: fb_profile,
+              fb_name: fb_name,
+              fb_access_token: authResponse.accessToken,
+              fb_signed_request: authResponse.signedRequest
+            },
+            success: function (data, textStatus, res) {
+              console.log(data);
+              window.location.href = "/chatbot/list";
+            }
+          });
+        })
 
 
-            //TODO: LOGIN SUCCESS/FAIL 처리
-            window.location.href = "/chatbot/list";
-          }
-        });
       });
 
 //      FB.api('/1111672078935704/accounts', function (response) {
@@ -61,7 +76,12 @@
 
         // handle the response
         console.log("Response goes here!");
-        console.log(response)
+        console.log(response);
+
+        var authResponse = response.authResponse;
+        console.log('authResponse =>' + JSON.stringify(authResponse));
+        getFBAPI(authResponse);
+
       }, {
         scope: 'public_profile, pages_manage_cta, pages_manage_instant_articles,' +
         'pages_messaging, pages_messaging_subscriptions, pages_messaging_phone_number,' +

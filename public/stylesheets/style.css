@@ -12,6 +12,14 @@
     background-color: #000000;
 }
 
+.brick_preview.press {
+    background-color: #bd292c;
+}
+
+.brick_preview.selectMouse {
+    background-color: #000000;
+}
+
 .press {
     background-color: #bd292c;
 }
@@ -1726,8 +1734,10 @@ modal zone
 }
 
 .modal_device_set_img {
-    width: 200px;
-    height: 200px;
+    /*width: 200px;*/
+    width: auto;
+    /*height: 200px;*/
+    height: auto;
 
     float: left;
 }

@@ -4,8 +4,11 @@ var fs = require('fs');
 
 router.get('/list', (req, res) => {
 
-  fs.readFile('views/select_brick', function (err, data) {
-    res.render('select_brick')
+  // fs.readFile('views/select_brick', function (err, data) {
+  //   res.render('select_brick')
+  // })
+  fs.readFile('views/create_bricks', function (err, data) {
+    res.render('create_bricks')
   })
 });
 

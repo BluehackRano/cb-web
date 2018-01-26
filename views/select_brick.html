@@ -10,10 +10,13 @@
 <header id="header">
   <div class="wrapper wrapper_header">
     <div class="top_01 top_common">
-      <img id="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
-      <img id="login_logo" src="../images/test_img.png" alt="login_logo">
-      <!--<div id="login_name" name="login_name"></div>-->
-      <img id="login_dropdown" alt="login_dropdown">
+      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+
+      <div class="top_01 top_user_profile_common">
+        <img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png" alt="login_dropdown">
+      </div>
     </div>
 
     <div class="top_02 top_common">
@@ -83,14 +86,24 @@
 <script>
 
   var brick_list = $('#brick_list');
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+
   $.ajax({
-    url: 'https://chatbrick.io/api/brick/list/',
+    url: 'https://www.chatbrick.io/api/brick/list/',
     async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
     type: 'GET',
     success: function (body, status, res) {
 
       console.log(body.success);
       console.log(body.data[0].name);
+
+      login_logo.attr("src", body.facebook.fb_profile);
+      login_name.text(body.facebook.fb_name);
+
       if (body.success) {
         body.data.forEach(function (item, index, array) {
           console.log(index);

@@ -12,7 +12,7 @@
     background-color: #000000;
 }
 
-.brick_preview.press {
+.press {
     background-color: #bd292c;
 }
 
@@ -573,6 +573,7 @@ div.set_list div.set_preview {
     object-fit: contain;
     display: block;
     margin: 0 auto;
+    margin-left: 4px;
 }
 
 
@@ -1911,6 +1912,16 @@ hr.modal_device_underline {
     border-bottom: 2px solid #000000;
     margin-top: 5px;
     padding-bottom:11px;
+}
+
+.modalTagInputText {
+    width: auto;
+    height: 30px;
+    border: 0;
+    outline: 0;
+    background: blue;
+    float: left;
+    text-align: left;
 }
 
 .modal_left_btn {

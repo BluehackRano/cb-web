@@ -342,6 +342,71 @@
   </div>
 </div>
 
+<!--브릭 api 관련 팝업-->
+
+<div id="modal_brick_api" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <img src="../public/images/btn-close-nor.png" id="close_modal_brick_api_img" class="close_modal_brick_api_img">
+    <div class="modal_brick_api_wapper">
+      <div class="modal_brick_api_summary">
+        <img src="../public/images/img-brick-02.png" class="modal_brick_api_img">
+        <div class="modal_brick_api_summary_text">
+          <div class="modal_brick_api_title">날씨정보</div>
+          <div class="modal_brick_api_desc">데이터 수정</div>
+        </div>
+      </div>
+
+      <div class="modal_brick_api_context">
+
+        <div class="modal_brick_api_context_01">
+          <div class="modal_brick_api_guild">
+            WEATHER BRICK 을 불러올 때, 사용할 키워드를 입력해주세요
+          </div>
+
+          <!--브릭 아이템 태그 영역-->
+          <div class="modal_brick_api_item_tag_area">
+            <!--<div class="modal_brick_api_item_tag">-->
+              <!--<p>weather</p>-->
+              <!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
+            <!--</div>-->
+          </div>
+
+        <!--브릭 아이템 태그 영역-->
+        <!--<div class="modal_brick_api_item_tag_area">-->
+          <!--<div class="modal_brick_api_item_tag">-->
+            <!--<p>weather</p>-->
+            <!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
+          <!--</div>-->
+          <!--<input type="text" class="modalTagInputText">-->
+        <!--</div>-->
+
+        </div>
+
+        <div class="modal_brick_api_context_02">
+          <div class="modal_brick_api_guild">
+            사용자가 날씨를 조회할 지역을 어떤 문장으로 물어볼까요?
+          </div>
+          <input type="text" class="modalInputText" placeholder="가나다">
+        </div>
+
+      </div>
+
+      <div class="modal_brick_api_two_btn_area">
+        <div id="modal_left_btn" class="modal_left_btn">
+          <p>저장</p>
+        </div>
+
+        <div id="modal_right_btn" class="modal_right_btn">
+          <p>취소</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <footer id="footer">
   <div class="bottom_common">
     <div id="pre_page">
@@ -384,6 +449,7 @@
   checkForHash();
 
   var brick_list = $('#brick_list');
+  var selected_brick_list = [];
 
   $.ajax({
     url: 'https://www.chatbrick.io/api/brick/list/',
@@ -406,7 +472,8 @@
           preview_img = item.preview.img;
           preview_desc = item.preview.desc;
 
-          var brick = (`<div class="brick_item"  id="brick_item` + index + `">` +
+          var brick = (
+            `<div class="brick_item"  id="brick_item` + index + `">` +
             // `<img src="`+item.img+`" alt="brick image" class="brick_img"> ` +
             `<img src="../public/images/img-brick-01.png" alt="brick image" class="brick_img"> ` +
             `<div class="brick_name">` + item.name + `</div> ` +
@@ -437,80 +504,143 @@
   console.log('brick_choice->' + brick_choice.text());
 
   brick_choice.click(function () {
-
     // var api_set_html = $(this).parent().parent().html();
     // var api_set_id_Html ='#api_set'+$(this).parent().parent().index();
 
-    $(this).toggleClass("black");
+    var itemIndex = $(this).parent().parent().index();
+    $(this).toggleClass('black');
+    if($(this).hasClass('black')) {
+      console.log('블랙됨')
+      console.log('itemIndex=>' + itemIndex);
+
+      if (selected_brick_list.includes(itemIndex)) {
+        console.log('이미 선택리스트에 있음');
+      } else {
+        console.log('선택리스트에 추가');
+        selected_brick_list.push(itemIndex);
+      }
+      console.log('selected_brick_list=>'+selected_brick_list);
+
+    } else {
+      console.log('블랙해제')
+      console.log('itemIndex=>' + itemIndex);
+
+      if (selected_brick_list.length == 2) {
+        // selected_brick_list.replace(itemIndex, '').replace(',','');
+        selected_brick_list.pop();
+      } else if (selected_brick_list.length == 1) {
+        selected_brick_list.pop();
+      }  else {
+        selected_brick_list.splice(itemIndex, 1);
+      }
+
+      console.log('selected_brick_list=>'+selected_brick_list);
+      console.log('selected_brick_list length=>'+selected_brick_list.length);
+    }
   });
 
 
-  $(document).on('click', '.black', function () {
-    var itemIndex = $(this).parent().parent().index();
+  function selectedBrick(list) {
 
-    console.log('itemIndex=>' + itemIndex);
-    // console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
+    list.forEach(function (itemIndex, index, array) {
+      var brickApiSet = (
+        `<div class="api_set" id="api_set` + itemIndex + `">` +
+        `<div class="api_title">` +
+        `<img src="` + resData[itemIndex].img + `" class="api_img">` +
+        `<div class="api_name">` + resData[itemIndex].name + `</div>` +
+        `</div>` +
+        `<div class="api_content">` +
+        `<div class="api_content_context">` +
+        `<p>` + resData[itemIndex].api.desc + `</p>` +
+        `</div>` +
+        `<div class="api_content_key_title"> API KEY </div>` +
+        `<input type="text" class="apikeyInputText" placeholder="발급받은 API KEY를 입력해주세요.">` +
+        `<a href="` + resData[itemIndex].api.provider + `" class="create_apikey_link"> <p> API KEY 신청하기 </p> </a>` +
+        `</div>` +
+        `<hr class="apikey_underline"> ` +
+        `</div>`
+      );
+      api_set_list.append(brickApiSet);
 
-    var brickApiSet = (
-      `<div class="api_set" id="api_set` + itemIndex + `">` +
-      `<div class="api_title">` +
-      `<img src="` + resData[itemIndex].img + `" class="api_img">` +
-      `<div class="api_name">` + resData[itemIndex].name + `</div>` +
-      `</div>` +
-      `<div class="api_content">` +
-      `<div class="api_content_context">` +
-      `<p>` + resData[itemIndex].api.desc + `</p>` +
-      `</div>` +
-      `<div class="api_content_key_title"> API KEY </div>` +
-      `<input type="text" class="apikeyInputText" placeholder="발급받은 API KEY를 입력해주세요.">` +
-      `<a href="` + resData[itemIndex].api.provider + `" class="create_apikey_link"> <p> API KEY 신청하기 </p> </a>` +
-      `</div>` +
-      `<hr class="apikey_underline"> ` +
-      `</div>`
-    );
-    api_set_list.append(brickApiSet);
-
-    var brickApiItem = (
-      `<div class="brick_api_item_area" id="brick_api_item_area` + itemIndex + `">` +
-      `<div class="brick_api_item_name">`+
-      `<p>`+resData[itemIndex].name+`</p>`+
-      `</div>`+
-      `<div class="brick_api_item_tag_area" id="brick_api_item_tag_area` + itemIndex +`">`+
-      `</div>`+
-      `<div class="brick_api_item_btn_area">`+
-      `<div class="brick_api_item_btn_motify">`+
-      `<p>수정하기</p>`+
-      `</div>`+
-      `<div class="brick_api_item_btn_delete">`+
-      `<p>삭제</p>`+
-      `</div>`+
-      `</div>`+
-      `</div>`
-    );
-
-    brick_api_zone.append(brickApiItem);
-
-    //Added brick api tag
-    var brick_api_item_tag_area = $('.brick_api_item_tag_area');
-    resData[itemIndex].api.keywords.forEach(function (item, index, array) {
-
-      console.log('apitag=>' + item);
-
-      var brick_tag = (
-        `<div class="brick_api_item_tag">`+
-        `<p>`+item+`</p>`+
+      var brickApiItem = (
+        `<div class="brick_api_item_area" id="brick_api_item_area` + itemIndex + `">` +
+        `<div class="brick_api_item_name">`+
+        `<p>`+resData[itemIndex].name+`</p>`+
+        `</div>`+
+        `<div class="brick_api_item_tag_area" id="brick_api_item_tag_area` + itemIndex +`">`+
+        `</div>`+
+        `<div class="brick_api_item_btn_area">`+
+        `<div class="brick_api_item_btn_motify" id="brick_api_item_btn_motify` + itemIndex +`">`+
+        `<p>수정하기</p>`+
+        `</div>`+
+        `<div class="brick_api_item_btn_delete" id="brick_api_item_btn_delete` + itemIndex +`">`+
+        `<p>삭제</p>`+
+        `</div>`+
+        `</div>`+
         `</div>`
       );
 
-      brick_api_item_tag_area.append(brick_tag);
+      brick_api_zone.append(brickApiItem);
+
+      //Added brick api tag
+      var brick_api_item_tag_area = $('.brick_api_item_tag_area');
+      var modal_brick_api_item_tag_area = $('.modal_brick_api_item_tag_area');
+      resData[itemIndex].api.keywords.forEach(function (item, index, array) {
+
+        console.log('apitag=>' + item);
+
+        var brick_tag = (
+          `<div class="brick_api_item_tag">`+
+          `<p>`+item+`</p>`+
+          `</div>`
+        );
+
+        var modal_brick_tag = (
+          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index +`">`+
+          `<p>`+item+`</p>`+
+          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + itemIndex +`">`+
+          `</div>`
+        );
+
+        brick_api_item_tag_area.append(brick_tag);
+        modal_brick_api_item_tag_area.append(modal_brick_tag);
+
+      });
     });
 
+  }
+
+  $(document).on('click', '.black', function () {
+    var itemIndex = $(this).parent().parent().index();
+    console.log('itemIndex=>' + itemIndex);
+
+    });
+
+
+  var modal_brick_api = document.getElementById('modal_brick_api');
+  var close_modal_brick_api_img = document.getElementById('close_modal_brick_api_img');
+  $(document).on('click', '.brick_api_item_btn_motify', function () {
+    var itemIndex = $(this).parent().parent().index();
+    console.log('itemIndex->'+itemIndex );
+    modal_brick_api.style.display = "block";
   });
 
-  var brick_api_item_btn_motify = $('.brick_api_item_btn_motify');
-  brick_api_item_btn_motify.click(function () {
-    $(this).toggleClass("press");
-  })
+  close_modal_brick_api_img.onclick = function () {
+    modal_brick_api.style.display = "none";
+  }
+
+  $(document).on('click', '.brick_api_item_btn_delete', function () {
+    console.log('test!2');
+    var itemIndex = $(this).parent().parent().index();
+    $('#brick_api_item_area'+itemIndex).hide();
+  });
+
+  $(document).on('click', '.modal_brick_api_item_del_img', function () {
+    console.log('test!2');
+    var itemIndex = $(this).parent().index();
+    console.log('tagid=>'+ itemIndex);
+    $('#modal_brick_api_item_tag'+itemIndex).hide();
+  });
 
 
   brick_preview.click(function () {
@@ -558,7 +688,8 @@
       page_bricks_platform.hide();
       context.text('BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요.\n' +
         '세트와 마찬가지로 “미리보기”버튼을 통해 해당 BRICK을 미리 체험해볼 수 있어요.');
-      sub_title.text('| BRICK 선택하기')
+      sub_title.text('| BRICK 선택하기');
+      window.location.reload()
 
     } else if (pageNumber == 1) {
       page_select_bricks.hide();
@@ -600,6 +731,8 @@
       page_bricks_platform.hide();
       context.text('선택한 BRICK이 원할하게 동작하기 위해서는 해당 BRICK에 필요로 하는 항목들을 입력하셔야 해요. 기존에 API KEY를 보유하고 있지 않다면 BRICK의 아래에 위치한 API KEY 신청하기 버튼을 통해 해당 웹페이지로 이동할 수 있어요. 건너뛰기를 하시면 BRICK의 사용 횟수 제한 등의 제약사항이 있을 수 있어요.')
       sub_title.text('| API KEY 입력하기');
+      selectedBrick(selected_brick_list);
+
 
     } else if (pageNumber == 2) {
       page_select_bricks.hide();
@@ -655,7 +788,91 @@
       page_bricks_platform.hide();
     }
   }
+
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+
+      var fb_page_list = $('#fb_page_list');
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'GET',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            login_logo.attr("src", body.facebook.fb_profile);
+            login_name.text(body.facebook.fb_name);
+
+            console.log('body.facebook.fb_id=>' + body.facebook.fb_id);
+
+            FB.api(body.facebook.fb_id+'/accounts', function (response) {
+              console.log('Successful page info for: ' + JSON.stringify(response));
+              console.log('data length: ' + response.data.length);
+              console.log('access_token[0]: ' + response.data[0].access_token);
+              console.log('name[0]: ' + response.data[0].name);
+
+              response.data.forEach(function (item, index, array) {
+                var fb_messager = (
+                  `<div class="fb_page_set">`+
+                  `<img src="../public/images/test_img.png" class="fb_page_img">`+
+                  `<div class="fb_page_text">`+
+                  `<div class="fb_page_title">`+item.name+`</div>`+
+                  `<div class="fb_page_btn" id="fb_page_btn`+index+`">`+
+                  `<p> 연결하기 </p>`+
+                  `</div>`+
+                  `</div>`+
+                  `</div>`
+                );
+
+                fb_page_list.append(fb_messager);
+
+                var fb_page_btn = $('#fb_page_btn'+index);
+                fb_page_btn.click(function () {
+
+                  //request api
+                  $.ajax({
+                    //TODO: url
+                    url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/1005546219586500/EAAB6GByVpNoBAHRqCRjOOyyudi4vmCXGQtuXX8pg8UFlTqSLjPTox7Q9X44Dk1PO1UZBPA6XlskyO9GAYEzvYYK3ITN0ykvPoDZBH7JpuVYOp81QftzAiQnh3WhK5IFUTmakgVW5x4FASoq0XM0CWYDCq9jF6INnjmSC3V10HzTdYEWGIQ4TiYPlxWKcrINqvMZBLEkIQZDZD/',
+                    type: 'GET',
+                    async: false,
+                    crossDomain: true,
+                    xhrFields: {withCredentials: true},
+                    success: function (body, status, res) {
+                      if (body.success) {
+                        $(this).css('background-color', '#bd292c');
+                      }
+                    }
+                  });
+                })
+
+              });
+
+
+              $(document).on('click', '.fb_page_btn', function () {
+                var itemIndex = $(this).parent().parent().index();
+                console.log('itemIndex->'+itemIndex );
+                $('#itemIndex'+itemIndex).css('background-color', '#bd292c');
+                $('#itemIndex'+itemIndex).text("연결해제 하기");
+
+              });
+            });
+          }
+        }
+      });
+
+    } else if (response.status === 'not_authorized') {
+
+    } else {
+
+    }
+  }
 </script>
 <script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 </body>
 </html>

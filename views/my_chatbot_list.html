@@ -112,6 +112,13 @@
               $(this).css('background-color', '#f3f3f3');
             }
           });
+
+          $("#my_bot"+index).click(function () {
+						var itemId = body.data[index].id;
+						console.log('itemId=>' + itemId);
+
+						window.location.href = '/chatbot/edit?id='+itemId;
+          });
         });
         botlist.append(createMyBot);
       } else {

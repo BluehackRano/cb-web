@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+</head>
+<body>
+<header id="header">
+  <div class="wrapper wrapper_header">
+    <div class="top_01 top_common">
+      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+
+      <div class="top_01 top_user_profile_common">
+        <img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png" alt="login_dropdown">
+      </div>
+    </div>
+
+    <div class="top_02 top_common">
+      <div class="top_02 title_area">
+        <div id="title">CREAT CHATBOT</div>
+        <div id="sub_title">| 챗봇 수정하기</div>
+      </div>
+      <div id="context">
+        <p>
+          Build a Facebook bot without coding.
+          Launch a full-featured chatbot in 7 minutes.
+          We believe in the power of chatbots to strengthen your connection to
+          your audience—whether that's your customers, readers, fans, or others.
+          And we're committed to making that as easy as we can.
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="content">
+
+  <!--기본정보 영역-->
+  <div class="wrapper_section _baseInfo_section">
+    <section id="section_00">
+      <div class="content_title">
+        <p>
+          기본정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _baseInfo_wrapper">
+        <article id="article_00" class="_article">
+
+          <div class="wrapper">
+            <div class="baseInfo_01 article_title">
+              <p>
+                이름
+              </p>
+            </div>
+            <input type="text" id="baseInfo_name" class="baseInputText" placeholder="가나다">
+
+            <div class="baseInfo_02 article_title">
+              <p>
+                설명
+              </p>
+            </div>
+            <input type="text" id="baseInfo_context_01" class="baseInputText" placeholder="가나다">
+            <input type="text" id="baseInfo_context_02" class="baseInputText" placeholder="가나다">
+
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+
+
+  <!--프로필정보 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_01" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 프로필정보 (PROFILE)
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_01" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_photo_area">
+              <img src="../public/images/bg-img-upload-01.png" id="profile_img" class="user_profile_img">
+              <!--<div id="profile_img" class="user_profile_img">-->
+
+              <div class="user_profile_photo_guild_area">
+                <div class="user_profile_photo_title">
+                  PROFILE IMAGE
+                </div>
+
+                <div class="user_profile_photo_context">
+                  챗봇에서 사용될 프로필 이미지를 업로드해주세요.</br>
+                  ( 권장 해상도 : 800 x 800 )
+                </div>
+
+
+                <div class="user_profile_photo_upload_btn">
+                  <label for="uploadBtn" class="btn_file">파일 업로드</label>
+                  <input type="file" id="uploadBtn" class="uploadBtn">
+                </div>
+              </div>
+            </div>
+
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                이름을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_data_name" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                전문분야를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_data_professional" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                거주국가 및 지역을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_data_location" class="baseInputText_02" placeholder="페이스북에 등록한 거주 국가및 지역정보를 Default로 표현">
+
+              <div class="article_title_profile" id="">
+                나를 표현할 수 있는 URL(홈페이지, 링크드인, SNS 등)을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_data_appeal" class="baseInputText_02" placeholder="자신을">
+
+              <div class="article_title_profile">
+                방문자가 연락할 수 있는 이메일 주소를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_data_email" class="baseInputText_02" placeholder="자신을">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--사용자 데이터 입력 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_02" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 기본정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_02" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                챗봇에 방문하였을 때, 처음으로 보내는 메세지
+              </div>
+              <input type="text" id="user_profile_start_message_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_start_message_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_start_message_03" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
+              </div>
+              <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02" placeholder="가나다">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--업무경험 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_03" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 업무경험 (WORK)
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_03" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                [01] 등록할 업무경험 회사의 이름을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_name_01" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [01] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_term_01" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [01] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_major_01" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [02] 등록할 업무경험 회사의 이름을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_name_02" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [02] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_term_02" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [02] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_major_02" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [03] 등록할 업무경험 회사의 이름을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_name_03" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [03] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_term_03" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [03] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_company_major_03" class="baseInputText_02" placeholder="가나다">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--사용자 데이터 입력 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_04" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 보유기술 및 능력 (SPECIALTIES)
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_04" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                [01] 등록할 보유기술 및 능력의 이름을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_skill_name_01" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [01] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_skill_info_01_1" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_skill_info_01_2" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [02] 등록할 보유기술 및 능력의 이름을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_skill_name_02" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [02] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_skill_info_02_1" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_skill_info_02_2" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [03] 등록할 보유기술 및 능력의 이름을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_skill_name_03" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [03] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_skill_info_03_1" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_skill_info_03_2" class="baseInputText_02" placeholder="가나다">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--사용자 자기소개 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_05" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 간략한 자기소개 (SUMMARY)
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_05" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                [01] 간략한 자기소개를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_self_introduction_01_1" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_self_introduction_01_2" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_self_introduction_01_3" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_self_introduction_01_4" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_self_introduction_01_5" class="baseInputText_02" placeholder="가나다">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--사용자 포트폴리오 영역-->
+  <div class="wrapper_section _user_profile_section" id="portfolio_endline">
+    <section id="section_06" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 포트폴리오 (PORTFOLIO)
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_06" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                [01] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_01" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [02] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_02" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [03] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_03" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [04] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_04" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [05] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_05" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [06] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_06" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [07] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_07" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [08] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_08" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [09] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_09" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [10] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+              </div>
+              <input type="text" id="user_profile_portfolio_10" class="baseInputText_02" placeholder="가나다">
+            </div>
+
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--플랫폼 연동 페이지-->
+  <div id="page_bricks_platform">
+    <div class="wrapper_section _messenger_section">
+      <section id="section_07">
+        <div class="content_title">
+          <p>
+            필수 추가연동
+          </p>
+        </div>
+
+        <div class="wrapper_article _messenger_wrapper">
+          <article id="article_fb" class="_article">
+
+            <div class="wrapper _fb_messenger_wrapper">
+              <div class="messenger_set">
+                <img src="../public/images/img-fb-messenger.png"
+                     id="img_fb_messenger" class="messenger_img">
+                <div class="messenger_text">
+                  <div class="messenger_title">
+                    페이지북 메신저
+                  </div>
+                  <div class="messenger_context">
+                    YOUR FACEBOOK PAGES
+                  </div>
+                </div>
+              </div>
+
+
+              <div id="fb_page_list">
+
+                <!--fb_page_set_item 영역-->
+                <!--<div class="fb_page_set">-->
+                <!--<img src="../public/images/test_img.png"-->
+                <!--class="fb_page_img">-->
+                <!--<div class="fb_page_text">-->
+                <!--<div class="fb_page_title">-->
+                <!--Bluehack 01-->
+                <!--</div>-->
+                <!--<div class="fb_page_btn">-->
+                <!--<p>-->
+                <!--연결하기-->
+                <!--</p>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+              </div>
+            </div>
+          </article>
+
+          <!--telegram article-->
+          <div class="wrapper_article _messenger_wrapper">
+            <article id="article_telegram">
+              <div class="wrapper _telegram_messenger_wrapper">
+                <div class="messenger_set">
+                  <img src="../public/images/img-tele-messenger.png"
+                       id="img_telegram__messenger" class="messenger_img">
+                  <div class="messenger_text">
+                    <div class="messenger_title">
+                      텔레그램
+                    </div>
+                    <div class="messenger_context">
+                      YOUR BOTS
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tg_content">
+                  <div class="tg_content_title">
+                    <p>적용하려는 봇의 토큰값을 입력해주세요</p>
+                  </div>
+                  <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
+                  <div class="tg_content_context">
+                    <p>
+                      Build a Facebook bot without coding. Launch a full-featured chatbot in 7 minutes.
+                      We believe in the power of chatbots to strengthen your connection to
+                      your audience—whether that's your customers, readers, fans, or others.
+                      And we're committed to
+                      making that as easy as we can.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!--설정 영역-->
+  <div class="wrapper_section _baseInfo_section">
+    <section id="section_08">
+      <div class="content_title">
+        <p>
+          설정
+        </p>
+      </div>
+
+      <div class="wrapper_article _setting_wrapper">
+        <article id="article_08" class="_article">
+
+          <div class="wrapper">
+            <div class="setting article_title">
+              <p>
+                제거하기
+              </p>
+            </div>
+
+            <div class="setting_desc">
+              <p>아래의 “챗봇 제거하기”버튼을 클릭해서 이 챗봇을 제거할 수 있습니다.</p>
+            </div>
+
+            <div class="setting_remove_btn" id="setting_remove_btn">
+              <p>챗봇 제거하기</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<footer id="footer">
+  <div class="bottom_common">
+    <div id="pre_page">
+      <p>
+        이전
+      </p>
+    </div>
+    <div id="next_page" align="center">
+      <p>
+        다음
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+  var setting_remove_btn = $('#setting_remove_btn');
+  var itemId = `<%=itemId%>`;
+  console.log('in my_chatbot_edit itemId=>' + itemId);
+
+  var fb_page_list = $('#fb_page_list');
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'GET',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            login_logo.attr("src", body.facebook.fb_profile);
+            login_name.text(body.facebook.fb_name);
+
+            console.log('body.facebook.fb_id=>' + body.facebook.fb_id);
+
+            FB.api(body.facebook.fb_id+'/accounts', function (response) {
+              console.log('Successful page info for: ' + JSON.stringify(response));
+              console.log('data length: ' + response.data.length);
+              console.log('access_token[0]: ' + response.data[0].access_token);
+              console.log('name[0]: ' + response.data[0].name);
+
+              response.data.forEach(function (item, index, array) {
+                var fb_messager = (
+                  `<div class="fb_page_set">`+
+                  `<img src="../public/images/test_img.png" class="fb_page_img">`+
+                  `<div class="fb_page_text">`+
+                  `<div class="fb_page_title">`+item.name+`</div>`+
+                  `<div class="fb_page_btn" id="fb_page_btn`+index+`">`+
+                  `<p> 연결하기 </p>`+
+                  `</div>`+
+                  `</div>`+
+                  `</div>`
+                );
+
+                fb_page_list.append(fb_messager);
+              });
+
+            });
+          }
+        }
+      });
+
+      $(document).on('click', '.fb_page_btn', function () {
+        console.log('test!2');
+        var itemIndex = $(this).parent().index();
+        console.log('tagid=>'+ itemIndex);
+        $('#fb_page_btn'+itemIndex).css('background-color','#fd6246');
+        $('#fb_page_btn'+itemIndex).text('로그아웃');
+      });
+
+    } else if (response.status === 'not_authorized') {
+
+    } else {
+
+    }
+  }
+
+  $.ajax({
+    url: 'https://www.chatbrick.io/api/brick/'+itemId+'/',
+    type: 'GET',
+    async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
+    success: function (body, status, res) {
+      if (body.success) {
+        console.log('body=>'+body.data);
+
+        $('#baseInfo_name').val(body.data.settings.name);
+        var baseInfo_context = body.data.settings.desc.split('\n');
+        $('#baseInfo_context_01').val(baseInfo_context[0]);
+        $('#baseInfo_context_02').val(baseInfo_context[1]);
+
+        $('#user_profile_data_name').val(body.data.settings.data.basic.name);
+        $('#user_profile_data_professional').val(body.data.settings.data.basic.special);
+        $('#user_profile_data_location').val(body.data.settings.data.basic.residence);
+        $('#user_profile_data_appeal').val(body.data.settings.data.basic.social);
+        $('#user_profile_data_email').val(body.data.settings.data.basic.email);
+        $('#profile_img').attr("src", body.data.settings.data.basic.profile_image);
+
+        var user_profile_start_message = body.data.settings.data.custom_settings.get_started.split('/n');
+        $('#user_profile_start_message_01').val(user_profile_start_message[0]);
+        $('#user_profile_start_message_02').val(user_profile_start_message[1]);
+        $('#user_profile_start_message_03').val(user_profile_start_message[2]);
+
+        var user_profile_not_ready_mesage = body.data.settings.data.custom_settings.error_msg.split('/n');
+        $('#user_profile_start_message_01').val(user_profile_not_ready_mesage[0]);
+        $('#user_profile_start_message_02').val(user_profile_not_ready_mesage[1]);
+        $('#user_profile_start_message_03').val(user_profile_not_ready_mesage[2]);
+
+        var user_profile_company_name = body.data.settings.data.work;
+        user_profile_company_name.forEach(function (item, index, array) {
+          $('#user_profile_company_name_0'+index).val(item.name);
+          $('#user_profile_company_term_0'+index).val(item.period);
+          $('#user_profile_company_major_0'+index).val(item.field);
+        });
+
+        var user_profile_skill_name = body.data.settings.data.specialties;
+        user_profile_skill_name.forEach(function (item, index, array) {
+          $('#user_profile_skill_name_0'+index).val(item.name);
+          $('#user_profile_skill_info_0'+index+'_1').val(item.detail);
+
+          // var user_profile_skill_info_01 = item.detail.split('\n');
+          // user_profile_skill_info_01_1.val(user_profile_skill_info_01[0]);
+          // user_profile_skill_info_01_2.val(user_profile_skill_info_01[1]);
+          //
+          // var user_profile_skill_info_02 = item.detail.split('\n');
+          // user_profile_skill_info_02_1.val(user_profile_skill_info_02[0]);
+          // user_profile_skill_info_02_2.val(user_profile_skill_info_02[1]);
+          //
+          // var user_profile_skill_info_03 = item.detail.split('\n');
+          // user_profile_skill_info_03_1.val(user_profile_skill_info_03[0]);
+          // user_profile_skill_info_03_2.val(user_profile_skill_info_03[1]);
+
+        });
+
+        var user_profile_self_introduction_01 = body.data.settings.data.summary.split('/n');
+        $('#user_profile_self_introduction_01_1').val(user_profile_self_introduction_01[0]);
+        $('#user_profile_self_introduction_01_2').val(user_profile_self_introduction_01[1]);
+        $('#user_profile_self_introduction_01_3').val(user_profile_self_introduction_01[2]);
+        $('#user_profile_self_introduction_01_4').val(user_profile_self_introduction_01[3]);
+        $('#user_profile_self_introduction_01_5').val(user_profile_self_introduction_01[4]);
+
+        var user_profile_portfolio = body.data.settings.data.portfolio;
+        user_profile_portfolio.forEach(function (item, index, array) {
+          $('#user_profile_portfolio_0'+index).val(item);
+        });
+      }
+    }
+  });
+
+
+  setting_remove_btn.click(function () {
+    $(this).css('background-color', '#bd292c');
+  });
+  setting_remove_btn.hover(function () {
+    setting_remove_btn.css('background-color', '#fb7c7e');
+  }, function () {
+    setting_remove_btn.css('background-color', '#ff753c');
+  });
+
+
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
+
+  pre_page.click( function () {
+    $(this).css('background-color','#bd292c');
+    // window.location.href = '/bricks/list#2';
+
+  });
+
+  next_page.click( function () {
+    $(this).css('background-color','#bd292c');
+  });
+</script>
+<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
+<script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+</body>

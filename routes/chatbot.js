@@ -44,4 +44,13 @@ router.get('/list', (req, res) => {
   })
 });
 
+router.get('/edit', (req, res) => {
+
+  var itemId = req.query.id;
+  console.log('/router itemId=>' + itemId);
+  fs.readFile('views/my_chatbot_edit', function (err, data) {
+    res.render('my_chatbot_edit', {itemId:itemId});
+  })
+});
+
 module.exports = router;

@@ -424,6 +424,8 @@
 
     var file = upload.files[0],
       reader = new FileReader();
+
+    console.log('file=>' + file);
     reader.onload = function (event) {
       var img = new Image();
       img.src = event.target.result;
@@ -440,11 +442,11 @@
       var fd = new FormData();
       var uploadFile = $('#profile_img')[0].file;
       console.log('uploadFile=>' +uploadFile);
-      fd.append('file',uploadFile);
+      fd.append('file', file);
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/file/',
-        type: 'PUT',
+        type: 'POST',
         async: false,
         crossDomain: true,
         contentType: false,
@@ -601,8 +603,9 @@
       type: 'PUT',
       async: false,
       crossDomain: true,
+      contentType: 'application/json',
       dataType: 'JSON',
-      data : submitData,
+      data : JSON.stringify(submitData),
       success: function (body, status, res) {
         if (body.success) {
           console.log('upliad success!');

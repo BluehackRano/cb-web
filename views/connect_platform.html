@@ -179,7 +179,7 @@
                   `<img src="../public/images/test_img.png" class="fb_page_img">`+
                   `<div class="fb_page_text">`+
                   `<div class="fb_page_title">`+item.name+`</div>`+
-                  `<div class="fb_page_btn">`+
+                  `<div class="fb_page_btn" id="fb_page_btn`+index+`">`+
                   `<p> 연결하기 </p>`+
                   `</div>`+
                   `</div>`+
@@ -192,6 +192,14 @@
             });
           }
         }
+      });
+
+      $(document).on('click', '.fb_page_btn', function () {
+        console.log('test!2');
+        var itemIndex = $(this).parent().index();
+        console.log('tagid=>'+ itemIndex);
+        $('#fb_page_btn'+itemIndex).css('background-color','#fd6246');
+        $('#fb_page_btn'+itemIndex).text('로그아웃');
       });
 
     } else if (response.status === 'not_authorized') {

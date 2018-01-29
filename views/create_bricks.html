@@ -838,13 +838,16 @@
                   $.ajax({
                     //TODO: url
                     url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/1005546219586500/EAAB6GByVpNoBAHRqCRjOOyyudi4vmCXGQtuXX8pg8UFlTqSLjPTox7Q9X44Dk1PO1UZBPA6XlskyO9GAYEzvYYK3ITN0ykvPoDZBH7JpuVYOp81QftzAiQnh3WhK5IFUTmakgVW5x4FASoq0XM0CWYDCq9jF6INnjmSC3V10HzTdYEWGIQ4TiYPlxWKcrINqvMZBLEkIQZDZD/',
-                    type: 'GET',
+                    type: 'PUT',
                     async: false,
                     crossDomain: true,
                     xhrFields: {withCredentials: true},
                     success: function (body, status, res) {
                       if (body.success) {
-                        $(this).css('background-color', '#bd292c');
+                        $(document).on('click', '.fb_page_btn', function () {
+                          $('#fb_page_btn'+index).css('background-color','#fd6246');
+                          $('#fb_page_btn'+index).text('로그아웃');
+                        });
                       }
                     }
                   });

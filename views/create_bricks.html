@@ -446,6 +446,8 @@
   var preview_img;
   var preview_desc;
 
+  var brick_id;
+
   checkForHash();
 
   var brick_list = $('#brick_list');
@@ -512,6 +514,7 @@
     if($(this).hasClass('black')) {
       console.log('블랙됨')
       console.log('itemIndex=>' + itemIndex);
+      $(this).text('선택해제 하기');
 
       if (selected_brick_list.includes(itemIndex)) {
         console.log('이미 선택리스트에 있음');
@@ -524,6 +527,7 @@
     } else {
       console.log('블랙해제')
       console.log('itemIndex=>' + itemIndex);
+      $(this).text('브릭 선택하기');
 
       if (selected_brick_list.length == 2) {
         // selected_brick_list.replace(itemIndex, '').replace(',','');
@@ -796,6 +800,8 @@
     if (response.status === 'connected') {
 
       var fb_page_list = $('#fb_page_list');
+      var fb_access_token;
+      var fb_id;
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/login/',
@@ -808,12 +814,14 @@
             login_logo.attr("src", body.facebook.fb_profile);
             login_name.text(body.facebook.fb_name);
 
-            console.log('body.facebook.fb_id=>' + body.facebook.fb_id);
+            fb_id = body.facebook.fb_id;
+            console.log('body.facebook.fb_id=>' +fb_id);
 
             FB.api(body.facebook.fb_id+'/accounts', function (response) {
+              fb_access_token = response.data[0].access_token;
               console.log('Successful page info for: ' + JSON.stringify(response));
               console.log('data length: ' + response.data.length);
-              console.log('access_token[0]: ' + response.data[0].access_token);
+              console.log('access_token[0]: ' + fb_access_token);
               console.log('name[0]: ' + response.data[0].name);
 
               response.data.forEach(function (item, index, array) {
@@ -834,10 +842,10 @@
                 var fb_page_btn = $('#fb_page_btn'+index);
                 fb_page_btn.click(function () {
 
-                  //request api
+                  //connect fb page api
                   $.ajax({
                     //TODO: url
-                    url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/1005546219586500/EAAB6GByVpNoBAHRqCRjOOyyudi4vmCXGQtuXX8pg8UFlTqSLjPTox7Q9X44Dk1PO1UZBPA6XlskyO9GAYEzvYYK3ITN0ykvPoDZBH7JpuVYOp81QftzAiQnh3WhK5IFUTmakgVW5x4FASoq0XM0CWYDCq9jF6INnjmSC3V10HzTdYEWGIQ4TiYPlxWKcrINqvMZBLEkIQZDZD/',
+                    url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/'+fb_id+'/'+fb_access_token+'/',
                     type: 'PUT',
                     async: false,
                     crossDomain: true,
@@ -859,6 +867,7 @@
               $(document).on('click', '.fb_page_btn', function () {
                 var itemIndex = $(this).parent().parent().index();
                 console.log('itemIndex->'+itemIndex );
+
                 $('#itemIndex'+itemIndex).css('background-color', '#bd292c');
                 $('#itemIndex'+itemIndex).text("연결해제 하기");
 

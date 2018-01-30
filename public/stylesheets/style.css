@@ -569,13 +569,15 @@ div.set_list div.set_item_event {
     text-align: center;
 }
 
-div.set_list div.set_choice {
+.set_choice {
     width: 120px;
-    height: 32px;
+    height: 18px;
     /*border: solid 1px #fd6246;*/
     background-color: #fd6246;
     float: left;
     /*margin-right: 4px;*/
+    padding-top: 7px;
+    padding-bottom: 7px;
 
     font-family: "Noto Sans";
     font-size: 12px;
@@ -1106,6 +1108,64 @@ div._user_profile_section {
     line-height: 30px;
     text-align: center;
     vertical-align: middle
+}
+
+#after_upload {
+    width: 224px;
+    height: 32px;
+}
+
+#after_upload_motify {
+    display:table;
+    width: 140px;
+    height: 32px;
+    background-color: #fd6246;
+    margin-right: 4px;
+    float: left;
+}
+
+#after_upload_motify p {
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+#after_upload_del {
+    display:table;
+    width: 80px;
+    height: 32px;
+    background-color: #e94d50;
+    float: left;
+}
+
+#after_upload_del p {
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+#after_upload_del {
+
 }
 
 .user_profile_photo_upload_btn input[type="file"] {

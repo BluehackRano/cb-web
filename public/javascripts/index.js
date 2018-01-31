@@ -24,10 +24,10 @@ function component() {
 }
 
 // var $ = require('jquery');
-var hw = document.getElementById('hw');
-hw.addEventListener('click', function(){
-  alert('Hello world');
-})
+// var hw = document.getElementById('hw');
+// hw.addEventListener('click', function(){
+//   alert('Hello world');
+// })
 // console.log($(hw).html());
 // var Mustache = require('mustache');
 // var htmltest = $('#content').html();

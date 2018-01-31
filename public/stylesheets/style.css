@@ -23,6 +23,11 @@
     background-color: #bd292c;
 }
 
+.checked {
+    background-image: url("../../public/images/btn-checkbox-sel.png");
+
+}
+
 #file {
     width: 142px;
     height: 142px;
@@ -1689,6 +1694,20 @@ setting zone
 /*
 create hackathon zone
 */
+div._hackathon_section {
+    height: auto;
+    background-color: #f3f3f3;
+}
+
+#hackathon_endline {
+    margin-bottom: 78px;
+}
+
+.hackathon_date_area {
+    width: 700px;
+    height: auto;
+}
+
 .hackathon_date_participation_meeting {
     width: auto;
     height: 132px;
@@ -1705,7 +1724,7 @@ create hackathon zone
     border-bottom: solid 1px #eaeaea;
 }
 
-.befor_meeting_checkbox_area {
+.before_meeting_checkbox_area {
 
     width: 700px;
     height: auto;

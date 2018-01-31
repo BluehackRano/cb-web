@@ -1,392 +1,479 @@
 <!DOCTYPE html>
 <html lang="kr" xmlns="http://www.w3.org/1999/html">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>Title</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 </head>
 <body>
 <header id="header">
-	<div class="wrapper wrapper_header">
-		<div class="top_01 top_common">
-			<img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+  <div class="wrapper wrapper_header">
+    <div class="top_01 top_common">
+      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
 
-			<div class="top_01 top_user_profile_common">
-				<img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
-				<div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
-				<img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
-						 alt="login_dropdown">
-			</div>
-		</div>
+      <div class="top_01 top_user_profile_common">
+        <img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
+             alt="login_dropdown">
+      </div>
+    </div>
 
-		<div class="top_02 top_common">
-			<div class="top_02 title_area">
-				<div id="title">CREAT CHATBOT</div>
-				<div id="sub_title">| 데이터 정보 입력하기</div>
-			</div>
-			<div id="context">
-				<p>
-					{{사용자가 선택한 세트}}에 {{사용자의 이름}}님의 데이터 정보를 입력하는 단계에요.
-					SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더
-					{{사용자의 이름}}에 잘어울리는 챗봇으로 만들어보세요.
-				</p>
-			</div>
-		</div>
-	</div>
+    <div class="top_02 top_common">
+      <div class="top_02 title_area">
+        <div id="title">CREAT CHATBOT</div>
+        <div id="sub_title">| 데이터 정보 입력하기</div>
+      </div>
+      <div id="context">
+        <p>
+          {{사용자가 선택한 세트}}에 {{사용자의 이름}}님의 데이터 정보를 입력하는 단계에요.
+          SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더
+          {{사용자의 이름}}에 잘어울리는 챗봇으로 만들어보세요.
+        </p>
+      </div>
+    </div>
+  </div>
 </header>
 
 <div id="content">
 
-	<!--프로필정보 영역-->
-	<div class="wrapper_section _user_profile_section">
-		<section id="section_01" class="_profile_section">
-			<div class="content_title">
-				<p>
-					사용자 데이터 입력 _ 해커톤 프로필정보
-				</p>
-			</div>
+  <!--프로필정보 영역-->
+  <div class="wrapper_section _hackathon_section">
+    <section id="section_01" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 프로필정보
+        </p>
+      </div>
 
-			<div class="wrapper_article _user_profile_wrapper">
-				<article id="article_01" class="_article">
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_01" class="_article">
 
-					<div class="wrapper">
-						<div class="user_profile_photo_area">
-							<img src="../public/images/bg-img-upload-01.png" id="profile_img" class="user_profile_img">
-							<!--<div id="profile_img" class="user_profile_img">-->
+          <div class="wrapper">
+            <div class="user_profile_photo_area">
+              <img src="../public/images/bg-img-upload-01.png" id="profile_img" class="user_profile_img">
+              <!--<div id="profile_img" class="user_profile_img">-->
 
-							<div class="user_profile_photo_guild_area">
-								<div class="user_profile_photo_title">
-									PROFILE IMAGE
-								</div>
+              <div class="user_profile_photo_guild_area">
+                <div class="user_profile_photo_title">
+                  PROFILE IMAGE
+                </div>
 
-								<div class="user_profile_photo_context">
-									해커톤의 포스터 이미지를 업로드해주세요.</br>
-									( 권장 해상도 : 800 x 800 )
-								</div>
+                <div class="user_profile_photo_context">
+                  해커톤의 포스터 이미지를 업로드해주세요.</br>
+                  ( 권장 해상도 : 800 x 800 )
+                </div>
 
-								<div class="user_profile_photo_upload_btn">
-									<label for="uploadBtn" class="btn_file">파일 업로드</label>
-									<!--<div id="after_upload">-->
-									<!--<div id="after_upload_motify"><p>변경하기</p></div>-->
-									<!--<div id="after_upload_del"><p>제거하기</p></div>-->
-									<!--</div>-->
-									<input type="file" id="uploadBtn" class="uploadBtn">
-								</div>
-							</div>
-						</div>
+                <div class="user_profile_photo_upload_btn">
+                  <label for="uploadBtn" class="btn_file">파일 업로드</label>
+                  <!--<div id="after_upload">-->
+                  <!--<div id="after_upload_motify"><p>변경하기</p></div>-->
+                  <!--<div id="after_upload_del"><p>제거하기</p></div>-->
+                  <!--</div>-->
+                  <input type="file" id="uploadBtn" class="uploadBtn">
+                </div>
+              </div>
+            </div>
 
-						<div class="user_profile_data_area">
-							<div class="article_title_profile">
-								해커톤의 이름을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_data_name" class="baseInputText_02" placeholder="가나다">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                해커톤의 이름을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_data_name" class="baseInputText_02" placeholder="가나다">
 
-							<div class="article_title_profile">
-								해커톤 관련 문의를 받을 이메일을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_data_professional" class="baseInputText_02" placeholder="가나다">
+              <div class="article_title_profile">
+                해커톤 관련 문의를 받을 이메일을 입력해주세요
+              </div>
+              <input type="text" id="user_profile_data_professional" class="baseInputText_02" placeholder="가나다">
 
-							<div class="article_title_profile">
-								해커톤 관련 문의를 받을 전화번호를 입력해주세요
-							</div>
-							<input type="text" id="user_profile_data_location" class="baseInputText_02" placeholder="010-0000-0000">
-						</div>
-					</div>
-				</article>
-			</div>
-		</section>
-	</div>
+              <div class="article_title_profile">
+                해커톤 관련 문의를 받을 전화번호를 입력해주세요
+              </div>
+              <input type="text" id="user_profile_data_location" class="baseInputText_02" placeholder="010-0000-0000">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
 
-	<!--사용자 데이터 입력 영역-->
-	<div class="wrapper_section _user_profile_section">
-		<section id="section_02" class="_profile_section">
-			<div class="content_title">
-				<p>
-					사용자 데이터 입력 _ 기본정보
-				</p>
-			</div>
+  <!--사용자 데이터 입력 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_02" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 기본정보
+        </p>
+      </div>
 
-			<div class="wrapper_article _user_profile_wrapper">
-				<article id="article_02" class="_article">
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_02" class="_article">
 
-					<div class="wrapper">
-						<div class="user_profile_data_area">
-							<div class="article_title_profile">
-								챗봇에 방문하였을 때, 처음으로 보내는 메세지
-							</div>
-							<input type="text" id="user_profile_start_message_01" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_start_message_02" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_start_message_03" class="baseInputText_02" placeholder="가나다">
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                챗봇에 방문하였을 때, 처음으로 보내는 메세지
+              </div>
+              <input type="text" id="user_profile_start_message_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_start_message_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_start_message_03" class="baseInputText_02" placeholder="가나다">
 
-							<div class="article_title_profile">
-								방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
-							</div>
-							<input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02" placeholder="가나다">
-						</div>
-					</div>
-				</article>
-			</div>
-		</section>
-	</div>
+              <div class="article_title_profile">
+                방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
+              </div>
+              <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02" placeholder="가나다">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
 
-	<!--해커톤 일정정보 영역-->
-	<div class="wrapper_section _user_profile_section">
-		<section id="section_03" class="_profile_section">
-			<div class="content_title">
-				<p>
-					사용자 데이터 입력 _ 해커톤 일정정보
-				</p>
-			</div>
+  <!--해커톤 일정정보 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_03" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 일정정보
+        </p>
+      </div>
 
-			<div class="wrapper_article _user_profile_wrapper">
-				<article id="article_03" class="_article">
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_03" class="_article">
 
-					<div class="wrapper">
-						<div class="hackathon_date_area">
+          <div class="wrapper">
+            <div class="hackathon_date_area">
 
-							<div class="hackathon_date_participation_meeting">
-								<div class="article_title_profile">
-									참가신청 일정 : 신청시작일 및 시각과 신청마감일 및 시각을 입력해주세요
-								</div>
+              <div class="hackathon_date_participation_meeting">
+                <div class="article_title_profile">
+                  참가신청 일정 : 신청시작일 및 시각과 신청마감일 및 시각을 입력해주세요
+                </div>
 
-								<div class="date_form">
-									<input type="text" class="date_format" id="start_date_participation" placeholder="시작일을 선택하여 입력">
-									<div class="date_swing"><p>~</p></div>
-									<input type="text" class="date_format" id="end_date_participation" placeholder="마감일을 선택하여 입력">
-								</div>
-							</div>
+                <div class="date_form">
+                  <input type="text" class="date_format" id="start_date_participation" placeholder="시작일을 선택하여 입력">
+                  <div class="date_swing"><p>~</p></div>
+                  <input type="text" class="date_format" id="end_date_participation" placeholder="마감일을 선택하여 입력">
+                </div>
+              </div>
 
-							<div class="hackathon_date_before_meeting">
-								<div class="article_title_profile">
-									사전모임 일정 : 사전모임 날짜를 입력해주세요
-								</div>
+              <div class="hackathon_date_before_meeting">
+                <div class="article_title_profile">
+                  사전모임 일정 : 사전모임 날짜를 입력해주세요
+                </div>
 
-								<div class="befor_meeting_checkbox_area">
-									<img src="../public/images/btn-checkbox-unsel.png" id="date_checkbox">
-									<div id="date_checkbox_text"><p>&nbsp;사전모임 일정이 있어요</p></div>
-									<!--<input type="checkbox" class="date_checkbox" id="date_checkbox">-->
-									<!--<label for="date_checkbox" id="date_checkbox_text">&nbsp;&nbsp;사전모임 일정이 있어요</label>-->
-								</div>
+                <div class="before_meeting_checkbox_area">
+                  <img src="../public/images/btn-checkbox-unsel.png" id="date_checkbox">
+                  <div id="date_checkbox_text"><p>&nbsp;사전모임 일정이 있어요</p></div>
+                  <!--<input type="checkbox" class="date_checkbox" id="date_checkbox">-->
+                  <!--<label for="date_checkbox" id="date_checkbox_text">&nbsp;&nbsp;사전모임 일정이 있어요</label>-->
+                </div>
 
-								<div class="date_form_one" id="before_meeting_checked">
-								<input type="text" class="date_format_one" id="start_date_before_meeting" placeholder="사전모임일을 선택하여 입력">
-								</div>
-							</div>
+                <div class="date_form_one" id="before_meeting_checked">
+                  <input type="text" class="date_format_one" id="start_date_before_meeting"
+                         placeholder="사전모임일을 선택하여 입력">
+                </div>
+              </div>
 
-							<div class="hackathon_date_dday_meeting">
-								<div class="article_title_profile">
-									본행사 일정 : 본행사 시작일 및 종료일의 날짜를 입력해주세요
-								</div>
+              <div class="hackathon_date_dday_meeting">
+                <div class="article_title_profile">
+                  본행사 일정 : 본행사 시작일 및 종료일의 날짜를 입력해주세요
+                </div>
 
-								<div class="date_form">
-									<input type="text" class="date_format" id="start_date_dday_meeting" placeholder="시작일을 선택하여 입력">
-									<div class="date_swing"><p>~</p></div>
-									<input type="text" class="date_format" id="end_date_dday_meeting" placeholder="마감일을 선택하여 입력">
-								</div>
-							</div>
+                <div class="date_form">
+                  <input type="text" class="date_format" id="start_date_dday_meeting" placeholder="시작일을 선택하여 입력">
+                  <div class="date_swing"><p>~</p></div>
+                  <input type="text" class="date_format" id="end_date_dday_meeting" placeholder="마감일을 선택하여 입력">
+                </div>
+              </div>
 
-						</div>
-					</div>
-				</article>
-			</div>
-		</section>
-	</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
 
-	<!--사용자 데이터 입력 영역-->
-	<div class="wrapper_section _user_profile_section">
-		<section id="section_04" class="_profile_section">
-			<div class="content_title">
-				<p>
-					사용자 데이터 입력 _ 보유기술 및 능력 (SPECIALTIES)
-				</p>
-			</div>
+  <!--사용자 데이터 입력 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_04" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 일정내용정보
+        </p>
+      </div>
 
-			<div class="wrapper_article _user_profile_wrapper">
-				<article id="article_04" class="_article">
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_04" class="_article">
 
-					<div class="wrapper">
-						<div class="user_profile_data_area">
-							<div class="article_title_profile">
-								[01] 등록할 보유기술 및 능력의 이름을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_skill_name_01" class="baseInputText_02" placeholder="가나다">
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                본행사 1일차 일정내용을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_1day_content_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_1day_content_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_1day_content_03" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
 
-							<div class="article_title_profile">
-								[01] 등록할 보유기술 및 능력의 상세정보를 입력해주세요
-							</div>
-							<input type="text" id="user_profile_skill_info_01_1" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_skill_info_01_2" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+              <div class="article_title_profile">
+                본행사 2일차 일정내용을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_2day_content_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_2day_content_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_2day_content_03" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
 
-							<div class="article_title_profile">
-								[02] 등록할 보유기술 및 능력의 이름을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_skill_name_02" class="baseInputText_02" placeholder="가나다">
+              <div class="article_title_profile">
+                본행사 3일차 일정내용을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_3day_content_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_3day_content_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_3day_content_03" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
 
-							<div class="article_title_profile">
-								[02] 등록할 보유기술 및 능력의 상세정보를 입력해주세요
-							</div>
-							<input type="text" id="user_profile_skill_info_02_1" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_skill_info_02_2" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+              <div class="article_title_profile">
+                본행사 4일차 일정내용을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_4day_content_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_4day_content_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_4day_content_03" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
 
-							<div class="article_title_profile">
-								[03] 등록할 보유기술 및 능력의 이름을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_skill_name_03" class="baseInputText_02" placeholder="가나다">
+              <div class="article_title_profile">
+                본행사 5일차 일정내용을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_5day_content_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_5day_content_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_5day_content_03" class="baseInputText_02" placeholder="가나다">
 
-							<div class="article_title_profile">
-								[03] 등록할 보유기술 및 능력의 상세정보를 입력해주세요
-							</div>
-							<input type="text" id="user_profile_skill_info_03_1" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_skill_info_03_2" class="baseInputText_02" placeholder="가나다">
-						</div>
-					</div>
-				</article>
-			</div>
-		</section>
-	</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
 
-	<!--사용자 자기소개 영역-->
-	<div class="wrapper_section _user_profile_section">
-		<section id="section_05" class="_profile_section">
-			<div class="content_title">
-				<p>
-					사용자 데이터 입력 _ 간략한 자기소개 (SUMMARY)
-				</p>
-			</div>
+  <!--해커톤 참가신청정보 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_05" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 참가신청정보
+        </p>
+      </div>
 
-			<div class="wrapper_article _user_profile_wrapper">
-				<article id="article_05" class="_article">
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_05" class="_article">
 
-					<div class="wrapper">
-						<div class="user_profile_data_area">
-							<div class="article_title_profile">
-								[01] 간략한 자기소개를 입력해주세요
-							</div>
-							<input type="text" id="user_profile_self_introduction_01_1" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_self_introduction_01_2" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_self_introduction_01_3" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_self_introduction_01_4" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_self_introduction_01_5" class="baseInputText_02" placeholder="가나다">
-						</div>
-					</div>
-				</article>
-			</div>
-		</section>
-	</div>
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                참가신청하기 URL을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_participation_url" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
 
-	<!--사용자 포트폴리오 영역-->
-	<div class="wrapper_section _user_profile_section" id="portfolio_endline">
-		<section id="section_06" class="_profile_section">
-			<div class="content_title">
-				<p>
-					사용자 데이터 입력 _ 포트폴리오 (PORTFOLIO)
-				</p>
-			</div>
+              <div class="article_title_profile">
+                참가요건 정보를 입력해주세요
+              </div>
+              <input type="text" id="hackathon_participation_confirm_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_participation_confirm_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_participation_confirm_03" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
 
-			<div class="wrapper_article _user_profile_wrapper">
-				<article id="article_06" class="_article">
+              <div class="article_title_profile">
+                참가자 준비사항 정보를 입력해주세요
+              </div>
+              <input type="text" id="hackathon_participation_ready_info_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_participation_ready_info_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_participation_ready_info_03" class="baseInputText_02" placeholder="가나다">
 
-					<div class="wrapper">
-						<div class="user_profile_data_area">
-							<div class="article_title_profile">
-								[01] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_01" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
 
-							<div class="article_title_profile">
-								[02] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_02" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
 
-							<div class="article_title_profile">
-								[03] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_03" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+  <!--해커톤 장소정보 영역-->
+  <div class="wrapper_section _user_profile_section" id="portfolio_endline">
+    <section id="section_06" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 장소정보
+        </p>
+      </div>
 
-							<div class="article_title_profile">
-								[04] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_04" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_06" class="_article">
 
-							<div class="article_title_profile">
-								[05] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_05" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                본행사 장소의 이름을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_place_name" class="baseInputText_02" placeholder="가나다">
 
-							<div class="article_title_profile">
-								[06] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_06" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+              <div class="article_title_profile">
+                본행사 장소의 주소를 입력해주세요
+              </div>
+              <input type="text" id="hackathon_place_address" class="baseInputText_02" placeholder="가나다">
 
-							<div class="article_title_profile">
-								[07] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_07" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+              <div class="article_title_profile">
+                본행사 장소의 지도 URL을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_place_navi_url" class="baseInputText_02" placeholder="가나다">
 
-							<div class="article_title_profile">
-								[08] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_08" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+            </div>
 
-							<div class="article_title_profile">
-								[09] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_09" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
 
-							<div class="article_title_profile">
-								[10] 포트폴리오 URL (DRIBBBLE / BEHANCE)
-							</div>
-							<input type="text" id="user_profile_portfolio_10" class="baseInputText_02" placeholder="가나다">
-						</div>
+  <!--해커톤 참가시상정보 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_07" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 시상정보
+        </p>
+      </div>
 
-					</div>
-				</article>
-			</div>
-		</section>
-	</div>
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_07" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                상의 종류의 갯수를 입력해주세요
+              </div>
+              <input type="text" id="hackathon_award_kind_count_01" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                [01] 상의 이름
+              </div>
+              <input type="text" id="hackathon_award_kind_name_01" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [01] 해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요
+              </div>
+              <input type="text" id="hackathon_award_taken_number_01" class="baseInputText_02" placeholder="가나다">
+
+              <div class="article_title_profile">
+                [01] 해당 상의 상금 및 수상혜택을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_award_reward_01" class="baseInputText_02" placeholder="가나다">
+
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                참가자 혜택을 입력해주세요
+              </div>
+              <input type="text" id="hackathon_participation_reward_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_participation_reward_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_participation_reward_03" class="baseInputText_02" placeholder="가나다">
+
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--사용자 데이터 입력 영역-->
+  <div class="wrapper_section _user_profile_section" id="hackathon_endline">
+    <section id="section_08" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 주최/주관/후원정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_08" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                주최처에 대한 정보를 입력해주세요
+              </div>
+              <input type="text" id="hackathon_organizer_info_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_organizer_info_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_organizer_info_03" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                주관처에 대한 정보를 입력해주세요
+              </div>
+              <input type="text" id="hackathon_supervisor_info_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_supervisor_info_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_supervisor_info_03" class="baseInputText_02" placeholder="가나다">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                후원처에 대한 정보를 입력주세요
+              </div>
+              <input type="text" id="hackathon_sponsor_info_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_sponsor_info_02" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_sponsor_info_03" class="baseInputText_02" placeholder="가나다">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
 </div>
 
 <footer id="footer">
-	<div class="bottom_common">
-		<div id="pre_page">
-			<p>
-				이전
-			</p>
-		</div>
-		<div id="next_page" align="center">
-			<p>
-				다음
-			</p>
-		</div>
-	</div>
+  <div class="bottom_common">
+    <div id="pre_page">
+      <p>
+        이전
+      </p>
+    </div>
+    <div id="next_page" align="center">
+      <p>
+        다음
+      </p>
+    </div>
+  </div>
 </footer>
 
 <script type="text/javascript">
   $('input[type=text]').addClass('placeholder');
 
+  var before_meeting_checkbox_area = $('.before_meeting_checkbox_area');
   var before_meeting_checked = $('#before_meeting_checked');
   var date_checkbox = $('#date_checkbox');
+  before_meeting_checked.hide();
+  before_meeting_checkbox_area.css('margin-bottom', 79 + 'px');
 
+  date_checkbox.click(function () {
+    $(this).toggleClass('checked');
 
-  var start_date_participation = $('#start_date_participation');
-  var end_date_participation = $('#end_date_participation');
+    if ($(this).hasClass('checked')) {
+      before_meeting_checked.show();
+    } else {
+      before_meeting_checked.hide();
+      before_meeting_checkbox_area.css('margin-bottom', 79 + 'px');
+    }
+  });
 
+  // $(document).on('click', '.checked', function () {
+  //   before_meeting_checked.show();
+  // });
+  // var start_date_participation = $('#start_date_participation');
+  // var end_date_participation = $('#end_date_participation');
 
   $(function () {
     $('#start_date_participation').datetimepicker({

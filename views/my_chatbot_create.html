@@ -219,6 +219,7 @@
 </footer>
 
 <script type="text/javascript">
+  $('input[type=text]').addClass('placeholder');
 
   var baseInfo_name = $('#baseInfo_name');
   var baseInfo_context;
@@ -397,8 +398,7 @@
     console.log('request_query=>' + request_query);
 
     if (set_list.val() == "hackathon_choice") {
-      // window.location.href = '/platform/connect';
-      console.log(hashData);
+       window.location.href = '/hackathon/create';
       document.location.hash = hashData;
 
     } else if (set_list.val() == "designer_portfolio_choice") {

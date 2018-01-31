@@ -1,6 +1,5 @@
 /*@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 */
-
 @import url(//google.com/get/noto/#sans-kore);
 
 .hello {
@@ -23,9 +22,15 @@
 .press {
     background-color: #bd292c;
 }
+
 #file {
-    width:142px;
-    height:142px;
+    width: 142px;
+    height: 142px;
+}
+
+/*placeholder*/
+.placeholder::-webkit-input-placeholder {
+    color: #d8d8d8;
 }
 
 body {
@@ -36,13 +41,13 @@ body {
 header zone
 */
 #header {
-    background-color:#f3f3f3;
+    background-color: #f3f3f3;
 
 }
 
 div.wrapper_header {
-    width:880px;
-    height:180px;
+    width: 880px;
+    height: 180px;
     display: table;
     /*background-color:red;*/
     margin-left: auto;
@@ -51,13 +56,14 @@ div.wrapper_header {
 }
 
 .top_common {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     /*background-color:red;*/
     margin-left: auto;
     margin-right: auto;
 }
+
 .logo {
     display: inline-block;
     float: left;
@@ -77,8 +83,9 @@ div.wrapper_header {
     display: inline-block;
     float: left;
 }
+
 .login_name {
-    display:table;
+    display: table;
     width: auto;
     height: 30px;
     float: left;
@@ -88,9 +95,9 @@ div.wrapper_header {
 }
 
 .login_name p {
-    display:table-cell;
-    text-align:center;
-    vertical-align:middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 
     text-align: center;
     font-family: "Noto Sans";
@@ -113,25 +120,26 @@ div.wrapper_header {
 div.top_02 {
     margin-top: 65.9px;
 }
+
 div.top_02 #title {
-    width:336px;
-    height:59px;
-    font-size:40px;
-    font-weight:900;
+    width: 336px;
+    height: 59px;
+    font-size: 40px;
+    font-weight: 900;
     color: #000000;
     font-family: "Noto Sans";
     text-align: left;
-    float:left;
+    float: left;
 }
 
 div.top_02 #sub_title {
     width: auto;
-    height:29px;
-    font-size:20px;
-    font-weight:900;
+    height: 29px;
+    font-size: 20px;
+    font-weight: 900;
     color: #000000;
     font-family: "Noto Sans";
-    float:left;
+    float: left;
     text-align: left;
     margin-left: 28px;
     margin-top: 23px;
@@ -160,25 +168,26 @@ content zone
 }
 
 ._connect_linkedin_section {
-    height:627px;
+    height: 627px;
     background-color: #f3f3f3;
 }
 
 #section_00 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
 
 #section_01 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
+
 div.content_title {
     width: auto;
     height: 27px;
@@ -201,8 +210,8 @@ div.content_title {
 }
 
 ._article {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
@@ -215,6 +224,7 @@ div.content_title {
     margin-top: 61px;
     margin-left: 90px;
 }
+
 ._article div.article_title {
     /*width: 121px;*/
     width: auto;
@@ -229,6 +239,7 @@ div.content_title {
     text-align: left;
     color: #000000;
 }
+
 ._article div.article_title_profile {
     width: auto;
     height: 27px;
@@ -343,8 +354,8 @@ div.botlist .my_bot {
     height: 200px;
     object-fit: contain;
     display: block;
-    margin: 0 auto;}
-
+    margin: 0 auto;
+}
 
 .bot_name {
     width: auto;
@@ -401,7 +412,7 @@ div.botlist .my_bot {
     background: transparent;
     border-bottom: 1px solid #000000;
     margin-top: 11px;
-    padding-bottom:11px;
+    padding-bottom: 11px;
 }
 
 .baseInputText_02 {
@@ -411,7 +422,7 @@ div.botlist .my_bot {
     background: transparent;
     border-bottom: 2px solid #000000;
     margin-top: 11px;
-    padding-bottom:11px;
+    padding-bottom: 11px;
 }
 
 ._baseInfo_section {
@@ -419,9 +430,10 @@ div.botlist .my_bot {
     background-color: #f3f3f3;
     margin-bottom: 45px;
 }
+
 #article_baseInfo {
-    width:880px;
-    height:358px;
+    width: 880px;
+    height: 358px;
     display: table;
     margin-left: auto;
     margin-right: auto;
@@ -432,56 +444,56 @@ div.botlist .my_bot {
 }
 
 #section_02 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
 
 #section_03 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
 
 #section_04 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
 
 #section_05 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
 
 #section_06 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
 
 #section_07 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
 
 #section_08 {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
@@ -512,6 +524,7 @@ div.set_list div.set_item {
 #set_hackathon {
     margin-right: 45px;
 }
+
 #set_designer_portfolio {
     margin-right: 45px;
 }
@@ -555,14 +568,14 @@ div.set_list div.set_item_context {
     text-align: center;
     color: #000000;
 
-    padding-top:6px;
+    padding-top: 6px;
     border-top: 1px solid #d8d8d8;
     margin-bottom: 40px;
 }
 
 div.set_list div.set_item_event {
-    width:200px;
-    height:32px;
+    width: 200px;
+    height: 32px;
     margin-left: auto;
     margin-right: auto;
 
@@ -591,7 +604,7 @@ div.set_list div.set_item_event {
 }
 
 div.set_list div.set_preview {
-    width:60px;
+    width: 60px;
     height: 32px;
     background-color: #e94d50;
     float: left;
@@ -601,7 +614,6 @@ div.set_list div.set_preview {
     margin: 0 auto;
     margin-left: 4px;
 }
-
 
 /*
 select_brick
@@ -627,7 +639,6 @@ select_brick
     margin-bottom: 53px;
 }
 
-
 .brick_img {
     width: auto;
     height: auto;
@@ -652,14 +663,13 @@ select_brick
 }
 
 .item_brick_event {
-    width:120px;
-    height:68px;
+    width: 120px;
+    height: 68px;
     margin-left: auto;
     margin-right: auto;
 
     text-align: center;
 }
-
 
 .brick_choice {
     width: 120px;
@@ -734,6 +744,7 @@ connect_platform
     padding-top: 19px;
     padding-bottom: 17px;
 }
+
 .messenger_title {
     width: 94px;
     height: 20px;
@@ -824,14 +835,13 @@ connect_platform
     float: right;
 }
 
-
 ._telegram_messenger_wrapper {
     height: auto;
 }
 
 #article_telegram {
-    width:880px;
-    height:auto;
+    width: 880px;
+    height: auto;
     display: table;
     margin-left: auto;
     margin-right: auto;
@@ -879,7 +889,7 @@ connect_platform
     background: transparent;
     border-bottom: 1px solid #000000;
     /*margin-top: 15px;*/
-    padding-bottom:7px;
+    padding-bottom: 7px;
     padding-top: 25px;
 }
 
@@ -987,7 +997,7 @@ create apikey
     background: transparent;
     border-bottom: 1px solid #000000;
     margin-top: 15px;
-    padding-bottom:7px;
+    padding-bottom: 7px;
 }
 
 .create_apikey_link {
@@ -1116,7 +1126,7 @@ div._user_profile_section {
 }
 
 #after_upload_motify {
-    display:table;
+    display: table;
     width: 140px;
     height: 32px;
     background-color: #fd6246;
@@ -1125,9 +1135,9 @@ div._user_profile_section {
 }
 
 #after_upload_motify p {
-    display:table-cell;
-    text-align:center;
-    vertical-align:middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 
     font-family: "Noto Sans";
     font-size: 12px;
@@ -1141,7 +1151,7 @@ div._user_profile_section {
 }
 
 #after_upload_del {
-    display:table;
+    display: table;
     width: 80px;
     height: 32px;
     background-color: #e94d50;
@@ -1149,9 +1159,9 @@ div._user_profile_section {
 }
 
 #after_upload_del p {
-    display:table-cell;
-    text-align:center;
-    vertical-align:middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 
     font-family: "Noto Sans";
     font-size: 12px;
@@ -1319,19 +1329,20 @@ landing page
 }
 
 #landing_start_btn {
-    display:table;
+    display: table;
     width: 340px;
     height: 60px;
     /*border: solid 1px #fd6246;*/
 }
+
 .landing_start {
     background-color: #fd6246;
 }
 
 #landing_start_btn p {
-    display:table-cell;
-    text-align:center;
-    vertical-align:middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 
     font-family: AppleSDGothicNeo;
     font-size: 20px;
@@ -1381,7 +1392,6 @@ landing page
     float: left;
     width: 25%
 }
-
 
 .landing_my_bot {
     /*width: 200px;*/
@@ -1561,7 +1571,7 @@ div._brick_api_section {
 }
 
 .brick_api_item_tag p {
-    text-align:center;
+    text-align: center;
     font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
@@ -1584,15 +1594,15 @@ div._brick_api_section {
     width: 100px;
     height: 32px;
     background-color: #fd6246;
-    display:table;
+    display: table;
 
     float: left;
     margin-right: 6px;
 }
 
 .brick_api_item_btn_motify p {
-    display:table-cell;
-    vertical-align:middle;
+    display: table-cell;
+    vertical-align: middle;
     font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
@@ -1608,14 +1618,14 @@ div._brick_api_section {
     width: 70px;
     height: 32px;
     background-color: #d0021b;
-    display:table;
+    display: table;
 
     float: left;
 }
 
 .brick_api_item_btn_delete p {
-    display:table-cell;
-    vertical-align:middle;
+    display: table-cell;
+    vertical-align: middle;
     font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
@@ -1648,18 +1658,18 @@ setting zone
 }
 
 .setting_remove_btn {
-    display:table;
+    display: table;
     width: 240px;
     height: 32px;
     background-color: #fd6246;
 }
 
 .setting_remove_btn p {
-    display:table-cell;
-    text-align:center;
-    vertical-align:middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 
-    font-family: NotoSansCJKkr;
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
     font-style: normal;
@@ -1676,6 +1686,186 @@ setting zone
     margin-bottom: 78px;
 }
 
+/*
+create hackathon zone
+*/
+.hackathon_date_participation_meeting {
+    width: auto;
+    height: 132px;
+    margin-top: 57px;
+
+    border-bottom: solid 1px #eaeaea;
+}
+
+.hackathon_date_before_meeting {
+    width: auto;
+    height: auto;
+    margin-top: 57px;
+
+    border-bottom: solid 1px #eaeaea;
+}
+
+.befor_meeting_checkbox_area {
+
+    width: 700px;
+    height: auto;
+    margin-top: 21px;
+    margin-bottom: 19px;
+}
+
+#date_checkbox {
+    width: 22px;
+    height: 22px;
+
+    float: left;
+}
+#date_checkbox_text {
+    display:table;
+    width: auto;
+    height: 22px;
+
+    float: left;
+    margin-left: 4px;
+}
+
+#date_checkbox_text p {
+    display:table-cell;
+    text-align: left;
+    vertical-align:middle;
+
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+/*.class_checkbox {*/
+/*width: 22px;*/
+/*height: 22px;*/
+/*!*background-color: red;*!*/
+/*background-image: url("../../public/images/btn-checkbox-unsel.png");*/
+/*float: left;*/
+/*}*/
+/*.class_checkbox.checked {*/
+/*!*background-color: green;*!*/
+/*background-image: url("../../public/images/btn-checkbox-sel.png");*/
+/*float: left;*/
+/*}*/
+
+/*input[type=checkbox] {*/
+    /*background-image: url("../../public/images/btn-checkbox-unsel.png");*/
+/*}*/
+
+/*input[type=checkbox]:checked {*/
+    /*background-image: url("../../public/images/btn-checkbox-sel.png");*/
+/*}*/
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + label {
+
+    display: inline-block;
+    cursor: pointer;
+    /*line-height: 22px;*/
+    /*padding: 22px;*/
+    padding-right: 22px;
+    padding-left: 22px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    background: url("../../public/images/btn-checkbox-unsel.png") left/22px no-repeat;
+
+}
+
+input[type=checkbox]:checked + label {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../public/images/btn-checkbox-sel.png") ;
+
+}
+
+.hackathon_date_dday_meeting {
+    width: auto;
+    height: 132px;
+    margin-top: 57px;
+
+}
+
+.date_format {
+    width: 190px;
+    height: 42px;
+    border: solid 2px #000000;
+
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    padding-left: 19px;
+    float: left;
+}
+
+.date_format_one {
+    width: 190px;
+    height: 42px;
+    border: solid 2px #000000;
+
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.date_form {
+    margin-top: 22px;
+    margin-bottom: 41px;
+}
+
+.date_form_one {
+    width: 700px;
+    margin-top: 62px;
+    margin-bottom: 41px;
+}
+
+.date_swing {
+    display: table;
+    width: 11px;
+    height: 42px;
+    float: left;
+
+    margin-left: 23px;
+    margin-right: 20px;
+}
+
+.date_swing p {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+
+    font-family: "Noto Sans";
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
 
 /*
 footer zone
@@ -1683,10 +1873,11 @@ footer zone
 #footer {
     background-color: #ffffff;
 }
+
 div.bottom_common {
-    width:880px;
+    width: 880px;
     /*height:144px;*/
-    height:98px;
+    height: 98px;
     display: table;
     margin-left: auto;
     margin-right: auto;
@@ -1722,7 +1913,6 @@ div.bottom_common #next_page {
     vertical-align: middle;
 }
 
-
 /*
 modal zone
 */
@@ -1737,14 +1927,14 @@ modal zone
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .modal-content {
-    width:auto;
+    width: auto;
     /*height:144px;*/
-    height:auto;
+    height: auto;
     background-color: #ffffff;
     box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.08);
     border: solid 6px #000000;
@@ -1787,16 +1977,16 @@ modal zone
 }
 
 .modal_one_btn {
-    display:table;
+    display: table;
     width: 700px;
     height: 50px;
     background-color: #fd6246;
 }
 
 .modal_one_btn p {
-    display:table-cell;
-    text-align:center;
-    vertical-align:middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 
     font-family: "Noto Sans";
     font-size: 18px;
@@ -2017,7 +2207,7 @@ hr.modal_device_underline {
 }
 
 .modal_brick_api_item_tag p {
-    text-align:center;
+    text-align: center;
     font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 900;
@@ -2045,7 +2235,7 @@ hr.modal_device_underline {
     background: transparent;
     border-bottom: 2px solid #000000;
     margin-top: 5px;
-    padding-bottom:11px;
+    padding-bottom: 11px;
 }
 
 .modalTagInputText {
@@ -2059,7 +2249,7 @@ hr.modal_device_underline {
 }
 
 .modal_left_btn {
-    display:table;
+    display: table;
     width: 346px;
     height: 50px;
     background-color: #fd6246;
@@ -2069,9 +2259,9 @@ hr.modal_device_underline {
 }
 
 .modal_left_btn p {
-    display:table-cell;
-    text-align:center;
-    vertical-align:middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 
     font-family: "Noto Sans";
     font-size: 18px;
@@ -2085,7 +2275,7 @@ hr.modal_device_underline {
 }
 
 .modal_right_btn {
-    display:table;
+    display: table;
     width: 346px;
     height: 50px;
     background-color: #646464;
@@ -2094,9 +2284,9 @@ hr.modal_device_underline {
 }
 
 .modal_right_btn p {
-    display:table-cell;
-    text-align:center;
-    vertical-align:middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 
     font-family: "Noto Sans";
     font-size: 18px;

@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>Title</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 </head>
@@ -16,7 +17,8 @@
 			<div class="top_01 top_user_profile_common">
 				<img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
 				<div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
-				<img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png" alt="login_dropdown">
+				<img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
+						 alt="login_dropdown">
 			</div>
 		</div>
 
@@ -68,8 +70,8 @@
 								<div class="user_profile_photo_upload_btn">
 									<label for="uploadBtn" class="btn_file">파일 업로드</label>
 									<!--<div id="after_upload">-->
-										<!--<div id="after_upload_motify"><p>변경하기</p></div>-->
-										<!--<div id="after_upload_del"><p>제거하기</p></div>-->
+									<!--<div id="after_upload_motify"><p>변경하기</p></div>-->
+									<!--<div id="after_upload_del"><p>제거하기</p></div>-->
 									<!--</div>-->
 									<input type="file" id="uploadBtn" class="uploadBtn">
 								</div>
@@ -132,12 +134,12 @@
 		</section>
 	</div>
 
-	<!--업무경험 영역-->
+	<!--해커톤 일정정보 영역-->
 	<div class="wrapper_section _user_profile_section">
 		<section id="section_03" class="_profile_section">
 			<div class="content_title">
 				<p>
-					사용자 데이터 입력 _ 업무경험 (WORK)
+					사용자 데이터 입력 _ 해커톤 일정정보
 				</p>
 			</div>
 
@@ -145,53 +147,49 @@
 				<article id="article_03" class="_article">
 
 					<div class="wrapper">
-						<div class="user_profile_data_area">
-							<div class="article_title_profile">
-								[01] 등록할 업무경험 회사의 이름을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_company_name_01" class="baseInputText_02" placeholder="가나다">
+						<div class="hackathon_date_area">
 
-							<div class="article_title_profile">
-								[01] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_company_term_01" class="baseInputText_02" placeholder="가나다">
+							<div class="hackathon_date_participation_meeting">
+								<div class="article_title_profile">
+									참가신청 일정 : 신청시작일 및 시각과 신청마감일 및 시각을 입력해주세요
+								</div>
 
-							<div class="article_title_profile">
-								[01] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
+								<div class="date_form">
+									<input type="text" class="date_format" id="start_date_participation" placeholder="시작일을 선택하여 입력">
+									<div class="date_swing"><p>~</p></div>
+									<input type="text" class="date_format" id="end_date_participation" placeholder="마감일을 선택하여 입력">
+								</div>
 							</div>
-							<input type="text" id="user_profile_company_major_01" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
 
-							<div class="article_title_profile">
-								[02] 등록할 업무경험 회사의 이름을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_company_name_02" class="baseInputText_02" placeholder="가나다">
+							<div class="hackathon_date_before_meeting">
+								<div class="article_title_profile">
+									사전모임 일정 : 사전모임 날짜를 입력해주세요
+								</div>
 
-							<div class="article_title_profile">
-								[02] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_company_term_02" class="baseInputText_02" placeholder="가나다">
+								<div class="befor_meeting_checkbox_area">
+									<img src="../public/images/btn-checkbox-unsel.png" id="date_checkbox">
+									<div id="date_checkbox_text"><p>&nbsp;사전모임 일정이 있어요</p></div>
+									<!--<input type="checkbox" class="date_checkbox" id="date_checkbox">-->
+									<!--<label for="date_checkbox" id="date_checkbox_text">&nbsp;&nbsp;사전모임 일정이 있어요</label>-->
+								</div>
 
-							<div class="article_title_profile">
-								[02] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
+								<div class="date_form_one" id="before_meeting_checked">
+								<input type="text" class="date_format_one" id="start_date_before_meeting" placeholder="사전모임일을 선택하여 입력">
+								</div>
 							</div>
-							<input type="text" id="user_profile_company_major_02" class="baseInputText_02" placeholder="가나다">
-							<hr class="user_profile_line">
 
-							<div class="article_title_profile">
-								[03] 등록할 업무경험 회사의 이름을 입력해주세요
-							</div>
-							<input type="text" id="user_profile_company_name_03" class="baseInputText_02" placeholder="가나다">
+							<div class="hackathon_date_dday_meeting">
+								<div class="article_title_profile">
+									본행사 일정 : 본행사 시작일 및 종료일의 날짜를 입력해주세요
+								</div>
 
-							<div class="article_title_profile">
-								[03] 등록할 업무경험 회사에서의 근무기간을 입력해주세요
+								<div class="date_form">
+									<input type="text" class="date_format" id="start_date_dday_meeting" placeholder="시작일을 선택하여 입력">
+									<div class="date_swing"><p>~</p></div>
+									<input type="text" class="date_format" id="end_date_dday_meeting" placeholder="마감일을 선택하여 입력">
+								</div>
 							</div>
-							<input type="text" id="user_profile_company_term_03" class="baseInputText_02" placeholder="가나다">
 
-							<div class="article_title_profile">
-								[03] 등록할 업무경험 회사에서의 근무분야를 입력해주세요
-							</div>
-							<input type="text" id="user_profile_company_major_03" class="baseInputText_02" placeholder="가나다">
 						</div>
 					</div>
 				</article>
@@ -219,7 +217,7 @@
 							<input type="text" id="user_profile_skill_name_01" class="baseInputText_02" placeholder="가나다">
 
 							<div class="article_title_profile">
-								[01] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+								[01] 등록할 보유기술 및 능력의 상세정보를 입력해주세요
 							</div>
 							<input type="text" id="user_profile_skill_info_01_1" class="baseInputText_02" placeholder="가나다">
 							<input type="text" id="user_profile_skill_info_01_2" class="baseInputText_02" placeholder="가나다">
@@ -231,7 +229,7 @@
 							<input type="text" id="user_profile_skill_name_02" class="baseInputText_02" placeholder="가나다">
 
 							<div class="article_title_profile">
-								[02] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+								[02] 등록할 보유기술 및 능력의 상세정보를 입력해주세요
 							</div>
 							<input type="text" id="user_profile_skill_info_02_1" class="baseInputText_02" placeholder="가나다">
 							<input type="text" id="user_profile_skill_info_02_2" class="baseInputText_02" placeholder="가나다">
@@ -243,7 +241,7 @@
 							<input type="text" id="user_profile_skill_name_03" class="baseInputText_02" placeholder="가나다">
 
 							<div class="article_title_profile">
-								[03] 등록할 보유기술 및 능력의  상세정보를 입력해주세요
+								[03] 등록할 보유기술 및 능력의 상세정보를 입력해주세요
 							</div>
 							<input type="text" id="user_profile_skill_info_03_1" class="baseInputText_02" placeholder="가나다">
 							<input type="text" id="user_profile_skill_info_03_2" class="baseInputText_02" placeholder="가나다">
@@ -379,7 +377,73 @@
 	</div>
 </footer>
 
-</body>
+<script type="text/javascript">
+  $('input[type=text]').addClass('placeholder');
 
+  var before_meeting_checked = $('#before_meeting_checked');
+  var date_checkbox = $('#date_checkbox');
+
+
+  var start_date_participation = $('#start_date_participation');
+  var end_date_participation = $('#end_date_participation');
+
+
+  $(function () {
+    $('#start_date_participation').datetimepicker({
+      format: 'Y-m-d H:i',
+      lang: 'kr',
+      onShow: function (ct) {
+        this.setOptions({
+          maxDate: $('#end_date_participation').val() ? $('#end_date_participation').val() : false
+        })
+      },
+      timepicker: true
+    });
+    $('#end_date_participation').datetimepicker({
+      format: 'Y-m-d H:i',
+      lang: 'kr',
+      onShow: function (ct) {
+        this.setOptions({
+          minDate: $('#start_date_participation').val() ? $('#start_date_participation').val() : false
+        })
+      },
+      timepicker: true
+    });
+
+//    start_date_before_meeting
+    $('#start_date_before_meeting').datetimepicker({
+      format: 'Y-m-d H:i',
+      lang: 'kr',
+      timepicker: true,
+      minDate: '-1970/01/02'//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
+
+    $('#start_date_dday_meeting').datetimepicker({
+      format: 'Y-m-d H:i',
+      lang: 'kr',
+      onShow: function (ct) {
+        this.setOptions({
+          maxDate: $('#end_date_dday_meeting').val() ? $('#end_date_dday_meeting').val() : false
+        })
+      },
+      timepicker: true
+    });
+    $('#end_date_dday_meeting').datetimepicker({
+      format: 'Y-m-d H:i',
+      lang: 'kr',
+      onShow: function (ct) {
+        this.setOptions({
+          minDate: $('#start_date_dday_meeting').val() ? $('#start_date_dday_meeting').val() : false
+        })
+      },
+      timepicker: true
+    });
+  });
+
+
+</script>
+<!--https://xdsoft.net/jqplugins/datetimepicker/#trigger-->
+<script src="/public/javascripts/jquery.datetimepicker.full.js"></script>
 <script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+</body>
 </html>

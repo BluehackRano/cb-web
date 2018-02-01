@@ -606,7 +606,7 @@
           var modal_brick_tag = (
             `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index +`">`+
             `<p>`+item+`</p>`+
-            `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + itemIndex +`">`+
+            `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index +`">`+
             `</div>`
           );
 
@@ -631,14 +631,10 @@
     var itemIndex = $(this).parent().parent().index();
     console.log('itemIndex->'+itemIndex );
 
-    for (var i = 0; i < $('.modal_brick_api_item_tag_area').length; i ++) {
-      if (itemIndex == i) {
-        $('#modal_brick_api_item_tag_area'+i).show();
-      } else {
-        $('#modal_brick_api_item_tag_area'+i).hide();
-      }
-    }
+    $('.modal_brick_api_item_tag_area').hide();
+    $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]).show();
     modal_brick_api.style.display = "block";
+
   });
 
   close_modal_brick_api_img.onclick = function () {
@@ -646,9 +642,11 @@
   }
 
   $(document).on('click', '.brick_api_item_btn_delete', function () {
-    console.log('test!2');
+
     var itemIndex = $(this).parent().parent().index();
-    $('#brick_api_item_area'+itemIndex).hide();
+    $('#brick_api_item_area'+selected_brick_list[itemIndex]).hide();
+    // $('#brick_api_item_area'+selected_brick_list[itemIndex]).toggleClass('hide');
+    // console.log('after brick_api_item_area.length=>'+$('.hide').length);
   });
 
   $(document).on('click', '.modal_brick_api_item_del_img', function () {
@@ -661,16 +659,17 @@
 
   //enter key event
   var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input');
-  modal_brick_api_item_tag_add_input.keydown(function (key) {
+  modal_brick_api_item_tag_add_input.keypress(function (key) {
 
     if(key.keyCode == 13) {
 
-      var apiTagsCount = $('.modal_brick_api_item_tag').length;
+      var apiTagsCount = 10;
       console.log('before apiTagsCount=>' + apiTagsCount);
+      newTagCount ++;
       var modal_brick_tag = (
-        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + apiTagsCount++ +`">`+
+        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + apiTagsCount +`">`+
         `<p>`+modal_brick_api_item_tag_add_input.val()+`</p>`+
-        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + apiTagsCount++ +`">`+
+        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + apiTagsCount +`">`+
         `</div>`
       );
 

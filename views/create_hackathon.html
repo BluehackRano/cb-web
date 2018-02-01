@@ -92,7 +92,7 @@
               <div class="article_title_profile">
                 해커톤 관련 문의를 받을 전화번호를 입력해주세요
               </div>
-              <input type="text" id="user_profile_data_location" class="baseInputText_02" placeholder="010-0000-0000">
+              <input type="text" id="user_profile_data_tel" class="baseInputText_02" placeholder="010-0000-0000">
             </div>
           </div>
         </article>
@@ -212,44 +212,68 @@
 
           <div class="wrapper">
             <div class="user_profile_data_area">
-              <div class="article_title_profile">
-                본행사 1일차 일정내용을 입력해주세요
-              </div>
-              <input type="text" id="hackathon_1day_content_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_1day_content_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_1day_content_03" class="baseInputText_02" placeholder="가나다">
-              <hr class="user_profile_line">
 
-              <div class="article_title_profile">
-                본행사 2일차 일정내용을 입력해주세요
+              <div class="before_meeting_content">
+                <div class="article_title_profile">
+                  사전모임 일정내용을 입력해주세요
+                </div>
+                <input type="text" id="before_meeting_clicked_content_01" class="baseInputText_02 before_meeting_clicked_content"
+                       placeholder="예 ) 네트워킹 및 팀빌딩">
+                <input type="text" id="before_meeting_clicked_content_02" class="baseInputText_02 before_meeting_clicked_content"
+                       placeholder="(13:00 ~ 13:30) 개인별 자기소개 시간">
+                <input type="text" id="before_meeting_clicked_content_03" class="baseInputText_02 before_meeting_clicked_content"
+                       placeholder="(14:00 ~ 14:30) 팀원 모집시간">
+                <hr class="user_profile_line">
               </div>
-              <input type="text" id="hackathon_2day_content_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_2day_content_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_2day_content_03" class="baseInputText_02" placeholder="가나다">
-              <hr class="user_profile_line">
 
-              <div class="article_title_profile">
-                본행사 3일차 일정내용을 입력해주세요
+              <div id="hackathon_1day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 1일차 일정내용을 입력해주세요
+                </div>
+                <input type="text" id="hackathon_1day_content_01" class="baseInputText_02 hackathon_1day_content" placeholder="가나다">
+                <input type="text" id="hackathon_1day_content_02" class="baseInputText_02 hackathon_1day_content" placeholder="가나다">
+                <input type="text" id="hackathon_1day_content_03" class="baseInputText_02 hackathon_1day_content" placeholder="가나다">
+                <hr class="user_profile_line">
               </div>
-              <input type="text" id="hackathon_3day_content_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_3day_content_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_3day_content_03" class="baseInputText_02" placeholder="가나다">
-              <hr class="user_profile_line">
 
-              <div class="article_title_profile">
-                본행사 4일차 일정내용을 입력해주세요
+              <div id="hackathon_2day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 2일차 일정내용을 입력해주세요
+                </div>
+                <input type="text" id="hackathon_2day_content_01" class="baseInputText_02 hackathon_2day_content" placeholder="가나다">
+                <input type="text" id="hackathon_2day_content_02" class="baseInputText_02 hackathon_2day_content" placeholder="가나다">
+                <input type="text" id="hackathon_2day_content_03" class="baseInputText_02 hackathon_2day_content" placeholder="가나다">
+                <hr class="user_profile_line">
               </div>
-              <input type="text" id="hackathon_4day_content_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_4day_content_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_4day_content_03" class="baseInputText_02" placeholder="가나다">
-              <hr class="user_profile_line">
 
-              <div class="article_title_profile">
-                본행사 5일차 일정내용을 입력해주세요
+              <div id="hackathon_3day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 3일차 일정내용을 입력해주세요
+                </div>
+                <input type="text" id="hackathon_3day_content_01" class="baseInputText_02 hackathon_3day_content" placeholder="가나다">
+                <input type="text" id="hackathon_3day_content_02" class="baseInputText_02 hackathon_3day_content" placeholder="가나다">
+                <input type="text" id="hackathon_3day_content_03" class="baseInputText_02 hackathon_3day_content" placeholder="가나다">
+                <hr class="user_profile_line">
               </div>
-              <input type="text" id="hackathon_5day_content_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_5day_content_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_5day_content_03" class="baseInputText_02" placeholder="가나다">
+
+              <div id="hackathon_4day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 4일차 일정내용을 입력해주세요
+                </div>
+                <input type="text" id="hackathon_4day_content_01" class="baseInputText_02 hackathon_4day_content" placeholder="가나다">
+                <input type="text" id="hackathon_4day_content_02" class="baseInputText_02 hackathon_4day_content" placeholder="가나다">
+                <input type="text" id="hackathon_4day_content_03" class="baseInputText_02 hackathon_4day_content" placeholder="가나다">
+                <hr class="user_profile_line">
+              </div>
+
+              <div id="hackathon_5day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 5일차 일정내용을 입력해주세요
+                </div>
+                <input type="text" id="hackathon_5day_content_01" class="baseInputText_02 hackathon_5day_content" placeholder="가나다">
+                <input type="text" id="hackathon_5day_content_02" class="baseInputText_02 hackathon_5day_content" placeholder="가나다">
+                <input type="text" id="hackathon_5day_content_03" class="baseInputText_02 hackathon_5day_content" placeholder="가나다">
+              </div>
 
             </div>
           </div>
@@ -281,17 +305,17 @@
               <div class="article_title_profile">
                 참가요건 정보를 입력해주세요
               </div>
-              <input type="text" id="hackathon_participation_confirm_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_participation_confirm_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_participation_confirm_03" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_participation_confirm_01" class="baseInputText_02 hackathon_participation_confirm" placeholder="가나다">
+              <input type="text" id="hackathon_participation_confirm_02" class="baseInputText_02 hackathon_participation_confirm" placeholder="가나다">
+              <input type="text" id="hackathon_participation_confirm_03" class="baseInputText_02 hackathon_participation_confirm" placeholder="가나다">
               <hr class="user_profile_line">
 
               <div class="article_title_profile">
                 참가자 준비사항 정보를 입력해주세요
               </div>
-              <input type="text" id="hackathon_participation_ready_info_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_participation_ready_info_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_participation_ready_info_03" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_participation_ready_info_01" class="baseInputText_02 hackathon_participation_ready_info" placeholder="가나다">
+              <input type="text" id="hackathon_participation_ready_info_02" class="baseInputText_02 hackathon_participation_ready_info" placeholder="가나다">
+              <input type="text" id="hackathon_participation_ready_info_03" class="baseInputText_02 hackathon_participation_ready_info" placeholder="가나다">
 
 
             </div>
@@ -315,6 +339,25 @@
 
           <div class="wrapper">
             <div class="user_profile_data_area">
+
+              <div class="before_meeting_info">
+                <div class="article_title_profile">
+                  사전모임 장소의 이름을 입력해주세요
+                </div>
+                <input type="text" id="before_meeting_place_name" class="baseInputText_02" placeholder="가나다">
+
+                <div class="article_title_profile">
+                  사전모임 장소의 주소를 입력해주세요
+                </div>
+                <input type="text" id="before_meeting_place_address" class="baseInputText_02" placeholder="가나다">
+
+                <div class="article_title_profile">
+                  사전모임 장소의 지도 URL을 입력해주세요
+                </div>
+                <input type="text" id="before_meeting_place_navi_url" class="baseInputText_02" placeholder="가나다">
+                <hr class="user_profile_line">
+              </div>
+
               <div class="article_title_profile">
                 본행사 장소의 이름을 입력해주세요
               </div>
@@ -329,7 +372,6 @@
                 본행사 장소의 지도 URL을 입력해주세요
               </div>
               <input type="text" id="hackathon_place_navi_url" class="baseInputText_02" placeholder="가나다">
-
             </div>
 
           </div>
@@ -355,33 +397,38 @@
               <div class="article_title_profile">
                 상의 종류의 갯수를 입력해주세요
               </div>
-              <input type="text" id="hackathon_award_kind_count_01" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="hackathon_award_kind_count" class="baseInputText_02" placeholder="가나다">
               <hr class="user_profile_line">
 
-              <div class="article_title_profile">
-                [01] 상의 이름
+              <div id="hackathon_award_kind_count_area">
+                <!--<div class="article_title_profile">-->
+                <!--[01] 상의 이름-->
+                <!--</div>-->
+                <!--<input type="text" id="hackathon_award_kind_name_01" class="baseInputText_02" placeholder="가나다">-->
+
+                <!--<div class="article_title_profile">-->
+                <!--[01] 해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요-->
+                <!--</div>-->
+                <!--<input type="text" id="hackathon_award_taken_number_01" class="baseInputText_02" placeholder="가나다">-->
+
+                <!--<div class="article_title_profile">-->
+                <!--[01] 해당 상의 상금 및 수상혜택을 입력해주세요-->
+                <!--</div>-->
+                <!--<input type="text" id="hackathon_award_reward_01" class="baseInputText_02" placeholder="가나다">-->
+
+                <!--<hr class="user_profile_line">-->
               </div>
-              <input type="text" id="hackathon_award_kind_name_01" class="baseInputText_02" placeholder="가나다">
-
-              <div class="article_title_profile">
-                [01] 해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요
-              </div>
-              <input type="text" id="hackathon_award_taken_number_01" class="baseInputText_02" placeholder="가나다">
-
-              <div class="article_title_profile">
-                [01] 해당 상의 상금 및 수상혜택을 입력해주세요
-              </div>
-              <input type="text" id="hackathon_award_reward_01" class="baseInputText_02" placeholder="가나다">
-
-              <hr class="user_profile_line">
-
               <div class="article_title_profile">
                 참가자 혜택을 입력해주세요
               </div>
-              <input type="text" id="hackathon_participation_reward_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_participation_reward_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_participation_reward_03" class="baseInputText_02" placeholder="가나다">
-
+              <div id="hackathon_participation_reward">
+                <input type="text" id="hackathon_participation_reward_01"
+                       class="baseInputText_02 reward_addInputLine" placeholder="가나다">
+                <input type="text" id="hackathon_participation_reward_02"
+                       class="baseInputText_02 reward_addInputLine" placeholder="가나다">
+                <input type="text" id="hackathon_participation_reward_03"
+                       class="baseInputText_02 reward_addInputLine" placeholder="가나다">
+              </div>
             </div>
           </div>
         </article>
@@ -406,25 +453,40 @@
               <div class="article_title_profile">
                 주최처에 대한 정보를 입력해주세요
               </div>
-              <input type="text" id="hackathon_organizer_info_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_organizer_info_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_organizer_info_03" class="baseInputText_02" placeholder="가나다">
+              <div id="hackathon_organizer">
+                <input type="text" id="hackathon_organizer_info_01" class="baseInputText_02 organizer_addInputLine"
+                       placeholder="가나다">
+                <input type="text" id="hackathon_organizer_info_02" class="baseInputText_02 organizer_addInputLine"
+                       placeholder="가나다">
+                <input type="text" id="hackathon_organizer_info_03" class="baseInputText_02 organizer_addInputLine"
+                       placeholder="가나다">
+              </div>
               <hr class="user_profile_line">
 
               <div class="article_title_profile">
                 주관처에 대한 정보를 입력해주세요
               </div>
-              <input type="text" id="hackathon_supervisor_info_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_supervisor_info_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_supervisor_info_03" class="baseInputText_02" placeholder="가나다">
+              <div id="hackathon_supervisor">
+                <input type="text" id="hackathon_supervisor_info_01" class="baseInputText_02 supervisor_addInputLine"
+                       placeholder="가나다">
+                <input type="text" id="hackathon_supervisor_info_02" class="baseInputText_02 supervisor_addInputLine"
+                       placeholder="가나다">
+                <input type="text" id="hackathon_supervisor_info_03" class="baseInputText_02 supervisor_addInputLine"
+                       placeholder="가나다">
+              </div>
               <hr class="user_profile_line">
 
               <div class="article_title_profile">
                 후원처에 대한 정보를 입력주세요
               </div>
-              <input type="text" id="hackathon_sponsor_info_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_sponsor_info_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="hackathon_sponsor_info_03" class="baseInputText_02" placeholder="가나다">
+              <div id="hackathon_sponsor">
+                <input type="text" id="hackathon_sponsor_info_01" class="baseInputText_02 sponsor_addInputLine"
+                       placeholder="가나다">
+                <input type="text" id="hackathon_sponsor_info_02" class="baseInputText_02 sponsor_addInputLine"
+                       placeholder="가나다">
+                <input type="text" id="hackathon_sponsor_info_03" class="baseInputText_02 sponsor_addInputLine"
+                       placeholder="가나다">
+              </div>
             </div>
           </div>
         </article>
@@ -452,10 +514,103 @@
 <script type="text/javascript">
   $('input[type=text]').addClass('placeholder');
 
+  var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
+  var baseInfo_context = `<%=jsonData.baseInfo_context%>`;
+
+  console.log('baseInfo_name=>' + baseInfo_name +
+    'baseInfo_context=>' + baseInfo_context);
+
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+
+  var img_url;
+
+  $.ajax({
+    url: 'https://www.chatbrick.io/api/login/',
+    type: 'GET',
+    async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
+    success: function (body, status, res) {
+      if (body.success) {
+        login_logo.attr("src", body.facebook.fb_profile);
+        login_name.text(body.facebook.fb_name);
+      }
+    }
+  });
+
+
+  var upload = document.getElementById('uploadBtn'),
+    profile_img = document.getElementById('profile_img');
+
+  var after_upload = $('#after_upload');
+  var after_upload_motify = $('#after_upload_motify');
+  var after_upload_del = $('#after_upload_del');
+
+  after_upload.hide();
+
+  upload.onchange = function (e) {
+    e.preventDefault();
+
+    var file = upload.files[0],
+      reader = new FileReader();
+
+    console.log('file=>' + file);
+    reader.onload = function (event) {
+      var img = new Image();
+      img.src = event.target.result;
+      if (img.width > 142) { // profile_img width
+        img.width = 142;
+      }
+      if (img.height > 32) {
+        img.height = 32;
+      }
+
+      profile_img.src = img.src;
+
+      //upload img file api
+      var fd = new FormData();
+      var uploadFile = $('#profile_img')[0].file;
+      console.log('uploadFile=>' + uploadFile);
+      fd.append('file', file);
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/file/',
+        type: 'POST',
+        async: false,
+        crossDomain: true,
+        contentType: false,
+        data: fd,
+        processData: false,
+        success: function (body, status, res) {
+          if (body.success) {
+            img_url = body.data.url;
+            console.log('upliad success!');
+            console.log('res img url=>' + img_url);
+          }
+        }
+      });
+
+    };
+    reader.readAsDataURL(file);
+
+    return false;
+  };
+
   var before_meeting_checkbox_area = $('.before_meeting_checkbox_area');
   var before_meeting_checked = $('#before_meeting_checked');
   var date_checkbox = $('#date_checkbox');
+  var before_meeting_content = $('.before_meeting_content');
+  var before_meeting_info = $('.before_meeting_info');
+  var hackathon_day = $('.hackathon_day');
+  var section_04 = $('#section_04');
+
+  section_04.hide();
+  hackathon_day.hide();
   before_meeting_checked.hide();
+  before_meeting_content.hide();
+  before_meeting_info.hide();
   before_meeting_checkbox_area.css('margin-bottom', 79 + 'px');
 
   date_checkbox.click(function () {
@@ -463,17 +618,15 @@
 
     if ($(this).hasClass('checked')) {
       before_meeting_checked.show();
+      before_meeting_content.show();
+      before_meeting_info.show();
     } else {
       before_meeting_checked.hide();
+      before_meeting_content.hide();
+      before_meeting_info.hide();
       before_meeting_checkbox_area.css('margin-bottom', 79 + 'px');
     }
   });
-
-  // $(document).on('click', '.checked', function () {
-  //   before_meeting_checked.show();
-  // });
-  // var start_date_participation = $('#start_date_participation');
-  // var end_date_participation = $('#end_date_participation');
 
   $(function () {
     $('#start_date_participation').datetimepicker({
@@ -505,8 +658,9 @@
       minDate: '-1970/01/02'//yesterday is minimum date(for today use 0 or -1970/01/01)
     });
 
+    //본행사 기간
     $('#start_date_dday_meeting').datetimepicker({
-      format: 'Y-m-d H:i',
+      format: 'Y-m-d',
       lang: 'kr',
       onShow: function (ct) {
         this.setOptions({
@@ -516,7 +670,7 @@
       timepicker: true
     });
     $('#end_date_dday_meeting').datetimepicker({
-      format: 'Y-m-d H:i',
+      format: 'Y-m-d',
       lang: 'kr',
       onShow: function (ct) {
         this.setOptions({
@@ -525,9 +679,347 @@
       },
       timepicker: true
     });
+
+  });
+
+  $("#end_date_dday_meeting").on("change paste keyup", function () {
+    var start_dday = $('#start_date_dday_meeting').val();
+    var end_dday = $('#end_date_dday_meeting').val();
+    console.log('start_date_dday_meeting=>' + start_dday);
+    console.log('end_date_dday_meeting=>' + end_dday);
+
+    var startDateArray = start_dday.split("-");
+    var endDateArray = end_dday.split("-");
+
+    var startDateObj = new Date(startDateArray[0], Number(startDateArray[1]) - 1, startDateArray[2]);
+    var endDateObj = new Date(endDateArray[0], Number(endDateArray[1]) - 1, endDateArray[2]);
+
+    var betweenDay = (endDateObj.getTime() - startDateObj.getTime()) / 1000 / 60 / 60 / 24;
+    console.log('betweenDay=>' + betweenDay);
+
+    $('#section_04').show();
+    switch (betweenDay) {
+      case 0:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        break;
+
+      case 1:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        break;
+
+      case 2:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        break;
+
+      case 3:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        $('#hackathon_3day').show();
+        break;
+
+      case 4:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        $('#hackathon_3day').show();
+        $('#hackathon_4day').show();
+        break;
+
+      case 5:
+        $('.hackathon_day').show();
+        break;
+
+      default:
+        // alert('최대 4박 5일까지만 가능합니다.');
+        $('.hackathon_day').hide();
+        $('#section_04').hide();
+
+        break;
+    }
+
   });
 
 
+  $("#hackathon_award_kind_count").on("change paste keyup", function () {
+
+    var hackathon_award_kind_count_area = $('#hackathon_award_kind_count_area');
+    var hackathon_award_kind_count = $('#hackathon_award_kind_count');
+    hackathon_award_kind_count_area.empty();
+
+    console.log('hackathon_award_kind_count=>' + hackathon_award_kind_count.val());
+    console.log('hackathon_award_kind_count=>' + typeof Number(hackathon_award_kind_count.val()));
+    for (var i = 1; i <= Number(hackathon_award_kind_count.val()); i++) {
+
+      var awardHtml = (
+        `<div class="article_title_profile"> [0` + i + `] 상의 이름 </div>` +
+        `<input type="text" id="hackathon_award_kind_name_0` + i + `" class="baseInputText_02" placeholder="가나다">` +
+        `<div class="article_title_profile">[0` + i + `] 해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요</div>` +
+        `<input type="text" id="hackathon_award_taken_number_0` + i + `" class="baseInputText_02" placeholder="가나다">` +
+        `<div class="article_title_profile">[0` + i + `] 해당 상의 상금 및 수상혜택을 입력해주세요</div>` +
+        `<input type="text" id="hackathon_award_reward_0` + i + `" class="baseInputText_02" placeholder="가나다">` +
+        `<hr class="user_profile_line">`
+      );
+
+      hackathon_award_kind_count_area.append(awardHtml);
+    }
+
+  });
+
+
+  //enter key event
+  $('#hackathon_participation_reward').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 reward_addInputLine placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_participation_reward').append(addLine);
+    }
+    $('.reward_addInputLine').addClass('transparent');
+  });
+
+  $('#hackathon_organizer').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 organizer_addInputLine placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_organizer').append(addLine);
+    }
+    $('.organizer_addInputLine').addClass('transparent');
+  });
+
+  $('#hackathon_supervisor').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 supervisor_addInputLine placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_supervisor').append(addLine);
+    }
+    $('.supervisor_addInputLine').addClass('transparent');
+  });
+
+  $('#hackathon_sponsor').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 sponsor_addInputLine placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_sponsor').append(addLine);
+    }
+    $('.sponsor_addInputLine').addClass('transparent');
+  });
+
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
+
+  pre_page.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  next_page.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  pre_page.click(function () {
+    $(this).css('background-color', '#bd292c');
+    window.location.href = '/chatbot/create';
+  });
+
+  next_page.click(function () {
+    $(this).css('background-color', '#bd292c');
+
+    var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
+    var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
+    var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
+    var user_profile_start_message_result = user_profile_start_message_01 + user_profile_start_message_02 + user_profile_start_message_03;
+
+    var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
+    var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
+    var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
+    var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + user_profile_not_ready_mesage_02 + user_profile_not_ready_mesage_03;
+
+    //make award json data
+    var awardItemList = [];
+    for (var i = 1; i <= Number($('#hackathon_award_kind_count').val()); i++) {
+
+      console.log('i=>'+i);
+      console.log('name==>'+ $('#hackathon_award_kind_name_0'+i).val());
+      var awardJson = {
+        "name": $('#hackathon_award_kind_name_0'+i).val(),
+        "desc": $('#hackathon_award_taken_number_0'+i).val(),
+        "benefit": $('#hackathon_award_reward_0'+i).val()
+      }
+
+      awardItemList.push(awardJson);
+    }
+    console.log('awardItemList=>'+ JSON.stringify(awardItemList));
+
+    var hackathon_1day_content = "";
+    $('.hackathon_1day_content').each(function () {
+      hackathon_1day_content += $(this).val() + '\n';
+    })
+    console.log('hackathon_1day_content=>' + hackathon_1day_content);
+
+    var hackathon_2day_content = "";
+    $('.hackathon_2day_content').each(function () {
+      hackathon_2day_content += $(this).val() + '\n';
+    })
+    console.log('hackathon_2day_content=>' + hackathon_2day_content);
+
+    var hackathon_3day_content = "";
+    $('.hackathon_3day_content').each(function () {
+      hackathon_3day_content += $(this).val() + '\n';
+    })
+    console.log('hackathon_3day_content=>' + hackathon_3day_content);
+
+    var hackathon_4day_content = "";
+    $('.hackathon_4day_content').each(function () {
+      hackathon_4day_content += $(this).val() + '\n';
+    })
+    console.log('hackathon_4day_content=>' + hackathon_4day_content);
+
+    var hackathon_5day_content = "";
+    $('.hackathon_5day_content').each(function () {
+      hackathon_5day_content += $(this).val() + '\n';
+    })
+    console.log('hackathon_5day_content=>' + hackathon_5day_content);
+
+    var before_meeting_clicked_content = "";
+    $('.before_meeting_clicked_content').each(function () {
+      before_meeting_clicked_content += $(this).val() + '\n';
+    })
+    console.log('before_meeting_clicked_content=>' + before_meeting_clicked_content);
+
+    var hackathon_participation_confirm = "";
+    $('.hackathon_participation_confirm').each(function () {
+      hackathon_participation_confirm += $(this).val() + '\n';
+    })
+    console.log('hackathon_participation_confirm=>' + hackathon_participation_confirm);
+
+    var hackathon_participation_ready_info = "";
+    $('.hackathon_participation_ready_info').each(function () {
+      hackathon_participation_ready_info += $(this).val() + '\n';
+    })
+    console.log('hackathon_participation_ready_info=>' + hackathon_participation_ready_info);
+
+    var reward_addInputLine = "";
+    $('.reward_addInputLine').each(function () {
+      reward_addInputLine += $(this).val() + '\n';
+    })
+    console.log('reward_addInputLine=>' + reward_addInputLine);
+
+
+    var organizer_addInputLine = "";
+    $('.organizer_addInputLine').each(function () {
+      organizer_addInputLine += $(this).val() + '\n';
+    })
+    console.log('organizer_addInputLine=>' + organizer_addInputLine);
+
+    var supervisor_addInputLine = "";
+    $('.supervisor_addInputLine').each(function () {
+      supervisor_addInputLine += $(this).val() + '\n';
+    })
+    console.log('supervisor_addInputLine=>' + supervisor_addInputLine);
+
+    var sponsor_addInputLine = "";
+    $('.sponsor_addInputLine').each(function () {
+      sponsor_addInputLine += $(this).val() + '\n';
+    })
+    console.log('sponsor_addInputLine=>' + sponsor_addInputLine);
+
+    console.log('img_url=>'+img_url);
+    var submitData = {
+      "type": "hackathon",
+      "name": baseInfo_name,
+      "desc": baseInfo_context,
+      "data": {
+        "basic": {
+          "poster_image": img_url,
+          "name": $('#user_profile_data_name').val(),
+          "tel": $('#user_profile_data_tel').val(),
+          "email": $('#user_profile_data_professional').val()
+        },
+        "custom_settings": {
+          "get_started": user_profile_start_message_result,
+          "error_msg": user_profile_not_ready_mesage_result
+        },
+        "date": {
+          "application_period": {
+            "start": $('#start_date_participation').val(),
+            "end": $('#end_date_participation').val()
+          },
+          "pre-meeting": $('#start_date_before_meeting').val(), //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+          "main-meeting": {
+            "start": $('#start_date_dday_meeting').val(),
+            "end": $('#end_date_dday_meeting').val()
+          }
+        },
+        "contents": {
+          "main-meeting": [
+            hackathon_1day_content, hackathon_2day_content,
+            hackathon_3day_content, hackathon_4day_content,
+            hackathon_5day_content
+          ],
+          "pre-meeting": before_meeting_clicked_content //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+        }
+        ,
+        "application": {
+          "url": $('#hackathon_participation_url').val(),
+          "requirements": hackathon_participation_confirm,
+          "preparation": hackathon_participation_ready_info
+        },
+        "place": {
+          "main-meeting": {
+            "name": $('#hackathon_place_name').val(),
+            "address": $('#hackathon_place_address').val(),
+            "url": $('#hackathon_place_navi_url').val()
+          },
+          "pre-meeting": { //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+            "name": $('#before_meeting_place_name').val(),
+            "address": $('#before_meeting_place_address').val(),
+            "url": $('#before_meeting_place_navi_url').val()
+          }
+        },
+        "prize": awardItemList, //typeof array
+        "benefit_of_participant": reward_addInputLine,
+        "thanks": {
+          "hoster": supervisor_addInputLine,
+          "organizer": organizer_addInputLine,
+          "sponsor": sponsor_addInputLine
+        }
+      }
+    };
+
+    $.ajax({
+      url: 'https://www.chatbrick.io/api/brick/',
+      type: 'PUT',
+      async: false,
+      crossDomain: true,
+      contentType: 'application/json',
+      dataType: 'JSON',
+      data: JSON.stringify(submitData),
+      success: function (body, status, res) {
+        if (body.success) {
+          console.log('upliad success!');
+        }
+      }
+    });
+  });
 </script>
 <!--https://xdsoft.net/jqplugins/datetimepicker/#trigger-->
 <script src="/public/javascripts/jquery.datetimepicker.full.js"></script>

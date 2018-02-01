@@ -398,7 +398,7 @@
     console.log('request_query=>' + request_query);
 
     if (set_list.val() == "hackathon_choice") {
-       window.location.href = '/hackathon/create';
+       window.location.href = '/hackathon/create'+request_query;
       document.location.hash = hashData;
 
     } else if (set_list.val() == "designer_portfolio_choice") {

@@ -541,16 +541,16 @@
     var user_profile_self_introduction_01_result = user_profile_self_introduction_01_1 + user_profile_self_introduction_01_2
 			+ user_profile_self_introduction_01_3 + user_profile_self_introduction_01_4 + user_profile_self_introduction_01_5;
 
-    var user_profile_portfolio_01 = $('#user_profile_portfolio_01').val().includes('www.') ? $('#user_profile_portfolio_01').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_02 = $('#user_profile_portfolio_02').val().includes('www.') ? $('#user_profile_portfolio_02').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_03 = $('#user_profile_portfolio_03').val().includes('www.') ? $('#user_profile_portfolio_03').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_04 = $('#user_profile_portfolio_04').val().includes('www.') ? $('#user_profile_portfolio_04').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_05 = $('#user_profile_portfolio_05').val().includes('www.') ? $('#user_profile_portfolio_05').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_06 = $('#user_profile_portfolio_06').val().includes('www.') ? $('#user_profile_portfolio_06').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_07 = $('#user_profile_portfolio_07').val().includes('www.') ? $('#user_profile_portfolio_07').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_08 = $('#user_profile_portfolio_08').val().includes('www.') ? $('#user_profile_portfolio_08').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_09 = $('#user_profile_portfolio_09').val().includes('www.') ? $('#user_profile_portfolio_09').val() : "http://www.xxxx.com";
-    var user_profile_portfolio_10 = $('#user_profile_portfolio_10').val().includes('www.') ? $('#user_profile_portfolio_10').val() : "http://www.xxxx.com";
+    var user_profile_portfolio_01 = $('#user_profile_portfolio_01').val();
+    var user_profile_portfolio_02 = $('#user_profile_portfolio_02').val();
+    var user_profile_portfolio_03 = $('#user_profile_portfolio_03').val();
+    var user_profile_portfolio_04 = $('#user_profile_portfolio_04').val();
+    var user_profile_portfolio_05 = $('#user_profile_portfolio_05').val();
+    var user_profile_portfolio_06 = $('#user_profile_portfolio_06').val();
+    var user_profile_portfolio_07 = $('#user_profile_portfolio_07').val();
+    var user_profile_portfolio_08 = $('#user_profile_portfolio_08').val();
+    var user_profile_portfolio_09 = $('#user_profile_portfolio_09').val();
+    var user_profile_portfolio_10 = $('#user_profile_portfolio_10').val();
 
 
     console.log('user name->' + $('#user_profile_data_name').val());
@@ -623,15 +623,15 @@
   });
 
   pre_page.hover(function () {
-    pre_page.css('background-color','#fb7c7e');
+    $(this).css('background-color','#fb7c7e');
   }, function () {
-    pre_page.css('background-color','#ff753c');
+    $(this).css('background-color','#ff753c');
   });
 
   next_page.hover(function () {
-    next_page.css('background-color','#fb7c7e');
+    $(this).css('background-color','#fb7c7e');
   }, function () {
-    next_page.css('background-color','#fd6246');
+    $(this).css('background-color','#fd6246');
   });
 
 

@@ -38,6 +38,10 @@
     color: #d8d8d8;
 }
 
+.transparent::-webkit-input-placeholder {
+    color: transparent;
+}
+
 body {
     background-color: #f3f3f3;
 }

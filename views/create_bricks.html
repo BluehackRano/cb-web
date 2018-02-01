@@ -361,16 +361,16 @@
 
         <div class="modal_brick_api_context_01">
           <div class="modal_brick_api_guild">
-            WEATHER BRICK 을 불러올 때, 사용할 키워드를 입력해주세요
+            챗봇에서 아래의 키워드를 입력하면 WEATHER BRICK이 호출되요
           </div>
 
           <!--브릭 아이템 태그 영역-->
-          <div class="modal_brick_api_item_tag_area">
+          <!--<div class="modal_brick_api_item_tag_area">-->
             <!--<div class="modal_brick_api_item_tag">-->
               <!--<p>weather</p>-->
               <!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
             <!--</div>-->
-          </div>
+          <!--</div>-->
 
         <!--브릭 아이템 태그 영역-->
         <!--<div class="modal_brick_api_item_tag_area">-->
@@ -385,9 +385,9 @@
 
         <div class="modal_brick_api_context_02">
           <div class="modal_brick_api_guild">
-            사용자가 날씨를 조회할 지역을 어떤 문장으로 물어볼까요?
+            추가하고 싶은 호출 키워드를 입력해주세요
           </div>
-          <input type="text" class="modalInputText" placeholder="가나다">
+          <input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input" placeholder="가나다">
         </div>
 
       </div>
@@ -546,7 +546,7 @@
 
   function selectedBrick(list) {
 
-    list.forEach(function (itemIndex, index, array) {
+    list.forEach(function (itemIndex, listIndex, array) {
       var brickApiSet = (
         `<div class="api_set" id="api_set` + itemIndex + `">` +
         `<div class="api_title">` +
@@ -584,32 +584,36 @@
         `</div>`
       );
 
+      var modalBrickApiItem = (
+        `<div class="modal_brick_api_item_tag_area" id="modal_brick_api_item_tag_area` + itemIndex +`">`+
+        `</div>`
+      );
+
       brick_api_zone.append(brickApiItem);
+      $('.modal_brick_api_context_01').append(modalBrickApiItem);
 
       //Added brick api tag
-      var brick_api_item_tag_area = $('.brick_api_item_tag_area');
-      var modal_brick_api_item_tag_area = $('.modal_brick_api_item_tag_area');
-      resData[itemIndex].api.keywords.forEach(function (item, index, array) {
+        resData[itemIndex].api.keywords.forEach(function (item, index, array) {
 
-        console.log('apitag=>' + item);
+          console.log('apitag=>' + item);
 
-        var brick_tag = (
-          `<div class="brick_api_item_tag">`+
-          `<p>`+item+`</p>`+
-          `</div>`
-        );
+          var brick_tag = (
+            `<div class="brick_api_item_tag" id="brick_api_item_tag` + index+`">`+
+            `<p>`+item+`</p>`+
+            `</div>`
+          );
 
-        var modal_brick_tag = (
-          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index +`">`+
-          `<p>`+item+`</p>`+
-          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + itemIndex +`">`+
-          `</div>`
-        );
+          var modal_brick_tag = (
+            `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index +`">`+
+            `<p>`+item+`</p>`+
+            `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + itemIndex +`">`+
+            `</div>`
+          );
 
-        brick_api_item_tag_area.append(brick_tag);
-        modal_brick_api_item_tag_area.append(modal_brick_tag);
+          $('#brick_api_item_tag_area'+ itemIndex).append(brick_tag);
+          $('#modal_brick_api_item_tag_area'+ itemIndex).append(modal_brick_tag);
 
-      });
+        });
     });
 
   }
@@ -626,6 +630,14 @@
   $(document).on('click', '.brick_api_item_btn_motify', function () {
     var itemIndex = $(this).parent().parent().index();
     console.log('itemIndex->'+itemIndex );
+
+    for (var i = 0; i < $('.modal_brick_api_item_tag_area').length; i ++) {
+      if (itemIndex == i) {
+        $('#modal_brick_api_item_tag_area'+i).show();
+      } else {
+        $('#modal_brick_api_item_tag_area'+i).hide();
+      }
+    }
     modal_brick_api.style.display = "block";
   });
 
@@ -645,6 +657,30 @@
     console.log('tagid=>'+ itemIndex);
     $('#modal_brick_api_item_tag'+itemIndex).hide();
   });
+
+
+  //enter key event
+  var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input');
+  modal_brick_api_item_tag_add_input.keydown(function (key) {
+
+    if(key.keyCode == 13) {
+
+      var apiTagsCount = $('.modal_brick_api_item_tag').length;
+      console.log('before apiTagsCount=>' + apiTagsCount);
+      var modal_brick_tag = (
+        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + apiTagsCount++ +`">`+
+        `<p>`+modal_brick_api_item_tag_add_input.val()+`</p>`+
+        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + apiTagsCount++ +`">`+
+        `</div>`
+      );
+
+      $('.modal_brick_api_item_tag_area').append(modal_brick_tag);
+      console.log('after apiTagsCount=>' + apiTagsCount);
+      console.log('modal_brick_api_item_tag_add_input=>' + modal_brick_api_item_tag_add_input.val());
+    }
+
+  });
+
 
 
   brick_preview.click(function () {

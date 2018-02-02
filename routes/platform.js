@@ -4,8 +4,14 @@ var fs = require('fs');
 
 router.get('/connect', (req, res) => {
 
+  console.log('start create req =>' + JSON.stringify(req.query));
+  var jsonData = '';
+  jsonData = {
+    setId: req.query.setId
+  }
+
   fs.readFile('views/connect_platform', function (err, data) {
-    res.render('connect_platform');
+    res.render('connect_platform', {jsonData:jsonData});
   })
 });
 

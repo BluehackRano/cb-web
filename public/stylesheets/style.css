@@ -28,9 +28,38 @@
 
 }
 
+input.imgeFile {
+    color: transparent;
+    opacity: 0;       /*input type="file" tag 투명하게 처리*/
+    position: relative;
+}
+
 #file {
     width: 142px;
     height: 142px;
+}
+
+.platform_connected {
+    width: 140px;
+    height: 18px;
+    /*border: solid 1px #fd6246;*/
+    background-color: #fd6246;
+    float: left;
+    /*margin-right: 4px;*/
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+
+    /*border: solid 1px #fd6246;*/
 }
 
 /*placeholder*/
@@ -829,7 +858,7 @@ connect_platform
 
 .fb_page_btn {
     width: 140px;
-    height: 32px;
+    height: 18px;
     border: solid 3px #000000;
 
     font-family: "Noto Sans";
@@ -842,6 +871,9 @@ connect_platform
     text-align: center;
     color: #000000;
     float: right;
+
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
 
 ._telegram_messenger_wrapper {
@@ -874,6 +906,31 @@ connect_platform
     /*margin-right: 190px;*/
 }
 
+.tele_page_btn {
+    width: 140px;
+    height: 18px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: solid 3px #000000;
+    float: left;
+    margin-left: 25px;
+    margin-top: 15px;
+
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+}
+
+.tg_input_btn_line {
+    width: 600px;
+    height: auto;
+}
 .tg_content_title {
     width: auto;
     height: 20px;
@@ -891,7 +948,7 @@ connect_platform
 }
 
 .tgInputText {
-    width: 500px;
+    width: 420px;
     height: 25px;
     border: 0;
     outline: 0;
@@ -900,10 +957,13 @@ connect_platform
     /*margin-top: 15px;*/
     padding-bottom: 7px;
     padding-top: 25px;
+    margin-bottom: 15px;
+
+    float: left;
 }
 
 .tg_content_context {
-    width: auto;
+    width: 420px;
     height: 72px;
     font-family: "Noto Sans";
     font-size: 12px;
@@ -914,7 +974,7 @@ connect_platform
     letter-spacing: normal;
     text-align: left;
     color: #000000;
-    margin-top: 15px;
+    margin-top: 75px;
 }
 
 /*

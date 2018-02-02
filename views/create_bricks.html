@@ -633,6 +633,11 @@
 
     $('.modal_brick_api_item_tag_area').hide();
     $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]).show();
+
+    var text = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').html();
+    var text1 = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').length;
+    console.log('text=>'+ JSON.stringify(text));
+    console.log('text1=>'+ text1);
     modal_brick_api.style.display = "block";
 
   });
@@ -782,12 +787,15 @@
       sub_title.text('| 데이터 정보 입력하기');
 
     } else if (pageNumber == 3) {
-      page_select_bricks.hide();
-      page_bricks_apikey.hide();
-      page_bricks_confirm_apikey.hide();
-      page_bricks_platform.show();
-      context.text('고생하셨어요. 이제 {{사용자가 선택한 세트}} SET를 완성하기 위한 마지막단계에요. ' + fb_name + '님이 소유하고 있는 페이스북의 페이지 또는 텔레그램의 토큰값을 입력하여 챗봇생성을 완료해주세요. 챗봇 수정하기에서 플랫폼 연동을 변경할 수 있어요.');
-      sub_title.text('| 플랫폼 연동하기');
+      //send jsondata in brick api
+      var request_query = '?setId=brick';
+      window.location.href = '/platform/connect'+request_query;
+//      page_select_bricks.hide();
+//      page_bricks_apikey.hide();
+//      page_bricks_confirm_apikey.hide();
+//      page_bricks_platform.show();
+//      context.text('고생하셨어요. 이제 {{사용자가 선택한 세트}} SET를 완성하기 위한 마지막단계에요. ' + fb_name + '님이 소유하고 있는 페이스북의 페이지 또는 텔레그램의 토큰값을 입력하여 챗봇생성을 완료해주세요. 챗봇 수정하기에서 플랫폼 연동을 변경할 수 있어요.');
+//      sub_title.text('| 플랫폼 연동하기');
     }
 
     window.location.hash = pageNumber.toString();
@@ -880,7 +888,7 @@
                   //connect fb page api
                   $.ajax({
                     //TODO: url
-                    url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/'+fb_id+'/'+fb_access_token+'/',
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_id+'/'+fb_access_token+'/',
                     type: 'PUT',
                     async: false,
                     crossDomain: true,

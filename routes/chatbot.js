@@ -48,8 +48,8 @@ router.get('/edit', (req, res) => {
 
   var itemId = req.query.id;
   console.log('/router itemId=>' + itemId);
-  fs.readFile('views/my_chatbot_edit', function (err, data) {
-    res.render('my_chatbot_edit', {itemId:itemId});
+  fs.readFile('views/edit_user_profile', function (err, data) {
+    res.render('edit_user_profile', {itemId:itemId});
   })
 });
 

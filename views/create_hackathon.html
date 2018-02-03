@@ -119,16 +119,16 @@
 							<div class="article_title_profile">
 								챗봇에 방문하였을 때, 처음으로 보내는 메세지
 							</div>
-							<input type="text" id="user_profile_start_message_01" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_start_message_02" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_start_message_03" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+							<input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+							<input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
 
 							<div class="article_title_profile">
 								방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
 							</div>
-							<input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02" placeholder="가나다">
-							<input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
 						</div>
 					</div>
 				</article>
@@ -215,10 +215,12 @@
 					<div class="wrapper">
 						<div class="user_profile_data_area">
 
-							<div class="before_meeting_content">
+							<div class="before_meeting_content" id="before_meeting_content">
 								<div class="article_title_profile">
 									사전모임 일정내용을 입력해주세요
 								</div>
+
+								<div id="before_meeting_clicked">
 								<input type="text" id="before_meeting_clicked_content_01"
 											 class="baseInputText_02 before_meeting_clicked_content"
 											 placeholder="예 ) 네트워킹 및 팀빌딩">
@@ -228,6 +230,7 @@
 								<input type="text" id="before_meeting_clicked_content_03"
 											 class="baseInputText_02 before_meeting_clicked_content"
 											 placeholder="(14:00 ~ 14:30) 팀원 모집시간">
+								</div>
 								<hr class="user_profile_line">
 							</div>
 
@@ -235,12 +238,14 @@
 								<div class="article_title_profile">
 									본행사 1일차 일정내용을 입력해주세요
 								</div>
+								<div id="hackathon_1day_input_content">
 								<input type="text" id="hackathon_1day_content_01" class="baseInputText_02 hackathon_1day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_1day_content_02" class="baseInputText_02 hackathon_1day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_1day_content_03" class="baseInputText_02 hackathon_1day_content"
 											 placeholder="가나다">
+								</div>
 								<hr class="user_profile_line">
 							</div>
 
@@ -248,12 +253,14 @@
 								<div class="article_title_profile">
 									본행사 2일차 일정내용을 입력해주세요
 								</div>
+								<div id="hackathon_2day_input_content">
 								<input type="text" id="hackathon_2day_content_01" class="baseInputText_02 hackathon_2day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_2day_content_02" class="baseInputText_02 hackathon_2day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_2day_content_03" class="baseInputText_02 hackathon_2day_content"
 											 placeholder="가나다">
+								</div>
 								<hr class="user_profile_line">
 							</div>
 
@@ -261,12 +268,14 @@
 								<div class="article_title_profile">
 									본행사 3일차 일정내용을 입력해주세요
 								</div>
+								<div id="hackathon_3day_input_content">
 								<input type="text" id="hackathon_3day_content_01" class="baseInputText_02 hackathon_3day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_3day_content_02" class="baseInputText_02 hackathon_3day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_3day_content_03" class="baseInputText_02 hackathon_3day_content"
 											 placeholder="가나다">
+								</div>
 								<hr class="user_profile_line">
 							</div>
 
@@ -274,12 +283,14 @@
 								<div class="article_title_profile">
 									본행사 4일차 일정내용을 입력해주세요
 								</div>
+								<div id="hackathon_4day_input_content">
 								<input type="text" id="hackathon_4day_content_01" class="baseInputText_02 hackathon_4day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_4day_content_02" class="baseInputText_02 hackathon_4day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_4day_content_03" class="baseInputText_02 hackathon_4day_content"
 											 placeholder="가나다">
+								</div>
 								<hr class="user_profile_line">
 							</div>
 
@@ -287,12 +298,14 @@
 								<div class="article_title_profile">
 									본행사 5일차 일정내용을 입력해주세요
 								</div>
+								<div id="hackathon_5day_input_content">
 								<input type="text" id="hackathon_5day_content_01" class="baseInputText_02 hackathon_5day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_5day_content_02" class="baseInputText_02 hackathon_5day_content"
 											 placeholder="가나다">
 								<input type="text" id="hackathon_5day_content_03" class="baseInputText_02 hackathon_5day_content"
 											 placeholder="가나다">
+								</div>
 							</div>
 
 						</div>
@@ -325,24 +338,29 @@
 							<div class="article_title_profile">
 								참가요건 정보를 입력해주세요
 							</div>
+
+							<div id="hackathon_participation_confirm_input">
 							<input type="text" id="hackathon_participation_confirm_01"
 										 class="baseInputText_02 hackathon_participation_confirm" placeholder="가나다">
 							<input type="text" id="hackathon_participation_confirm_02"
 										 class="baseInputText_02 hackathon_participation_confirm" placeholder="가나다">
 							<input type="text" id="hackathon_participation_confirm_03"
 										 class="baseInputText_02 hackathon_participation_confirm" placeholder="가나다">
+							</div>
 							<hr class="user_profile_line">
 
 							<div class="article_title_profile">
 								참가자 준비사항 정보를 입력해주세요
 							</div>
+
+							<div id="hackathon_participation_ready_info_input">
 							<input type="text" id="hackathon_participation_ready_info_01"
 										 class="baseInputText_02 hackathon_participation_ready_info" placeholder="가나다">
 							<input type="text" id="hackathon_participation_ready_info_02"
 										 class="baseInputText_02 hackathon_participation_ready_info" placeholder="가나다">
 							<input type="text" id="hackathon_participation_ready_info_03"
 										 class="baseInputText_02 hackathon_participation_ready_info" placeholder="가나다">
-
+							</div>
 
 						</div>
 					</div>
@@ -665,7 +683,7 @@
   var before_meeting_checkbox_area = $('.before_meeting_checkbox_area');
   var before_meeting_checked = $('#before_meeting_checked');
   var date_checkbox = $('#date_checkbox');
-  var before_meeting_content = $('.before_meeting_content');
+  var before_meeting_content = $('#before_meeting_content');
   var before_meeting_info = $('.before_meeting_info');
   var hackathon_day = $('.hackathon_day');
   var section_04 = $('#section_04');
@@ -836,6 +854,102 @@
 
 
   //enter key event
+  $('#before_meeting_clicked').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 before_meeting_clicked_content placeholder" placeholder="가나다">`
+      );
+
+      $('#before_meeting_clicked').append(addLine);
+    }
+    $('.before_meeting_clicked_content').addClass('transparent');
+  });
+
+  $('#hackathon_1day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_1day_content placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_1day_input_content').append(addLine);
+    }
+    $('.hackathon_1day_content').addClass('transparent');
+  });
+
+  $('#hackathon_2day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_2day_content placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_2day_input_content').append(addLine);
+    }
+    $('.hackathon_2day_content').addClass('transparent');
+  });
+
+  $('#hackathon_3day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_3day_content placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_3day_input_content').append(addLine);
+    }
+    $('.hackathon_3day_content').addClass('transparent');
+  });
+
+  $('#hackathon_4day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_4day_content placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_4day_input_content').append(addLine);
+    }
+    $('.hackathon_4day_content').addClass('transparent');
+  });
+
+  $('#hackathon_5day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_5day_content placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_5day_input_content').append(addLine);
+    }
+    $('.hackathon_5day_content').addClass('transparent');
+  });
+
+  $('#hackathon_participation_confirm_input').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_participation_confirm placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_participation_confirm_input').append(addLine);
+    }
+    $('.hackathon_participation_confirm').addClass('transparent');
+  });
+
+  $('#hackathon_participation_ready_info_input').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_participation_ready_info placeholder" placeholder="가나다">`
+      );
+
+      $('#hackathon_participation_ready_info_input').append(addLine);
+    }
+    $('.hackathon_participation_ready_info').addClass('transparent');
+  });
+
   $('#hackathon_participation_reward').keydown(function (key) {
 
     if (key.keyCode == 13) {
@@ -883,6 +997,17 @@
     }
     $('.sponsor_addInputLine').addClass('transparent');
   });
+
+  //hide placeholder
+  $('.user_profile_start_message').keydown(function (key) {
+    $('.user_profile_start_message').addClass('transparent');
+  });
+
+  $('.user_profile_not_ready_mesage').keydown(function (key) {
+    $('.user_profile_not_ready_mesage').addClass('transparent');
+  });
+
+
 
   var pre_page = $('#pre_page');
   var next_page = $('#next_page');

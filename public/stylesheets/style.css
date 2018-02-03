@@ -336,6 +336,7 @@ hr.article_line {
     /*width: 700px;*/
     border-bottom: 1px;
     border-bottom-color: #eaeaea;
+    border-top: none;
     margin-top: 37px;
     margin-right: 90px;
 }
@@ -1153,6 +1154,8 @@ create apikey
     width: 700px;
     border-bottom: 1px;
     border-bottom-color: #eaeaea;
+    border-top: none;
+
     margin-top: 76px;
     margin-right: 90px;
 }
@@ -1328,9 +1331,12 @@ div._user_profile_section {
 }
 
 hr.user_profile_line {
-    /*width: 700px;*/
-    border-bottom: 1px;
-    border-bottom-color: #eaeaea;
+    width: 700px;
+    /*border-bottom: 1px;*/
+    /*border-bottom-color: #eaeaea;*/
+
+    border-top: none;
+    border-bottom: 1px solid #eaeaea;
     margin-top: 61px;
     margin-right: 90px;
 }
@@ -1843,6 +1849,7 @@ div._hackathon_section {
     margin-top: 57px;
 
     border-bottom: solid 1px #eaeaea;
+    border-top: none;
 }
 
 .hackathon_date_before_meeting {
@@ -1851,6 +1858,7 @@ div._hackathon_section {
     margin-top: 57px;
 
     border-bottom: solid 1px #eaeaea;
+    border-top: none;
 }
 
 .before_meeting_checkbox_area {
@@ -2219,6 +2227,7 @@ hr.modal_device_underline {
     /*width: 700px;*/
     border-bottom: 1px;
     border-bottom-color: #d8d8d8;
+    border-top: none;
     /*border-bottom: 1px solid #cecece;*/
 
     margin-left: 16px;

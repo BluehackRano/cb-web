@@ -1,161 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 </head>
 <body>
 <header id="header">
-	<div class="wrapper wrapper_header">
-		<div class="top_01 top_common">
-			<img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+  <div class="wrapper wrapper_header">
+    <div class="top_01 top_common">
+      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
 
-			<div class="top_01 top_user_profile_common">
-				<img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
-				<div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
-				<img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
-						 alt="login_dropdown">
-			</div>
-		</div>
+      <div class="top_01 top_user_profile_common">
+        <img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
+             alt="login_dropdown">
+      </div>
+    </div>
 
-		<div class="top_02 top_common">
-			<div class="top_02 title_area">
-				<div id="title">CREAT CHATBOT</div>
-				<div id="sub_title">| 플랫폼 연동하기</div>
-			</div>
-			<div id="context">
-				<p>
-					고생하셨어요. 이제 {{사용자가 선택한 세트}} SET를 완성하기 위한 마지막단계에요.
-					{{사용자의 이름}}님이 소유하고 있는 페이스북의 페이지 또는 텔레그램의 토큰값을 입력하여 챗봇생성을 완료해주세요.
-					챗봇 수정하기에서 플랫폼 연동을 변경할 수 있어요.
-				</p>
-			</div>
-		</div>
-	</div>
+    <div class="top_02 top_common">
+      <div class="top_02 title_area">
+        <div id="title">CREAT CHATBOT</div>
+        <div id="sub_title">| 플랫폼 연동하기</div>
+      </div>
+      <div id="context">
+        <p>
+          고생하셨어요. 이제 {{사용자가 선택한 세트}} SET를 완성하기 위한 마지막단계에요.
+          {{사용자의 이름}}님이 소유하고 있는 페이스북의 페이지 또는 텔레그램의 토큰값을 입력하여 챗봇생성을 완료해주세요.
+          챗봇 수정하기에서 플랫폼 연동을 변경할 수 있어요.
+        </p>
+      </div>
+    </div>
+  </div>
 </header>
 
 <div id="content">
-	<div class="wrapper_section _messenger_section">
-		<section id="section_01">
-			<div class="content_title">
-				<p>
-					필수 추가연동
-				</p>
-			</div>
+  <div class="wrapper_section _messenger_section">
+    <section id="section_01">
+      <div class="content_title">
+        <p>
+          필수 추가연동
+        </p>
+      </div>
 
-			<div class="wrapper_article _messenger_wrapper">
-				<article id="article_fb" class="_article">
+      <div class="wrapper_article _messenger_wrapper">
+        <article id="article_fb" class="_article">
 
-					<div class="wrapper _fb_messenger_wrapper">
-						<div class="messenger_set">
-							<img src="../public/images/img-fb-messenger.png"
-									 id="img_fb_messenger" class="messenger_img">
-							<div class="messenger_text">
-								<div class="messenger_title">
-									페이지북 메신저
-								</div>
-								<div class="messenger_context">
-									YOUR FACEBOOK PAGES
-								</div>
-							</div>
-						</div>
+          <div class="wrapper _fb_messenger_wrapper">
+            <div class="messenger_set">
+              <img src="../public/images/img-fb-messenger.png"
+                   id="img_fb_messenger" class="messenger_img">
+              <div class="messenger_text">
+                <div class="messenger_title">
+                  페이지북 메신저
+                </div>
+                <div class="messenger_context">
+                  YOUR FACEBOOK PAGES
+                </div>
+              </div>
+            </div>
 
 
-						<div id="fb_page_list">
+            <div id="fb_page_list">
 
-							<!--fb_page_set_item 영역-->
-							<!--<div class="fb_page_set">-->
-							<!--<img src="../public/images/test_img.png"-->
-							<!--class="fb_page_img">-->
-							<!--<div class="fb_page_text">-->
-							<!--<div class="fb_page_title">-->
-							<!--Bluehack 01-->
-							<!--</div>-->
-							<!--<div class="fb_page_btn">-->
-							<!--<p>-->
-							<!--연결하기-->
-							<!--</p>-->
-							<!--</div>-->
-							<!--</div>-->
-							<!--</div>-->
+              <!--fb_page_set_item 영역-->
+              <!--<div class="fb_page_set">-->
+              <!--<img src="../public/images/test_img.png"-->
+              <!--class="fb_page_img">-->
+              <!--<div class="fb_page_text">-->
+              <!--<div class="fb_page_title">-->
+              <!--Bluehack 01-->
+              <!--</div>-->
+              <!--<div class="fb_page_btn">-->
+              <!--<p>-->
+              <!--연결하기-->
+              <!--</p>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--</div>-->
 
-						</div>
-					</div>
-				</article>
+            </div>
+          </div>
+        </article>
 
-				<!--telegram article-->
-				<div class="wrapper_article _messenger_wrapper">
-					<article id="article_telegram">
-						<div class="wrapper _telegram_messenger_wrapper">
-							<div class="messenger_set">
-								<img src="../public/images/img-tele-messenger.png"
-										 id="img_telegram__messenger" class="messenger_img">
-								<div class="messenger_text">
-									<div class="messenger_title">
-										텔레그램
-									</div>
-									<div class="messenger_context">
-										YOUR BOTS
-									</div>
-								</div>
-							</div>
+        <!--telegram article-->
+        <div class="wrapper_article _messenger_wrapper">
+          <article id="article_telegram">
+            <div class="wrapper _telegram_messenger_wrapper">
+              <div class="messenger_set">
+                <img src="../public/images/img-tele-messenger.png"
+                     id="img_telegram__messenger" class="messenger_img">
+                <div class="messenger_text">
+                  <div class="messenger_title">
+                    텔레그램
+                  </div>
+                  <div class="messenger_context">
+                    YOUR BOTS
+                  </div>
+                </div>
+              </div>
 
-							<div class="tg_content">
-								<div class="tg_content_title">
-									<p>적용하려는 봇의 토큰값을 입력해주세요</p>
-								</div>
+              <div class="tg_content">
+                <div class="tg_connect_page">
+                  <div class="tg_content_title">
+                    <p>적용하려는 봇의 토큰값을 입력해주세요</p>
+                  </div>
 
-								<div class="tg_input_btn_line">
-									<input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
-									<div class="tele_page_btn" id="tele_page_btn">연결하기</div>
-								</div>
-								<div class="tg_content_context">
-									<p>
-										토큰값을 발급받기 위해서는 텔레그램에서 @BotFather 을 검색한 뒤,
-										안내에 따라 봇을 최초 생성하는 별도의 사전작업이 필요해요.
-										자세한 안내는 텔레그램의 Bot Platform 페이지에서 확인하실 수 있어요.<br>
-										https://telegram.org/blog/bot-revolution
-									</p>
-								</div>
-							</div>
+                  <div class="tg_input_btn_line">
+                    <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
+                    <div class="tele_page_btn" id="tele_page_btn">연결하기</div>
+                  </div>
+                  <div class="tg_content_context">
+                    <p>
+                      토큰값을 발급받기 위해서는 텔레그램에서 @BotFather 을 검색한 뒤,
+                      안내에 따라 봇을 최초 생성하는 별도의 사전작업이 필요해요.
+                      자세한 안내는 텔레그램의 Bot Platform 페이지에서 확인하실 수 있어요.<br>
+                      https://telegram.org/blog/bot-revolution
+                    </p>
+                  </div>
+                </div>
 
-						</div>
-					</article>
-				</div>
+                <!--tele connected page-->
+                <div class="tele_page_set">
+                  <img src="../public/images/img-telegram-bot-default.png"
+                       class="tele_page_img">
+                  <div class="tele_page_text">
+                    <div class="tele_page_title">
+                      Bot Name
+                    </div>
+                    <div class="tele_page_disconnect_btn" id="tele_page_disconnect_btn">
+                      연결해제 하기
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-			</div>
-		</section>
-	</div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </div>
 
 </div>
 
 <footer id="footer">
-	<div class="bottom_common">
-		<div id="pre_page">
-			<p>
-				이전
-			</p>
-		</div>
-		<div id="next_page" align="center">
-			<p>
-				다음
-			</p>
-		</div>
-	</div>
+  <div class="bottom_common">
+    <div id="pre_page">
+      <p>
+        이전
+      </p>
+    </div>
+    <div id="next_page" align="center">
+      <p>
+        다음
+      </p>
+    </div>
+  </div>
 </footer>
 
 <script type="text/javascript">
 
+  var setId = `<%=jsonData.setId%>`;
   var login_logo = $('#login_logo');
   var login_name = $('#login_name_text');
   var login_dropdown = $('#login_dropdown');
   var fb_page_list = $('#fb_page_list');
-  var tele_page_btn = $('#tele_page_btn');
-
-
 
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -165,6 +179,7 @@
       var fb_page_list = $('#fb_page_list');
       var fb_access_token;
       var fb_id;
+      var fb_page_id;
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/login/',
@@ -181,11 +196,14 @@
             console.log('body.facebook.fb_id=>' + fb_id);
 
             FB.api(body.facebook.fb_id + '/accounts', function (response) {
+              fb_page_id = response.data[0].id;
               fb_access_token = response.data[0].access_token;
               console.log('Successful page info for: ' + JSON.stringify(response));
               console.log('data length: ' + response.data.length);
               console.log('access_token[0]: ' + fb_access_token);
               console.log('name[0]: ' + response.data[0].name);
+              console.log('fb_page_id: ' + fb_page_id);
+
 
               response.data.forEach(function (item, index, array) {
                 var fb_messager = (
@@ -207,11 +225,31 @@
                   $(this).toggleClass('platform_connected');
 
                   if ($(this).hasClass('platform_connected')) {
-                    $('#fb_page_btn' + index).text("연결해제 하기");
-                    $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
-                    $('#fb_page_btn' + index).css('color', '#ffffff')
 
                     //connect fb page api
+                    $.ajax({
+                      //TODO: url
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
+                      // url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
+                      type: 'PUT',
+                      async: false,
+                      crossDomain: true,
+                      xhrFields: {withCredentials: true},
+                      success: function (body, status, res) {
+
+                        console.log('connect fb page api=>' + body.success);
+                        if (body.success) {
+                          $('.fb_page_set').hide();
+                          $('#fb_page_set' + index).show();
+                          $('#fb_page_btn' + index).text("연결해제 하기");
+                          $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                          $('#fb_page_btn' + index).css('color', '#ffffff')
+                        }
+                      }
+                    });
+                  } else {
+
+                    //delete fb page api
                     $.ajax({
                       //TODO: url
 //                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
@@ -224,44 +262,66 @@
 
                         console.log('connect fb page api=>' + body.success);
                         if (body.success) {
-                          $('.fb_page_set').hide();
-                          $('#fb_page_set'+index).show();
+                          $('.fb_page_set').show();
+                          $('#fb_page_btn' + index).text('연결하기');
+                          $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
+                          $('#fb_page_btn' + index).css('color', '#000000')
                         }
                       }
                     });
-                  } else {
-                    $('#fb_page_btn' + index).text('연결하기');
-                    $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
-                    $('#fb_page_btn' + index).css('color', '#000000')
-
-                    $('.fb_page_set').show();
                   }
+                }) //fb.click event
+              }); //response.data.forEach
 
+              var tg_connect_page = $('.tg_connect_page');
+              var tele_page_set = $('.tele_page_set');
+              var tele_page_btn = $('#tele_page_btn');
+              var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
 
-                  //connect fb page api
-                  $.ajax({
-                    //TODO: url
-//                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_id+'/'+fb_access_token+'/',
-                    url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
-                    type: 'PUT',
-                    async: false,
-                    crossDomain: true,
-                    xhrFields: {withCredentials: true},
-                    success: function (body, status, res) {
+              tg_connect_page.show();
+              tele_page_set.hide();
+              tele_page_btn.click(function () {
+                //connect telegram api
+                $.ajax({
+                  //TODO: url
+                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  type: 'PUT',
+                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
 
-                      console.log('connect fb page api=>' + body.success);
-                      if (body.success) {
-//                        $(document).on('click', '.fb_page_btn', function () {
-//                          $(this).toggleClass('platform_connected');
-////                          $('#fb_page_btn'+index).css('background-color','#fd6246');
-//                          $('#fb_page_btn'+index).text('로그아웃');
-//                        });
-                      }
+                    console.log('connected telegram api=>' + body.success);
+                    if (body.success) {
+                      tg_connect_page.hide();
+                      tele_page_set.show();
                     }
-                  });
-                })
+                  }
+                });
+              }); //tele_page_btn click event
 
-              });
+              tele_page_disconnect_btn.click(function () {
+                //disconnect telegram api
+                $.ajax({
+                  //TODO: url
+                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  type: 'DELETE',
+                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    console.log('connected telegram api=>' + body.success);
+                    if (body.success) {
+                      tg_connect_page.show();
+                      tele_page_set.hide();
+                    }
+                  }
+                });
+              }); //tele_page_disconnect_btn click event
+
 
             });
           }

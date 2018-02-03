@@ -876,6 +876,71 @@ connect_platform
     padding-bottom: 7px;
 }
 
+/*
+tele page
+*/
+
+.tele_page_set {
+    height: 58px;
+    width: 596px;
+    float: left;
+    margin-bottom: 57px;
+}
+
+.tele_page_img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    float: left;
+}
+
+.tele_page_text {
+    width: 534px;
+    height: auto;
+    margin-left: 12px;
+    float: left;
+    padding-top: 15px;
+}
+
+.tele_page_title {
+    width: auto;
+    height: auto;
+    font-family: "Noto Sans";
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    float: left;
+
+    padding-bottom: 23px;
+    margin-right: 324px;
+}
+
+#tele_page_disconnect_btn {
+    width: 140px;
+    height: 18px;
+    background-color: #fd6246;
+
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    float: right;
+}
+
 ._telegram_messenger_wrapper {
     height: auto;
 }

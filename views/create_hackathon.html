@@ -623,28 +623,28 @@
       fd.append('file', file);
 
       //TODO: testcode
-      user_profile_photo_upload_btn.hide();
-      after_upload.show();
+      // user_profile_photo_upload_btn.hide();
+      // after_upload.show();
 
-//      $.ajax({
-//        url: 'https://www.chatbrick.io/api/file/',
-//        type: 'POST',
-//        async: false,
-//        crossDomain: true,
-//        contentType: false,
-//        data: fd,
-//        processData: false,
-//        success: function (body, status, res) {
-//          if (body.success) {
-//            img_url = body.data.url;
-//            console.log('upliad success!');
-//            console.log('res img url=>' + img_url);
-//
-//            user_profile_photo_upload_btn.hide();
-//            after_upload.show();
-//          }
-//        }
-//      });
+     $.ajax({
+       url: 'https://www.chatbrick.io/api/file/',
+       type: 'POST',
+       async: false,
+       crossDomain: true,
+       contentType: false,
+       data: fd,
+       processData: false,
+       success: function (body, status, res) {
+         if (body.success) {
+           img_url = body.data.url;
+           console.log('upliad success!');
+           console.log('res img url=>' + img_url);
+
+           user_profile_photo_upload_btn.hide();
+           after_upload.show();
+         }
+       }
+     });
 
     };
     reader.readAsDataURL(file);

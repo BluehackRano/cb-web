@@ -417,7 +417,7 @@
   <!--플랫폼 연동 페이지-->
   <div id="page_bricks_platform">
     <div class="wrapper_section _messenger_section">
-      <section id="section_07">
+      <section id="section_09">
         <div class="content_title">
           <p>
             필수 추가연동
@@ -482,30 +482,42 @@
                 </div>
 
                 <div class="tg_content">
-                  <div class="tg_content_title">
-                    <p>적용하려는 봇의 토큰값을 입력해주세요</p>
+                  <div class="tg_connect_page">
+                    <div class="tg_content_title">
+                      <p>적용하려는 봇의 토큰값을 입력해주세요</p>
+                    </div>
+
+                    <div class="tg_input_btn_line">
+                      <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
+                      <div class="tele_page_btn" id="tele_page_btn">연결하기</div>
+                    </div>
+                    <div class="tg_content_context">
+                      <p>
+                        토큰값을 발급받기 위해서는 텔레그램에서 @BotFather 을 검색한 뒤,
+                        안내에 따라 봇을 최초 생성하는 별도의 사전작업이 필요해요.
+                        자세한 안내는 텔레그램의 Bot Platform 페이지에서 확인하실 수 있어요.<br>
+                        https://telegram.org/blog/bot-revolution
+                      </p>
+                    </div>
                   </div>
 
-                  <div class="tg_input_btn_line">
-                    <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
-                    <div class="tele_page_btn">연결하기</div>
-                  </div>
-                  <div class="tg_content_context">
-                    <p>
-                      <br><br><br>
-                      토큰값을 발급받기 위해서는 텔레그램에서 @BotFather 을 검색한 뒤,
-                      안내에 따라 봇을 최초 생성하는 별도의 사전작업이 필요해요.
-                      자세한 안내는 텔레그램의 Bot Platform 페이지에서 확인하실 수 있어요.<br>
-                      https://telegram.org/blog/bot-revolution
-                    </p>
+                  <!--tele connected page-->
+                  <div class="tele_page_set">
+                    <img src="../public/images/img-telegram-bot-default.png"
+                         class="tele_page_img">
+                    <div class="tele_page_text">
+                      <div class="tele_page_title">
+                        Bot Name
+                      </div>
+                      <div class="tele_page_disconnect_btn" id="tele_page_disconnect_btn">
+                        연결해제 하기
+                      </div>
+                    </div>
                   </div>
                 </div>
-
               </div>
             </article>
           </div>
-
-
         </div>
       </section>
     </div>
@@ -586,6 +598,13 @@
   var setId = `<%=setId%>`;
   console.log('in my_chatbot_edit setId=>' + setId);
 
+  var tg_connect_page = $('.tg_connect_page');
+  var tele_page_set = $('.tele_page_set');
+  var tele_page_btn = $('#tele_page_btn');
+  var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
+  var tele_page_val = '';
+  var fb_page_id_from_api = '';
+
   var upload = document.getElementById('uploadBtn'),
     profile_img = document.getElementById('profile_img');
   var user_profile_photo_upload_btn = $('.user_profile_photo_upload_btn');
@@ -623,28 +642,28 @@
       fd.append('file', file);
 
       //TODO: testcode
-      user_profile_photo_upload_btn.hide();
-      after_upload.show();
+      // user_profile_photo_upload_btn.hide();
+      // after_upload.show();
 
-//      $.ajax({
-//        url: 'https://www.chatbrick.io/api/file/',
-//        type: 'POST',
-//        async: false,
-//        crossDomain: true,
-//        contentType: false,
-//        data: fd,
-//        processData: false,
-//        success: function (body, status, res) {
-//          if (body.success) {
-//            img_url = body.data.url;
-//            console.log('upliad success!');
-//            console.log('res img url=>' + img_url);
-//
-//            user_profile_photo_upload_btn.hide();
-//            after_upload.show();
-//          }
-//        }
-//      });
+     $.ajax({
+       url: 'https://www.chatbrick.io/api/file/',
+       type: 'POST',
+       async: false,
+       crossDomain: true,
+       contentType: false,
+       data: fd,
+       processData: false,
+       success: function (body, status, res) {
+         if (body.success) {
+           img_url = body.data.url;
+           console.log('upliad success!');
+           console.log('res img url=>' + img_url);
+
+           user_profile_photo_upload_btn.hide();
+           after_upload.show();
+         }
+       }
+     });
 
     };
     reader.readAsDataURL(file);
@@ -688,6 +707,11 @@
     console.log(response);
     if (response.status === 'connected') {
 
+      var fb_page_list = $('#fb_page_list');
+      var fb_access_token;
+      var fb_id;
+      var fb_page_id;
+
       $.ajax({
         url: 'https://www.chatbrick.io/api/login/',
         type: 'GET',
@@ -699,13 +723,18 @@
             login_logo.attr("src", body.facebook.fb_profile);
             login_name.text(body.facebook.fb_name);
 
-            console.log('body.facebook.fb_id=>' + body.facebook.fb_id);
+            fb_id = body.facebook.fb_id;
+            console.log('body.facebook.fb_id=>' + fb_id);
 
-            FB.api(body.facebook.fb_id+'/accounts', function (response) {
+            FB.api(body.facebook.fb_id + '/accounts', function (response) {
+              fb_page_id = response.data[0].id;
+              fb_access_token = response.data[0].access_token;
               console.log('Successful page info for: ' + JSON.stringify(response));
               console.log('data length: ' + response.data.length);
-              console.log('access_token[0]: ' + response.data[0].access_token);
+              console.log('access_token[0]: ' + fb_access_token);
               console.log('name[0]: ' + response.data[0].name);
+              console.log('fb_page_id: ' + fb_page_id);
+
 
               response.data.forEach(function (item, index, array) {
                 var fb_messager = (
@@ -721,22 +750,33 @@
 
                 fb_page_list.append(fb_messager);
 
+                if (fb_page_id_from_api == response.data[index].id) {
+                  console.log('find fb_page_id!!>>'+fb_page_id_from_api);
+                  console.log('find fb_page_id index!!>>'+index);
+
+                  // $(this).toggleClass('platform_connected');
+                  $('#fb_page_btn'+ index).toggleClass('platform_connected');
+                  $('#fb_page_set' + index).show();
+                  $('#fb_page_btn' + index).text("연결해제 하기");
+                  $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                  $('#fb_page_btn' + index).css('color', '#ffffff')
+                } else {
+                  $('#fb_page_set' + index).hide();
+                }
+
                 var fb_page_btn = $('#fb_page_btn' + index);
                 fb_page_btn.click(function () {
 
                   $(this).toggleClass('platform_connected');
 
                   if ($(this).hasClass('platform_connected')) {
-                    $('#fb_page_btn' + index).text("연결해제 하기");
-                    $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
-                    $('#fb_page_btn' + index).css('color', '#ffffff')
 
                     //connect fb page api
                     $.ajax({
                       //TODO: url
-//                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
-                      url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
-                      type: 'DELETE',
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
+                      // url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
+                      type: 'PUT',
                       async: false,
                       crossDomain: true,
                       xhrFields: {withCredentials: true},
@@ -745,50 +785,87 @@
                         console.log('connect fb page api=>' + body.success);
                         if (body.success) {
                           $('.fb_page_set').hide();
-                          $('#fb_page_set'+index).show();
+                          $('#fb_page_set' + index).show();
+                          $('#fb_page_btn' + index).text("연결해제 하기");
+                          $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                          $('#fb_page_btn' + index).css('color', '#ffffff')
                         }
                       }
                     });
                   } else {
-                    $('#fb_page_btn' + index).text('연결하기');
-                    $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
-                    $('#fb_page_btn' + index).css('color', '#000000')
 
-                    $('.fb_page_set').show();
-                  }
+                    //delete fb page api
+                    $.ajax({
+                      //TODO: url
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                      // url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
+                      type: 'DELETE',
+                      async: false,
+                      crossDomain: true,
+                      xhrFields: {withCredentials: true},
+                      success: function (body, status, res) {
 
-
-                  //connect fb page api
-                  $.ajax({
-                    //TODO: url
-//                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_id+'/'+fb_access_token+'/',
-                    url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
-                    type: 'PUT',
-                    async: false,
-                    crossDomain: true,
-                    xhrFields: {withCredentials: true},
-                    success: function (body, status, res) {
-
-                      console.log('connect fb page api=>' + body.success);
-                      if (body.success) {
-//                        $(document).on('click', '.fb_page_btn', function () {
-//                          $(this).toggleClass('platform_connected');
-////                          $('#fb_page_btn'+index).css('background-color','#fd6246');
-//                          $('#fb_page_btn'+index).text('로그아웃');
-//                        });
+                        console.log('connect fb page api=>' + body.success);
+                        if (body.success) {
+                          $('.fb_page_set').show();
+                          $('#fb_page_btn' + index).text('연결하기');
+                          $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
+                          $('#fb_page_btn' + index).css('color', '#000000')
+                        }
                       }
-                    }
-                  });
-                })
+                    });
+                  }
+                }) //fb.click event
+              }); //response.data.forEach
 
-              });
+
+              tele_page_btn.click(function () {
+                //connect telegram api
+                $.ajax({
+                  //TODO: url
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  type: 'PUT',
+                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    console.log('connected telegram api=>' + body.success);
+                    if (body.success) {
+                      tg_connect_page.hide();
+                      tele_page_set.show();
+                    }
+                  }
+                });
+              }); //tele_page_btn click event
+
+              tele_page_disconnect_btn.click(function () {
+                //disconnect telegram api
+                $.ajax({
+                  //TODO: url
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  type: 'DELETE',
+                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    console.log('connected telegram api=>' + body.success);
+                    if (body.success) {
+                      tg_connect_page.show();
+                      tele_page_set.hide();
+                    }
+                  }
+                });
+              }); //tele_page_disconnect_btn click event
+
 
             });
           }
         }
       });
-
-
 
     } else if (response.status === 'not_authorized') {
 
@@ -806,6 +883,25 @@
     success: function (body, status, res) {
       if (body.success) {
         console.log('body=>'+body.data);
+
+        if (body.data.telegram != undefined) {
+          console.log('in tele!');
+          tg_connect_page.hide();
+          tele_page_set.show();
+
+          tele_page_val = body.data.telegram.token;
+          $('#tg_content_name').val(tele_page_val);
+        } else {
+
+          console.log('no tele!');
+          tg_connect_page.show();
+          tele_page_set.hide();
+        }
+
+        //check fb page access_token
+        if (body.data.page_id != undefined) {
+          fb_page_id_from_api = body.data.page_id;
+        }
 
         $('#baseInfo_name').val(body.data.settings.name);
         var baseInfo_context = body.data.settings.desc.split('\n');

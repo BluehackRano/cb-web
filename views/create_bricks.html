@@ -145,16 +145,16 @@
               <div class="article_title_profile">
                 챗봇에 방문하였을 때, 처음으로 보내는 메세지
               </div>
-              <input type="text" id="user_profile_start_message_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="user_profile_start_message_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="user_profile_start_message_03" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+              <input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+              <input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
 
               <div class="article_title_profile">
                 방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
               </div>
-              <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02" placeholder="가나다">
-              <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02" placeholder="가나다">
+              <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+              <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+              <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
             </div>
           </div>
         </article>
@@ -209,98 +209,6 @@
 
           </div>
         </article>
-      </div>
-    </section>
-  </div>
-</div>
-
-
-<!--플랫폼 연동 페이지-->
-<div id="page_bricks_platform">
-  <div class="wrapper_section _messenger_section">
-    <section id="section_01">
-      <div class="content_title">
-        <p>
-          필수 추가연동
-        </p>
-      </div>
-
-      <div class="wrapper_article _messenger_wrapper">
-        <article id="article_fb" class="_article">
-
-          <div class="wrapper _fb_messenger_wrapper">
-            <div class="messenger_set">
-              <img src="../public/images/img-fb-messenger.png"
-                   id="img_fb_messenger" class="messenger_img">
-              <div class="messenger_text">
-                <div class="messenger_title">
-                  페이지북 메신저
-                </div>
-                <div class="messenger_context">
-                  YOUR FACEBOOK PAGES
-                </div>
-              </div>
-            </div>
-
-
-            <div id="fb_page_list">
-
-              <!--fb_page_set_item 영역-->
-              <!--<div class="fb_page_set">-->
-              <!--<img src="../public/images/test_img.png"-->
-              <!--class="fb_page_img">-->
-              <!--<div class="fb_page_text">-->
-              <!--<div class="fb_page_title">-->
-              <!--Bluehack 01-->
-              <!--</div>-->
-              <!--<div class="fb_page_btn">-->
-              <!--<p>-->
-              <!--연결하기-->
-              <!--</p>-->
-              <!--</div>-->
-              <!--</div>-->
-              <!--</div>-->
-
-            </div>
-          </div>
-        </article>
-
-        <!--telegram article-->
-        <div class="wrapper_article _messenger_wrapper">
-          <article id="article_telegram">
-            <div class="wrapper _telegram_messenger_wrapper">
-              <div class="messenger_set">
-                <img src="../public/images/img-tele-messenger.png"
-                     id="img_telegram__messenger" class="messenger_img">
-                <div class="messenger_text">
-                  <div class="messenger_title">
-                    텔레그램
-                  </div>
-                  <div class="messenger_context">
-                    YOUR BOTS
-                  </div>
-                </div>
-              </div>
-
-              <div class="tg_content">
-                <div class="tg_content_title">
-                  <p>적용하려는 봇의 토큰값을 입력해주세요</p>
-                </div>
-                <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
-                <div class="tg_content_context">
-                  <p>
-                    Build a Facebook bot without coding. Launch a full-featured chatbot in 7 minutes.
-                    We believe in the power of chatbots to strengthen your connection to
-                    your audience—whether that's your customers, readers, fans, or others.
-                    And we're committed to
-                    making that as easy as we can.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
       </div>
     </section>
   </div>
@@ -423,6 +331,21 @@
 </footer>
 
 <script>
+  var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
+  var baseInfo_context = `<%=jsonData.baseInfo_context%>`;
+
+  console.log('baseInfo_name=>' + baseInfo_name +
+    'baseInfo_context=>' + baseInfo_context);
+
+  //hide placeholder
+  $('.user_profile_start_message').keydown(function (key) {
+    $('.user_profile_start_message').addClass('transparent');
+  });
+
+  $('.user_profile_not_ready_mesage').keydown(function (key) {
+    $('.user_profile_not_ready_mesage').addClass('transparent');
+  });
+
 
   var login_logo = $('#login_logo');
   var login_name = $('#login_name_text');
@@ -434,7 +357,7 @@
   var page_select_bricks = $('#page_select_bricks');
   var page_bricks_apikey = $('#page_bricks_apikey');
   var page_bricks_confirm_apikey = $('#page_bricks_confirm_apikey');
-  var page_bricks_platform = $('#page_bricks_platform');
+  // var page_bricks_platform = $('#page_bricks_platform');
 
   var modal_device_set_img = $('#modal_device_set_img');
   var modal_device_set_name = $('#modal_device_set_name');
@@ -558,7 +481,7 @@
         `<p>` + resData[itemIndex].api.desc + `</p>` +
         `</div>` +
         `<div class="api_content_key_title"> API KEY </div>` +
-        `<input type="text" class="apikeyInputText" placeholder="발급받은 API KEY를 입력해주세요.">` +
+        `<input type="text" class="apikeyInputText" id="apikeyInputText`+itemIndex+`" placeholder="발급받은 API KEY를 입력해주세요.">` +
         `<a href="` + resData[itemIndex].api.provider + `" class="create_apikey_link" target="_blank"> <p> API KEY 신청하기 </p> </a>` +
         `</div>` +
         `<hr class="apikey_underline"> ` +
@@ -729,7 +652,7 @@
       page_select_bricks.show();
       page_bricks_apikey.hide();
       page_bricks_confirm_apikey.hide();
-      page_bricks_platform.hide();
+      // page_bricks_platform.hide();
       context.text('BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요.\n' +
         '세트와 마찬가지로 “미리보기”버튼을 통해 해당 BRICK을 미리 체험해볼 수 있어요.');
       sub_title.text('| BRICK 선택하기');
@@ -739,7 +662,7 @@
       page_select_bricks.hide();
       page_bricks_apikey.show();
       page_bricks_confirm_apikey.hide();
-      page_bricks_platform.hide();
+      // page_bricks_platform.hide();
       context.text('선택한 BRICK이 원할하게 동작하기 위해서는 해당 BRICK에 필요로 하는 항목들을 입력하셔야 해요. 기존에 API KEY를 보유하고 있지 않다면 BRICK의 아래에 위치한 API KEY 신청하기 버튼을 통해 해당 웹페이지로 이동할 수 있어요. 건너뛰기를 하시면 BRICK의 사용 횟수 제한 등의 제약사항이 있을 수 있어요.')
       sub_title.text('| API KEY 입력하기');
 
@@ -747,7 +670,7 @@
       page_select_bricks.hide();
       page_bricks_apikey.hide();
       page_bricks_confirm_apikey.show();
-      page_bricks_platform.hide();
+      // page_bricks_platform.hide();
       context.text('{{사용자가 선택한 세트}}에 ' + fb_name + '님의 데이터 정보를 입력하는 단계에요. SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더 ' + fb_name + '에 잘어울리는 챗봇으로 만들어보세요.');
       sub_title.text('| 데이터 정보 입력하기');
 
@@ -772,7 +695,7 @@
       page_select_bricks.hide();
       page_bricks_apikey.show();
       page_bricks_confirm_apikey.hide();
-      page_bricks_platform.hide();
+      // page_bricks_platform.hide();
       context.text('선택한 BRICK이 원할하게 동작하기 위해서는 해당 BRICK에 필요로 하는 항목들을 입력하셔야 해요. 기존에 API KEY를 보유하고 있지 않다면 BRICK의 아래에 위치한 API KEY 신청하기 버튼을 통해 해당 웹페이지로 이동할 수 있어요. 건너뛰기를 하시면 BRICK의 사용 횟수 제한 등의 제약사항이 있을 수 있어요.')
       sub_title.text('| API KEY 입력하기');
       selectedBrick(selected_brick_list);
@@ -782,24 +705,93 @@
       page_select_bricks.hide();
       page_bricks_apikey.hide();
       page_bricks_confirm_apikey.show();
-      page_bricks_platform.hide();
+      // page_bricks_platform.hide();
       context.text('{{사용자가 선택한 세트}}에 ' + fb_name + '님의 데이터 정보를 입력하는 단계에요. SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더 ' + fb_name + '에 잘어울리는 챗봇으로 만들어보세요.');
       sub_title.text('| 데이터 정보 입력하기');
 
     } else if (pageNumber == 3) {
-      //send jsondata in brick api
-      var request_query = '?setId=brick';
-      window.location.href = '/platform/connect'+request_query;
-//      page_select_bricks.hide();
-//      page_bricks_apikey.hide();
-//      page_bricks_confirm_apikey.hide();
-//      page_bricks_platform.show();
-//      context.text('고생하셨어요. 이제 {{사용자가 선택한 세트}} SET를 완성하기 위한 마지막단계에요. ' + fb_name + '님이 소유하고 있는 페이스북의 페이지 또는 텔레그램의 토큰값을 입력하여 챗봇생성을 완료해주세요. 챗봇 수정하기에서 플랫폼 연동을 변경할 수 있어요.');
-//      sub_title.text('| 플랫폼 연동하기');
+
+      var submitBrickList = [];
+      var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
+      var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
+      var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
+      var user_profile_start_message_result = user_profile_start_message_01 + user_profile_start_message_02 + user_profile_start_message_03;
+
+      var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
+      var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
+      var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
+      var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + user_profile_not_ready_mesage_02 + user_profile_not_ready_mesage_03;
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/list/',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        type: 'GET',
+        success: function (body, status, res) {
+
+          console.log(body.success);
+          resData = body.data;
+
+          if (body.success) {
+
+            for (var i = 0; i < selected_brick_list.length; i++) {
+              resData.forEach(function (item, index, array) {
+
+                if (index == selected_brick_list[i]) {
+                  var brickJson = {
+                    id      : item.id,
+                    name    : item.name,
+                    keywords: item.api.keywords,
+                    data : {
+                      api_key: $('#apikeyInputText'+i).val()
+                    }
+                  }
+
+                  submitBrickList.push(brickJson);
+                }
+              });
+            }
+          }
+        }
+      })
+
+      //make send jsonData
+      var submitData = {
+        "type": "bricks",
+        "name": baseInfo_name,
+        "desc": baseInfo_context,
+        "data": {
+          "brick": JSON.parse(JSON.stringify(submitBrickList)),
+          "custom_settings": {
+            "get_started": user_profile_start_message_result,
+            "error_msg": user_profile_not_ready_mesage_result
+          }
+        },
+
+      };
+
+      console.log('submitData=>' + JSON.stringify(submitData));
+      //send jsonData in brick api
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/',
+        type: 'PUT',
+        async: false,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: 'JSON',
+        data: JSON.stringify(submitData),
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('upload success!');
+            var request_query = '?setId='+body.data.id;
+            window.location.href = '/platform/connect'+request_query;
+          }
+        }
+      });
     }
 
     window.location.hash = pageNumber.toString();
-    // window.location.href = '/bricks/create';
   });
 
   function checkForHash() {
@@ -811,123 +803,32 @@
         page_select_bricks.show();
         page_bricks_apikey.hide();
         page_bricks_confirm_apikey.hide();
-        page_bricks_platform.hide();
+        // page_bricks_platform.hide();
       } else if (hashNumber == '1') {
         page_select_bricks.hide();
         page_bricks_apikey.show();
         page_bricks_confirm_apikey.hide();
-        page_bricks_platform.hide();
+        // page_bricks_platform.hide();
       } else if (hashNumber == '2') {
         page_select_bricks.hide();
         page_bricks_apikey.hide();
         page_bricks_confirm_apikey.show();
-        page_bricks_platform.hide();
+        // page_bricks_platform.hide();
       } else if (hashNumber == '3') {
         page_select_bricks.hide();
         page_bricks_apikey.hide();
         page_bricks_confirm_apikey.hide();
-        page_bricks_platform.show();
+        // page_bricks_platform.show();
       }
     } else {
       page_select_bricks.show();
       page_bricks_apikey.hide();
       page_bricks_confirm_apikey.hide();
-      page_bricks_platform.hide();
+      // page_bricks_platform.hide();
     }
   }
 
-
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    if (response.status === 'connected') {
-
-      var fb_page_list = $('#fb_page_list');
-      var fb_access_token;
-      var fb_id;
-
-      $.ajax({
-        url: 'https://www.chatbrick.io/api/login/',
-        type: 'GET',
-        async: false,
-        crossDomain: true,
-        xhrFields: {withCredentials: true},
-        success: function (body, status, res) {
-          if (body.success) {
-            login_logo.attr("src", body.facebook.fb_profile);
-            login_name.text(body.facebook.fb_name);
-
-            fb_id = body.facebook.fb_id;
-            console.log('body.facebook.fb_id=>' +fb_id);
-
-            FB.api(body.facebook.fb_id+'/accounts', function (response) {
-              fb_access_token = response.data[0].access_token;
-              console.log('Successful page info for: ' + JSON.stringify(response));
-              console.log('data length: ' + response.data.length);
-              console.log('access_token[0]: ' + fb_access_token);
-              console.log('name[0]: ' + response.data[0].name);
-
-              response.data.forEach(function (item, index, array) {
-                var fb_messager = (
-                  `<div class="fb_page_set">`+
-                  `<img src="../public/images/test_img.png" class="fb_page_img">`+
-                  `<div class="fb_page_text">`+
-                  `<div class="fb_page_title">`+item.name+`</div>`+
-                  `<div class="fb_page_btn" id="fb_page_btn`+index+`">`+
-                  `<p> 연결하기 </p>`+
-                  `</div>`+
-                  `</div>`+
-                  `</div>`
-                );
-
-                fb_page_list.append(fb_messager);
-
-                var fb_page_btn = $('#fb_page_btn'+index);
-                fb_page_btn.click(function () {
-
-                  //connect fb page api
-                  $.ajax({
-                    //TODO: url
-                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_id+'/'+fb_access_token+'/',
-                    type: 'PUT',
-                    async: false,
-                    crossDomain: true,
-                    xhrFields: {withCredentials: true},
-                    success: function (body, status, res) {
-                      if (body.success) {
-                        $(document).on('click', '.fb_page_btn', function () {
-                          $('#fb_page_btn'+index).css('background-color','#fd6246');
-                          $('#fb_page_btn'+index).text('로그아웃');
-                        });
-                      }
-                    }
-                  });
-                })
-
-              });
-
-
-              $(document).on('click', '.fb_page_btn', function () {
-                var itemIndex = $(this).parent().parent().index();
-                console.log('itemIndex->'+itemIndex );
-
-                $('#itemIndex'+itemIndex).css('background-color', '#bd292c');
-                $('#itemIndex'+itemIndex).text("연결해제 하기");
-
-              });
-            });
-          }
-        }
-      });
-
-    } else if (response.status === 'not_authorized') {
-
-    } else {
-
-    }
-  }
 </script>
 <script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
-<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 </body>
 </html>

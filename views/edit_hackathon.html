@@ -744,7 +744,7 @@
   var tele_page_btn = $('#tele_page_btn');
   var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
   var tele_page_val = '';
-  var fb_page_accessToken_from_api = '';
+  var fb_page_id_from_api = '';
 
 
   var img_url;
@@ -778,8 +778,8 @@
         }
 
         //check fb page access_token
-        if (body.data.access_token != undefined) {
-          fb_page_accessToken_from_api = body.data.access_token;
+        if (body.data.page_id != undefined) {
+          fb_page_id_from_api = body.data.page_id;
         }
 
         var settings_name = body.data.settings.name;
@@ -790,7 +790,7 @@
         var basic_tel = body.data.settings.data.basic.tel;
 
         var custom_settings_get_started = body.data.settings.data.custom_settings.get_started.split('\n');
-        var custom_settings_error_msg = body.data.settings.data.custom_settings.error_msg;
+        var custom_settings_error_msg = body.data.settings.data.custom_settings.error_msg.split('\n');
 
         var date_application_period_start = body.data.settings.data.date.application_period.start;
         var date_application_period_end = body.data.settings.data.date.application_period.end;
@@ -934,28 +934,28 @@
       fd.append('file', file);
 
       //TODO: testcode
-      user_profile_photo_upload_btn.hide();
-      after_upload.show();
+      // user_profile_photo_upload_btn.hide();
+      // after_upload.show();
 
-//      $.ajax({
-//        url: 'https://www.chatbrick.io/api/file/',
-//        type: 'POST',
-//        async: false,
-//        crossDomain: true,
-//        contentType: false,
-//        data: fd,
-//        processData: false,
-//        success: function (body, status, res) {
-//          if (body.success) {
-//            img_url = body.data.url;
-//            console.log('upliad success!');
-//            console.log('res img url=>' + img_url);
-//
-//            user_profile_photo_upload_btn.hide();
-//            after_upload.show();
-//          }
-//        }
-//      });
+     $.ajax({
+       url: 'https://www.chatbrick.io/api/file/',
+       type: 'POST',
+       async: false,
+       crossDomain: true,
+       contentType: false,
+       data: fd,
+       processData: false,
+       success: function (body, status, res) {
+         if (body.success) {
+           img_url = body.data.url;
+           console.log('upliad success!');
+           console.log('res img url=>' + img_url);
+
+           user_profile_photo_upload_btn.hide();
+           after_upload.show();
+         }
+       }
+     });
 
     };
     reader.readAsDataURL(file);
@@ -1590,16 +1590,18 @@
 
                 fb_page_list.append(fb_messager);
 
-                if (fb_page_accessToken_from_api == item.access_token) {
-                  console.log('find fb_page_accessToken_from_api!!>>'+fb_page_accessToken_from_api);
+                if (fb_page_id_from_api == response.data[index].id) {
+                  console.log('find fb_page_id!!>>'+fb_page_id_from_api);
+                  console.log('find fb_page_id index!!>>'+index);
 
                   // $(this).toggleClass('platform_connected');
                   $('#fb_page_btn'+ index).toggleClass('platform_connected');
-                  $('.fb_page_set').hide();
                   $('#fb_page_set' + index).show();
                   $('#fb_page_btn' + index).text("연결해제 하기");
                   $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
                   $('#fb_page_btn' + index).css('color', '#ffffff')
+                } else {
+                  $('#fb_page_set' + index).hide();
                 }
 
                 var fb_page_btn = $('#fb_page_btn' + index);
@@ -1661,8 +1663,8 @@
                 //connect telegram api
                 $.ajax({
                   //TODO: url
-                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
-                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
                   type: 'PUT',
                   async: false,
                   crossDomain: true,
@@ -1682,8 +1684,8 @@
                 //disconnect telegram api
                 $.ajax({
                   //TODO: url
-                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
-                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
                   type: 'DELETE',
                   async: false,
                   crossDomain: true,

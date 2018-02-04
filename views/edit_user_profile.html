@@ -65,8 +65,8 @@
                 설명
               </p>
             </div>
-            <input type="text" id="baseInfo_context_01" class="baseInputText" placeholder="가나다">
-            <input type="text" id="baseInfo_context_02" class="baseInputText" placeholder="가나다">
+            <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
+            <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
 
           </div>
         </article>
@@ -575,6 +575,9 @@
 
 <script>
   $('input[type=text]').addClass('placeholder');
+  $('.baseInfo_placeHolder').keydown(function (key) {
+    $('.baseInfo_placeHolder').addClass('transparent');
+  });
 
   var login_logo = $('#login_logo');
   var login_name = $('#login_name_text');

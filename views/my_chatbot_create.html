@@ -60,8 +60,8 @@
                 설명
               </p>
             </div>
-            <input type="text" id="baseInfo_context_01" class="baseInputText" placeholder="가나다">
-            <input type="text" id="baseInfo_context_02" class="baseInputText" placeholder="가나다">
+            <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
+            <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
 
           </div>
         </article>
@@ -225,6 +225,11 @@
   var baseInfo_context;
   var baseInfo_context_01 = $('#baseInfo_context_01');
   var baseInfo_context_02 = $('#baseInfo_context_02');
+
+  //hide placeholder
+  $('.baseInfo_placeHolder').keydown(function (key) {
+    $('.baseInfo_placeHolder').addClass('transparent');
+  });
 
   checkForHash();
 

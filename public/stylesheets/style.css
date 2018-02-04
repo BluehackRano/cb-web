@@ -1075,6 +1075,10 @@ create apikey
     /*height: 305px;*/
     height: auto;
     margin-top: 82px;
+
+    border-bottom: 1px solid #eaeaea;
+    border-top: none;
+    margin-right: 90px;
 }
 
 .api_title {

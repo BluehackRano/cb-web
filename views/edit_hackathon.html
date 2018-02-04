@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="../public/stylesheets/style.css">
 
 </head>
 <body>
@@ -65,8 +66,8 @@
                 설명
               </p>
             </div>
-            <input type="text" id="baseInfo_context_01" class="baseInputText" placeholder="가나다">
-            <input type="text" id="baseInfo_context_02" class="baseInputText" placeholder="가나다">
+            <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
+            <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
 
           </div>
         </article>
@@ -751,19 +752,6 @@
   var prize_desc = [];
   var prize_benefit = [];
 
-  $.ajax({
-    url: 'https://www.chatbrick.io/api/login/',
-    type: 'GET',
-    async: false,
-    crossDomain: true,
-    xhrFields: {withCredentials: true},
-    success: function (body, status, res) {
-      if (body.success) {
-        login_logo.attr("src", body.facebook.fb_profile);
-        login_name.text(body.facebook.fb_name);
-      }
-    }
-  });
 
   $.ajax({
     // url: 'https://www.chatbrick.io/api/brick/3785c81a-c040-4d6c-9de0-fb875dc3eb9e/',
@@ -1338,10 +1326,23 @@
     $('.user_profile_not_ready_mesage').addClass('transparent');
   });
 
+  $('.baseInfo_placeHolder').keydown(function (key) {
+    $('.baseInfo_placeHolder').addClass('transparent');
+  });
 
 
   var pre_page = $('#pre_page');
   var next_page = $('#next_page');
+  var setting_remove_btn = $('#setting_remove_btn');
+
+  setting_remove_btn.click(function () {
+    $(this).css('background-color', '#bd292c');
+  });
+  setting_remove_btn.hover(function () {
+    setting_remove_btn.css('background-color', '#fb7c7e');
+  }, function () {
+    setting_remove_btn.css('background-color', '#ff753c');
+  });
 
   pre_page.hover(function () {
     $(this).css('background-color', '#fb7c7e');
@@ -1541,8 +1542,6 @@
     });
   });
 
-  var fb_page_list = $('#fb_page_list');
-
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -1613,8 +1612,8 @@
                     //connect fb page api
                     $.ajax({
                       //TODO: url
-                      // url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
-                      url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
+                      // url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
                       type: 'PUT',
                       async: false,
                       crossDomain: true,
@@ -1636,8 +1635,8 @@
                     //delete fb page api
                     $.ajax({
                       //TODO: url
-//                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
-                      url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                      // url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
                       type: 'DELETE',
                       async: false,
                       crossDomain: true,

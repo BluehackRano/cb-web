@@ -1,16 +1,879 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 </head>
 <body>
-ssssss
+<header id="header">
+  <div class="wrapper wrapper_header">
+    <div class="top_01 top_common">
+      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
 
-<script type="text/javascript">
+      <div class="top_01 top_user_profile_common">
+        <img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
+             alt="login_dropdown">
+      </div>
+    </div>
+
+    <div class="top_02 top_common">
+      <div class="top_02 title_area">
+        <div id="title">CREAT CHATBOT</div>
+        <div id="sub_title">| 챗봇 수정하기</div>
+      </div>
+      <div id="context">
+        <p>
+          Build a Facebook bot without coding. Launch a full-featured chatbot in 7 minutes. We believe in the power of chatbots to strengthen your <br>
+          connection to your audience—whether that's your customers, readers, fans, or others. And we're committed to making that as easy as we can.
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!--기본정보 영역-->
+<div class="wrapper_section _baseInfo_section">
+  <section id="section_00">
+    <div class="content_title">
+      <p>
+        기본정보
+      </p>
+    </div>
+
+    <div class="wrapper_article _baseInfo_wrapper">
+      <article id="article_00" class="_article">
+
+        <div class="wrapper">
+          <div class="baseInfo_01 article_title">
+            <p>
+              이름
+            </p>
+          </div>
+          <input type="text" id="baseInfo_name" class="baseInputText" placeholder="가나다">
+
+          <div class="baseInfo_02 article_title">
+            <p>
+              설명
+            </p>
+          </div>
+          <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
+          <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
+
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!--브릭 apikey 입력 페이지-->
+<div id="page_bricks_apikey">
+  <div class="wrapper_section _apikey_section">
+    <section id="section_02">
+      <div class="content_title">
+        <p>
+          API KEY
+        </p>
+      </div>
+
+      <div class="wrapper_article _apikey_wrapper">
+        <article id="article_02" class="_article">
+          <div class="wrapper">
+
+            <div id="api_set_list" class="api_set_list">
+              <!--start api_set area-->
+
+              <!--<div class="api_set">-->
+              <!--<div class="api_title">-->
+              <!--<img src="../public/images/test_img.png"-->
+              <!--class="api_img">-->
+              <!--<div class="api_name">날씨정보</div>-->
+              <!--</div>-->
+              <!--<div class="api_content">-->
+              <!--<div class="api_content_context">-->
+              <!--<p>-->
+              <!--Shows search results for a request. You can use a specific request or-->
+              <!--a user attribute saved in a «User input», «Quick Reply» or «Setup user attribute» plugins.-->
+              <!--</p>-->
+              <!--</div>-->
+              <!--<div class="api_content_key_title">-->
+              <!--API KEY-->
+              <!--</div>-->
+              <!--<input type="text" class="apikeyInputText" placeholder="발급받은 API KEY를 입력해주세요.">-->
+              <!--<a href="https://www.linkedin.com" class="create_apikey_link">-->
+              <!--<p>-->
+              <!--API KEY 신청하기-->
+              <!--</p>-->
+              <!--</a>-->
+              <!--</div>-->
+              <!--<hr class="apikey_underline">-->
+              <!--</div>-->
+
+              <!--end api_set area-->
+            </div>
+
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!--사용자 데이터 입력 영역-->
+<div class="wrapper_section _user_profile_section">
+  <section id="section_03" class="_profile_section">
+    <div class="content_title">
+      <p>
+        사용자 데이터 입력 _ 기본정보
+      </p>
+    </div>
+
+    <div class="wrapper_article _user_profile_wrapper">
+      <article id="article_03" class="_article">
+
+        <div class="wrapper">
+          <div class="user_profile_data_area">
+            <div class="article_title_profile">
+              챗봇에 방문하였을 때, 처음으로 보내는 메세지
+            </div>
+            <input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+            <input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+            <input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+
+            <div class="article_title_profile">
+              방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
+            </div>
+            <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+            <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+            <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!--브릭 apikey 확인 페이지-->
+<div id="page_bricks_confirm_apikey">
+  <!--브릭 수정 영역-->
+  <div id="brick_api_section" class="wrapper_section _brick_api_section">
+    <section id="section_04" class="_brick_api_section">
+      <div class="content_title">
+        <p>
+          브릭 수정
+        </p>
+      </div>
+      <div class="wrapper_article _brick_api_wrapper">
+        <article id="article_04" class="_article">
+          <div class="wrapper">
+
+            <div class="brick_api_zone" id="brick_api_zone">
+              <!--브릭 아이템 영역-->
+              <!--<div class="brick_api_item_area">-->
+              <!--<div class="brick_api_item_name">-->
+              <!--<p>날씨정보</p>-->
+              <!--</div>-->
+              <!--&lt;!&ndash;브릭 아이템 태그 영역&ndash;&gt;-->
+              <!--<div class="brick_api_item_tag_area">-->
+              <!--<div class="brick_api_item_tag">-->
+              <!--<p>weather</p>-->
+              <!--</div>-->
+
+              <!--<div class="brick_api_item_tag">-->
+              <!--<p>재난상황정보</p>-->
+              <!--</div>-->
+
+              <!--<div class="brick_api_item_tag">-->
+              <!--<p>재난</p>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--&lt;!&ndash;브릭 아이템 버튼 영역&ndash;&gt;-->
+              <!--<div class="brick_api_item_btn_area">-->
+              <!--<div class="brick_api_item_btn_motify">-->
+              <!--<p>수정하기</p>-->
+              <!--</div>-->
+
+              <!--<div class="brick_api_item_btn_delete">-->
+              <!--<p>삭제</p>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--</div>-->
+            </div>
+
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<div class="wrapper_section _messenger_section">
+  <section id="section_09">
+    <div class="content_title">
+      <p>
+        필수 추가연동
+      </p>
+    </div>
+
+    <div class="wrapper_article _messenger_wrapper">
+      <article id="article_fb" class="_article">
+
+        <div class="wrapper _fb_messenger_wrapper">
+          <div class="messenger_set">
+            <img src="../public/images/img-fb-messenger.png"
+                 id="img_fb_messenger" class="messenger_img">
+            <div class="messenger_text">
+              <div class="messenger_title">
+                페이지북 메신저
+              </div>
+              <div class="messenger_context">
+                YOUR FACEBOOK PAGES
+              </div>
+            </div>
+          </div>
+
+
+          <div id="fb_page_list">
+
+            <!--fb_page_set_item 영역-->
+            <!--<div class="fb_page_set">-->
+            <!--<img src="../public/images/test_img.png"-->
+            <!--class="fb_page_img">-->
+            <!--<div class="fb_page_text">-->
+            <!--<div class="fb_page_title">-->
+            <!--Bluehack 01-->
+            <!--</div>-->
+            <!--<div class="fb_page_btn">-->
+            <!--<p>-->
+            <!--연결하기-->
+            <!--</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+          </div>
+        </div>
+      </article>
+
+      <!--telegram article-->
+      <div class="wrapper_article _messenger_wrapper">
+        <article id="article_telegram">
+          <div class="wrapper _telegram_messenger_wrapper">
+            <div class="messenger_set">
+              <img src="../public/images/img-tele-messenger.png"
+                   id="img_telegram__messenger" class="messenger_img">
+              <div class="messenger_text">
+                <div class="messenger_title">
+                  텔레그램
+                </div>
+                <div class="messenger_context">
+                  YOUR BOTS
+                </div>
+              </div>
+            </div>
+
+            <div class="tg_content">
+              <div class="tg_connect_page">
+                <div class="tg_content_title">
+                  <p>적용하려는 봇의 토큰값을 입력해주세요</p>
+                </div>
+
+                <div class="tg_input_btn_line">
+                  <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
+                  <div class="tele_page_btn" id="tele_page_btn">연결하기</div>
+                </div>
+                <div class="tg_content_context">
+                  <p>
+                    토큰값을 발급받기 위해서는 텔레그램에서 @BotFather 을 검색한 뒤,
+                    안내에 따라 봇을 최초 생성하는 별도의 사전작업이 필요해요.
+                    자세한 안내는 텔레그램의 Bot Platform 페이지에서 확인하실 수 있어요.<br>
+                    https://telegram.org/blog/bot-revolution
+                  </p>
+                </div>
+              </div>
+
+              <!--tele connected page-->
+              <div class="tele_page_set">
+                <img src="../public/images/img-telegram-bot-default.png"
+                     class="tele_page_img">
+                <div class="tele_page_text">
+                  <div class="tele_page_title">
+                    Bot Name
+                  </div>
+                  <div class="tele_page_disconnect_btn" id="tele_page_disconnect_btn">
+                    연결해제 하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!--설정 영역-->
+<div class="wrapper_section _baseInfo_section">
+  <section id="section_10">
+    <div class="content_title">
+      <p>
+        설정
+      </p>
+    </div>
+
+    <div class="wrapper_article _setting_wrapper">
+      <article id="article_10" class="_article">
+
+        <div class="wrapper">
+          <div class="setting article_title">
+            <p>
+              제거하기
+            </p>
+          </div>
+
+          <div class="setting_desc">
+            <p>아래의 “챗봇 제거하기”버튼을 클릭해서 이 챗봇을 제거할 수 있습니다.</p>
+          </div>
+
+          <div class="setting_remove_btn" id="setting_remove_btn">
+            <p>챗봇 제거하기</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!--브릭 api 관련 팝업-->
+
+<div id="modal_brick_api" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <img src="../public/images/btn-close-nor.png" id="close_modal_brick_api_img" class="close_modal_brick_api_img">
+    <div class="modal_brick_api_wapper">
+      <div class="modal_brick_api_summary">
+        <img src="../public/images/img-brick-02.png" class="modal_brick_api_img">
+        <div class="modal_brick_api_summary_text">
+          <div class="modal_brick_api_title">날씨정보</div>
+          <div class="modal_brick_api_desc">데이터 수정</div>
+        </div>
+      </div>
+
+      <div class="modal_brick_api_context">
+
+        <div class="modal_brick_api_context_01">
+          <div class="modal_brick_api_guild">
+            챗봇에서 아래의 키워드를 입력하면 WEATHER BRICK이 호출되요
+          </div>
+
+          <!--브릭 아이템 태그 영역-->
+          <!--<div class="modal_brick_api_item_tag_area">-->
+          <!--<div class="modal_brick_api_item_tag">-->
+          <!--<p>weather</p>-->
+          <!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
+          <!--</div>-->
+          <!--</div>-->
+
+          <!--브릭 아이템 태그 영역-->
+          <!--<div class="modal_brick_api_item_tag_area">-->
+          <!--<div class="modal_brick_api_item_tag">-->
+          <!--<p>weather</p>-->
+          <!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
+          <!--</div>-->
+          <!--<input type="text" class="modalTagInputText">-->
+          <!--</div>-->
+
+        </div>
+
+        <div class="modal_brick_api_context_02">
+          <div class="modal_brick_api_guild">
+            추가하고 싶은 호출 키워드를 입력해주세요
+          </div>
+          <input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input" placeholder="가나다">
+        </div>
+
+      </div>
+
+      <div class="modal_brick_api_two_btn_area">
+        <div id="modal_left_btn" class="modal_left_btn">
+          <p>저장</p>
+        </div>
+
+        <div id="modal_right_btn" class="modal_right_btn">
+          <p>취소</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<footer id="footer">
+  <div class="bottom_common">
+    <div id="pre_page">
+      <p>
+        이전
+      </p>
+    </div>
+    <div id="next_page" align="center">
+      <p>
+        다음
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  $('input[type=text]').addClass('placeholder');
+
+  //hide placeholder
+  $('.user_profile_start_message').keydown(function (key) {
+    $('.user_profile_start_message').addClass('transparent');
+  });
+
+  $('.user_profile_not_ready_mesage').keydown(function (key) {
+    $('.user_profile_not_ready_mesage').addClass('transparent');
+  });
+
+  $('.baseInfo_placeHolder').keydown(function (key) {
+    $('.baseInfo_placeHolder').addClass('transparent');
+  });
+
   var setId = `<%=setId%>`;
-  console.log('in my_chatbot_edit setId=>' + setId);
-</script>
+  console.log('in brick setId=>' + setId);
 
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+  var context = $('#context');
+  var sub_title = $('#sub_title');
+
+  var tg_connect_page = $('.tg_connect_page');
+  var tele_page_set = $('.tele_page_set');
+  var tele_page_btn = $('#tele_page_btn');
+  var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
+  var tele_page_val = '';
+  var fb_page_accessToken_from_api = '';
+
+
+  var page_select_bricks = $('#page_select_bricks');
+  var page_bricks_apikey = $('#page_bricks_apikey');
+  var page_bricks_confirm_apikey = $('#page_bricks_confirm_apikey');
+  var page_bricks_platform = $('#page_bricks_platform');
+
+  var modal_device_set_img = $('#modal_device_set_img');
+  var modal_device_set_name = $('#modal_device_set_name');
+  var modal_device_context_desc = $('#modal_device_context_desc');
+
+  var resData;
+  var fb_name;
+
+  var brick_id;
+
+  var api_set_list = $('#api_set_list');
+  var brick_api_zone = $('#brick_api_zone');
+
+
+  $.ajax({
+    url: 'https://www.chatbrick.io/api/brick/a702b0a5-97e0-461a-9738-6b529e112177/',
+    // url: 'https://www.chatbrick.io/api/brick/'+setId+'/',
+    type: 'GET',
+    async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
+    success: function (body, status, res) {
+      if (body.success) {
+
+        if (body.data.telegram != undefined) {
+          console.log('in tele!');
+          tg_connect_page.hide();
+          tele_page_set.show();
+
+          tele_page_val = body.data.telegram.token;
+          $('#tg_content_name').val(tele_page_val);
+        } else {
+
+          console.log('no tele!');
+          tg_connect_page.show();
+          tele_page_set.hide();
+        }
+
+        //check fb page access_token
+        if (body.data.access_token != undefined) {
+          fb_page_accessToken_from_api = body.data.access_token;
+        }
+
+        var resBricksList = body.data.settings.data.brick;
+        resBricksList.forEach(function (item, itemIndex, array) {
+          var brickApiSet = (
+            `<div class="api_set" id="api_set` + itemIndex + `">` +
+            `<div class="api_title">` +
+            `<img src="` + item.thumb + `" class="api_img">` +
+            `<div class="api_name">` + item.id + `</div>` +
+            `</div>` +
+            `<div class="api_content">` +
+            `<div class="api_content_context">` +
+            `<p>` + item.desc + `</p>` +
+            `</div>` +
+            `<div class="api_content_key_title"> API KEY </div>` +
+            `<input type="text" class="apikeyInputText" id="apikeyInputText`+itemIndex+`" placeholder="발급받은 API KEY를 입력해주세요.">` +
+            `<a href="` + item.api.provider + `" class="create_apikey_link" target="_blank"> <p> API KEY 신청하기 </p> </a>` +
+            `</div>` +
+            `<hr class="apikey_underline"> ` +
+            `</div>`
+          );
+          api_set_list.append(brickApiSet);
+
+          //write apikey
+          $('#apikeyInputText'+itemIndex).val(item.api.input[0].key);
+
+          var brickApiItem = (
+            `<div class="brick_api_item_area" id="brick_api_item_area` + itemIndex + `">` +
+            `<div class="brick_api_item_name">`+
+            `<p>`+item.id+`</p>`+
+            `</div>`+
+            `<div class="brick_api_item_tag_area" id="brick_api_item_tag_area` + itemIndex +`">`+
+            `</div>`+
+            `<div class="brick_api_item_btn_area">`+
+            `<div class="brick_api_item_btn_motify" id="brick_api_item_btn_motify` + itemIndex +`">`+
+            `<p>수정하기</p>`+
+            `</div>`+
+            `<div class="brick_api_item_btn_delete" id="brick_api_item_btn_delete` + itemIndex +`">`+
+            `<p>삭제</p>`+
+            `</div>`+
+            `</div>`+
+            `</div>`
+          );
+
+          var modalBrickApiItem = (
+            `<div class="modal_brick_api_item_tag_area" id="modal_brick_api_item_tag_area` + itemIndex +`">`+
+            `</div>`
+          );
+
+          brick_api_zone.append(brickApiItem);
+          $('.modal_brick_api_context_01').append(modalBrickApiItem);
+
+          //Added brick api tag
+          item.keywords.forEach(function (item, index, array) {
+
+            console.log('apitag=>' + item);
+
+            var brick_tag = (
+              `<div class="brick_api_item_tag" id="brick_api_item_tag` + index+`">`+
+              `<p>`+item+`</p>`+
+              `</div>`
+            );
+
+            var modal_brick_tag = (
+              `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index +`">`+
+              `<p>`+item+`</p>`+
+              `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index +`">`+
+              `</div>`
+            );
+
+            $('#brick_api_item_tag_area'+ itemIndex).append(brick_tag);
+            $('#modal_brick_api_item_tag_area'+ itemIndex).append(modal_brick_tag);
+
+          });
+        });
+
+      }
+
+    }
+  })
+
+
+  $(document).on('click', '.black', function () {
+    var itemIndex = $(this).parent().parent().index();
+    console.log('itemIndex=>' + itemIndex);
+
+  });
+
+
+  var modal_brick_api = document.getElementById('modal_brick_api');
+  var close_modal_brick_api_img = document.getElementById('close_modal_brick_api_img');
+  $(document).on('click', '.brick_api_item_btn_motify', function () {
+    var itemIndex = $(this).parent().parent().index();
+    console.log('itemIndex->'+itemIndex );
+
+    $('.modal_brick_api_item_tag_area').hide();
+    $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]).show();
+
+    var text = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').html();
+    var text1 = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').length;
+    console.log('text=>'+ JSON.stringify(text));
+    console.log('text1=>'+ text1);
+    modal_brick_api.style.display = "block";
+
+  });
+
+  close_modal_brick_api_img.onclick = function () {
+    modal_brick_api.style.display = "none";
+  }
+
+  $(document).on('click', '.brick_api_item_btn_delete', function () {
+
+    var itemIndex = $(this).parent().parent().index();
+    $('#brick_api_item_area'+selected_brick_list[itemIndex]).hide();
+    // $('#brick_api_item_area'+selected_brick_list[itemIndex]).toggleClass('hide');
+    // console.log('after brick_api_item_area.length=>'+$('.hide').length);
+  });
+
+  $(document).on('click', '.modal_brick_api_item_del_img', function () {
+    console.log('test!2');
+    var itemIndex = $(this).parent().index();
+    console.log('tagid=>'+ itemIndex);
+    $('#modal_brick_api_item_tag'+itemIndex).hide();
+  });
+
+
+  //enter key event
+  var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input');
+  modal_brick_api_item_tag_add_input.keypress(function (key) {
+
+    if(key.keyCode == 13) {
+
+      var apiTagsCount = 10;
+      console.log('before apiTagsCount=>' + apiTagsCount);
+      newTagCount ++;
+      var modal_brick_tag = (
+        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + apiTagsCount +`">`+
+        `<p>`+modal_brick_api_item_tag_add_input.val()+`</p>`+
+        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + apiTagsCount +`">`+
+        `</div>`
+      );
+
+      $('.modal_brick_api_item_tag_area').append(modal_brick_tag);
+      console.log('after apiTagsCount=>' + apiTagsCount);
+      console.log('modal_brick_api_item_tag_add_input=>' + modal_brick_api_item_tag_add_input.val());
+    }
+
+  });
+
+
+  $(document).on('click', '.press', function () {
+    var itemIndex = $(this).parent().parent().index();
+    console.log('itemIndex=>' + itemIndex);
+    console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
+
+    modal_device_set_img.attr("src", resData[itemIndex].img);
+    modal_device_set_name.text(resData[itemIndex].name);
+    modal_device_context_desc.text(resData[itemIndex].preview.desc);
+  });
+
+
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
+  var setting_remove_btn = $('#setting_remove_btn');
+
+  setting_remove_btn.click(function () {
+    $(this).css('background-color', '#bd292c');
+  });
+  setting_remove_btn.hover(function () {
+    setting_remove_btn.css('background-color', '#fb7c7e');
+  }, function () {
+    setting_remove_btn.css('background-color', '#ff753c');
+  });
+
+  pre_page.click(function () {
+    $(this).css('background-color', '#bd292c');
+    // window.location.href = '/chatbot/create';
+  });
+
+  next_page.click(function () {
+    $(this).css('background-color', '#bd292c');
+    // window.location.href = '/bricks/create';
+  });
+
+  pre_page.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  next_page.hover(function () {
+    $(this).css('background-color','#fb7c7e');
+  }, function () {
+    $(this).css('background-color','#fd6246');
+  });
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+
+      var fb_page_list = $('#fb_page_list');
+      var fb_access_token;
+      var fb_id;
+      var fb_page_id;
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'GET',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            login_logo.attr("src", body.facebook.fb_profile);
+            login_name.text(body.facebook.fb_name);
+
+            fb_id = body.facebook.fb_id;
+            console.log('body.facebook.fb_id=>' + fb_id);
+
+            FB.api(body.facebook.fb_id + '/accounts', function (response) {
+              fb_page_id = response.data[0].id;
+              fb_access_token = response.data[0].access_token;
+              console.log('Successful page info for: ' + JSON.stringify(response));
+              console.log('data length: ' + response.data.length);
+              console.log('access_token[0]: ' + fb_access_token);
+              console.log('name[0]: ' + response.data[0].name);
+              console.log('fb_page_id: ' + fb_page_id);
+
+
+              response.data.forEach(function (item, index, array) {
+                var fb_messager = (
+                  `<div class="fb_page_set" id="fb_page_set` + index + `">` +
+                  `<img src="../public/images/img-facebook-page-default.png" class="fb_page_img">` +
+                  `<div class="fb_page_text">` +
+                  `<div class="fb_page_title">` + item.name + `</div>` +
+                  `<div class="fb_page_btn" id="fb_page_btn` + index + `">연결하기</p>` +
+                  `</div>` +
+                  `</div>` +
+                  `</div>`
+                );
+
+                fb_page_list.append(fb_messager);
+
+                if (fb_page_accessToken_from_api == item.access_token) {
+                  console.log('find fb_page_accessToken_from_api!!>>'+fb_page_accessToken_from_api);
+
+                  // $(this).toggleClass('platform_connected');
+                  $('#fb_page_btn'+ index).toggleClass('platform_connected');
+                  $('.fb_page_set').hide();
+                  $('#fb_page_set' + index).show();
+                  $('#fb_page_btn' + index).text("연결해제 하기");
+                  $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                  $('#fb_page_btn' + index).css('color', '#ffffff')
+                }
+
+                var fb_page_btn = $('#fb_page_btn' + index);
+                fb_page_btn.click(function () {
+
+                  $(this).toggleClass('platform_connected');
+
+                  if ($(this).hasClass('platform_connected')) {
+
+                    //connect fb page api
+                    $.ajax({
+                      //TODO: url
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
+                      // url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
+                      type: 'PUT',
+                      async: false,
+                      crossDomain: true,
+                      xhrFields: {withCredentials: true},
+                      success: function (body, status, res) {
+
+                        console.log('connect fb page api=>' + body.success);
+                        if (body.success) {
+                          $('.fb_page_set').hide();
+                          $('#fb_page_set' + index).show();
+                          $('#fb_page_btn' + index).text("연결해제 하기");
+                          $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                          $('#fb_page_btn' + index).css('color', '#ffffff')
+                        }
+                      }
+                    });
+                  } else {
+
+                    //delete fb page api
+                    $.ajax({
+                      //TODO: url
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                      // url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
+                      type: 'DELETE',
+                      async: false,
+                      crossDomain: true,
+                      xhrFields: {withCredentials: true},
+                      success: function (body, status, res) {
+
+                        console.log('connect fb page api=>' + body.success);
+                        if (body.success) {
+                          $('.fb_page_set').show();
+                          $('#fb_page_btn' + index).text('연결하기');
+                          $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
+                          $('#fb_page_btn' + index).css('color', '#000000')
+                        }
+                      }
+                    });
+                  }
+                }) //fb.click event
+              }); //response.data.forEach
+
+
+              tele_page_btn.click(function () {
+                //connect telegram api
+                $.ajax({
+                  //TODO: url
+                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  type: 'PUT',
+                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    console.log('connected telegram api=>' + body.success);
+                    if (body.success) {
+                      tg_connect_page.hide();
+                      tele_page_set.show();
+                    }
+                  }
+                });
+              }); //tele_page_btn click event
+
+              tele_page_disconnect_btn.click(function () {
+                //disconnect telegram api
+                $.ajax({
+                  //TODO: url
+                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  type: 'DELETE',
+                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    console.log('connected telegram api=>' + body.success);
+                    if (body.success) {
+                      tg_connect_page.show();
+                      tele_page_set.hide();
+                    }
+                  }
+                });
+              }); //tele_page_disconnect_btn click event
+
+
+            });
+          }
+        }
+      });
+
+    } else if (response.status === 'not_authorized') {
+
+    } else {
+
+    }
+  }
+</script>
+<script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 </body>
 </html>

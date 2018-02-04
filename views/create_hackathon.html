@@ -1204,7 +1204,8 @@
       data: JSON.stringify(submitData),
       success: function (body, status, res) {
         if (body.success) {
-          console.log('upliad success!');
+          console.log('upload success!');
+          window.location.href = '/platform/connect'+'?setId='+setId;
         }
       }
     });

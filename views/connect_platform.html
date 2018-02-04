@@ -165,7 +165,7 @@
 
 <script type="text/javascript">
 
-  var setId = `<%=jsonData.setId%>`;
+  var setId = `<%=setId%>`;
   var login_logo = $('#login_logo');
   var login_name = $('#login_name_text');
   var login_dropdown = $('#login_dropdown');
@@ -229,8 +229,8 @@
                     //connect fb page api
                     $.ajax({
                       //TODO: url
-                      // url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
-                      url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
+                      // url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
                       type: 'PUT',
                       async: false,
                       crossDomain: true,
@@ -252,8 +252,8 @@
                     //delete fb page api
                     $.ajax({
                       //TODO: url
-//                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
-                      url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
+                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                      // url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
                       type: 'DELETE',
                       async: false,
                       crossDomain: true,
@@ -284,8 +284,8 @@
                 //connect telegram api
                 $.ajax({
                   //TODO: url
-                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
-                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
                   type: 'PUT',
                   async: false,
                   crossDomain: true,
@@ -305,8 +305,8 @@
                 //disconnect telegram api
                 $.ajax({
                   //TODO: url
-                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
-                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
                   type: 'DELETE',
                   async: false,
                   crossDomain: true,

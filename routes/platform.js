@@ -5,13 +5,14 @@ var fs = require('fs');
 router.get('/connect', (req, res) => {
 
   console.log('start create req =>' + JSON.stringify(req.query));
-  var jsonData = '';
-  jsonData = {
-    setId: req.query.setId
-  }
+  var setId =  req.query.setId;
+  // var jsonData = '';
+  // jsonData = {
+  //   setId: req.query.setId
+  // }
 
   fs.readFile('views/connect_platform', function (err, data) {
-    res.render('connect_platform', {jsonData:jsonData});
+    res.render('connect_platform', {setId:setId});
   })
 });
 

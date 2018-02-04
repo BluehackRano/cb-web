@@ -18,4 +18,14 @@ router.get('/create', (req, res) => {
     res.render('create_brick_api')
   })
 });
+
+router.get('/edit', (req, res) => {
+
+  var setId = req.query.setId;
+  console.log('/router setId=>' + setId);
+  fs.readFile('views/edit_bricks', function (err, data) {
+    res.render('edit_bricks', {setId:setId});
+  })
+});
+
 module.exports = router;

@@ -580,8 +580,8 @@
   var login_name = $('#login_name_text');
   var login_dropdown = $('#login_dropdown');
   var setting_remove_btn = $('#setting_remove_btn');
-  var itemId = `<%=itemId%>`;
-  console.log('in my_chatbot_edit itemId=>' + itemId);
+  var setId = `<%=setId%>`;
+  console.log('in my_chatbot_edit setId=>' + setId);
 
   var upload = document.getElementById('uploadBtn'),
     profile_img = document.getElementById('profile_img');
@@ -795,7 +795,7 @@
   }
 
   $.ajax({
-    url: 'https://www.chatbrick.io/api/brick/'+itemId+'/',
+    url: 'https://www.chatbrick.io/api/brick/'+setId+'/',
     type: 'GET',
     async: false,
     crossDomain: true,

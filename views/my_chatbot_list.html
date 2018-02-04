@@ -114,11 +114,27 @@
           });
 
           $("#my_bot"+index).click(function () {
-						var itemId = body.data[index].id;
-						console.log('itemId=>' + itemId);
-
-						window.location.href = '/chatbot/edit?id='+itemId;
+						var setId = body.data[index].id;
+						console.log('itemId=>' + setId);
+						console.log('item.type=>'+ item.type);
+            switch (item.type) {
+              case "hackathon":
+                // console.log('hackathon')
+                // window.location.href = '/edit';
+                window.location.href = '/hackathon/edit'+ '?setId='+setId;
+                break;
+              case "portfolio":
+                // console.log('portfolio')
+                window.location.href = '/designerPortfolio/edit'+ '?setId='+setId;
+                break;
+              case "bricks":
+                // console.log('bricks')
+                window.location.href = '/bricks/edit'+ '?setId='+setId;
+                break;
+            }
           });
+
+
         });
         botlist.append(createMyBot);
       } else {
@@ -130,12 +146,12 @@
   });
 
   var create_my_bot = $('#create_my_bot');
-  var my_bot = $('#my_bot');
   console.log(botlist);
 
 
   create_my_bot.click(function () {
     create_my_bot.css('background-color', '#ffffff');
+
     window.location.href = '/chatbot/create';
   });
   create_my_bot.hover(function () {

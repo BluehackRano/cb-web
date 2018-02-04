@@ -40,6 +40,41 @@
 
 <div id="content">
 
+  <!--기본정보 영역-->
+  <div class="wrapper_section _baseInfo_section">
+    <section id="section_00">
+      <div class="content_title">
+        <p>
+          기본정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _baseInfo_wrapper">
+        <article id="article_00" class="_article">
+
+          <div class="wrapper">
+            <div class="baseInfo_01 article_title">
+              <p>
+                이름
+              </p>
+            </div>
+            <input type="text" id="baseInfo_name" class="baseInputText" placeholder="가나다">
+
+            <div class="baseInfo_02 article_title">
+              <p>
+                설명
+              </p>
+            </div>
+            <input type="text" id="baseInfo_context_01" class="baseInputText" placeholder="가나다">
+            <input type="text" id="baseInfo_context_02" class="baseInputText" placeholder="가나다">
+
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+
   <!--프로필정보 영역-->
   <div class="wrapper_section _hackathon_section">
     <section id="section_01" class="_profile_section">
@@ -538,6 +573,144 @@
     </section>
   </div>
 
+  <div class="wrapper_section _messenger_section">
+    <section id="section_09">
+      <div class="content_title">
+        <p>
+          필수 추가연동
+        </p>
+      </div>
+
+      <div class="wrapper_article _messenger_wrapper">
+        <article id="article_fb" class="_article">
+
+          <div class="wrapper _fb_messenger_wrapper">
+            <div class="messenger_set">
+              <img src="../public/images/img-fb-messenger.png"
+                   id="img_fb_messenger" class="messenger_img">
+              <div class="messenger_text">
+                <div class="messenger_title">
+                  페이지북 메신저
+                </div>
+                <div class="messenger_context">
+                  YOUR FACEBOOK PAGES
+                </div>
+              </div>
+            </div>
+
+
+            <div id="fb_page_list">
+
+              <!--fb_page_set_item 영역-->
+              <!--<div class="fb_page_set">-->
+              <!--<img src="../public/images/test_img.png"-->
+              <!--class="fb_page_img">-->
+              <!--<div class="fb_page_text">-->
+              <!--<div class="fb_page_title">-->
+              <!--Bluehack 01-->
+              <!--</div>-->
+              <!--<div class="fb_page_btn">-->
+              <!--<p>-->
+              <!--연결하기-->
+              <!--</p>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--</div>-->
+
+            </div>
+          </div>
+        </article>
+
+        <!--telegram article-->
+        <div class="wrapper_article _messenger_wrapper">
+          <article id="article_telegram">
+            <div class="wrapper _telegram_messenger_wrapper">
+              <div class="messenger_set">
+                <img src="../public/images/img-tele-messenger.png"
+                     id="img_telegram__messenger" class="messenger_img">
+                <div class="messenger_text">
+                  <div class="messenger_title">
+                    텔레그램
+                  </div>
+                  <div class="messenger_context">
+                    YOUR BOTS
+                  </div>
+                </div>
+              </div>
+
+              <div class="tg_content">
+                <div class="tg_connect_page">
+                  <div class="tg_content_title">
+                    <p>적용하려는 봇의 토큰값을 입력해주세요</p>
+                  </div>
+
+                  <div class="tg_input_btn_line">
+                    <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
+                    <div class="tele_page_btn" id="tele_page_btn">연결하기</div>
+                  </div>
+                  <div class="tg_content_context">
+                    <p>
+                      토큰값을 발급받기 위해서는 텔레그램에서 @BotFather 을 검색한 뒤,
+                      안내에 따라 봇을 최초 생성하는 별도의 사전작업이 필요해요.
+                      자세한 안내는 텔레그램의 Bot Platform 페이지에서 확인하실 수 있어요.<br>
+                      https://telegram.org/blog/bot-revolution
+                    </p>
+                  </div>
+                </div>
+
+                <!--tele connected page-->
+                <div class="tele_page_set">
+                  <img src="../public/images/img-telegram-bot-default.png"
+                       class="tele_page_img">
+                  <div class="tele_page_text">
+                    <div class="tele_page_title">
+                      Bot Name
+                    </div>
+                    <div class="tele_page_disconnect_btn" id="tele_page_disconnect_btn">
+                      연결해제 하기
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!--설정 영역-->
+  <div class="wrapper_section _baseInfo_section">
+    <section id="section_10">
+      <div class="content_title">
+        <p>
+          설정
+        </p>
+      </div>
+
+      <div class="wrapper_article _setting_wrapper">
+        <article id="article_10" class="_article">
+
+          <div class="wrapper">
+            <div class="setting article_title">
+              <p>
+                제거하기
+              </p>
+            </div>
+
+            <div class="setting_desc">
+              <p>아래의 “챗봇 제거하기”버튼을 클릭해서 이 챗봇을 제거할 수 있습니다.</p>
+            </div>
+
+            <div class="setting_remove_btn" id="setting_remove_btn">
+              <p>챗봇 제거하기</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
 </div>
 
 <footer id="footer">
@@ -558,17 +731,25 @@
 <script type="text/javascript">
   $('input[type=text]').addClass('placeholder');
 
-  var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
-  var baseInfo_context = `<%=jsonData.baseInfo_context%>`;
-
-  console.log('baseInfo_name=>' + baseInfo_name +
-    'baseInfo_context=>' + baseInfo_context);
+  var setId = `<%=setId%>`;
+  console.log('in hackathon setId=>' + setId);
 
   var login_logo = $('#login_logo');
   var login_name = $('#login_name_text');
   var login_dropdown = $('#login_dropdown');
 
+  var tg_connect_page = $('.tg_connect_page');
+  var tele_page_set = $('.tele_page_set');
+  var tele_page_btn = $('#tele_page_btn');
+  var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
+  var tele_page_val = '';
+  var fb_page_accessToken_from_api = '';
+
+
   var img_url;
+  var prize_name = [];
+  var prize_desc = [];
+  var prize_benefit = [];
 
   $.ajax({
     url: 'https://www.chatbrick.io/api/login/',
@@ -580,6 +761,148 @@
       if (body.success) {
         login_logo.attr("src", body.facebook.fb_profile);
         login_name.text(body.facebook.fb_name);
+      }
+    }
+  });
+
+  $.ajax({
+    // url: 'https://www.chatbrick.io/api/brick/3785c81a-c040-4d6c-9de0-fb875dc3eb9e/',
+    url: 'https://www.chatbrick.io/api/brick/'+setId+'/',
+    type: 'GET',
+    async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
+    success: function (body, status, res) {
+      if (body.success) {
+
+        if (body.data.telegram != undefined) {
+          console.log('in tele!');
+          tg_connect_page.hide();
+          tele_page_set.show();
+
+          tele_page_val = body.data.telegram.token;
+          $('#tg_content_name').val(tele_page_val);
+        } else {
+
+          console.log('no tele!');
+          tg_connect_page.show();
+          tele_page_set.hide();
+        }
+
+        //check fb page access_token
+        if (body.data.access_token != undefined) {
+          fb_page_accessToken_from_api = body.data.access_token;
+        }
+
+        var settings_name = body.data.settings.name;
+        var settings_desc = body.data.settings.desc.split('\n');
+
+        var basic_poster_image = body.data.settings.data.basic.poster_image;
+        var basic_name = body.data.settings.data.basic.name;
+        var basic_tel = body.data.settings.data.basic.tel;
+
+        var custom_settings_get_started = body.data.settings.data.custom_settings.get_started.split('\n');
+        var custom_settings_error_msg = body.data.settings.data.custom_settings.error_msg;
+
+        var date_application_period_start = body.data.settings.data.date.application_period.start;
+        var date_application_period_end = body.data.settings.data.date.application_period.end;
+
+        var date_pre_meeting = body.data.settings.data.date['pre-meeting'];
+
+        var date_main_meeting_start = body.data.settings.data.date['main-meeting'].start;
+        var date_main_meeting_end = body.data.settings.data.date['main-meeting'].end;
+
+        var hackathon_day_main_meeting = body.data.settings.data.contents['main-meeting'];
+        var hackathon_day_main_meeting_1day = hackathon_day_main_meeting[0];
+        var hackathon_day_main_meeting_2day = hackathon_day_main_meeting[1];
+        var hackathon_day_main_meeting_3day = hackathon_day_main_meeting[2];
+        var hackathon_day_main_meeting_4day = hackathon_day_main_meeting[3];
+        var hackathon_day_main_meeting_5day = hackathon_day_main_meeting[4];
+
+        var hackathon_day_pre_meeting = body.data.settings.data.contents['pre-meeting'];
+
+        var hackathon_participation_application_url = body.data.settings.data.application.url;
+        var hackathon_participation_application_requirements = body.data.settings.data.application.requirements;
+        var hackathon_participation_application_preparation = body.data.settings.data.application.preparation;
+
+        var place_main_metting_name = body.data.settings.data.place['main-meeting'].name;
+        var place_main_metting_address = body.data.settings.data.place['main-meeting'].address;
+        var place_main_metting_url = body.data.settings.data.place['main-meeting'].url;
+
+        var place_pre_metting_name = body.data.settings.data.place['pre-meeting'].name;
+        var place_pre_metting_address = body.data.settings.data.place['pre-meeting'].address;
+        var place_pre_metting_url = body.data.settings.data.place['pre-meeting'].url;
+
+        var benefit_of_participant = body.data.settings.data.benefit_of_participant;
+
+        var thanks_hoster = body.data.settings.data.thanks.hoster;
+        var thanks_organizer = body.data.settings.data.thanks.organizer;
+        var thanks_sponsor = body.data.settings.data.thanks.sponsor;
+
+        $('#baseInfo_name').val(settings_name);
+        $('#baseInfo_context_01').val(settings_desc[0]);
+        $('#baseInfo_context_02').val(settings_desc[1]);
+
+        $('#profile_img').attr("src", basic_poster_image);
+        $('#user_profile_data_name').val(basic_name);
+        $('#user_profile_data_tel').val(basic_tel);
+
+        $('#user_profile_start_message_01').val(custom_settings_get_started[0]);
+        $('#user_profile_start_message_02').val(custom_settings_get_started[1]);
+        $('#user_profile_start_message_03').val(custom_settings_get_started[2]);
+
+        $('#user_profile_not_ready_mesage_01').val(custom_settings_error_msg[2]);
+        $('#user_profile_not_ready_mesage_02').val(custom_settings_error_msg[2]);
+        $('#user_profile_not_ready_mesage_03').val(custom_settings_error_msg[2]);
+
+        $('#start_date_participation').val(date_application_period_start);
+        $('#end_date_participation').val(date_application_period_end);
+
+        $('#start_date_before_meeting').val(date_pre_meeting);
+
+        $('#start_date_dday_meeting').val(date_main_meeting_start);
+        $('#end_date_dday_meeting').val(date_main_meeting_end);
+
+        //본모임
+        $('#hackathon_1day_content_01').val(hackathon_day_main_meeting_1day);
+        $('#hackathon_2day_content_02').val(hackathon_day_main_meeting_2day);
+        $('#hackathon_3day_content_03').val(hackathon_day_main_meeting_3day);
+        $('#hackathon_4day_content_04').val(hackathon_day_main_meeting_4day);
+        $('#hackathon_5day_content_05').val(hackathon_day_main_meeting_5day);
+
+        //사전모임
+        $('#before_meeting_clicked_content_01').val(hackathon_day_pre_meeting);
+
+        //해커톤 참가신청정보
+        $('#hackathon_participation_url').val(hackathon_participation_application_url);
+        $('#hackathon_participation_confirm_01').val(hackathon_participation_application_requirements);
+        $('#hackathon_participation_ready_info_01').val(hackathon_participation_application_preparation);
+
+        //해커톤 장소정보 (본모임)
+        $('#hackathon_place_name').val(place_main_metting_name);
+        $('#hackathon_place_address').val(place_main_metting_address);
+        $('#hackathon_place_navi_url').val(place_main_metting_url);
+
+        //해커톤 장소정보 (사전모임)
+        $('#before_meeting_place_name').val(place_pre_metting_name);
+        $('#before_meeting_place_address').val(place_pre_metting_address);
+        $('#before_meeting_place_navi_url').val(place_pre_metting_url);
+
+        //해커톤 시상정보 (밑에서 데이터 넣어줌)
+        for (var i = 0; i < body.data.settings.data.prize.length; i++) {
+          prize_name.push(body.data.settings.data.prize[i].name);
+          prize_desc.push(body.data.settings.data.prize[i].desc);
+          prize_benefit.push(body.data.settings.data.prize[i].benefit);
+        }
+
+        //참가자 혜택을 입력해주세요
+        $('#hackathon_participation_reward_01').val(benefit_of_participant);
+
+        //해커톤 주최/주관/후원정보
+        $('#hackathon_organizer_info_01').val(thanks_hoster);
+        $('#hackathon_supervisor_info_01').val(thanks_organizer);
+        $('#hackathon_sponsor_info_01').val(thanks_sponsor);
+
       }
     }
   });
@@ -848,6 +1171,14 @@
       );
 
       hackathon_award_kind_count_area.append(awardHtml);
+    }
+
+    for (var i = 0; i < prize_name.length; i++) {
+      var j = 1;
+      $('#hackathon_award_kind_name_0'+ j).val(prize_name[i]);
+      $('#hackathon_award_taken_number_0'+ j).val(prize_desc[i]);
+      $('#hackathon_award_reward_0'+ j).val(prize_benefit[i]);
+      j++;
     }
 
   });
@@ -1209,9 +1540,183 @@
       }
     });
   });
+
+  var fb_page_list = $('#fb_page_list');
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+
+      var fb_page_list = $('#fb_page_list');
+      var fb_access_token;
+      var fb_id;
+      var fb_page_id;
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'GET',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            login_logo.attr("src", body.facebook.fb_profile);
+            login_name.text(body.facebook.fb_name);
+
+            fb_id = body.facebook.fb_id;
+            console.log('body.facebook.fb_id=>' + fb_id);
+
+            FB.api(body.facebook.fb_id + '/accounts', function (response) {
+              fb_page_id = response.data[0].id;
+              fb_access_token = response.data[0].access_token;
+              console.log('Successful page info for: ' + JSON.stringify(response));
+              console.log('data length: ' + response.data.length);
+              console.log('access_token[0]: ' + fb_access_token);
+              console.log('name[0]: ' + response.data[0].name);
+              console.log('fb_page_id: ' + fb_page_id);
+
+
+              response.data.forEach(function (item, index, array) {
+                var fb_messager = (
+                  `<div class="fb_page_set" id="fb_page_set` + index + `">` +
+                  `<img src="../public/images/img-facebook-page-default.png" class="fb_page_img">` +
+                  `<div class="fb_page_text">` +
+                  `<div class="fb_page_title">` + item.name + `</div>` +
+                  `<div class="fb_page_btn" id="fb_page_btn` + index + `">연결하기</p>` +
+                  `</div>` +
+                  `</div>` +
+                  `</div>`
+                );
+
+                fb_page_list.append(fb_messager);
+
+                if (fb_page_accessToken_from_api == item.access_token) {
+                  console.log('find fb_page_accessToken_from_api!!>>'+fb_page_accessToken_from_api);
+
+                  // $(this).toggleClass('platform_connected');
+                  $('#fb_page_btn'+ index).toggleClass('platform_connected');
+                  $('.fb_page_set').hide();
+                  $('#fb_page_set' + index).show();
+                  $('#fb_page_btn' + index).text("연결해제 하기");
+                  $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                  $('#fb_page_btn' + index).css('color', '#ffffff')
+                }
+
+                var fb_page_btn = $('#fb_page_btn' + index);
+                fb_page_btn.click(function () {
+
+                  $(this).toggleClass('platform_connected');
+
+                  if ($(this).hasClass('platform_connected')) {
+
+                    //connect fb page api
+                    $.ajax({
+                      //TODO: url
+                      // url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
+                      url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
+                      type: 'PUT',
+                      async: false,
+                      crossDomain: true,
+                      xhrFields: {withCredentials: true},
+                      success: function (body, status, res) {
+
+                        console.log('connect fb page api=>' + body.success);
+                        if (body.success) {
+                          $('.fb_page_set').hide();
+                          $('#fb_page_set' + index).show();
+                          $('#fb_page_btn' + index).text("연결해제 하기");
+                          $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                          $('#fb_page_btn' + index).css('color', '#ffffff')
+                        }
+                      }
+                    });
+                  } else {
+
+                    //delete fb page api
+                    $.ajax({
+                      //TODO: url
+//                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                      url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
+                      type: 'DELETE',
+                      async: false,
+                      crossDomain: true,
+                      xhrFields: {withCredentials: true},
+                      success: function (body, status, res) {
+
+                        console.log('connect fb page api=>' + body.success);
+                        if (body.success) {
+                          $('.fb_page_set').show();
+                          $('#fb_page_btn' + index).text('연결하기');
+                          $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
+                          $('#fb_page_btn' + index).css('color', '#000000')
+                        }
+                      }
+                    });
+                  }
+                }) //fb.click event
+              }); //response.data.forEach
+
+
+              tele_page_btn.click(function () {
+                //connect telegram api
+                $.ajax({
+                  //TODO: url
+                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  type: 'PUT',
+                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    console.log('connected telegram api=>' + body.success);
+                    if (body.success) {
+                      tg_connect_page.hide();
+                      tele_page_set.show();
+                    }
+                  }
+                });
+              }); //tele_page_btn click event
+
+              tele_page_disconnect_btn.click(function () {
+                //disconnect telegram api
+                $.ajax({
+                  //TODO: url
+                  // url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  type: 'DELETE',
+                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    console.log('connected telegram api=>' + body.success);
+                    if (body.success) {
+                      tg_connect_page.show();
+                      tele_page_set.hide();
+                    }
+                  }
+                });
+              }); //tele_page_disconnect_btn click event
+
+
+            });
+          }
+        }
+      });
+
+    } else if (response.status === 'not_authorized') {
+
+    } else {
+
+    }
+  }
+
 </script>
 <!--https://xdsoft.net/jqplugins/datetimepicker/#trigger-->
 <script src="/public/javascripts/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 <script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
 </body>
 </html>

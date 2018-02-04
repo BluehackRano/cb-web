@@ -45,11 +45,8 @@ router.get('/list', (req, res) => {
 });
 
 router.get('/edit', (req, res) => {
-
-  var itemId = req.query.id;
-  console.log('/router itemId=>' + itemId);
-  fs.readFile('views/edit_user_profile', function (err, data) {
-    res.render('edit_user_profile', {itemId:itemId});
+  fs.readFile('views/edit_hackathon', function (err, data) {
+    res.render('edit_hackathon')
   })
 });
 

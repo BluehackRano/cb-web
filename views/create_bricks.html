@@ -313,6 +313,29 @@
   </div>
 </div>
 
+<!--디폴트 모양 팝업-->
+<div id="default_modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="modal_title">확인</div>
+    <div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
+    <div id="modal_one_btn" class="modal_one_btn">
+      <p>확인</p></div>
+  </div>
+</div>
+
+<!--브릭 선택하기 확인 팝업-->
+<div id="select_brick_modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="modal_title">확인</div>
+    <div class="modal_context">브릭은 최소 1개 이상, 최대 10개 이하로 선택하셔야 합니다.</div>
+    <div id="modal_one_select_btn" class="modal_one_btn">
+      <p>확인</p></div>
+  </div>
+</div>
 
 
 <footer id="footer">
@@ -690,16 +713,38 @@
     }
 
     console.log('pageNumber=>' + pageNumber)
-    if (pageNumber == 1) {
-      console.log('in pageNumber=>')
-      page_select_bricks.hide();
-      page_bricks_apikey.show();
-      page_bricks_confirm_apikey.hide();
-      // page_bricks_platform.hide();
-      context.text('선택한 BRICK이 원할하게 동작하기 위해서는 해당 BRICK에 필요로 하는 항목들을 입력하셔야 해요. 기존에 API KEY를 보유하고 있지 않다면 BRICK의 아래에 위치한 API KEY 신청하기 버튼을 통해 해당 웹페이지로 이동할 수 있어요. 건너뛰기를 하시면 BRICK의 사용 횟수 제한 등의 제약사항이 있을 수 있어요.')
-      sub_title.text('| API KEY 입력하기');
-      selectedBrick(selected_brick_list);
 
+    if (pageNumber == 1) {
+
+      if (selected_brick_list.length <=0
+          || selected_brick_list.length > 10) {
+        console.log('in popup')
+        var select_brick_modal = document.getElementById('select_brick_modal');
+        var modal_one_select_btn = $('#modal_one_select_btn');
+
+        select_brick_modal.style.display = "block";
+
+        modal_one_select_btn.hover(function () {
+          $(this).css('background-color', '#fb7c7e');
+        }, function () {
+          $(this).css('background-color', '#ff753c');
+        });
+
+        modal_one_select_btn.click(function () {
+          pageNumber --;
+          select_brick_modal.style.display = "none";
+        });
+
+      } else {
+        console.log('in pageNumber=>')
+        page_select_bricks.hide();
+        page_bricks_apikey.show();
+        page_bricks_confirm_apikey.hide();
+        // page_bricks_platform.hide();
+        context.text('선택한 BRICK이 원할하게 동작하기 위해서는 해당 BRICK에 필요로 하는 항목들을 입력하셔야 해요. 기존에 API KEY를 보유하고 있지 않다면 BRICK의 아래에 위치한 API KEY 신청하기 버튼을 통해 해당 웹페이지로 이동할 수 있어요. 건너뛰기를 하시면 BRICK의 사용 횟수 제한 등의 제약사항이 있을 수 있어요.')
+        sub_title.text('| API KEY 입력하기');
+        selectedBrick(selected_brick_list);
+      }
 
     } else if (pageNumber == 2) {
       page_select_bricks.hide();
@@ -772,23 +817,43 @@
       };
 
       console.log('submitData=>' + JSON.stringify(submitData));
-      //send jsonData in brick api
-      $.ajax({
-        url: 'https://www.chatbrick.io/api/brick/',
-        type: 'PUT',
-        async: false,
-        crossDomain: true,
-        contentType: 'application/json',
-        dataType: 'JSON',
-        data: JSON.stringify(submitData),
-        success: function (body, status, res) {
-          if (body.success) {
-            console.log('upload success!');
-            var request_query = '?setId='+body.data.id;
-            window.location.href = '/platform/connect'+request_query;
+
+      if (submitData.data.custom_settings.get_started == ''
+          || submitData.data.cus.error_msg) {
+        console.log('in popup')
+        var default_modal = document.getElementById('default_modal');
+        var modal_one_btn = $('#modal_one_btn');
+
+        default_modal.style.display = "block";
+
+        modal_one_btn.hover(function () {
+          $(this).css('background-color', '#fb7c7e');
+        }, function () {
+          $(this).css('background-color', '#ff753c');
+        });
+
+        modal_one_btn.click(function () {
+          default_modal.style.display = "none";
+        });
+      } else {
+        //send jsonData in brick api
+        $.ajax({
+          url: 'https://www.chatbrick.io/api/brick/',
+          type: 'PUT',
+          async: false,
+          crossDomain: true,
+          contentType: 'application/json',
+          dataType: 'JSON',
+          data: JSON.stringify(submitData),
+          success: function (body, status, res) {
+            if (body.success) {
+              console.log('upload success!');
+              var request_query = '?setId=' + body.data.id;
+              window.location.href = '/platform/connect' + request_query;
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     window.location.hash = pageNumber.toString();

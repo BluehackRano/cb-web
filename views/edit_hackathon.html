@@ -712,6 +712,44 @@
     </section>
   </div>
 
+
+  <!--이전버튼 취소하기 팝업-->
+  <div id="cancel_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">수정취소</div>
+      <div class="modal_context">수정을 취소하시겠습니까?</div>
+      <div class="modal_brick_api_two_btn_area">
+        <div id="modal_left_btn" class="modal_left_btn">
+          <p>아니요</p>
+        </div>
+
+        <div id="modal_right_btn" class="modal_right_btn">
+          <p>네</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--챗봇 제거하기 팝업-->
+  <div id="remove_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">제거</div>
+      <div class="modal_context" id="modal_remove_context">수정을 취소하시겠습니까?</div>
+      <div class="modal_brick_api_two_btn_area" id="modal_brick_api_remove_two_btn_area">
+        <div id="modal_right_remove_btn" class="modal_right_btn">
+          <p>챗봇 제거</p>
+        </div>
+        <div id="modal_left_remove_btn" class="modal_left_btn">
+          <p>아니요</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <footer id="footer">
@@ -906,7 +944,8 @@
   var imgTmpFile = $('#file');
 
   imgTmpFile.hide();
-  after_upload.hide();
+  after_upload.show();
+  user_profile_photo_upload_btn.hide();
 
   upload.onchange = function (e) {
     e.preventDefault();
@@ -959,19 +998,62 @@
 
     };
     reader.readAsDataURL(file);
-
-    return false;
   };
 
-  $('#file').click(function () {
-    console.log('click!');
-    profile_img.src = $('#file')[0].file;
-  });
+  $('#file').change(function (e) {
+    e.preventDefault();
+
+    var file = this.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+      var img = new Image();
+      img.src = event.target.result;
+      if (img.width > 142) { // profile_img width
+        img.width = 142;
+      }
+      if (img.height > 32) {
+        img.height = 32;
+      }
+
+      profile_img.src = img.src;
+
+      //upload img file api
+      var fd = new FormData();
+      var uploadFile = $('#profile_img')[0].file;
+      console.log('uploadFile=>' + uploadFile);
+      fd.append('file', file);
+
+      //TODO: testcode
+//       user_profile_photo_upload_btn.hide();
+//       after_upload.show();
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/file/',
+        type: 'POST',
+        async: false,
+        crossDomain: true,
+        contentType: false,
+        data: fd,
+        processData: false,
+        success: function (body, status, res) {
+          if (body.success) {
+            img_url = body.data.url;
+            console.log('upliad success!');
+            console.log('res img url=>' + img_url);
+
+            user_profile_photo_upload_btn.hide();
+            after_upload.show();
+          }
+        }
+      });
+    }
+    reader.readAsDataURL(file);
+  })
 
   after_upload_motify.click(function () {
-//    $('#uploadBtn').trigger('change');
-    $('#file').trigger('click');
-  })
+    $('#file').click();
+  });
 
   after_upload_del.click(function () {
     after_upload.hide();
@@ -1337,6 +1419,54 @@
 
   setting_remove_btn.click(function () {
     $(this).css('background-color', '#bd292c');
+    var remove_modal = document.getElementById('remove_modal');
+    var modal_left_remove_btn = $('#modal_left_remove_btn');
+    var modal_right_remove_btn = $('#modal_right_remove_btn');
+    var modal_remove_context = $('#modal_remove_context');
+    console.log('baseInfo_name=>'+baseInfo_name);
+
+    modal_remove_context.text('“'+$('#baseInfo_name').val()+'”챗봇을 영구적으로 제거하시겠습니까?' +
+      '“'+$('#baseInfo_name').val()+'”챗봇의 모든 데이터가 영구적으로 삭제됩니다.' +
+      '이 동작은 실행 취소할 수 없습니다.');
+
+    remove_modal.style.display = "block";
+
+    modal_left_remove_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_left_remove_btn.click(function () {
+      remove_modal.style.display = "none";
+    });
+
+    modal_right_remove_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#fd6246');
+    });
+
+    modal_right_remove_btn.click(function () {
+      remove_modal.style.display = "none";
+
+      $.ajax({
+        // url: 'https://www.chatbrick.io/api/brick/3785c81a-c040-4d6c-9de0-fb875dc3eb9e/',
+        url: 'https://www.chatbrick.io/api/brick/' + setId + '/',
+        type: 'DELETE',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('success=>'+ body.success);
+            window.location.href = '/chatbot/list'
+          }
+        }
+      });
+
+    });
+
   });
   setting_remove_btn.hover(function () {
     setting_remove_btn.css('background-color', '#fb7c7e');
@@ -1358,7 +1488,32 @@
 
   pre_page.click(function () {
     $(this).css('background-color', '#bd292c');
-    window.location.href = '/chatbot/create';
+    var cancel_modal = document.getElementById('cancel_modal');
+    var modal_left_btn = $('#modal_left_btn');
+    var modal_right_btn = $('#modal_right_btn');
+
+    cancel_modal.style.display = "block";
+
+    modal_left_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_left_btn.click(function () {
+      cancel_modal.style.display = "none";
+    });
+
+    modal_right_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_right_btn.click(function () {
+      cancel_modal.style.display = "none";
+      window.location.href = '/chatbot/list'
+    });
   });
 
   next_page.click(function () {

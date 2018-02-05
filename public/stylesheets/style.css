@@ -2139,8 +2139,10 @@ modal zone
 }
 
 .modal_context {
-    width: auto;
+    /*width: auto;*/
+    width: 700px;
     height: 54px;
+    /*height: auto;*/
     font-family: "Noto Sans";
     font-size: 18px;
     font-weight: 900;
@@ -2455,7 +2457,7 @@ hr.modal_device_underline {
     display: table;
     width: 346px;
     height: 50px;
-    background-color: #646464;
+    background-color: #ff753c;
 
     float: left;
 }

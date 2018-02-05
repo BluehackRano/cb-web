@@ -201,6 +201,17 @@
     </div>
   </div>
 
+  <!--디폴트 모양 팝업-->
+  <div id="default_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">확인</div>
+      <div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
+      <div id="modal_one_btn" class="modal_one_btn">
+        <p>확인</p></div>
+    </div>
+  </div>
 </div>
 
 <footer id="footer">
@@ -402,21 +413,39 @@
 
     console.log('request_query=>' + request_query);
 
-    if (set_list.val() == "hackathon_choice") {
-       window.location.href = '/hackathon/create'+request_query;
-      document.location.hash = hashData;
+    if (baseInfo_name.val() == '' || baseInfo_context_01.val() == '') {
+      console.log('in popup')
+      var default_modal = document.getElementById('default_modal');
+      var modal_one_btn = $('#modal_one_btn');
 
-    } else if (set_list.val() == "designer_portfolio_choice") {
-      // console.log(request_query);
-      window.location.href = '/designerPortfolio/create'+request_query;
-      document.location.hash = hashData;
+      default_modal.style.display = "block";
 
-    } else if (set_list.val() == "bricks_choice") {
-      window.location.href = '/bricks/create'+request_query;
-      document.location.hash = hashData;
+      modal_one_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
 
+      modal_one_btn.click(function () {
+        default_modal.style.display = "none";
+      });
     } else {
-      next_page.css('background-color', '#c0c0c0');
+      if (set_list.val() == "hackathon_choice") {
+        window.location.href = '/hackathon/create' + request_query;
+        document.location.hash = hashData;
+
+      } else if (set_list.val() == "designer_portfolio_choice") {
+        // console.log(request_query);
+        window.location.href = '/designerPortfolio/create' + request_query;
+        document.location.hash = hashData;
+
+      } else if (set_list.val() == "bricks_choice") {
+        window.location.href = '/bricks/create' + request_query;
+        document.location.hash = hashData;
+
+      } else {
+        next_page.css('background-color', '#c0c0c0');
+      }
     }
   });
 </script>

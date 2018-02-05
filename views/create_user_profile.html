@@ -67,11 +67,13 @@
 
 								<div class="user_profile_photo_upload_btn">
 									<label for="uploadBtn" class="btn_file">파일 업로드</label>
-									<div id="after_upload">
-										<div id="after_upload_motify"><p>변경하기</p></div>
-										<div id="after_upload_del"><p>제거하기</p></div>
-									</div>
 									<input type="file" id="uploadBtn" class="uploadBtn">
+								</div>
+
+								<div id="after_upload">
+									<input id="file" type="file" class="imgeFile"/>
+									<div id="after_upload_motify"><p>변경하기</p></div>
+									<div id="after_upload_del"><p>제거하기</p></div>
 								</div>
 							</div>
 						</div>
@@ -372,6 +374,19 @@
 			</div>
 		</section>
 	</div>
+
+	<!--디폴트 모양 팝업-->
+	<div id="default_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">확인</div>
+			<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
+			<div id="modal_one_btn" class="modal_one_btn">
+				<p>확인</p></div>
+		</div>
+	</div>
+
 </div>
 
 <footer id="footer">
@@ -421,10 +436,13 @@
   var upload = document.getElementById('uploadBtn'),
     profile_img = document.getElementById('profile_img');
 
+  var user_profile_photo_upload_btn = $('.user_profile_photo_upload_btn');
   var after_upload = $('#after_upload');
   var after_upload_motify = $('#after_upload_motify');
   var after_upload_del = $('#after_upload_del');
+  var imgTmpFile = $('#file');
 
+  imgTmpFile.hide();
   after_upload.hide();
 
   upload.onchange = function (e) {
@@ -442,15 +460,19 @@
       }
       if (img.height > 32) {
         img.height = 32;
-			}
+      }
 
       profile_img.src = img.src;
 
       //upload img file api
       var fd = new FormData();
       var uploadFile = $('#profile_img')[0].file;
-      console.log('uploadFile=>' +uploadFile);
+      console.log('uploadFile=>' + uploadFile);
       fd.append('file', file);
+
+      //TODO: testcode
+      // user_profile_photo_upload_btn.hide();
+      // after_upload.show();
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/file/',
@@ -465,15 +487,71 @@
             img_url = body.data.url;
             console.log('upliad success!');
             console.log('res img url=>' + img_url);
+
+            user_profile_photo_upload_btn.hide();
+            after_upload.show();
           }
         }
       });
 
     };
     reader.readAsDataURL(file);
-
-    return false;
   };
+
+  $('#file').change(function (e) {
+    e.preventDefault();
+
+    var file = this.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+      var img = new Image();
+      img.src = event.target.result;
+      if (img.width > 142) { // profile_img width
+        img.width = 142;
+      }
+      if (img.height > 32) {
+        img.height = 32;
+      }
+
+      profile_img.src = img.src;
+
+      //upload img file api
+      var fd = new FormData();
+      var uploadFile = $('#profile_img')[0].file;
+      console.log('uploadFile=>' + uploadFile);
+      fd.append('file', file);
+
+      //TODO: testcode
+//       user_profile_photo_upload_btn.hide();
+//       after_upload.show();
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/file/',
+        type: 'POST',
+        async: false,
+        crossDomain: true,
+        contentType: false,
+        data: fd,
+        processData: false,
+        success: function (body, status, res) {
+          if (body.success) {
+            img_url = body.data.url;
+            console.log('upliad success!');
+            console.log('res img url=>' + img_url);
+
+            user_profile_photo_upload_btn.hide();
+            after_upload.show();
+          }
+        }
+      });
+    }
+    reader.readAsDataURL(file);
+  })
+
+  after_upload_motify.click(function () {
+    $('#file').click();
+  });
 
 
   var pre_page = $('#pre_page');
@@ -606,20 +684,40 @@
       }
     }
 
-    $.ajax({
-      url: 'https://www.chatbrick.io/api/brick/',
-      type: 'PUT',
-      async: false,
-      crossDomain: true,
-      contentType: 'application/json',
-      dataType: 'JSON',
-      data : JSON.stringify(submitData),
-      success: function (body, status, res) {
-        if (body.success) {
-          console.log('upliad success!');
+    if (submitData.data.basic.name || submitData.data.basic.email
+				|| submitData.data.basic.special || submitData.data.basic.residence
+				|| submitData.data.basic.social) {
+      console.log('in popup')
+      var default_modal = document.getElementById('default_modal');
+      var modal_one_btn = $('#modal_one_btn');
+
+      default_modal.style.display = "block";
+
+      modal_one_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_btn.click(function () {
+        default_modal.style.display = "none";
+      });
+    } else {
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/',
+        type: 'PUT',
+        async: false,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: 'JSON',
+        data: JSON.stringify(submitData),
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('upliad success!');
+          }
         }
-      }
-    });
+      });
+    }
   });
 
   pre_page.hover(function () {

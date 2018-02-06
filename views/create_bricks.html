@@ -552,7 +552,7 @@
 
           var modal_brick_tag = (
             `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index +`">`+
-            `<p>`+item+`</p>`+
+            `<p>`+item+ ' ' +`</p>`+
             `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index +`">`+
             `</div>`
           );
@@ -575,18 +575,30 @@
 
   var modal_brick_api = document.getElementById('modal_brick_api');
   var close_modal_brick_api_img = document.getElementById('close_modal_brick_api_img');
+
+  var pageTagLength = '';
   var modalNewTagStartIndex = '';
-  var modalClickTagArea = '';
+
   var pageClickTagArea = '';
+  var modalClickTagArea = '';
+  var pageClickIndex = '';
 
   $(document).on('click', '.brick_api_item_btn_motify', function () {
     var itemIndex = $(this).parent().parent().index();
     console.log('itemIndex->'+itemIndex );
 
+    pageClickIndex = selected_brick_list[itemIndex];
+
     $('.modal_brick_api_item_tag_area').hide();
+
     $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]).show();
     modalClickTagArea = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]);
-    modalNewTagStartIndex = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').length;;
+    modalNewTagStartIndex = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').length;
+
+    pageClickTagArea = $('#brick_api_item_tag_area'+selected_brick_list[itemIndex]);
+    pageTagLength = $('#brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .brick_api_item_tag').length;
+    console.log('pageClickTagArea=>' + pageClickTagArea.html());
+    console.log('pageNewTagStartIndex=>' + pageTagLength);
 
     modal_brick_api.style.display = "block";
 
@@ -616,7 +628,6 @@
     $('#'+removeId).remove();
   });
 
-
   //enter key event
   var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input');
   modal_brick_api_item_tag_add_input.keypress(function (key) {
@@ -626,12 +637,12 @@
       console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
       var modal_brick_tag = (
         `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex +`">`+
-        `<p>`+modal_brick_api_item_tag_add_input.val()+`</p>`+
+        `<p>`+modal_brick_api_item_tag_add_input.val() +' '+`</p>`+
         `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex +`">`+
         `</div>`
       );
 
-//      $('.modal_brick_api_item_tag_area').append(modal_brick_tag);
+
       modalClickTagArea.append(modal_brick_tag);
       modalNewTagStartIndex ++;
       console.log('after modalNewTagStartIndex=>' + modalNewTagStartIndex);
@@ -642,14 +653,29 @@
 
   //modal tag save btn click event
   $('#modal_left_tag_save_btn').click(function () {
+
+    console.log('tt3=>'+pageClickIndex);
     //기존의 page brick tag 아이템들을 지운다.
-    console.log('before pageClickTagArea=>' + pageClickTagArea.html());
-    pageClickTagArea.empty();
-    console.log('after pageClickTagArea=>' + pageClickTagArea.html());
-    console.log('after modal_brick_api_item_tag=>' + $('.modal_brick_api_item_tag').html());
+    for (var i = 0; i < pageTagLength; i ++) {
+      $('#brick_api_item_tag_area'+pageClickIndex +'> #brick_api_item_tag'+i).remove();
+    }
+
+    //modal의 현재 태그정보를 가져온다
+    var resultModalTag = modalClickTagArea.text().split(' ').slice(0,-1);
+//    console.log('resultModalTag text=>' + resultModalTag);
 
     //새롭게 변경된 modal brick tag 아이템들로 다시 채운다
-    pageClickTagArea.append($('.modal_brick_api_item_tag'));
+    console.log('resultModalTag length=>' + resultModalTag.length);
+    resultModalTag.forEach(function (item, index, array) {
+      var brick_tag = (
+        `<div class="brick_api_item_tag" id="brick_api_item_tag` + index+`">`+
+        `<p>`+item+`</p>`+
+        `</div>`
+      );
+      $('#brick_api_item_tag_area'+pageClickIndex).append(brick_tag);
+    })
+
+//
 //    console.log('modal tag 한줄의 태그 내용=>' + JSON.stringify($((this)+'> .modal_brick_api_item_tag').html()));
 
   });

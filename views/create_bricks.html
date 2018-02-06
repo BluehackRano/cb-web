@@ -269,7 +269,7 @@
 
         <div class="modal_brick_api_context_01" id="modal_brick_api_context_01">
           <div class="modal_brick_api_guild">
-            챗봇에서 아래의 키워드를 입력하면 WEATHER BRICK이 호출되요
+            호출키워드 목록
           </div>
 
           <!--브릭 아이템 태그 영역-->
@@ -295,7 +295,13 @@
           <div class="modal_brick_api_guild">
             추가하고 싶은 호출 키워드를 입력해주세요
           </div>
-          <input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input" placeholder="가나다">
+          <input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input" placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요">
+
+          <div class="modal_brick_api_guild_desc">
+            * 호출키워드의 글자수는 8자까지만 가능해요<br>
+            * 호출키워드에서 띄어쓰기를 사용할 수 없어요<br>
+            * 호출키워드는 총 5개까지만 등록할 수 있어요<br>
+          </div>
         </div>
 
       </div>
@@ -354,6 +360,8 @@
 </footer>
 
 <script>
+  $('input[type=text]').addClass('placeholder');
+
   var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
   var baseInfo_context = `<%=jsonData.baseInfo_context%>`;
 
@@ -634,19 +642,34 @@
 
     if(key.keyCode == 13) {
 
-      console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
-      var modal_brick_tag = (
-        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex +`">`+
-        `<p>`+modal_brick_api_item_tag_add_input.val() +' '+`</p>`+
-        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex +`">`+
-        `</div>`
-      );
+//      if (modalNewTagStartIndex > 5) {
+//        console.log('tag 갯수가 5개 초과')
+//      }
+
+      //입력 필드 글자수 제한 modal_brick_api_item_tag_add_input.val().length > 8 ||
+      if (modal_brick_api_item_tag_add_input.val().length > 8) {
+        console.log('입력필드의 글자수가 8자 초과');
+      } else if(modal_brick_api_item_tag_add_input.val().includes(' ')) {
+        console.log('입력필드의 글자에 공백 포함');
+      } else {
+        console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
+        var modal_brick_tag = (
+          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex +`">`+
+          `<p>`+modal_brick_api_item_tag_add_input.val() +' '+`</p>`+
+          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex +`">`+
+          `</div>`
+        );
 
 
-      modalClickTagArea.append(modal_brick_tag);
-      modalNewTagStartIndex ++;
-      console.log('after modalNewTagStartIndex=>' + modalNewTagStartIndex);
-      console.log('modal_brick_api_item_tag_add_input=>' + modal_brick_api_item_tag_add_input.val());
+        modalClickTagArea.append(modal_brick_tag);
+        modalNewTagStartIndex ++;
+        console.log('after modalNewTagStartIndex=>' + modalNewTagStartIndex);
+        console.log('modal_brick_api_item_tag_add_input=>' + modal_brick_api_item_tag_add_input.val());
+
+        //등록 성공시 입력필드값 초기화
+        modal_brick_api_item_tag_add_input.val('');
+      }
+
     }
 
   });
@@ -675,9 +698,7 @@
       $('#brick_api_item_tag_area'+pageClickIndex).append(brick_tag);
     })
 
-//
-//    console.log('modal tag 한줄의 태그 내용=>' + JSON.stringify($((this)+'> .modal_brick_api_item_tag').html()));
-
+    modal_brick_api.style.display = "none";
   });
 
   //modal tag cancel btn click event

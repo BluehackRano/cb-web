@@ -450,6 +450,18 @@
   </div>
 </div>
 
+<!--디폴트 모양 팝업-->
+<div id="default_modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="modal_title">확인</div>
+    <div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
+    <div id="modal_one_btn" class="modal_one_btn">
+      <p>확인</p></div>
+  </div>
+</div>
+
 <footer id="footer">
   <div class="bottom_common">
     <div id="pre_page">
@@ -516,6 +528,7 @@
   var brick_api_zone = $('#brick_api_zone');
 
 
+  var resBricksList;
   $.ajax({
     // url: 'https://www.chatbrick.io/api/brick/a702b0a5-97e0-461a-9738-6b529e112177/',
     url: 'https://www.chatbrick.io/api/brick/'+setId+'/',
@@ -561,7 +574,7 @@
         $('#user_profile_not_ready_mesage_02').val(custom_settings_error_msg[2]);
         $('#user_profile_not_ready_mesage_03').val(custom_settings_error_msg[2]);
 
-        var resBricksList = body.data.settings.data.brick;
+        resBricksList = body.data.settings.data.brick;
         resBricksList.forEach(function (item, itemIndex, array) {
           var brickApiSet = (
             `<div class="api_set" id="api_set` + itemIndex + `">` +
@@ -723,6 +736,7 @@
   var pre_page = $('#pre_page');
   var next_page = $('#next_page');
   var setting_remove_btn = $('#setting_remove_btn');
+  var submitBrickList = [];
 
   setting_remove_btn.click(function () {
     $(this).css('background-color', '#bd292c');
@@ -730,7 +744,6 @@
     var modal_left_remove_btn = $('#modal_left_remove_btn');
     var modal_right_remove_btn = $('#modal_right_remove_btn');
     var modal_remove_context = $('#modal_remove_context');
-    console.log('baseInfo_name=>'+baseInfo_name);
 
     modal_remove_context.text('“'+$('#baseInfo_name').val()+'”챗봇을 영구적으로 제거하시겠습니까?' +
       '“'+$('#baseInfo_name').val()+'”챗봇의 모든 데이터가 영구적으로 삭제됩니다.' +
@@ -814,7 +827,73 @@
 
   next_page.click(function () {
     $(this).css('background-color', '#bd292c');
-    // window.location.href = '/bricks/create';
+
+    //TODO: 채워야함
+    resBricksList.forEach(function (item, index, array) {
+      var brickJson = {
+        id: item.id,
+        name: item.name,
+        keywords: item.api.keywords,
+        data: {
+          api_key: $('#apikeyInputText' + index).val()
+        }
+      }
+      submitBrickList.push(brickJson);
+    });
+
+    //make send jsonData
+    var submitData = {
+      "id": setId,
+      "type": "bricks",
+      "name": $('#baseInfo_name').val(),
+      "desc": $('#baseInfo_context_01').val()+$('#baseInfo_context_02').val(),
+      "data": {
+        "brick": JSON.parse(JSON.stringify(submitBrickList)),
+        "custom_settings": {
+          "get_started": $('#user_profile_start_message_01').val(),
+          "error_msg": $('#user_profile_not_ready_mesage_01').val()
+        }
+      },
+
+    };
+
+    console.log('submitData=>' + JSON.stringify(submitData));
+
+    if (submitData.data.custom_settings.get_started == ''
+      || submitData.data.custom_settings.error_msg == '') {
+      console.log('in popup')
+      var default_modal = document.getElementById('default_modal');
+      var modal_one_btn = $('#modal_one_btn');
+
+      default_modal.style.display = "block";
+
+      modal_one_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_btn.click(function () {
+        default_modal.style.display = "none";
+      });
+    } else {
+      //send jsonData in brick api
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/',
+        type: 'PATCH',
+        async: false,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: 'JSON',
+        data: JSON.stringify(submitData),
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('upload success!');
+            window.location.href = '/chatbot/list';
+          }
+        }
+      });
+    }
   });
 
   pre_page.hover(function () {
@@ -917,6 +996,7 @@
                           $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
                           $('#fb_page_btn' + index).css('color', '#ffffff')
                         }
+
                       }
                     });
                   } else {

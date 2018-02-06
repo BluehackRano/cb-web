@@ -267,7 +267,7 @@
 
       <div class="modal_brick_api_context">
 
-        <div class="modal_brick_api_context_01">
+        <div class="modal_brick_api_context_01" id="modal_brick_api_context_01">
           <div class="modal_brick_api_guild">
             챗봇에서 아래의 키워드를 입력하면 WEATHER BRICK이 호출되요
           </div>
@@ -301,11 +301,11 @@
       </div>
 
       <div class="modal_brick_api_two_btn_area">
-        <div id="modal_left_btn" class="modal_left_btn">
+        <div id="modal_left_tag_save_btn" class="modal_left_btn">
           <p>저장</p>
         </div>
 
-        <div id="modal_right_btn" class="modal_right_btn">
+        <div id="modal_right_tag_cancel_btn" class="modal_right_btn">
           <p>취소</p>
         </div>
       </div>
@@ -449,6 +449,7 @@
   // var brick_api_item_area = $('.brick_api_item_area');
   var api_set_clicked_list = [];
 
+  brick_api_zone.show();
   console.log('brick_choice->' + brick_choice.text());
 
   brick_choice.click(function () {
@@ -536,7 +537,7 @@
       );
 
       brick_api_zone.append(brickApiItem);
-      $('.modal_brick_api_context_01').append(modalBrickApiItem);
+      $('#modal_brick_api_context_01').append(modalBrickApiItem);
 
       //Added brick api tag
         resData[itemIndex].api.keywords.forEach(function (item, index, array) {
@@ -556,6 +557,7 @@
             `</div>`
           );
 
+
           $('#brick_api_item_tag_area'+ itemIndex).append(brick_tag);
           $('#modal_brick_api_item_tag_area'+ itemIndex).append(modal_brick_tag);
 
@@ -573,23 +575,26 @@
 
   var modal_brick_api = document.getElementById('modal_brick_api');
   var close_modal_brick_api_img = document.getElementById('close_modal_brick_api_img');
+  var modalNewTagStartIndex = '';
+  var modalClickTagArea = '';
+  var pageClickTagArea = '';
+
   $(document).on('click', '.brick_api_item_btn_motify', function () {
     var itemIndex = $(this).parent().parent().index();
     console.log('itemIndex->'+itemIndex );
 
     $('.modal_brick_api_item_tag_area').hide();
     $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]).show();
+    modalClickTagArea = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]);
+    modalNewTagStartIndex = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').length;;
 
-    var text = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').html();
-    var text1 = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').length;
-    console.log('text=>'+ JSON.stringify(text));
-    console.log('text1=>'+ text1);
     modal_brick_api.style.display = "block";
 
   });
 
   close_modal_brick_api_img.onclick = function () {
     modal_brick_api.style.display = "none";
+
   }
 
   $(document).on('click', '.brick_api_item_btn_delete', function () {
@@ -601,10 +606,14 @@
   });
 
   $(document).on('click', '.modal_brick_api_item_del_img', function () {
-    console.log('test!2');
+//    console.log('test!2');
     var itemIndex = $(this).parent().index();
     console.log('tagid=>'+ itemIndex);
-    $('#modal_brick_api_item_tag'+itemIndex).hide();
+//    console.log('this1=>' + $(this).attr('id'));
+    console.log('this2=>' + $(this).parent().attr('id'));
+//    console.log('this3=>' + $(this).parent().parent().attr('id'));
+    var removeId = $(this).parent().attr('id');
+    $('#'+removeId).remove();
   });
 
 
@@ -614,24 +623,41 @@
 
     if(key.keyCode == 13) {
 
-      var apiTagsCount = 10;
-      console.log('before apiTagsCount=>' + apiTagsCount);
-      newTagCount ++;
+      console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
       var modal_brick_tag = (
-        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + apiTagsCount +`">`+
+        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex +`">`+
         `<p>`+modal_brick_api_item_tag_add_input.val()+`</p>`+
-        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + apiTagsCount +`">`+
+        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex +`">`+
         `</div>`
       );
 
-      $('.modal_brick_api_item_tag_area').append(modal_brick_tag);
-      console.log('after apiTagsCount=>' + apiTagsCount);
+//      $('.modal_brick_api_item_tag_area').append(modal_brick_tag);
+      modalClickTagArea.append(modal_brick_tag);
+      modalNewTagStartIndex ++;
+      console.log('after modalNewTagStartIndex=>' + modalNewTagStartIndex);
       console.log('modal_brick_api_item_tag_add_input=>' + modal_brick_api_item_tag_add_input.val());
     }
 
   });
 
+  //modal tag save btn click event
+  $('#modal_left_tag_save_btn').click(function () {
+    //기존의 page brick tag 아이템들을 지운다.
+    console.log('before pageClickTagArea=>' + pageClickTagArea.html());
+    pageClickTagArea.empty();
+    console.log('after pageClickTagArea=>' + pageClickTagArea.html());
+    console.log('after modal_brick_api_item_tag=>' + $('.modal_brick_api_item_tag').html());
 
+    //새롭게 변경된 modal brick tag 아이템들로 다시 채운다
+    pageClickTagArea.append($('.modal_brick_api_item_tag'));
+//    console.log('modal tag 한줄의 태그 내용=>' + JSON.stringify($((this)+'> .modal_brick_api_item_tag').html()));
+
+  });
+
+  //modal tag cancel btn click event
+  $('#modal_right_tag_cancel_btn').click(function () {
+
+  });
 
   brick_preview.click(function () {
 
@@ -819,7 +845,7 @@
       console.log('submitData=>' + JSON.stringify(submitData));
 
       if (submitData.data.custom_settings.get_started == ''
-          || submitData.data.cus.error_msg) {
+          || submitData.data.custom_settings.error_msg == '') {
         console.log('in popup')
         var default_modal = document.getElementById('default_modal');
         var modal_one_btn = $('#modal_one_btn');

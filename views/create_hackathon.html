@@ -1275,8 +1275,8 @@
     };
 
     if (submitData.name == '' || submitData.desc == ''
-			|| submitData.data.basic.name || submitData.data.basic.email
-      || submitData.data.basic.tel) {
+			|| submitData.data.basic.name == '' || submitData.data.basic.email == ''
+      || submitData.data.basic.tel == '') {
       console.log('in popup')
       var default_modal = document.getElementById('default_modal');
       var modal_one_btn = $('#modal_one_btn');
@@ -1305,6 +1305,7 @@
         success: function (body, status, res) {
           if (body.success) {
             console.log('upload success!');
+            var setId = body.data.id;
             window.location.href = '/platform/connect' + '?setId=' + setId;
           }
         }

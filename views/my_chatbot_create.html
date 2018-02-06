@@ -413,7 +413,7 @@
 
     console.log('request_query=>' + request_query);
 
-    if (baseInfo_name.val() == '' || baseInfo_context_01.val() == '') {
+    if (set_list.val() != '' &&(baseInfo_name.val() == '' || baseInfo_context_01.val() == '')) {
       console.log('in popup')
       var default_modal = document.getElementById('default_modal');
       var modal_one_btn = $('#modal_one_btn');

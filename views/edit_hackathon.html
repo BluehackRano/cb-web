@@ -750,6 +750,18 @@
     </div>
   </div>
 
+  <!--디폴트 모양 팝업-->
+  <div id="default_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">확인</div>
+      <div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
+      <div id="modal_one_btn" class="modal_one_btn">
+        <p>확인</p></div>
+    </div>
+  </div>
+
 </div>
 
 <footer id="footer">
@@ -1423,7 +1435,6 @@
     var modal_left_remove_btn = $('#modal_left_remove_btn');
     var modal_right_remove_btn = $('#modal_right_remove_btn');
     var modal_remove_context = $('#modal_remove_context');
-    console.log('baseInfo_name=>'+baseInfo_name);
 
     modal_remove_context.text('“'+$('#baseInfo_name').val()+'”챗봇을 영구적으로 제거하시겠습니까?' +
       '“'+$('#baseInfo_name').val()+'”챗봇의 모든 데이터가 영구적으로 삭제됩니다.' +
@@ -1620,9 +1631,10 @@
 
     console.log('img_url=>' + img_url);
     var submitData = {
+      "id": setId,
       "type": "hackathon",
-      "name": baseInfo_name,
-      "desc": baseInfo_context,
+      "name": $('#baseInfo_name').val(),
+      "desc": $('#baseInfo_context_01').val()+$('#baseInfo_context_02').val(),
       "data": {
         "basic": {
           "poster_image": img_url,
@@ -1683,7 +1695,7 @@
 
     $.ajax({
       url: 'https://www.chatbrick.io/api/brick/',
-      type: 'PUT',
+      type: 'PATCH',
       async: false,
       crossDomain: true,
       contentType: 'application/json',
@@ -1692,6 +1704,7 @@
       success: function (body, status, res) {
         if (body.success) {
           console.log('upliad success!');
+          window.location.href = '/chatbot/list';
         }
       }
     });

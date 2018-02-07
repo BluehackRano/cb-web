@@ -215,16 +215,20 @@
             console.log('body.facebook.fb_id=>' + fb_id);
 
             FB.api(body.facebook.fb_id + '/accounts', function (response) {
-              fb_page_id = response.data[0].id;
-              fb_access_token = response.data[0].access_token;
-              console.log('Successful page info for: ' + JSON.stringify(response));
-              console.log('data length: ' + response.data.length);
-              console.log('access_token[0]: ' + fb_access_token);
-              console.log('name[0]: ' + response.data[0].name);
-              console.log('fb_page_id: ' + fb_page_id);
+//              fb_page_id = response.data[0].id;
+//              fb_access_token = response.data[0].access_token;
+//              console.log('Successful page info for: ' + JSON.stringify(response));
+//              console.log('data length: ' + response.data.length);
+//              console.log('access_token[0]: ' + fb_access_token);
+//              console.log('name[0]: ' + response.data[0].name);
+//              console.log('fb_page_id: ' + fb_page_id);
 
 
               response.data.forEach(function (item, index, array) {
+
+                fb_page_id = response.data[index].id;
+                fb_access_token = response.data[index].access_token;
+
                 var fb_messager = (
                   `<div class="fb_page_set" id="fb_page_set` + index + `">` +
                   `<img src="../public/images/img-facebook-page-default.png" class="fb_page_img">` +
@@ -240,7 +244,7 @@
 
                 var fb_page_btn = $('#fb_page_btn' + index);
                 fb_page_btn.click(function () {
-
+                  console.log('fb_page_id: ' + fb_page_id);
                   $(this).toggleClass('platform_connected');
 
                   if ($(this).hasClass('platform_connected')) {

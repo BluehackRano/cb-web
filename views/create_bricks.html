@@ -642,10 +642,6 @@
 
     if(key.keyCode == 13) {
 
-//      if (modalNewTagStartIndex > 5) {
-//        console.log('tag 갯수가 5개 초과')
-//      }
-
       //입력 필드 글자수 제한 modal_brick_api_item_tag_add_input.val().length > 8 ||
       if (modal_brick_api_item_tag_add_input.val().length > 8) {
         console.log('입력필드의 글자수가 8자 초과');
@@ -830,6 +826,8 @@
     } else if (pageNumber == 3) {
 
       var submitBrickList = [];
+      var keywords = [];
+
       var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
       var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
       var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
@@ -857,16 +855,28 @@
               resData.forEach(function (item, index, array) {
 
                 if (index == selected_brick_list[i]) {
+                  var brick_tags = $('#brick_api_item_tag_area' + index + '> .brick_api_item_tag');
+                  console.log('brick_tags=> ' + brick_tags.html());
+
+                  for (var j = 0; j < brick_tags.length; j++) {
+
+                    var tag_text = $('#brick_api_item_tag_area' + index + '> #brick_api_item_tag' + j).text();
+                    keywords.push(tag_text);
+
+                  }
+                  console.log('keywords=> ' + keywords);
+
                   var brickJson = {
-                    id      : item.id,
-                    name    : item.name,
-                    keywords: item.api.keywords,
-                    data : {
-                      api_key: $('#apikeyInputText'+i).val()
+                    id: item.id,
+                    name: item.name,
+                    keywords: keywords,
+                    data: {
+                      api_key: $('#apikeyInputText' + index).val()
                     }
                   }
 
                   submitBrickList.push(brickJson);
+                  keywords = [];
                 }
               });
             }

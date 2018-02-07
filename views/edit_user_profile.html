@@ -1003,9 +1003,9 @@
         $('#user_profile_start_message_03').val(user_profile_start_message[2]);
 
         var user_profile_not_ready_mesage = body.data.settings.data.custom_settings.error_msg.split('/n');
-        $('#user_profile_start_message_01').val(user_profile_not_ready_mesage[0]);
-        $('#user_profile_start_message_02').val(user_profile_not_ready_mesage[1]);
-        $('#user_profile_start_message_03').val(user_profile_not_ready_mesage[2]);
+        $('#user_profile_not_ready_mesage_01').val(user_profile_not_ready_mesage[0]);
+        $('#user_profile_not_ready_mesage_02').val(user_profile_not_ready_mesage[1]);
+        $('#user_profile_not_ready_mesage_03').val(user_profile_not_ready_mesage[2]);
 
         var user_profile_company_name = body.data.settings.data.work;
         user_profile_company_name.forEach(function (item, index, array) {

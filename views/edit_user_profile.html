@@ -506,7 +506,7 @@
                     <img src="../public/images/img-telegram-bot-default.png"
                          class="tele_page_img">
                     <div class="tele_page_text">
-                      <div class="tele_page_title">
+                      <div class="tele_page_title" id="tele_page_title">
                         Bot Name
                       </div>
                       <div class="tele_page_disconnect_btn" id="tele_page_disconnect_btn">
@@ -863,6 +863,17 @@
                   if (body.success) {
 
                     console.log('platform=>'+ JSON.stringify(fb_pages_info.length));
+                    if (isEmpty(body.data.telegram)) {
+                      console.log('telegram bot이 존재하지않음');
+                      $('.tg_connect_page').show();
+                      $('.tele_page_set').hide();
+                    } else {
+                      console.log('body.data.telegram=>' + JSON.stringify(body.data.telegram));
+                      $('.tg_connect_page').hide();
+                      $('.tele_page_set').show();
+                      $('#tele_page_title').text(body.data.telegram.username);
+                      console.log('tele_page_title username=>'+$('.tele_page_title').val());
+                    }
 
                     registered_page_list_copy = body.data.registered_page_list;
                     body.data.registered_page_list.forEach(function (item, index, array) {
@@ -1009,13 +1020,13 @@
               var tele_page_btn = $('#tele_page_btn');
               var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
 
-              tg_connect_page.show();
-              tele_page_set.hide();
+//              tg_connect_page.show();
+//              tele_page_set.hide();
               tele_page_btn.click(function () {
                 //connect telegram api
                 $.ajax({
                   //TODO: url
-                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
                   // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
                   type: 'PUT',
                   async: false,
@@ -1036,7 +1047,7 @@
                 //disconnect telegram api
                 $.ajax({
                   //TODO: url
-                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
                   // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
                   type: 'DELETE',
                   async: false,
@@ -1101,6 +1112,11 @@
         //check fb page access_token
         if (body.data.page_id != undefined) {
           fb_page_id_from_api = body.data.page_id;
+        }
+
+        if (body.data.telegram.token != undefined) {
+          $('#tg_content_name').val(body.data.telegram.token);
+          console.log('tg_content_name=>' + $('#tg_content_name').val());
         }
 
         $('#baseInfo_name').val(body.data.settings.name);

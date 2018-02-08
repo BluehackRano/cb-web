@@ -219,14 +219,6 @@
             console.log('body.facebook.fb_id=>' + fb_id);
 
             FB.api(body.facebook.fb_id + '/accounts', function (response) {
-//              fb_page_id = response.data[0].id;
-//              fb_access_token = response.data[0].access_token;
-//              console.log('Successful page info for: ' + JSON.stringify(response));
-//              console.log('data length: ' + response.data.length);
-//              console.log('access_token[0]: ' + fb_access_token);
-//              console.log('name[0]: ' + response.data[0].name);
-//              console.log('fb_page_id: ' + fb_page_id);
-
 
               response.data.forEach(function (item, index, array) {
 

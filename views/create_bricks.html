@@ -712,7 +712,7 @@
     console.log('itemIndex=>' + itemIndex);
     console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
 
-    modal_device_set_img.attr("src", resData[itemIndex].img);
+    modal_device_set_img.attr("src", resData[itemIndex].thumb);
     modal_device_set_name.text(resData[itemIndex].name);
     modal_device_context_desc.text(resData[itemIndex].preview.desc);
   });

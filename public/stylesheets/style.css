@@ -841,6 +841,15 @@ connect_platform
     margin-bottom: 10px;
 }
 
+.fb_page_set_connected {
+    height: 58px;
+    width: 596px;
+    float: left;
+    border-bottom: solid 2px #e9e9e9;
+    margin-left: 104px;
+    margin-bottom: 10px;
+}
+
 .fb_page_img {
     width: 50px;
     height: 50px;
@@ -871,6 +880,23 @@ connect_platform
 
     padding-top: 12px;
     padding-bottom: 23px;
+}
+
+.fb_page_connected_status {
+    width: 194px;
+    height: 18px;
+    font-family: "Noto Sans";
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #fd6246;
+
+    float: right;
+    padding-top: 14px;
 }
 
 .fb_page_btn {

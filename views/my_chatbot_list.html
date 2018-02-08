@@ -66,7 +66,7 @@
     xhrFields: { withCredentials: true },
     success : function(body, status, res) {
       console.log('body2=>' + JSON.stringify(body.facebook));
-      console.log('fb_profile=>' + body.facebook.fb_profile);
+//      console.log('fb_profile=>' + body.facebook.fb_profile);
       if (body.success) {
 
         login_logo.attr("src", body.facebook.fb_profile);
@@ -160,7 +160,28 @@
     create_my_bot.css('background-color', '#f3f3f3');
   });
 
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+      console.log('connected!')
+      // alert('connected!2');
+      // getFBAPI();
+//      window.location.href = '/chatbot/list';
+
+    } else if (response.status === 'not_authorized') {
+      console.log('not_authorized!')
+       window.location.href  = '/';
+      // window.location.href = 'http://www.localhost:3000';
+    } else {
+      console.log('connected error!')
+       window.location.href  = '/';
+      // window.location.href = 'http://www.localhost:3000';
+    }
+  }
 </script>
+<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 <!--<script type="text/javascript" src="/public/javascripts/my_chatbot_list.js"></script>-->
 </body>
 </html>

@@ -190,15 +190,19 @@
   var login_dropdown = $('#login_dropdown');
   var fb_page_list = $('#fb_page_list');
 
+  var fb_page_ids = [];
+  var fb_page_access_tokens = [];
+  var fb_page_names = [];
+  var fb_pages_info = {};
+  var registered_fb_name;
+  var registered_page_list_copy;
+
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     if (response.status === 'connected') {
 
-      var fb_page_list = $('#fb_page_list');
-      var fb_access_token;
       var fb_id;
-      var fb_page_id;
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/login/',
@@ -226,14 +230,16 @@
 
               response.data.forEach(function (item, index, array) {
 
-                fb_page_id = response.data[index].id;
-                fb_access_token = response.data[index].access_token;
+                fb_page_ids.push(response.data[index].id);
+                fb_page_access_tokens.push(response.data[index].access_token);
+                fb_page_names.push(response.data[index].name);
+                fb_pages_info = response.data;
 
                 var fb_messager = (
                   `<div class="fb_page_set" id="fb_page_set` + index + `">` +
                   `<img src="../public/images/img-facebook-page-default.png" class="fb_page_img">` +
                   `<div class="fb_page_text">` +
-                  `<div class="fb_page_title">` + item.name + `</div>` +
+                  `<div class="fb_page_title" id="fb_page_title` + index + `">` + item.name + `</div>` +
                   `<div class="fb_page_btn" id="fb_page_btn` + index + `">연결하기</p>` +
                   `</div>` +
                   `</div>` +
@@ -242,59 +248,149 @@
 
                 fb_page_list.append(fb_messager);
 
-                var fb_page_btn = $('#fb_page_btn' + index);
-                fb_page_btn.click(function () {
-                  console.log('fb_page_id: ' + fb_page_id);
-                  $(this).toggleClass('platform_connected');
+              }); //response.data.forEach
 
-                  if ($(this).hasClass('platform_connected')) {
+              //get user connected page list
+              $.ajax({
+                url: 'https://www.chatbrick.io/api/user/platform/',
+                type: 'GET',
+                async: false,
+                crossDomain: true,
+                xhrFields: {withCredentials: true},
+                success: function (body, status, res) {
 
-                    //connect fb page api
-                    $.ajax({
-                      //TODO: url
-                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_id+'/'+fb_access_token+'/',
-                      // url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
-                      type: 'PUT',
-                      async: false,
-                      crossDomain: true,
-                      xhrFields: {withCredentials: true},
-                      success: function (body, status, res) {
+                  console.log('get user connected page list=>' + body.success);
+                  if (body.success) {
 
-                        console.log('connect fb page api=>' + body.success);
-                        if (body.success) {
-                          $('.fb_page_set').hide();
-                          $('#fb_page_set' + index).show();
-                          $('#fb_page_btn' + index).text("연결해제 하기");
-                          $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
-                          $('#fb_page_btn' + index).css('color', '#ffffff')
+                    console.log('platform=>'+ JSON.stringify(fb_pages_info.length));
+
+                    registered_page_list_copy = body.data.registered_page_list;
+                    body.data.registered_page_list.forEach(function (item, index, array) {
+
+                      if (isEmpty(item.page_id)) {
+                        console.log('page_id가 없음 index=>'+ index +'='+JSON.stringify(item));
+
+
+                      } else {
+
+                        for (var i = 0; i < fb_pages_info.length; i ++) {
+                          if (item.page_id == fb_pages_info[i].id) {
+                            registered_fb_name = fb_pages_info[i].name;
+                            console.log('fb_pages_info[i].id=>' + fb_pages_info[i].id);
+                            console.log('registered_fb_name=>' + registered_fb_name);
+
+                            $('#fb_page_set'+i).hide();
+                          }
                         }
-                      }
-                    });
-                  } else {
 
-                    //delete fb page api
-                    $.ajax({
-                      //TODO: url
-                      url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
-                      // url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
-                      type: 'DELETE',
-                      async: false,
-                      crossDomain: true,
-                      xhrFields: {withCredentials: true},
-                      success: function (body, status, res) {
+                        var fb_messager = (
+                          `<div class="fb_page_set" id="fb_page_set_connected` + index + `">` +
+                          `<img src="../public/images/img-facebook-page-default.png" class="fb_page_img">` +
+                          `<div class="fb_page_text">` +
+                          `<div class="fb_page_title" id="fb_page_title_connected` + index + `">` + registered_fb_name + `</div>` +
+                          `<div class="fb_page_connected_status" id="fb_page_connected_status` + index + `">` + item.name + `에 연결된 페이지</p>` +
+                          `</div>` +
+                          `</div>` +
+                          `</div>`
+                        );
 
-                        console.log('connect fb page api=>' + body.success);
-                        if (body.success) {
-                          $('.fb_page_set').show();
-                          $('#fb_page_btn' + index).text('연결하기');
-                          $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
-                          $('#fb_page_btn' + index).css('color', '#000000')
-                        }
+                        fb_page_list.append(fb_messager);
                       }
                     });
                   }
-                }) //fb.click event
-              }); //response.data.forEach
+                }
+              });
+
+              console.log('fb_page_ids=>'+JSON.stringify(fb_page_ids));
+              console.log('fb_page_access_tokens=>'+JSON.stringify(fb_page_access_tokens));
+
+
+
+              var fb_page_btn = $('.fb_page_btn');
+              fb_page_btn.click(function () {
+                var index = $(this).parent().parent().index();
+                console.log('index: ' + index);
+                console.log('fb_page_ids=>'+fb_page_ids[index]);
+                console.log('fb_page_access_tokens=>'+fb_page_access_tokens[index]);
+                $(this).toggleClass('platform_connected');
+
+                if ($(this).hasClass('platform_connected')) {
+
+                  //connect fb page api
+                  $.ajax({
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_ids[index]+'/'+fb_page_access_tokens[index]+'/',
+                    // url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
+                    type: 'PUT',
+                    async: false,
+                    crossDomain: true,
+                    xhrFields: {withCredentials: true},
+                    success: function (body, status, res) {
+
+                      console.log('connect fb page api=>' + body.success);
+                      if (body.success) {
+                        $('.fb_page_set').hide();
+                        $('#fb_page_set' + index).show();
+                        $('#fb_page_btn' + index).text("연결해제 하기");
+                        $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                        $('#fb_page_btn' + index).css('color', '#ffffff')
+                      }
+                    }
+                  });
+
+                  //facebook subscribed
+                  FB.api(
+                    '/'+fb_page_ids[index]+'/subscribed_apps',
+                    'POST',
+                    {},
+                    function(response) {
+                      // Insert your code here
+                    }
+                  );
+
+                } else {
+
+                  //delete fb page api
+                  $.ajax({
+                    //TODO: url
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                    // url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
+                    type: 'DELETE',
+                    async: false,
+                    crossDomain: true,
+                    xhrFields: {withCredentials: true},
+                    success: function (body, status, res) {
+
+                      console.log('connect fb page api=>' + body.success);
+                      if (body.success) {
+                        $('.fb_page_set').show();
+                        $('#fb_page_btn' + index).text('연결하기');
+                        $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
+                        $('#fb_page_btn' + index).css('color', '#000000')
+
+                        //find project page connected
+                        registered_page_list_copy.forEach(function (item, index, array) {
+                          if (isEmpty(item.page_id)) {
+                            console.log('page_id가 없음 index=>'+ index +'='+JSON.stringify(item));
+
+                          } else {
+
+                            for (var i = 0; i < fb_pages_info.length; i ++) {
+                              if (item.page_id == fb_pages_info[i].id) {
+                                registered_fb_name = fb_pages_info[i].name;
+                                console.log('fb_pages_info[i].id=>' + fb_pages_info[i].id);
+                                console.log('registered_fb_name=>' + registered_fb_name);
+
+                                $('#fb_page_set'+i).hide();
+                              }
+                            }
+                          }
+                        });
+
+                      }
+                    }
+                  });
+                }
+              }) //fb.click event
 
               var tg_connect_page = $('.tg_connect_page');
               var tele_page_set = $('.tele_page_set');
@@ -407,6 +503,14 @@
     $(this).css('background-color', '#bd292c');
     default_modal.style.display = "block";
   });
+
+  var isEmpty = function (value) {
+    if (value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length )) {
+      return true
+    } else {
+      return false
+    }
+  };
 
 </script>
 <script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>

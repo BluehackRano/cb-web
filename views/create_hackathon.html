@@ -1232,7 +1232,7 @@
             "start": $('#start_date_participation').val(),
             "end": $('#end_date_participation').val()
           },
-          "pre-meeting": $('#start_date_before_meeting').val(), //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+//          "pre-meeting": $('#start_date_before_meeting').val(), //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
           "main-meeting": {
             "start": $('#start_date_dday_meeting').val(),
             "end": $('#end_date_dday_meeting').val()
@@ -1244,7 +1244,7 @@
             hackathon_3day_content, hackathon_4day_content,
             hackathon_5day_content
           ],
-          "pre-meeting": before_meeting_clicked_content //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+//          "pre-meeting": before_meeting_clicked_content //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
         }
         ,
         "application": {
@@ -1258,11 +1258,11 @@
             "address": $('#hackathon_place_address').val(),
             "url": $('#hackathon_place_navi_url').val()
           },
-          "pre-meeting": { //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
-            "name": $('#before_meeting_place_name').val(),
-            "address": $('#before_meeting_place_address').val(),
-            "url": $('#before_meeting_place_navi_url').val()
-          }
+//          "pre-meeting": { //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+//            "name": $('#before_meeting_place_name').val(),
+//            "address": $('#before_meeting_place_address').val(),
+//            "url": $('#before_meeting_place_navi_url').val()
+//          }
         },
         "prize": awardItemList, //typeof array
         "benefit_of_participant": reward_addInputLine,
@@ -1273,6 +1273,17 @@
         }
       }
     };
+
+    //사전모임 날짜가 체크 되어 있는 경우
+    if (!($('#start_date_before_meeting').val() == '')) {
+      submitData.data.date['pre-meeting'] = $('#start_date_before_meeting').val();
+      submitData.data.contents['pre-meeting'] = before_meeting_clicked_content;
+      submitData.data.place['pre-meeting'] = {
+        "name": $('#user_profile_data_name').val(),
+        "address": $('#before_meeting_place_address').val(),
+        "url": $('#before_meeting_place_navi_url').val()
+      };
+    }
 
     if (submitData.name == '' || submitData.desc == ''
 			|| submitData.data.basic.name == '' || submitData.data.basic.email == ''

@@ -60,8 +60,8 @@
                 설명
               </p>
             </div>
-            <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
-            <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
+            <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder testInput" placeholder="가나다" maxlength=50>
+            <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder testInput" placeholder="가나다" maxlength=50>
 
           </div>
         </article>
@@ -240,7 +240,17 @@
   //hide placeholder
   $('.baseInfo_placeHolder').keydown(function (key) {
     $('.baseInfo_placeHolder').addClass('transparent');
+
   });
+
+  $('.testInput').keyup (function () {
+    var charLimit = $(this).attr("maxlength");
+    if (this.value.length >= charLimit) {
+      $(this).next('.testInput').focus();
+      return false;
+    }
+  });
+
 
   checkForHash();
 

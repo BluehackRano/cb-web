@@ -843,6 +843,7 @@
         var basic_poster_image = body.data.settings.data.basic.poster_image;
         var basic_name = body.data.settings.data.basic.name;
         var basic_tel = body.data.settings.data.basic.tel;
+        var basic_email = body.data.settings.data.basic.email;
 
         var custom_settings_get_started = body.data.settings.data.custom_settings.get_started.split('\n');
         var custom_settings_error_msg = body.data.settings.data.custom_settings.error_msg.split('\n');
@@ -850,7 +851,10 @@
         var date_application_period_start = body.data.settings.data.date.application_period.start;
         var date_application_period_end = body.data.settings.data.date.application_period.end;
 
-        var date_pre_meeting = body.data.settings.data.date['pre-meeting'];
+        var date_pre_meeting = '';
+        if (body.data.settings.data.date['pre-meeting'] != undefined) {
+          date_pre_meeting = body.data.settings.data.date['pre-meeting']
+        }
 
         var date_main_meeting_start = body.data.settings.data.date['main-meeting'].start;
         var date_main_meeting_end = body.data.settings.data.date['main-meeting'].end;
@@ -862,7 +866,17 @@
         var hackathon_day_main_meeting_4day = hackathon_day_main_meeting[3];
         var hackathon_day_main_meeting_5day = hackathon_day_main_meeting[4];
 
-        var hackathon_day_pre_meeting = body.data.settings.data.contents['pre-meeting'];
+        var hackathon_day_pre_meeting = '';
+        var place_pre_metting_name = '';
+        var place_pre_metting_address = '';
+        var place_pre_metting_url = '';
+
+        if (body.data.settings.data.contents['pre-meeting'] != undefined) {
+          hackathon_day_pre_meeting = body.data.settings.data.contents['pre-meeting'];
+          place_pre_metting_name = body.data.settings.data.place['pre-meeting'].name;
+          place_pre_metting_address = body.data.settings.data.place['pre-meeting'].address;
+          place_pre_metting_url = body.data.settings.data.place['pre-meeting'].url;
+        }
 
         var hackathon_participation_application_url = body.data.settings.data.application.url;
         var hackathon_participation_application_requirements = body.data.settings.data.application.requirements;
@@ -871,10 +885,6 @@
         var place_main_metting_name = body.data.settings.data.place['main-meeting'].name;
         var place_main_metting_address = body.data.settings.data.place['main-meeting'].address;
         var place_main_metting_url = body.data.settings.data.place['main-meeting'].url;
-
-        var place_pre_metting_name = body.data.settings.data.place['pre-meeting'].name;
-        var place_pre_metting_address = body.data.settings.data.place['pre-meeting'].address;
-        var place_pre_metting_url = body.data.settings.data.place['pre-meeting'].url;
 
         var benefit_of_participant = body.data.settings.data.benefit_of_participant;
 
@@ -889,6 +899,7 @@
         $('#profile_img').attr("src", basic_poster_image);
         $('#user_profile_data_name').val(basic_name);
         $('#user_profile_data_tel').val(basic_tel);
+        $('#user_profile_data_professional').val(basic_email);
 
         $('#user_profile_start_message_01').val(custom_settings_get_started[0]);
         $('#user_profile_start_message_02').val(custom_settings_get_started[1]);
@@ -901,7 +912,22 @@
         $('#start_date_participation').val(date_application_period_start);
         $('#end_date_participation').val(date_application_period_end);
 
+        //사전모임 날짜
         $('#start_date_before_meeting').val(date_pre_meeting);
+
+        if ($('#start_date_before_meeting').val() == '') {
+          console.log('사전모임날짜가 없음!');
+          $('#before_meeting_checked').hide();
+          $('#before_meeting_content').hide();
+          $('.before_meeting_info').hide();
+        } else {
+          //init display date_checkbox
+          $('#date_checkbox').toggleClass('checked');
+          $('#before_meeting_checked').show();
+          $('#before_meeting_content').show();
+          $('.before_meeting_info').show();
+        }
+
 
         $('#start_date_dday_meeting').val(date_main_meeting_start);
         $('#end_date_dday_meeting').val(date_main_meeting_end);
@@ -931,12 +957,42 @@
         $('#before_meeting_place_address').val(place_pre_metting_address);
         $('#before_meeting_place_navi_url').val(place_pre_metting_url);
 
+
+        $('#hackathon_award_kind_count').val(body.data.settings.data.prize.length);
+
+        var hackathon_award_kind_count_area = $('#hackathon_award_kind_count_area');
+        var hackathon_award_kind_count = $('#hackathon_award_kind_count');
+
+        for (var i = 1; i <= Number(hackathon_award_kind_count.val()); i++) {
+          var awardHtml = (
+            `<div class="article_title_profile"> [0` + i + `] 상의 이름 </div>` +
+            `<input type="text" id="hackathon_award_kind_name_0` + i + `" class="baseInputText_02" placeholder="가나다">` +
+            `<div class="article_title_profile">[0` + i + `] 해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요</div>` +
+            `<input type="text" id="hackathon_award_taken_number_0` + i + `" class="baseInputText_02" placeholder="가나다">` +
+            `<div class="article_title_profile">[0` + i + `] 해당 상의 상금 및 수상혜택을 입력해주세요</div>` +
+            `<input type="text" id="hackathon_award_reward_0` + i + `" class="baseInputText_02" placeholder="가나다">` +
+            `<hr class="user_profile_line">`
+          );
+
+          hackathon_award_kind_count_area.append(awardHtml);
+        }
+
         //해커톤 시상정보 (밑에서 데이터 넣어줌)
         for (var i = 0; i < body.data.settings.data.prize.length; i++) {
           prize_name.push(body.data.settings.data.prize[i].name);
           prize_desc.push(body.data.settings.data.prize[i].desc);
           prize_benefit.push(body.data.settings.data.prize[i].benefit);
         }
+
+        for (var i = 0; i < prize_name.length; i++) {
+          var j = 1;
+          $('#hackathon_award_kind_name_0'+ j).val(prize_name[i]);
+          $('#hackathon_award_taken_number_0'+ j).val(prize_desc[i]);
+          $('#hackathon_award_reward_0'+ j).val(prize_benefit[i]);
+          j++;
+        }
+
+
 
         //참가자 혜택을 입력해주세요
         $('#hackathon_participation_reward_01').val(benefit_of_participant);
@@ -1100,10 +1156,9 @@
 
   section_04.hide();
   hackathon_day.hide();
-  before_meeting_checked.hide();
-  before_meeting_content.hide();
-  before_meeting_info.hide();
+
   before_meeting_checkbox_area.css('margin-bottom', 79 + 'px');
+
 
   date_checkbox.click(function () {
     $(this).toggleClass('checked');
@@ -1656,7 +1711,7 @@
             "start": $('#start_date_participation').val(),
             "end": $('#end_date_participation').val()
           },
-          "pre-meeting": $('#start_date_before_meeting').val(), //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+//          "pre-meeting": $('#start_date_before_meeting').val(), //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
           "main-meeting": {
             "start": $('#start_date_dday_meeting').val(),
             "end": $('#end_date_dday_meeting').val()
@@ -1668,7 +1723,7 @@
             hackathon_3day_content, hackathon_4day_content,
             hackathon_5day_content
           ],
-          "pre-meeting": before_meeting_clicked_content //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+//          "pre-meeting": before_meeting_clicked_content //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
         }
         ,
         "application": {
@@ -1682,11 +1737,11 @@
             "address": $('#hackathon_place_address').val(),
             "url": $('#hackathon_place_navi_url').val()
           },
-          "pre-meeting": { //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
-            "name": $('#before_meeting_place_name').val(),
-            "address": $('#before_meeting_place_address').val(),
-            "url": $('#before_meeting_place_navi_url').val()
-          }
+//          "pre-meeting": { //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+//            "name": $('#before_meeting_place_name').val(),
+//            "address": $('#before_meeting_place_address').val(),
+//            "url": $('#before_meeting_place_navi_url').val()
+//          }
         },
         "prize": awardItemList, //typeof array
         "benefit_of_participant": reward_addInputLine,
@@ -1697,6 +1752,18 @@
         }
       }
     };
+
+    //사전모임 날짜가 체크 되어 있는 경우
+    if (!($('#start_date_before_meeting').val() == '')) {
+      submitData.data.date['pre-meeting'] = $('#start_date_before_meeting').val();
+      submitData.data.contents['pre-meeting'] = before_meeting_clicked_content;
+      submitData.data.place['pre-meeting'] = {
+        "name": $('#user_profile_data_name').val(),
+        "address": $('#before_meeting_place_address').val(),
+        "url": $('#before_meeting_place_navi_url').val()
+      };
+    }
+    console.log('submitData=>' + JSON.stringify(submitData));
 
     $.ajax({
       url: 'https://www.chatbrick.io/api/brick/',
@@ -1966,10 +2033,12 @@
                   xhrFields: {withCredentials: true},
                   success: function (body, status, res) {
 
-                    console.log('connected telegram api=>' + body.success);
                     if (body.success) {
-                      tg_connect_page.hide();
-                      tele_page_set.show();
+                      if (body.data.telegram.ok) {
+                        console.log('connected telegram.ok=>' + body.data.telegram.ok);
+                        tg_connect_page.hide();
+                        tele_page_set.show();
+                      }
                     }
                   }
                 });
@@ -1987,10 +2056,12 @@
                   xhrFields: {withCredentials: true},
                   success: function (body, status, res) {
 
-                    console.log('connected telegram api=>' + body.success);
                     if (body.success) {
-                      tg_connect_page.show();
-                      tele_page_set.hide();
+                      if (body.data.telegram.ok) {
+                        console.log('delete telegram.ok=>' + body.data.telegram.ok);
+                        tg_connect_page.show();
+                        tele_page_set.hide();
+                      }
                     }
                   }
                 });
@@ -2016,7 +2087,6 @@
       return false
     }
   };
-
 </script>
 <!--https://xdsoft.net/jqplugins/datetimepicker/#trigger-->
 <script src="/public/javascripts/jquery.datetimepicker.full.js"></script>

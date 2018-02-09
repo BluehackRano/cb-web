@@ -1034,10 +1034,12 @@
                   xhrFields: {withCredentials: true},
                   success: function (body, status, res) {
 
-                    console.log('connected telegram api=>' + body.success);
                     if (body.success) {
-                      tg_connect_page.hide();
-                      tele_page_set.show();
+                      if (body.data.telegram.ok) {
+                        console.log('connected telegram.ok=>' + body.data.telegram.ok);
+                        tg_connect_page.hide();
+                        tele_page_set.show();
+                      }
                     }
                   }
                 });
@@ -1055,10 +1057,12 @@
                   xhrFields: {withCredentials: true},
                   success: function (body, status, res) {
 
-                    console.log('connected telegram api=>' + body.success);
                     if (body.success) {
-                      tg_connect_page.show();
-                      tele_page_set.hide();
+                      if (body.data.telegram.ok) {
+                        console.log('delete telegram.ok=>' + body.data.telegram.ok);
+                        tg_connect_page.show();
+                        tele_page_set.hide();
+                      }
                     }
                   }
                 });

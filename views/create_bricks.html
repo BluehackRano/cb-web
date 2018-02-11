@@ -343,6 +343,25 @@
   </div>
 </div>
 
+<!--다음화면으로 넘어가기전 확인 모양 팝업-->
+<div id="next_step_modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="modal_title">확인</div>
+    <div class="modal_context">챗봇 생성을 완료하시곘습니까?</div>
+    <div class="modal_brick_api_two_btn_area">
+      <div id="modal_left_next_step_btn" class="modal_left_next_step_btn">
+        <p>아니요</p>
+      </div>
+
+      <div id="modal_right_next_step_btn" class="modal_right_next_step_btn">
+        <p>네</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <footer id="footer">
   <div class="bottom_common">
@@ -442,7 +461,6 @@
             `</div>`);
 
           brick_list.append(brick);
-
         });
       }
     }
@@ -729,6 +747,10 @@
 
   var pre_page = $('#pre_page');
   var next_page = $('#next_page');
+  var next_step_modal = document.getElementById('next_step_modal');
+  var modal_left_next_step_btn = $('#modal_left_next_step_btn');
+  var modal_right_next_step_btn = $('#modal_right_next_step_btn');
+
   var pageNumber = 0;
 
   pre_page.click(function () {
@@ -825,121 +847,141 @@
 
     } else if (pageNumber == 3) {
 
-      var submitBrickList = [];
-      var keywords = [];
-
-      var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
-      var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
-      var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
-      var user_profile_start_message_result = user_profile_start_message_01 + user_profile_start_message_02 + user_profile_start_message_03;
-
-      var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
-      var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
-      var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
-      var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + user_profile_not_ready_mesage_02 + user_profile_not_ready_mesage_03;
-
-      $.ajax({
-        url: 'https://www.chatbrick.io/api/brick/list/',
-        async: false,
-        crossDomain: true,
-        xhrFields: {withCredentials: true},
-        type: 'GET',
-        success: function (body, status, res) {
-
-          console.log(body.success);
-          resData = body.data;
-
-          if (body.success) {
-
-            for (var i = 0; i < selected_brick_list.length; i++) {
-              resData.forEach(function (item, index, array) {
-
-                if (index == selected_brick_list[i]) {
-                  var brick_tags = $('#brick_api_item_tag_area' + index + '> .brick_api_item_tag');
-                  console.log('brick_tags=> ' + brick_tags.html());
-
-                  for (var j = 0; j < brick_tags.length; j++) {
-
-                    var tag_text = $('#brick_api_item_tag_area' + index + '> #brick_api_item_tag' + j).text();
-                    keywords.push(tag_text);
-
-                  }
-                  console.log('keywords=> ' + keywords);
-
-                  var brickJson = {
-                    id: item.id,
-                    name: item.name,
-                    keywords: keywords,
-                    data: {
-                      api_key: $('#apikeyInputText' + index).val()
-                    }
-                  }
-
-                  submitBrickList.push(brickJson);
-                  keywords = [];
-                }
-              });
-            }
-          }
-        }
-      })
-
-      //make send jsonData
-      var submitData = {
-        "type": "bricks",
-        "name": baseInfo_name,
-        "desc": baseInfo_context,
-        "data": {
-          "brick": JSON.parse(JSON.stringify(submitBrickList)),
-          "custom_settings": {
-            "get_started": user_profile_start_message_result,
-            "error_msg": user_profile_not_ready_mesage_result
-          }
-        },
-
-      };
-
-      console.log('submitData=>' + JSON.stringify(submitData));
-
-      if (submitData.data.custom_settings.get_started == ''
-          || submitData.data.custom_settings.error_msg == '') {
-        console.log('in popup')
-        var default_modal = document.getElementById('default_modal');
-        var modal_one_btn = $('#modal_one_btn');
-
-        default_modal.style.display = "block";
-
-        modal_one_btn.hover(function () {
-          $(this).css('background-color', '#fb7c7e');
-        }, function () {
-          $(this).css('background-color', '#ff753c');
-        });
-
-        modal_one_btn.click(function () {
-          default_modal.style.display = "none";
-        });
-      } else {
-        //send jsonData in brick api
-        $.ajax({
-          url: 'https://www.chatbrick.io/api/brick/',
-          type: 'PUT',
-          async: false,
-          crossDomain: true,
-          contentType: 'application/json',
-          dataType: 'JSON',
-          data: JSON.stringify(submitData),
-          success: function (body, status, res) {
-            if (body.success) {
-              console.log('upload success!');
-              var request_query = '?setId=' + body.data.id;
-              window.location.href = '/platform/connect' + request_query;
-            }
-          }
-        });
-      }
+      next_step_modal.style.display = "block";
     }
 
     window.location.hash = pageNumber.toString();
+  });
+
+  modal_left_next_step_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  modal_right_next_step_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  modal_left_next_step_btn.click(function () {
+    next_step_modal.style.display = "none";
+  });
+
+  modal_right_next_step_btn.click(function () {
+    var submitBrickList = [];
+    var keywords = [];
+
+    var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
+    var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
+    var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
+    var user_profile_start_message_result = user_profile_start_message_01 + user_profile_start_message_02 + user_profile_start_message_03;
+
+    var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
+    var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
+    var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
+    var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + user_profile_not_ready_mesage_02 + user_profile_not_ready_mesage_03;
+
+    $.ajax({
+      url: 'https://www.chatbrick.io/api/brick/list/',
+      async: false,
+      crossDomain: true,
+      xhrFields: {withCredentials: true},
+      type: 'GET',
+      success: function (body, status, res) {
+
+        console.log(body.success);
+        resData = body.data;
+
+        if (body.success) {
+
+          for (var i = 0; i < selected_brick_list.length; i++) {
+            resData.forEach(function (item, index, array) {
+
+              if (index == selected_brick_list[i]) {
+                var brick_tags = $('#brick_api_item_tag_area' + index + '> .brick_api_item_tag');
+                console.log('brick_tags=> ' + brick_tags.html());
+
+                for (var j = 0; j < brick_tags.length; j++) {
+
+                  var tag_text = $('#brick_api_item_tag_area' + index + '> #brick_api_item_tag' + j).text();
+                  keywords.push(tag_text);
+
+                }
+                console.log('keywords=> ' + keywords);
+
+                var brickJson = {
+                  id: item.id,
+                  name: item.name,
+                  keywords: keywords,
+                  data: {
+                    api_key: $('#apikeyInputText' + index).val()
+                  }
+                }
+
+                submitBrickList.push(brickJson);
+                keywords = [];
+              }
+            });
+          }
+        }
+      }
+    })
+
+    //make send jsonData
+    var submitData = {
+      "type": "bricks",
+      "name": baseInfo_name,
+      "desc": baseInfo_context,
+      "data": {
+        "brick": JSON.parse(JSON.stringify(submitBrickList)),
+        "custom_settings": {
+          "get_started": user_profile_start_message_result,
+          "error_msg": user_profile_not_ready_mesage_result
+        }
+      },
+
+    };
+
+    console.log('submitData=>' + JSON.stringify(submitData));
+
+    if (submitData.data.custom_settings.get_started == ''
+      || submitData.data.custom_settings.error_msg == '') {
+      console.log('in popup')
+      var default_modal = document.getElementById('default_modal');
+      var modal_one_btn = $('#modal_one_btn');
+
+      default_modal.style.display = "block";
+
+      modal_one_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_btn.click(function () {
+        default_modal.style.display = "none";
+      });
+    } else {
+      //send jsonData in brick api
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/',
+        type: 'PUT',
+        async: false,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: 'JSON',
+        data: JSON.stringify(submitData),
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('upload success!');
+            var request_query = '?setId=' + body.data.id;
+            window.location.href = '/platform/connect' + request_query;
+          }
+        }
+      });
+    }
   });
 
   function checkForHash() {

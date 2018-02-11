@@ -1099,12 +1099,13 @@ create apikey
 
 .api_set {
     /*height: 305px;*/
+    width: auto;
     height: auto;
     margin-top: 82px;
 
     border-bottom: 1px solid #eaeaea;
     border-top: none;
-    margin-right: 90px;
+    /*margin-right: 90px;*/
 }
 
 .api_title {
@@ -2115,6 +2116,25 @@ div.bottom_common #next_page {
     vertical-align: middle;
 }
 
+#end_page {
+    display: table;
+    width: 200px;
+    height: 52px;
+    background-color: #fd6246;
+    margin: auto;
+}
+
+#end_page p {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+
+    font-family: "Noto Sans";
+    font-size: 18px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
 /*
 modal zone
 */
@@ -2506,6 +2526,57 @@ hr.modal_device_underline {
 }
 
 .modal_right_btn p {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+
+    font-family: "Noto Sans";
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.modal_left_next_step_btn {
+    display: table;
+    width: 346px;
+    height: 50px;
+    background-color: #fd6246;
+
+    float: left;
+    margin-right: 8px;
+}
+
+.modal_left_next_step_btn p {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+
+    font-family: "Noto Sans";
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.modal_right_next_step_btn {
+    display: table;
+    width: 346px;
+    height: 50px;
+    background-color: #ff753c;
+
+    float: left;
+}
+
+.modal_right_next_step_btn p {
     display: table-cell;
     text-align: center;
     vertical-align: middle;

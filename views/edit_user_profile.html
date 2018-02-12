@@ -1381,12 +1381,21 @@
   var modal_one_lego_loading_btn = $('#modal_one_lego_loading_btn');
   modal_one_lego_loading_btn.css('background-color', '#c0c0c0');
 
+  // modal_one_lego_loading_btn.hover(function () {
+  //   $(this).css('background-color', '#fb7c7e');
+  // }, function () {
+  //   $(this).css('background-color', '#fd6246');
+  // });
+
+
+
   var loading_click_error_handler = function() {
     lego_loading_modal.style.display = "none";
   }
 
   var loading_click_handler = function() {
     lego_loading_modal.style.display = "none";
+
     sendDataInServer(portfolioList);
   };
 
@@ -1534,16 +1543,6 @@
   }
 
 
-//  modal_one_lego_loading_btn.hover(function () {
-//    $(this).css('background-color', '#fb7c7e');
-//  }, function () {
-//    $(this).css('background-color', '#fd6246');
-//  });
-//
-//  modal_one_lego_loading_btn.click(function () {
-//    lego_loading_modal.style.display = "none";
-//  });
-
   next_page.click( function () {
     $(this).css('background-color','#bd292c');
     lego_loading_modal.style.display = "block";
@@ -1615,7 +1614,7 @@
               portfolioList.push(body.data);
 
               //마지막에 "확인"버튼 활성화
-              if (count == maxCount || last_index_exception == true) {
+              if (count == maxCount) {
                 console.log('확인 버튼 활성화');
 
                 //확인 누르면 서버에 데이터 전송

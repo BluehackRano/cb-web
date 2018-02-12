@@ -46,6 +46,26 @@
 		</section>
 	</div>
 </div>
+
+<!--로그아웃 모양 팝업-->
+<div id="logout_modal" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+
+		<div class="modal_title">로그아웃</div>
+		<div class="modal_context">chatbrick에서 로그아웃하시겠습니까?</div>
+		<div class="modal_brick_api_two_btn_area">
+			<div id="modal_left_logout_btn" class="modal_left_btn">
+				<p>아니요</p>
+			</div>
+
+			<div id="modal_right_logout_btn" class="modal_right_btn">
+				<p>네</p>
+			</div>
+		</div>
+	</div>
+</div>
+
 <footer id="footer"></footer>
 
 <script>
@@ -180,6 +200,38 @@
       // window.location.href = 'http://www.localhost:3000';
     }
   }
+
+  //logout event
+  var logout_modal = document.getElementById('logout_modal');
+  var modal_left_logout_btn = $('#modal_left_logout_btn');
+  var modal_right_logout_btn = $('#modal_right_logout_btn');
+
+  login_dropdown.click(function () {
+    logout_modal.style.display = "block";
+  });
+
+  modal_left_logout_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  modal_right_logout_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  modal_left_logout_btn.click(function () {
+    logout_modal.style.display = "none";
+  });
+
+  modal_right_logout_btn.click(function () {
+    FB.logout(function(response) {
+      console.log('logout=>' + JSON.stringify(response));
+      window.location.href = '/';
+    });
+  });
 </script>
 <script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 <!--<script type="text/javascript" src="/public/javascripts/my_chatbot_list.js"></script>-->

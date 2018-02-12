@@ -466,6 +466,25 @@
   </div>
 </div>
 
+<!--로그아웃 모양 팝업-->
+<div id="logout_modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="modal_title">로그아웃</div>
+    <div class="modal_context">chatbrick에서 로그아웃하시겠습니까?</div>
+    <div class="modal_brick_api_two_btn_area">
+      <div id="modal_left_logout_btn" class="modal_left_btn">
+        <p>아니요</p>
+      </div>
+
+      <div id="modal_right_logout_btn" class="modal_right_btn">
+        <p>네</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer id="footer">
   <div class="bottom_common">
     <div id="pre_page">
@@ -1014,7 +1033,7 @@
             fb_id = body.facebook.fb_id;
             console.log('body.facebook.fb_id=>' + fb_id);
 
-            FB.api(body.facebook.fb_id + '/accounts', function (response) {
+            FB.api(body.facebook.fb_id + '/accounts',{"access_token":body.facebook.fb_client_access_token}, function (response) {
 
               response.data.forEach(function (item, index, array) {
 
@@ -1162,7 +1181,7 @@
                   FB.api(
                     '/'+fb_page_ids[index]+'/subscribed_apps',
                     'POST',
-                    {},
+                    {'access_token': fb_page_access_tokens[index]},
                     function(response) {
                       // Insert your code here
                     }
@@ -1276,11 +1295,47 @@
       });
 
     } else if (response.status === 'not_authorized') {
-
+      console.log('not_authorized!')
+      window.location.href  = '/';
+      // window.location.href = 'http://www.localhost:3000';
     } else {
-
+      console.log('connected error!')
+      window.location.href  = '/';
+      // window.location.href = 'http://www.localhost:3000';
     }
   }
+
+  //logout event
+  var logout_modal = document.getElementById('logout_modal');
+  var modal_left_logout_btn = $('#modal_left_logout_btn');
+  var modal_right_logout_btn = $('#modal_right_logout_btn');
+
+  login_dropdown.click(function () {
+    logout_modal.style.display = "block";
+  });
+
+  modal_left_logout_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  modal_right_logout_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  modal_left_logout_btn.click(function () {
+    logout_modal.style.display = "none";
+  });
+
+  modal_right_logout_btn.click(function () {
+    FB.logout(function(response) {
+      console.log('logout=>' + JSON.stringify(response));
+      window.location.href = '/';
+    });
+  });
 
   var isEmpty = function (value) {
     if (value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length )) {

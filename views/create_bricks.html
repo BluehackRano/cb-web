@@ -521,13 +521,12 @@
       console.log('itemIndex=>' + itemIndex);
       $(this).text('브릭 선택하기');
 
-      if (selected_brick_list.length == 2) {
-        // selected_brick_list.replace(itemIndex, '').replace(',','');
-        selected_brick_list.pop();
-      } else if (selected_brick_list.length == 1) {
-        selected_brick_list.pop();
-      }  else {
-        selected_brick_list.splice(itemIndex, 1);
+      //해당 아이템 index 찾아서 제거
+      if (selected_brick_list.includes(itemIndex)) {
+        var find_item_index = selected_brick_list.indexOf(itemIndex);
+        selected_brick_list.splice(find_item_index, 1);
+      } else {
+        console.log('error => 제거해야할 브릭의 itemIndex가 포함되어 있지 않음');
       }
 
       console.log('selected_brick_list=>'+selected_brick_list);

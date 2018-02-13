@@ -5,7 +5,7 @@
   <title>Title</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
+  <script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
 </head>
 <body>
 <header id="header">
@@ -315,6 +315,12 @@
 
               var fb_page_btn = $('.fb_page_btn');
               fb_page_btn.click(function () {
+
+                //check start time
+                var date = new Date();
+                var start_time = date.getTime();
+                console.log('start_time=>' + start_time);
+
                 var index = $(this).parent().parent().index();
                 console.log('index: ' + index);
                 console.log('fb_page_ids=>'+fb_page_ids[index]);
@@ -335,6 +341,16 @@
 
                       console.log('connect fb page api=>' + body.success);
                       if (body.success) {
+
+                        //check end time
+                        var date = new Date();
+                        var end_time = date.getTime();
+                        console.log('end_time=>' + end_time);
+                        var tag = '페북 페이지 등록';
+                        var remark = '페북 페이지 등록을 위해 사용';
+                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
+
                         $('.fb_page_set').hide();
                         $('#fb_page_set' + index).show();
                         $('#fb_page_btn' + index).text("연결해제 하기");
@@ -350,7 +366,14 @@
                     'POST',
                     {'access_token': fb_page_access_tokens[index]},
                     function(response) {
-                      // Insert your code here
+                      //check end time
+                      var date = new Date();
+                      var end_time = date.getTime();
+                      console.log('end_time=>' + end_time);
+                      var tag = '페북 페이지 앱 등록';
+                      var remark = '페북 페이지 subscribed 위해 사용';
+                      sendTimeLog(setId, start_time, end_time, tag, remark);
+
                     }
                   );
 
@@ -369,6 +392,15 @@
 
                       console.log('connect fb page api=>' + body.success);
                       if (body.success) {
+
+                        //check end time
+                        var date = new Date();
+                        var end_time = date.getTime();
+                        console.log('end_time=>' + end_time);
+                        var tag = '페북 페이지 앱 삭제';
+                        var remark = '페북 페이지 삭제를 위해 사용';
+                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
                         $('.fb_page_set').show();
                         $('#fb_page_btn' + index).text('연결하기');
                         $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
@@ -408,6 +440,12 @@
               tele_page_set.hide();
 
               tele_page_btn.click(function () {
+
+                //check start time
+                var date = new Date();
+                var start_time = date.getTime();
+                console.log('start_time=>' + start_time);
+
                 //connect telegram api
                 $.ajax({
                   //TODO: url
@@ -423,6 +461,15 @@
                     console.log('tg_input=>' + $('#tg_content_name').val());
                     if (body.success) {
                       if (body.data.telegram.ok) {
+
+                        //check end time
+                        var date = new Date();
+                        var end_time = date.getTime();
+                        console.log('end_time=>' + end_time);
+                        var tag = '텔레그램 페이지 앱 등록';
+                        var remark = '텔레그램 페이지 앱 등록을 위해 사용';
+                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
                         console.log('connected telegram.ok=>' + body.data.telegram.ok);
                         tg_connect_page.hide();
                         tele_page_set.show();
@@ -433,6 +480,12 @@
               }); //tele_page_btn click event
 
               tele_page_disconnect_btn.click(function () {
+
+                //check start time
+                var date = new Date();
+                var start_time = date.getTime();
+                console.log('start_time=>' + start_time);
+
                 //disconnect telegram api
                 $.ajax({
                   //TODO: url
@@ -446,9 +499,18 @@
 
                     if (body.success) {
                       if (body.data.telegram.ok) {
+
+                        //check end time
+                        var date = new Date();
+                        var end_time = date.getTime();
+                        console.log('end_time=>' + end_time);
+                        var tag = '텔레그램 페이지 앱 삭제';
+                        var remark = '텔레그램 페이지 앱 삭제를 위해 사용';
+                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
                         console.log('connected telegram.ok=>' + body.data.telegram.ok);
-                        tg_connect_page.hide();
-                        tele_page_set.show();
+                        tg_connect_page.show();
+                        tele_page_set.hide();
                       }
                     }
                   }

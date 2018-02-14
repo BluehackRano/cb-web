@@ -13,7 +13,8 @@
       if (response.status === 'connected') {
         // alert('connected!2');
         // getFBAPI();
-        window.location.href = '/chatbot/list';
+				getLoginInfo();
+//        window.location.href = '/chatbot/list';
 
       } else if (response.status === 'not_authorized') {
         // window.location.href  = '/';
@@ -22,6 +23,23 @@
         // window.location.href  = '/';
         // window.location.href = 'http://www.localhost:3000';
       }
+    }
+    
+    function getLoginInfo() {
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'GET',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            window.location.href = '/chatbot/list';
+          } else {
+
+          }
+        }
+      });
     }
 
     function getFBAPI(authResponse) {

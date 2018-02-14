@@ -810,9 +810,9 @@
 
 //    start_date_before_meeting
     $('#start_date_before_meeting').datetimepicker({
-      format: 'Y-m-d H:i',
+      format: 'Y-m-d',
       lang: 'kr',
-      timepicker: true,
+      timepicker: false,
       minDate: '-1970/01/02'//yesterday is minimum date(for today use 0 or -1970/01/01)
     });
 
@@ -825,7 +825,7 @@
           maxDate: $('#end_date_dday_meeting').val() ? $('#end_date_dday_meeting').val() : false
         })
       },
-      timepicker: true
+      timepicker: false
     });
     $('#end_date_dday_meeting').datetimepicker({
       format: 'Y-m-d',
@@ -835,7 +835,7 @@
           minDate: $('#start_date_dday_meeting').val() ? $('#start_date_dday_meeting').val() : false
         })
       },
-      timepicker: true
+      timepicker: false
     });
 
   });
@@ -857,20 +857,17 @@
 
     $('#section_04').show();
     switch (betweenDay) {
-      case 0:
-        $('.hackathon_day').hide();
-        $('#hackathon_1day').show();
-        break;
-
       case 1:
         $('.hackathon_day').hide();
         $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
         break;
 
       case 2:
         $('.hackathon_day').hide();
         $('#hackathon_1day').show();
         $('#hackathon_2day').show();
+        $('#hackathon_3day').show();
         break;
 
       case 3:
@@ -878,6 +875,7 @@
         $('#hackathon_1day').show();
         $('#hackathon_2day').show();
         $('#hackathon_3day').show();
+        $('#hackathon_4day').show();
         break;
 
       case 4:
@@ -886,6 +884,7 @@
         $('#hackathon_2day').show();
         $('#hackathon_3day').show();
         $('#hackathon_4day').show();
+        $('#hackathon_5day').show();
         break;
 
       case 5:

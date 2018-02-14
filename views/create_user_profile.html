@@ -690,19 +690,21 @@
             "get_started": user_profile_start_message_result,
             "error_msg": user_profile_not_ready_mesage_result
           },
-          "work": [{
-            "name": user_profile_company_name_01,
-            "period": user_profile_company_term_01,
-            "field": user_profile_company_major_01
-          }, {
-            "name": user_profile_company_name_02,
-            "period": user_profile_company_term_02,
-            "field": user_profile_company_major_02
-          }, {
-            "name": user_profile_company_name_03,
-            "period": user_profile_company_term_03,
-            "field": user_profile_company_major_03
-          }],
+          "work": [
+//            {
+//            "name": user_profile_company_name_01,
+//            "period": user_profile_company_term_01,
+//            "field": user_profile_company_major_01
+//          }, {
+//            "name": user_profile_company_name_02,
+//            "period": user_profile_company_term_02,
+//            "field": user_profile_company_major_02
+//          }, {
+//            "name": user_profile_company_name_03,
+//            "period": user_profile_company_term_03,
+//            "field": user_profile_company_major_03
+//          }
+          ],
           "specialties": [{
             "name": user_profile_skill_name_01,
             "detail": user_profile_skill_info_01_result
@@ -719,9 +721,23 @@
         }
       }
 
+      for (var i = 1; i <=3; i ++) {
+
+        if ($('#user_profile_company_name_0'+i).val() != ''
+          && $('#user_profile_company_term_0'+i).val() != ''
+          && $('#user_profile_company_major_0'+i).val() != '') {
+          submitData.data.work.push(
+            {"name": $('#user_profile_company_name_0'+i).val(),
+              "period": $('#user_profile_company_term_0'+i).val(),
+              "field": $('#user_profile_company_major_0'+i).val()
+            })
+        }
+      }
+
       if (submitData.data.basic.name =='' || submitData.data.basic.email ==''
         || submitData.data.basic.special =='' || submitData.data.basic.residence ==''
         || submitData.data.basic.social =='') {
+        portfolioList = [];
         console.log('in popup')
         var default_modal = document.getElementById('default_modal');
         var modal_one_btn = $('#modal_one_btn');
@@ -738,6 +754,7 @@
           default_modal.style.display = "none";
         });
       } else {
+        portfolioList = [];
         $.ajax({
           url: 'https://www.chatbrick.io/api/brick/',
           type: 'PUT',
@@ -749,7 +766,9 @@
           success: function (body, status, res) {
             if (body.success) {
               console.log('upload success!');
-              window.location.href = '/chatbot/list';
+
+              var setId = body.data.id;
+              window.location.href = '/platform/connect' + '?setId=' + setId;
             }
           }
         });
@@ -785,21 +804,28 @@
     var user_profile_portfolio_09 = $('#user_profile_portfolio_09').val();
     var user_profile_portfolio_10 = $('#user_profile_portfolio_10').val();
 
-    if (user_profile_portfolio_10 == '') {
-      designer_portfolio_url_list.push(user_profile_portfolio_01,user_profile_portfolio_02,
-        user_profile_portfolio_03,user_profile_portfolio_04,user_profile_portfolio_05,
-        user_profile_portfolio_06,user_profile_portfolio_07,user_profile_portfolio_08,
-        user_profile_portfolio_09)
+    designer_portfolio_url_list.push(user_profile_portfolio_01,user_profile_portfolio_02,
+      user_profile_portfolio_03,user_profile_portfolio_04,user_profile_portfolio_05,
+      user_profile_portfolio_06,user_profile_portfolio_07,user_profile_portfolio_08,
+      user_profile_portfolio_09, user_profile_portfolio_10)
 
-      getAllImages(designer_portfolio_url_list, 9);
-    } else {
-      designer_portfolio_url_list.push(user_profile_portfolio_01,user_profile_portfolio_02,
-        user_profile_portfolio_03,user_profile_portfolio_04,user_profile_portfolio_05,
-        user_profile_portfolio_06,user_profile_portfolio_07,user_profile_portfolio_08,
-        user_profile_portfolio_09, user_profile_portfolio_10)
-
-      getAllImages(designer_portfolio_url_list, 10);
-    }
+    getAllImages(designer_portfolio_url_list, 10);
+//    if (user_profile_portfolio_10 == '') {
+//
+//      designer_portfolio_url_list.push(user_profile_portfolio_01,user_profile_portfolio_02,
+//				user_profile_portfolio_03,user_profile_portfolio_04,user_profile_portfolio_05,
+//        user_profile_portfolio_06,user_profile_portfolio_07,user_profile_portfolio_08,
+//        user_profile_portfolio_09)
+//
+//      getAllImages(designer_portfolio_url_list, 9);
+//    } else {
+//      designer_portfolio_url_list.push(user_profile_portfolio_01,user_profile_portfolio_02,
+//        user_profile_portfolio_03,user_profile_portfolio_04,user_profile_portfolio_05,
+//        user_profile_portfolio_06,user_profile_portfolio_07,user_profile_portfolio_08,
+//        user_profile_portfolio_09, user_profile_portfolio_10)
+//
+//      getAllImages(designer_portfolio_url_list, 10);
+//    }
   });
 
   pre_page.hover(function () {
@@ -881,14 +907,29 @@
     function getNextImage(count) {
       query = queryList[count];
       console.log('query=>' + query);
+
+      setTimeout(function() {
       if (query == '') {
         console.log('query는 null입니다');
 
         count ++;
-        getNextImage(count);
+
+        if (count == maxCount) {
+          console.log('확인 버튼 활성화');
+
+          //확인 누르면 서버에 데이터 전송
+          $('#lego_loading_title').text($('#baseInfo_name').val() + '포트폴리오');
+          $('#lego_loading_context_01').text($('#baseInfo_name').val() + '의 포트폴리오를 읽어오고 있어요.');
+          $('#lego_loading_context_02').text('포트폴리오를 모두 불러왔어요.');
+          $('#modal_one_lego_loading_btn').css('background-color', '#ff753c');
+
+          $("#modal_one_lego_loading_btn").bind( "click", loading_click_handler);
+
+        } else {
+          getNextImage(count);
+        }
 
       } else {
-        setTimeout(function() {
           $.ajax({
             url: 'https://www.chatbrick.io/api/meta/?url='+ queryList[count],
             method: 'GET',
@@ -911,9 +952,12 @@
                   $('#lego_loading_title').text(baseInfo_name + '포트폴리오');
                   $('#lego_loading_context_01').text(baseInfo_name + '의 포트폴리오를 읽어오고 있어요.');
                   $('#lego_loading_context_02').text('지금 '+count+'. '+body.data.title + '의 정보를 불러오고 있어요.');
-                  $('#modal_one_lego_loading_btn').css('background-color', '#ff753c');
 
+                  setTimeout(function() {
+                  $('#lego_loading_context_02').text('포트폴리오를 모두 불러왔어요.');
+                  $('#modal_one_lego_loading_btn').css('background-color', '#ff753c');
                   $("#modal_one_lego_loading_btn").bind( "click", loading_click_handler);
+                  }, 500);
 
                 } else {
                   $("#modal_one_lego_loading_btn").unbind( "click", loading_click_handler);
@@ -940,9 +984,9 @@
               }
             }
           });
-        }, 500);
-      } //else
 
+      } //else
+      }, 500);
     }
     getNextImage(count);
   }

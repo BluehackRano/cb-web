@@ -898,8 +898,8 @@
         }
 
         var hackathon_participation_application_url = body.data.settings.data.application.url;
-        var hackathon_participation_application_requirements = body.data.settings.data.application.requirements;
-        var hackathon_participation_application_preparation = body.data.settings.data.application.preparation;
+        var hackathon_participation_application_requirements = body.data.settings.data.application.requirements.split('\n');
+        var hackathon_participation_application_preparation = body.data.settings.data.application.preparation.split('\n');
 
         var place_main_metting_name = body.data.settings.data.place['main-meeting'].name;
         var place_main_metting_address = body.data.settings.data.place['main-meeting'].address;
@@ -1025,8 +1025,12 @@
 
         //해커톤 참가신청정보
         $('#hackathon_participation_url').val(hackathon_participation_application_url);
-        $('#hackathon_participation_confirm_01').val(hackathon_participation_application_requirements);
-        $('#hackathon_participation_ready_info_01').val(hackathon_participation_application_preparation);
+        $('#hackathon_participation_confirm_01').val(hackathon_participation_application_requirements[0]);
+        $('#hackathon_participation_confirm_02').val(hackathon_participation_application_requirements[1]);
+        $('#hackathon_participation_confirm_03').val(hackathon_participation_application_requirements[2]);
+        $('#hackathon_participation_ready_info_01').val(hackathon_participation_application_preparation[0]);
+        $('#hackathon_participation_ready_info_02').val(hackathon_participation_application_preparation[1]);
+        $('#hackathon_participation_ready_info_03').val(hackathon_participation_application_preparation[2]);
 
         //해커톤 장소정보 (본모임)
         $('#hackathon_place_name').val(place_main_metting_name);
@@ -1680,12 +1684,12 @@
     var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
     var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
     var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
-    var user_profile_start_message_result = user_profile_start_message_01 + user_profile_start_message_02 + user_profile_start_message_03;
+    var user_profile_start_message_result = user_profile_start_message_01 + '\n' + user_profile_start_message_02 + '\n' + user_profile_start_message_03;
 
     var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
     var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
     var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
-    var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + user_profile_not_ready_mesage_02 + user_profile_not_ready_mesage_03;
+    var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + '\n' + user_profile_not_ready_mesage_02 + '\n' + user_profile_not_ready_mesage_03;
 
     //make award json data
     var awardItemList = [];
@@ -1780,7 +1784,7 @@
       "id": setId,
       "type": "hackathon",
       "name": $('#baseInfo_name').val(),
-      "desc": $('#baseInfo_context_01').val()+$('#baseInfo_context_02').val(),
+      "desc": $('#baseInfo_context_01').val()+'\n'+$('#baseInfo_context_02').val(),
       "data": {
         "basic": {
           "poster_image": profile_img.src,

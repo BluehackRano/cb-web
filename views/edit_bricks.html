@@ -1037,12 +1037,16 @@
       "id": setId,
       "type": "bricks",
       "name": $('#baseInfo_name').val(),
-      "desc": $('#baseInfo_context_01').val()+$('#baseInfo_context_02').val(),
+      "desc": $('#baseInfo_context_01').val()+'\n'+$('#baseInfo_context_02').val(),
       "data": {
         "brick": JSON.parse(JSON.stringify(submitBrickList)),
         "custom_settings": {
-          "get_started": $('#user_profile_start_message_01').val(),
-          "error_msg": $('#user_profile_not_ready_mesage_01').val()
+          "get_started": $('#user_profile_start_message_01').val() + '\n'
+          + $('#user_profile_start_message_02').val() + '\n'
+          + $('#user_profile_start_message_03').val(),
+          "error_msg": $('#user_profile_not_ready_mesage_01').val() + '\n'
+          + $('#user_profile_not_ready_mesage_02').val() + '\n'
+          + $('#user_profile_not_ready_mesage_03').val()
         }
       },
 

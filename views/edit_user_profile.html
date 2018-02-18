@@ -656,7 +656,7 @@
   <div class="bottom_common">
     <div id="pre_page">
       <p>
-        이전
+        취소
       </p>
     </div>
     <div id="next_page" align="center">
@@ -933,6 +933,14 @@
 
                         if (fb_page_id_from_api == item.page_id) {
                           console.log('fb_page_id_from_api=>'+fb_page_id_from_api);
+
+                          var fb_page_index = fb_page_ids.indexOf(fb_page_id_from_api);
+                          console.log('fb_page_index=>' + fb_page_index);
+                          $('.fb_page_set').hide();
+                          $('#fb_page_set' + fb_page_index).show();
+                          $('#fb_page_btn' + fb_page_index).text("연결해제 하기");
+                          $('#fb_page_btn' + fb_page_index).css('border', 'solid 1px #fd6246')
+                          $('#fb_page_btn' + fb_page_index).css('color', '#ffffff')
                         } else {
                           for (var i = 0; i < fb_pages_info.length; i++) {
                             if (item.page_id == fb_pages_info[i].id) {
@@ -1454,6 +1462,14 @@
 
   var loading_click_error_handler = function() {
     lego_loading_modal.style.display = "none";
+
+    //팝업 초기화
+    $('#lego_loading_title').text('{{프로젝트명}} 포트폴리오');
+    $('#lego_loading_context_01').text('{{프로젝트명}}의 포트폴리오를 읽어오고 있어요.');
+    $('#lego_loading_context_02').text('지금 {{순서}}. {{포트폴리오명}}의 정보를 불러오고 있어요.');
+    $('#modal_one_lego_loading_btn').css('background-color', '#c0c0c0');
+    $('#modal_one_lego_loading_btn').off('click');
+    portfolioList = [];
   }
 
   var loading_click_handler = function() {
@@ -1554,23 +1570,24 @@
 //          "field": user_profile_company_major_03
 //        }
         ],
-        "specialties": [{
-          "name": user_profile_skill_name_01,
-          "detail": user_profile_skill_info_01_result
-        }, {
-          "name": user_profile_skill_name_02,
-          "detail": user_profile_skill_info_02_result
-        }, {
-          "name": user_profile_skill_name_03,
-          "detail": user_profile_skill_info_03_result
-        }],
+        "specialties": [
+        //   {
+        //   "name": user_profile_skill_name_01,
+        //   "detail": user_profile_skill_info_01_result
+        // }, {
+        //   "name": user_profile_skill_name_02,
+        //   "detail": user_profile_skill_info_02_result
+        // }, {
+        //   "name": user_profile_skill_name_03,
+        //   "detail": user_profile_skill_info_03_result
+        // }
+        ],
         "summary": user_profile_self_introduction_01_result,
         "portfolio": portfolioList
       }
     }
 
     for (var i = 1; i <=3; i ++) {
-
       if ($('#user_profile_company_name_0'+i).val() != ''
           && $('#user_profile_company_term_0'+i).val() != ''
           && $('#user_profile_company_major_0'+i).val() != '') {
@@ -1582,7 +1599,23 @@
       }
     }
 
-    console.log('submitDataTest=>' + JSON.stringify(submitData.data.work));
+    for (var i = 1; i<=3; i ++) {
+      if ($('#user_profile_skill_name_0'+i).val() != ''
+        && $('#user_profile_skill_info_0'+i+'_1').val() != '') {
+
+        var user_profile_skill_info__1 = $('#user_profile_skill_info_0'+i+'_1').val();
+        var user_profile_skill_info__2 = $('#user_profile_skill_info_0'+i+'_2').val();
+        var user_profile_skill_info_result = user_profile_skill_info__1 + '\n' + user_profile_skill_info__2;
+
+        submitData.data.specialties.push(
+          {"name": $('#user_profile_skill_name_0'+i).val(),
+            "detail": user_profile_skill_info_result
+          }
+        )
+      }
+    }
+
+    console.log('submitDataTest=>' + JSON.stringify(submitData.data.specialties));
 
     if (submitData.data.basic.name == '' || submitData.data.basic.email == '') {
       console.log('submitData=>' + JSON.stringify(submitData));

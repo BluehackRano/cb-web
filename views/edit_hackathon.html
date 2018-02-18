@@ -788,12 +788,12 @@
   <div class="bottom_common">
     <div id="pre_page">
       <p>
-        이전
+        취소
       </p>
     </div>
     <div id="next_page" align="center">
       <p>
-        다음
+        저장
       </p>
     </div>
   </div>
@@ -1841,23 +1841,23 @@
 
     if ($('.hackathon_1day_content').val() != '' ||
       $('.hackathon_1day_content').val() != null) {
-      submitData.data.contents['main-meeting'].push($('.hackathon_1day_content').val());
+      submitData.data.contents['main-meeting'].push(hackathon_1day_content);
     }
     if ($('.hackathon_2day_content').val() != '' ||
       $('.hackathon_2day_content').val() != null) {
-      submitData.data.contents['main-meeting'].push($('.hackathon_2day_content').val());
+      submitData.data.contents['main-meeting'].push(hackathon_2day_content);
     }
     if ($('.hackathon_3day_content').val() != '' ||
       $('.hackathon_3day_content').val() != null) {
-      submitData.data.contents['main-meeting'].push($('.hackathon_3day_content').val());
+      submitData.data.contents['main-meeting'].push(hackathon_3day_content);
     }
     if ($('.hackathon_4day_content').val() != '' ||
       $('.hackathon_4day_content').val() != null) {
-      submitData.data.contents['main-meeting'].push($('#hackathon_4day_content').val());
+      submitData.data.contents['main-meeting'].push(hackathon_4day_content);
     }
     if ($('.hackathon_5day_content').val() != '' ||
       $('.hackathon_5day_content').val() != null) {
-      submitData.data.contents['main-meeting'].push($('.hackathon_5day_content').val());
+      submitData.data.contents['main-meeting'].push(hackathon_5day_content);
     }
 
     //사전모임 날짜가 체크 되어 있는 경우
@@ -1993,6 +1993,15 @@
 
                         if (fb_page_id_from_api == item.page_id) {
                           console.log('fb_page_id_from_api=>'+fb_page_id_from_api);
+
+                          var fb_page_index = fb_page_ids.indexOf(fb_page_id_from_api);
+                          console.log('fb_page_index=>' + fb_page_index);
+                          $('.fb_page_set').hide();
+                          $('#fb_page_set' + fb_page_index).show();
+                          $('#fb_page_btn' + fb_page_index).text("연결해제 하기");
+                          $('#fb_page_btn' + fb_page_index).css('border', 'solid 1px #fd6246')
+                          $('#fb_page_btn' + fb_page_index).css('color', '#ffffff')
+
                         } else {
                           for (var i = 0; i < fb_pages_info.length; i++) {
                             if (item.page_id == fb_pages_info[i].id) {
@@ -2327,17 +2336,18 @@
         break;
 
       case 4:
-        $('.hackathon_day').hide();
-        $('#hackathon_1day').show();
-        $('#hackathon_2day').show();
-        $('#hackathon_3day').show();
-        $('#hackathon_4day').show();
-        $('#hackathon_5day').show();
+        $('.hackathon_day').show();
+        // $('.hackathon_day').hide();
+        // $('#hackathon_1day').show();
+        // $('#hackathon_2day').show();
+        // $('#hackathon_3day').show();
+        // $('#hackathon_4day').show();
+        // $('#hackathon_5day').show();
         break;
 
-      case 5:
-        $('.hackathon_day').show();
-        break;
+      // case 5:
+      //   $('.hackathon_day').show();
+      //   break;
 
       default:
         // alert('최대 4박 5일까지만 가능합니다.');

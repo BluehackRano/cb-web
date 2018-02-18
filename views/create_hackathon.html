@@ -857,6 +857,11 @@
 
     $('#section_04').show();
     switch (betweenDay) {
+      case 0:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        break;
+
       case 1:
         $('.hackathon_day').hide();
         $('#hackathon_1day').show();
@@ -879,17 +884,18 @@
         break;
 
       case 4:
-        $('.hackathon_day').hide();
-        $('#hackathon_1day').show();
-        $('#hackathon_2day').show();
-        $('#hackathon_3day').show();
-        $('#hackathon_4day').show();
-        $('#hackathon_5day').show();
+        $('.hackathon_day').show();
+        // $('.hackathon_day').hide();
+        // $('#hackathon_1day').show();
+        // $('#hackathon_2day').show();
+        // $('#hackathon_3day').show();
+        // $('#hackathon_4day').show();
+        // $('#hackathon_5day').show();
         break;
 
-      case 5:
-        $('.hackathon_day').show();
-        break;
+      // case 5:
+      //   $('.hackathon_day').show();
+      //   break;
 
       default:
         // alert('최대 4박 5일까지만 가능합니다.');

@@ -1293,9 +1293,12 @@
         "prize": awardItemList, //typeof array
         "benefit_of_participant": reward_addInputLine,
         "thanks": {
-          "hoster": supervisor_addInputLine,
-          "organizer": organizer_addInputLine,
-          "sponsor": sponsor_addInputLine
+          // "hoster": supervisor_addInputLine,
+          "hoster": $('#hackathon_organizer_info_01').val() + '\n' + $('#hackathon_organizer_info_02').val() + '\n' +$('#hackathon_organizer_info_03').val(),
+          // "organizer": organizer_addInputLine,
+          "organizer": $('#hackathon_supervisor_info_01').val() + '\n' + $('#hackathon_supervisor_info_02').val() + '\n' +$('#hackathon_supervisor_info_03').val(),
+          // "sponsor": sponsor_addInputLine
+          "sponsor": $('#hackathon_sponsor_info_01').val() + '\n' + $('#hackathon_sponsor_info_02').val() + '\n' +$('#hackathon_sponsor_info_03').val(),
         }
       }
     };

@@ -907,9 +907,9 @@
 
         var benefit_of_participant = body.data.settings.data.benefit_of_participant;
 
-        var thanks_hoster = body.data.settings.data.thanks.hoster;
-        var thanks_organizer = body.data.settings.data.thanks.organizer;
-        var thanks_sponsor = body.data.settings.data.thanks.sponsor;
+        var thanks_hoster = body.data.settings.data.thanks.hoster.split('\n');
+        var thanks_organizer = body.data.settings.data.thanks.organizer.split('\n');
+        var thanks_sponsor = body.data.settings.data.thanks.sponsor.split('\n');
 
         $('#baseInfo_name').val(settings_name);
         $('#baseInfo_context_01').val(settings_desc[0]);
@@ -1083,9 +1083,17 @@
         $('#hackathon_participation_reward_01').val(benefit_of_participant);
 
         //해커톤 주최/주관/후원정보
-        $('#hackathon_organizer_info_01').val(thanks_hoster);
-        $('#hackathon_supervisor_info_01').val(thanks_organizer);
-        $('#hackathon_sponsor_info_01').val(thanks_sponsor);
+        $('#hackathon_organizer_info_01').val(thanks_hoster[0]);
+        $('#hackathon_organizer_info_02').val(thanks_hoster[1]);
+        $('#hackathon_organizer_info_03').val(thanks_hoster[2]);
+
+        $('#hackathon_supervisor_info_01').val(thanks_organizer[0]);
+        $('#hackathon_supervisor_info_02').val(thanks_organizer[1]);
+        $('#hackathon_supervisor_info_03').val(thanks_organizer[2]);
+
+        $('#hackathon_sponsor_info_01').val(thanks_sponsor[0]);
+        $('#hackathon_sponsor_info_02').val(thanks_sponsor[1]);
+        $('#hackathon_sponsor_info_03').val(thanks_sponsor[2]);
 
         initHackathonDay();
       }
@@ -1836,9 +1844,12 @@
         "prize": awardItemList, //typeof array
         "benefit_of_participant": reward_addInputLine,
         "thanks": {
-          "hoster": supervisor_addInputLine,
-          "organizer": organizer_addInputLine,
-          "sponsor": sponsor_addInputLine
+          // "hoster": supervisor_addInputLine,
+          "hoster": $('#hackathon_organizer_info_01').val() + '\n' + $('#hackathon_organizer_info_02').val() + '\n' +$('#hackathon_organizer_info_03').val(),
+          // "organizer": organizer_addInputLine,
+          "organizer": $('#hackathon_supervisor_info_01').val() + '\n' + $('#hackathon_supervisor_info_02').val() + '\n' +$('#hackathon_supervisor_info_03').val(),
+          // "sponsor": sponsor_addInputLine
+          "sponsor": $('#hackathon_sponsor_info_01').val() + '\n' + $('#hackathon_sponsor_info_02').val() + '\n' +$('#hackathon_sponsor_info_03').val(),
         }
       }
     };

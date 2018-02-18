@@ -1180,6 +1180,7 @@ create apikey
     border-bottom: 1px solid #000000;
     margin-top: 15px;
     padding-bottom: 7px;
+    margin-bottom: 28px;
 }
 
 .create_apikey_link {
@@ -1192,7 +1193,7 @@ create apikey
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    text-align: left;
+    text-align: center;
     color: #d0021b;
     margin-top: 7px;
 }

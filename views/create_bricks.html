@@ -543,19 +543,75 @@
         `<div class="api_title">` +
         `<img src="` + resData[itemIndex].img + `" class="api_img">` +
         `<div class="api_name">` + resData[itemIndex].name + `</div>` +
+        `<a href="` + resData[itemIndex].api.provider + `" class="create_apikey_link" target="_blank"> <p> API KEY 신청하기 </p> </a>` +
         `</div>` +
         `<div class="api_content">` +
         `<div class="api_content_context">` +
         `<p>` + resData[itemIndex].api.desc + `</p>` +
         `</div>` +
-        `<div class="api_content_key_title"> API KEY </div>` +
-        `<input type="text" class="apikeyInputText" id="apikeyInputText`+itemIndex+`" placeholder="발급받은 API KEY를 입력해주세요.">` +
-        `<a href="` + resData[itemIndex].api.provider + `" class="create_apikey_link" target="_blank"> <p> API KEY 신청하기 </p> </a>` +
+
+        `<div class="api_content_kind" id="api_content_kind`+listIndex+`">` +
+
+        // `<div class="api_content_key_title"> API KEY </div>` +
+        // `<input type="text" class="apikeyInputText" id="apikeyInputText`+itemIndex+`" placeholder="발급받은 API KEY를 입력해주세요.">` +
+
+        `</div>` +
         `</div>` +
         `<hr class="apikey_underline"> ` +
         `</div>`
       );
       api_set_list.append(brickApiSet);
+
+      if (resData[itemIndex].api.input.length <=0) {
+
+        var api_input_key_kind = (
+          `<div class="api_content_key_title">* 해당 BRICK은 요청하는 항목이 없어요.</div>`
+        );
+        $('#api_content_kind'+listIndex).append(api_input_key_kind);
+
+      } else {
+        resData[itemIndex].api.input.forEach(function (api_key_item, index, array) {
+          console.log('api_key_kind=>' + JSON.stringify(api_key_item));
+
+          var api_input_key_kind = (
+            `<div class="api_content_key_title"> `+api_key_item.name+` </div>` +
+            `<input type="text" class="apikeyInputText" id="apikeyInputText`+listIndex+'_'+index+`" placeholder="`+api_key_item.holder+`">`
+          );
+
+          $('#api_content_kind'+listIndex).append(api_input_key_kind);
+
+          //write apikey
+          // switch (api_key_item.key) {
+          //   case 'api_key' :
+          //     $('#apikeyInputText'+listIndex+'_'+index).val(itemIndex.data.api_key);
+          //     break;
+          //
+          //   case 'username' :
+          //     $('#apikeyInputText'+listIndex+'_'+index).val(itemIndex.data.username);
+          //     break;
+          //
+          //   case 'password' :
+          //     $('#apikeyInputText'+listIndex+'_'+index).val(itemIndex.data.password);
+          //     break;
+          //
+          //   case 'client_id':
+          //     $('#apikeyInputText'+listIndex+'_'+index).val(itemIndex.data.client_id);
+          //     break;
+          //
+          //   case 'client_secret':
+          //     $('#apikeyInputText'+listIndex+'_'+index).val(itemIndex.data.client_secret);
+          //     break;
+          //
+          //   case 'subscription':
+          //     $('#apikeyInputText'+listIndex+'_'+index).val(itemIndex.data.subscription);
+          //     break;
+          // }
+        });
+
+      }
+
+
+
 
       var brickApiItem = (
         `<div class="brick_api_item_area" id="brick_api_item_area` + itemIndex + `">` +
@@ -934,8 +990,47 @@
                   name: item.name,
                   keywords: keywords,
                   data: {
-                    api_key: $('#apikeyInputText' + index).val()
+                    // api_key: $('#apikeyInputText' + index).val()
                   }
+                }
+
+                if (item.api.input.length <=0) {
+                  console.log('item.api.input.length == 0');
+                } else {
+                  item.api.input.forEach(function (api_key_item, api_key_index, array) {
+                    // console.log('api_key_kind=>' + JSON.stringify(api_key_item));
+
+                    console.log('api_keyInputText_1t=>' + $('#apikeyInputText'+i+'_'+api_key_index).val());
+                    console.log('api_keyInputText_2t=>' + i);
+                    console.log('api_keyInputText_3t=>' + api_key_index);
+                    //write apikey
+                    switch (api_key_item.key) {
+                      case 'api_key' :
+                        brickJson.data.api_key = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        break;
+
+                      case 'username' :
+                        brickJson.data.username = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        break;
+
+                      case 'password' :
+                        brickJson.data.password = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        break;
+
+                      case 'client_id':
+                        brickJson.data.client_id = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        break;
+
+                      case 'client_secret':
+                        brickJson.data.client_secret = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        break;
+
+                      case 'subscription':
+                        brickJson.data.subscription = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        break;
+                    }
+                  });
+
                 }
 
                 submitBrickList.push(brickJson);
@@ -962,7 +1057,7 @@
 
     };
 
-    console.log('submitData=>' + JSON.stringify(submitData));
+    console.log('submitBrickList=>' + JSON.stringify(submitBrickList));
 
     if (submitData.data.custom_settings.get_started == ''
       || submitData.data.custom_settings.error_msg == '') {

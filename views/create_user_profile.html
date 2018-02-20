@@ -421,6 +421,18 @@
 		</div>
 	</div>
 
+	<!--에러 모양 팝업-->
+	<div id="default_error_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">확인</div>
+			<div class="modal_context" id="modal_error_context"></div>
+			<div id="modal_one_error_btn" class="modal_one_btn">
+				<p>확인</p></div>
+		</div>
+	</div>
+
 </div>
 
 <footer id="footer">
@@ -491,7 +503,26 @@
       if (body.success) {
         login_logo.attr("src", body.facebook.fb_profile);
         login_name.text(body.facebook.fb_name);
-      }
+      } else {
+        if (body.action == 'ERR0002') {
+          var default_error_modal = document.getElementById('default_error_modal');
+          var modal_one_error_btn = $('#modal_one_error_btn');
+
+          default_error_modal.style.display = "block";
+          $('#modal_error_context').text(body.msg);
+
+
+          modal_one_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_error_btn.click(function () {
+            default_error_modal.style.display = "none";
+          });
+        }
+			}
     }
   });
 
@@ -553,7 +584,26 @@
 
             user_profile_photo_upload_btn.hide();
             after_upload.show();
-          }
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+					}
         }
       });
 
@@ -605,7 +655,26 @@
 
             user_profile_photo_upload_btn.hide();
             after_upload.show();
-          }
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+					}
         }
       });
     }
@@ -822,7 +891,26 @@
 
               var setId = body.data.id;
               window.location.href = '/platform/connect' + '?setId=' + setId;
-            }
+            } else {
+              if (body.action == 'ERR0002') {
+                var default_error_modal = document.getElementById('default_error_modal');
+                var modal_one_error_btn = $('#modal_one_error_btn');
+
+                default_error_modal.style.display = "block";
+                $('#modal_error_context').text(body.msg);
+
+
+                modal_one_error_btn.hover(function () {
+                  $(this).css('background-color', '#fb7c7e');
+                }, function () {
+                  $(this).css('background-color', '#ff753c');
+                });
+
+                modal_one_error_btn.click(function () {
+                  default_error_modal.style.display = "none";
+                });
+              }
+						}
           }
         });
       }

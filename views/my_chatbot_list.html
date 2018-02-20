@@ -66,6 +66,18 @@
 	</div>
 </div>
 
+<!--에러 모양 팝업-->
+<div id="default_error_modal" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+
+		<div class="modal_title">확인</div>
+		<div class="modal_context" id="modal_error_context"></div>
+		<div id="modal_one_error_btn" class="modal_one_btn">
+			<p>확인</p></div>
+	</div>
+</div>
+
 <footer id="footer"></footer>
 
 <script>
@@ -158,9 +170,24 @@
         });
         botlist.append(createMyBot);
       } else {
-        //not login
-        // window.location.href  = 'https://www.chatbrick.io';
-        // window.location.href = 'http://www.localhost:3000';
+        if (body.action == 'ERR0002') {
+          var default_error_modal = document.getElementById('default_error_modal');
+          var modal_one_error_btn = $('#modal_one_error_btn');
+
+          default_error_modal.style.display = "block";
+          $('#modal_error_context').text(body.msg);
+
+
+          modal_one_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_error_btn.click(function () {
+            default_error_modal.style.display = "none";
+          });
+				}
 			}
     }
   });

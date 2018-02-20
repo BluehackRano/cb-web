@@ -171,7 +171,12 @@
     <div class="modal-content">
 
       <div class="modal_device_wapper">
-        <img src="../public/images/img-device.png" id="modal_device_img" class="device_img">
+
+        <div class="device_img">
+          <img src="../public/images/gif_b03.gif" id="modal_device_img">
+          <img src="../public/images/img-device1.png" id="landing_device_img">
+        </div>
+        <!--<img src="../public/images/img-device.png" id="modal_device_img" class="device_img">-->
         <div class="modal_device_content">
           <div class="modal_device_set_content">
 
@@ -325,13 +330,10 @@
   var next_page = $('#next_page');
 
   set_preview.click(function () {
-
-    $(this).toggleClass("press");
-    modal.style.display = "block";
-  });
-  $(document).on('click', '.press', function () {
     var itemIndex = $(this).parent().parent().index();
     console.log('itemIndex=>' + itemIndex);
+//    $(this).toggleClass("press");
+    modal.style.display = "block";
 
     if (itemIndex == '0') {
       modal_device_set_name.text('HACKATHON');
@@ -340,10 +342,22 @@
     } else if (itemIndex == '2') {
       modal_device_set_name.text('BRICKS');
     }
-    // modal_device_set_img.attr("src", resData[itemIndex].img);
-    // modal_device_set_name.text(resData[itemIndex].name);
-    // modal_device_context_desc.text(resData[itemIndex].preview.desc);
   });
+//  $(document).on('click', '.press', function () {
+//    var itemIndex = $(this).parent().parent().index();
+//    console.log('itemIndex=>' + itemIndex);
+//
+//    if (itemIndex == '0') {
+//      modal_device_set_name.text('HACKATHON');
+//    } else if (itemIndex == '1') {
+//      modal_device_set_name.text('DESIGNER PORTFOLIO');
+//    } else if (itemIndex == '2') {
+//      modal_device_set_name.text('BRICKS');
+//    }
+//    // modal_device_set_img.attr("src", resData[itemIndex].img);
+//    // modal_device_set_name.text(resData[itemIndex].name);
+//    // modal_device_context_desc.text(resData[itemIndex].preview.desc);
+//  });
 
   close_modal_img.onclick = function () {
     modal.style.display = "none";

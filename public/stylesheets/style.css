@@ -1413,10 +1413,10 @@ landing page
 }
 
 .landing_set_device {
-    height: 863px;
+    height: 763px;
     width: auto;
 
-    margin-top: 345px;
+    margin-top: 120px;
     margin-bottom: 78px;
     /*border-bottom: 1px;*/
     /*border-bottom-color: #cecece;*/
@@ -1428,13 +1428,26 @@ landing page
     height: 508px;
     object-fit: contain;
     display: block;
+
+    margin-left: 72px;
+    margin-right: 94px;
+    float: left;
+
+    position: relative;
 }
 
 #landing_device_img {
-    margin-left: 72px;
-    margin-right: 94px;
+    position: absolute;
+    /*top: 0;*/
+    /*left: 0;*/
+    /*float: left;*/
+}
 
-    float: left;
+#landing_device_gif {
+    position: absolute;
+    /*top: 0;*/
+    /*left: 0;*/
+    /*float: left;*/
 }
 
 .landing_device_content {
@@ -2232,8 +2245,9 @@ modal zone
 }
 
 #modal_device_img {
-    float: left;
-    margin-right: 47px;
+    position: absolute;
+    /*float: left;*/
+    /*margin-right: 47px;*/
 }
 
 .modal_device_content {
@@ -2373,7 +2387,8 @@ hr.modal_device_underline {
 }
 
 .modal_brick_api_desc {
-    width: 87px;
+    /*width: 87px;*/
+    width: auto;
     height: 27px;
     font-family: "Noto Sans KR";
     font-size: 18px;
@@ -2418,7 +2433,8 @@ hr.modal_device_underline {
 }
 
 .modal_brick_api_guild_desc {
-    width: 230px;
+    /*width: 230px;*/
+    width: auto;
     height: 60px;
 
     font-family: "Noto Sans KR";

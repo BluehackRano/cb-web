@@ -649,6 +649,18 @@
     </div>
   </div>
 
+  <!--에러 모양 팝업-->
+  <div id="default_error_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">확인</div>
+      <div class="modal_context" id="modal_error_context"></div>
+      <div id="modal_one_error_btn" class="modal_one_btn">
+        <p>확인</p></div>
+    </div>
+  </div>
+
 </div>
 
 
@@ -773,6 +785,25 @@
 
            user_profile_photo_upload_btn.hide();
            after_upload.show();
+         } else {
+           if (body.action == 'ERR0002') {
+             var default_error_modal = document.getElementById('default_error_modal');
+             var modal_one_error_btn = $('#modal_one_error_btn');
+
+             default_error_modal.style.display = "block";
+             $('#modal_error_context').text(body.msg);
+
+
+             modal_one_error_btn.hover(function () {
+               $(this).css('background-color', '#fb7c7e');
+             }, function () {
+               $(this).css('background-color', '#ff753c');
+             });
+
+             modal_one_error_btn.click(function () {
+               default_error_modal.style.display = "none";
+             });
+           }
          }
        }
      });
@@ -825,6 +856,25 @@
 
             user_profile_photo_upload_btn.hide();
             after_upload.show();
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
           }
         }
       });
@@ -997,6 +1047,25 @@
 
                       }
                     });
+                  } else {
+                    if (body.action == 'ERR0002') {
+                      var default_error_modal = document.getElementById('default_error_modal');
+                      var modal_one_error_btn = $('#modal_one_error_btn');
+
+                      default_error_modal.style.display = "block";
+                      $('#modal_error_context').text(body.msg);
+
+
+                      modal_one_error_btn.hover(function () {
+                        $(this).css('background-color', '#fb7c7e');
+                      }, function () {
+                        $(this).css('background-color', '#ff753c');
+                      });
+
+                      modal_one_error_btn.click(function () {
+                        default_error_modal.style.display = "none";
+                      });
+                    }
                   }
                 }
               });
@@ -1049,6 +1118,25 @@
                         $('#fb_page_btn' + index).text("연결해제 하기");
                         $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
                         $('#fb_page_btn' + index).css('color', '#ffffff')
+                      } else {
+                        if (body.action == 'ERR0002') {
+                          var default_error_modal = document.getElementById('default_error_modal');
+                          var modal_one_error_btn = $('#modal_one_error_btn');
+
+                          default_error_modal.style.display = "block";
+                          $('#modal_error_context').text(body.msg);
+
+
+                          modal_one_error_btn.hover(function () {
+                            $(this).css('background-color', '#fb7c7e');
+                          }, function () {
+                            $(this).css('background-color', '#ff753c');
+                          });
+
+                          modal_one_error_btn.click(function () {
+                            default_error_modal.style.display = "none";
+                          });
+                        }
                       }
                     }
                   });
@@ -1121,6 +1209,25 @@
                           }
                         });
 
+                      } else {
+                        if (body.action == 'ERR0002') {
+                          var default_error_modal = document.getElementById('default_error_modal');
+                          var modal_one_error_btn = $('#modal_one_error_btn');
+
+                          default_error_modal.style.display = "block";
+                          $('#modal_error_context').text(body.msg);
+
+
+                          modal_one_error_btn.hover(function () {
+                            $(this).css('background-color', '#fb7c7e');
+                          }, function () {
+                            $(this).css('background-color', '#ff753c');
+                          });
+
+                          modal_one_error_btn.click(function () {
+                            default_error_modal.style.display = "none";
+                          });
+                        }
                       }
                     }
                   });
@@ -1167,6 +1274,25 @@
                         tg_connect_page.hide();
                         tele_page_set.show();
                       }
+                    } else {
+                      if (body.action == 'ERR0002') {
+                        var default_error_modal = document.getElementById('default_error_modal');
+                        var modal_one_error_btn = $('#modal_one_error_btn');
+
+                        default_error_modal.style.display = "block";
+                        $('#modal_error_context').text(body.msg);
+
+
+                        modal_one_error_btn.hover(function () {
+                          $(this).css('background-color', '#fb7c7e');
+                        }, function () {
+                          $(this).css('background-color', '#ff753c');
+                        });
+
+                        modal_one_error_btn.click(function () {
+                          default_error_modal.style.display = "none";
+                        });
+                      }
                     }
                   }
                 });
@@ -1205,6 +1331,25 @@
                         tg_connect_page.show();
                         tele_page_set.hide();
                       }
+                    } else {
+                      if (body.action == 'ERR0002') {
+                        var default_error_modal = document.getElementById('default_error_modal');
+                        var modal_one_error_btn = $('#modal_one_error_btn');
+
+                        default_error_modal.style.display = "block";
+                        $('#modal_error_context').text(body.msg);
+
+
+                        modal_one_error_btn.hover(function () {
+                          $(this).css('background-color', '#fb7c7e');
+                        }, function () {
+                          $(this).css('background-color', '#ff753c');
+                        });
+
+                        modal_one_error_btn.click(function () {
+                          default_error_modal.style.display = "none";
+                        });
+                      }
                     }
                   }
                 });
@@ -1212,6 +1357,25 @@
 
 
             });
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
           }
         }
       });
@@ -1370,6 +1534,25 @@
           }
 
         });
+      } else {
+        if (body.action == 'ERR0002') {
+          var default_error_modal = document.getElementById('default_error_modal');
+          var modal_one_error_btn = $('#modal_one_error_btn');
+
+          default_error_modal.style.display = "block";
+          $('#modal_error_context').text(body.msg);
+
+
+          modal_one_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_error_btn.click(function () {
+            default_error_modal.style.display = "none";
+          });
+        }
       }
     }
   });
@@ -1418,6 +1601,25 @@
           if (body.success) {
             console.log('success=>'+ body.success);
             window.location.href = '/chatbot/list'
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
           }
         }
       });
@@ -1675,6 +1877,25 @@
           if (body.success) {
             console.log('upload success!');
             window.location.href = '/chatbot/list';
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
           }
         }
       });

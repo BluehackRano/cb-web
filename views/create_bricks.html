@@ -220,7 +220,11 @@
   <div class="modal-content">
 
     <div class="modal_device_wapper">
-      <img src="../public/images/img-device.png" id="modal_device_img" class="device_img">
+      <div class="device_img">
+        <img src="" id="modal_device_img">
+        <img src="../public/images/img-device1.png" id="landing_device_img">
+      </div>
+      <!--<img src="../public/images/img-device.png" id="modal_device_img" class="device_img">-->
       <div class="modal_device_content">
         <div class="modal_device_set_content">
 
@@ -381,6 +385,18 @@
   </div>
 </div>
 
+<!--에러 모양 팝업-->
+<div id="default_error_modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="modal_title">확인</div>
+    <div class="modal_context" id="modal_error_context"></div>
+    <div id="modal_one_error_btn" class="modal_one_btn">
+      <p>확인</p></div>
+  </div>
+</div>
+
 
 <footer id="footer">
   <div class="bottom_common">
@@ -480,7 +496,27 @@
             `</div>`);
 
           brick_list.append(brick);
+
         });
+      } else {
+        if (body.action == 'ERR0002') {
+          var default_error_modal = document.getElementById('default_error_modal');
+          var modal_one_error_btn = $('#modal_one_error_btn');
+
+          default_error_modal.style.display = "block";
+          $('#modal_error_context').text(body.msg);
+
+
+          modal_one_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_error_btn.click(function () {
+            default_error_modal.style.display = "none";
+          });
+        }
       }
     }
   })
@@ -796,18 +832,48 @@
 
   brick_preview.click(function () {
 
-    $(this).toggleClass("press");
-    modal.style.display = "block";
-  });
-  $(document).on('click', '.press', function () {
     var itemIndex = $(this).parent().parent().index();
+//    $(this).toggleClass("press");
+    modal.style.display = "block";
+
     console.log('itemIndex=>' + itemIndex);
     console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
 
     modal_device_set_img.attr("src", resData[itemIndex].thumb);
     modal_device_set_name.text(resData[itemIndex].name);
     modal_device_context_desc.text(resData[itemIndex].preview.desc);
+
+    //add gif in preview iphone img
+    $('#modal_device_img').attr("src", resData[itemIndex].preview.img);
+
+//    if($(this).hasClass('press')) {
+//      console.log('itemIndex=>' + itemIndex);
+//      console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
+//
+//      modal_device_set_img.attr("src", resData[itemIndex].thumb);
+//      modal_device_set_name.text(resData[itemIndex].name);
+//      modal_device_context_desc.text(resData[itemIndex].preview.desc);
+//
+//      //add gif in preview iphone img
+//      $('#modal_device_img').attr("src", resData[itemIndex].preview.img);
+//    } else {
+//      console.log('press 해제');
+//    }
+
   });
+
+//  $(document).on('click', '.press', function () {
+//    var itemIndex = $(this).parent().parent().index();
+//    console.log('itemIndex=>' + itemIndex);
+//    console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
+//
+//    modal_device_set_img.attr("src", resData[itemIndex].thumb);
+//    modal_device_set_name.text(resData[itemIndex].name);
+//    modal_device_context_desc.text(resData[itemIndex].preview.desc);
+//
+//    //add gif in preview iphone img
+//    $('#modal_device_img').attr("src", resData[itemIndex].preview.img);
+//  });
 
   brick_preview.hover(function () {
     $(this).css('background-color', '#fb7c7e');
@@ -1038,6 +1104,25 @@
               }
             });
           }
+        } else {
+          if (body.action == 'ERR0002') {
+            var default_error_modal = document.getElementById('default_error_modal');
+            var modal_one_error_btn = $('#modal_one_error_btn');
+
+            default_error_modal.style.display = "block";
+            $('#modal_error_context').text(body.msg);
+
+
+            modal_one_error_btn.hover(function () {
+              $(this).css('background-color', '#fb7c7e');
+            }, function () {
+              $(this).css('background-color', '#ff753c');
+            });
+
+            modal_one_error_btn.click(function () {
+              default_error_modal.style.display = "none";
+            });
+          }
         }
       }
     })
@@ -1091,6 +1176,25 @@
             console.log('upload success!');
             var request_query = '?setId=' + body.data.id;
             window.location.href = '/platform/connect' + request_query;
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
           }
         }
       });

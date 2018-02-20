@@ -551,6 +551,24 @@
 		</div>
 	</div>
 
+	<!--이전버튼 취소하기 팝업-->
+	<div id="cancel_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">입력취소</div>
+			<div class="modal_context">입력을 취소하시겠습니까?</div>
+			<div class="modal_brick_api_two_btn_area">
+				<div id="modal_left_cancel_btn" class="modal_left_btn">
+					<p>아니요</p>
+				</div>
+
+				<div id="modal_right_cancel_btn" class="modal_right_btn">
+					<p>네</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!--로그아웃 모양 팝업-->
 	<div id="logout_modal" class="modal">
@@ -1177,30 +1195,31 @@
   pre_page.click(function () {
     $(this).css('background-color', '#bd292c');
     var cancel_modal = document.getElementById('cancel_modal');
-    var modal_left_btn = $('#modal_left_btn');
-    var modal_right_btn = $('#modal_right_btn');
+    var modal_left_cancel_btn = $('#modal_left_cancel_btn');
+    var modal_right_cancel_btn = $('#modal_right_cancel_btn');
 
     cancel_modal.style.display = "block";
 
-    modal_left_btn.hover(function () {
+    modal_left_cancel_btn.hover(function () {
       $(this).css('background-color', '#fb7c7e');
     }, function () {
       $(this).css('background-color', '#ff753c');
     });
 
-    modal_left_btn.click(function () {
+    modal_left_cancel_btn.click(function () {
       cancel_modal.style.display = "none";
     });
 
-    modal_right_btn.hover(function () {
+    modal_right_cancel_btn.hover(function () {
       $(this).css('background-color', '#fb7c7e');
     }, function () {
       $(this).css('background-color', '#ff753c');
     });
 
-    modal_right_btn.click(function () {
+    modal_right_cancel_btn.click(function () {
       cancel_modal.style.display = "none";
-      window.location.href = '/chatbot/list'
+//      window.location.href = '/chatbot/list'
+      window.history.back();
     });
   });
 

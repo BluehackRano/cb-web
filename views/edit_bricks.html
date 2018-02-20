@@ -621,7 +621,7 @@
             `<div class="api_title">` +
             `<img src="` + item.thumb + `" class="api_img">` +
             `<div class="api_name">` + item.name + `</div>` +
-            `<a href="` + item.api.provider + `" class="create_apikey_link" target="_blank"> <p> API KEY 신청하기 </p> </a>` +
+            `<a href="` + item.api.provider + `" class="create_apikey_link" id="create_apikey_link`+itemIndex+`" target="_blank"> <p> API KEY 신청하기 </p> </a>` +
             `</div>` +
             `<div class="api_content">` +
             `<div class="api_content_context">` +
@@ -646,6 +646,7 @@
               `<div class="api_content_key_title">* 해당 BRICK은 요청하는 항목이 없어요.</div>`
             );
             $('#api_content_kind'+itemIndex).append(api_input_key_kind);
+            $('#create_apikey_link'+itemIndex).hide();
 
           } else {
             item.api.input.forEach(function (api_key_item, index, array) {

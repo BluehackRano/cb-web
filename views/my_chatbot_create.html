@@ -53,7 +53,7 @@
                 이름
               </p>
             </div>
-            <input type="text" id="baseInfo_name" class="baseInputText" placeholder="가나다">
+            <input type="text" id="baseInfo_name" class="baseInputText" placeholder="가나다" maxlength="8">
 
             <div class="baseInfo_02 article_title">
               <p>
@@ -261,6 +261,7 @@
   var baseInfo_context_01 = $('#baseInfo_context_01');
   var baseInfo_context_02 = $('#baseInfo_context_02');
 
+
   //hide placeholder
   $('.baseInfo_placeHolder').keydown(function (key) {
     $('.baseInfo_placeHolder').addClass('transparent');
@@ -275,7 +276,6 @@
     }
   });
 
-
   checkForHash();
 
   function checkForHash() {
@@ -285,16 +285,63 @@
 
       var hashValues = hashLocation.split("&");
       var hashName = hashValues[0];
-      var hashDesc1 = hashValues[1];
-      var hashDesc2 = hashValues[2];
-      console.log('hashName=>' + hashName + 'hashDesc1=>' + hashDesc1 + 'hashDesc2=>' + hashDesc2);
+      var hashDesc = hashValues[1].split('\n');
+      var hashSet = hashValues[2];
+//      var hashDesc2 = hashValues[2];
+      console.log('hashName=>' + hashName + 'hashDesc=>' + hashDesc + 'hashSet=>' + hashSet);
       baseInfo_name.text(hashName);
-      baseInfo_context_01.text(hashDesc1);
-      baseInfo_context_02.text(hashDesc2);
+      baseInfo_context_01.text(hashDesc[0]);
+      baseInfo_context_02.text(hashDesc[1]);
 
-      baseInfo_context = baseInfo_context_01.val() + " " + baseInfo_context_02.val();
+      if (hashSet != '') {
+//        $('#set_list').val(hashSet);
+//        hashSet = '';
+
+        if (hashSet == 'hackathon_choice') {
+
+          console.log('in hackathon_choice');
+
+          $('#set_list').val("hackathon_choice");
+          $('#hackathon_choice').css('background-color', '#000000');
+          $('#hackathon_choice').text('선택해제 하기');
+          hashSet = '';
+
+        } else if (hashSet == 'designer_portfolio_choice') {
+
+          console.log('in designer_portfolio_choice');
+
+          $('#set_list').val("designer_portfolio_choice");
+          $('#designer_portfolio_choice').css('background-color', '#000000');
+          $('#designer_portfolio_choice').text('선택해제 하기');
+          hashSet = '';
+
+        } else if (hashSet == 'bricks_choice') {
+
+          console.log('in bricks_choice');
+
+          $('#set_list').val("bricks_choice");
+          $('#bricks_choice').css('background-color', '#000000');
+          $('#bricks_choice').text('선택해제 하기');
+          hashSet = '';
+
+        } else {
+          $('#hackathon_choice').css('background-color', '#ff753c');
+          $('#designer_portfolio_choice').css('background-color', '#ff753c');
+          $('#bricks_choice').css('background-color', '#ff753c');
+          $('#hackathon_choice').text('세트선택하기');
+          $('#designer_portfolio_choice').text('세트선택하기');
+          $('#bricks_choice').text('세트선택하기');
+        }
+      }
+
+      document.location.hash = '';
     } else {
       console.log('no hash!');
+
+      baseInfo_name.val('');
+      baseInfo_context_01.val('');
+      baseInfo_context_02.val('');
+
     }
   }
 
@@ -343,21 +390,6 @@
       modal_device_set_name.text('BRICKS');
     }
   });
-//  $(document).on('click', '.press', function () {
-//    var itemIndex = $(this).parent().parent().index();
-//    console.log('itemIndex=>' + itemIndex);
-//
-//    if (itemIndex == '0') {
-//      modal_device_set_name.text('HACKATHON');
-//    } else if (itemIndex == '1') {
-//      modal_device_set_name.text('DESIGNER PORTFOLIO');
-//    } else if (itemIndex == '2') {
-//      modal_device_set_name.text('BRICKS');
-//    }
-//    // modal_device_set_img.attr("src", resData[itemIndex].img);
-//    // modal_device_set_name.text(resData[itemIndex].name);
-//    // modal_device_context_desc.text(resData[itemIndex].preview.desc);
-//  });
 
   close_modal_img.onclick = function () {
     modal.style.display = "none";
@@ -451,12 +483,13 @@
   next_page.click(function () {
     $(this).css('background-color', '#bd292c');
 
-    var hashData = baseInfo_name.val() + '&' + baseInfo_context_01.val() + '&' + baseInfo_context_02.val();
-    var request_query = '?baseInfo_name='+baseInfo_name.val()+'&baseInfo_context='+baseInfo_context_01.val() + baseInfo_context_02.val();
+    var hashData = baseInfo_name.val() + '&' + baseInfo_context_01.val() + '\n' + baseInfo_context_02.val();
+    var request_query = '?baseInfo_name='+baseInfo_name.val()+'&baseInfo_context='+baseInfo_context_01.val() + '\n' + baseInfo_context_02.val();
+    var set_list_query = '&set_list_query=';
 
     console.log('request_query=>' + request_query);
 
-    if (set_list.val() != '' &&(baseInfo_name.val() == '' || baseInfo_context_01.val() == '')) {
+    if (set_list.val() != '' &&(baseInfo_name.val() == '')) {
       console.log('in popup')
       var default_modal = document.getElementById('default_modal');
       var modal_one_btn = $('#modal_one_btn');
@@ -474,17 +507,18 @@
       });
     } else {
       if (set_list.val() == "hackathon_choice") {
-        window.location.href = '/hackathon/create' + request_query;
-        document.location.hash = hashData;
+
+        window.location.href = '/hackathon/create' + request_query + set_list_query + set_list.val();
+        document.location.hash = hashData+ '&' + set_list.val();
 
       } else if (set_list.val() == "designer_portfolio_choice") {
         // console.log(request_query);
-        window.location.href = '/designerPortfolio/create' + request_query;
-        document.location.hash = hashData;
+        window.location.href = '/designerPortfolio/create' + request_query + set_list_query + set_list.val();
+        document.location.hash = hashData+ '&' + set_list.val();
 
       } else if (set_list.val() == "bricks_choice") {
-        window.location.href = '/bricks/create' + request_query;
-        document.location.hash = hashData;
+        window.location.href = '/bricks/create' + request_query + set_list_query + set_list.val();
+        document.location.hash = hashData+ '&' + set_list.val();
 
       } else {
         next_page.css('background-color', '#c0c0c0');

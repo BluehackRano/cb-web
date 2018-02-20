@@ -31,6 +31,8 @@
 					SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더
 					{{사용자의 이름}}에 잘어울리는 챗봇으로 만들어보세요.
 				</p>
+
+				<button id="test_full_input_text">클릭하면 전체항목을 채워줘요(테스트용)</button>
 			</div>
 		</div>
 	</div>
@@ -283,11 +285,13 @@
 							<div class="article_title_profile">
 								[01] 간략한 자기소개를 입력해주세요
 							</div>
+							<div id="self_introduction_area">
 							<input type="text" id="user_profile_self_introduction_01_1" class="baseInputText_02 user_profile_self_introduction_01" placeholder="가나다">
 							<input type="text" id="user_profile_self_introduction_01_2" class="baseInputText_02 user_profile_self_introduction_01" placeholder="가나다">
 							<input type="text" id="user_profile_self_introduction_01_3" class="baseInputText_02 user_profile_self_introduction_01" placeholder="가나다">
 							<input type="text" id="user_profile_self_introduction_01_4" class="baseInputText_02 user_profile_self_introduction_01" placeholder="가나다">
 							<input type="text" id="user_profile_self_introduction_01_5" class="baseInputText_02 user_profile_self_introduction_01" placeholder="가나다">
+							</div>
 						</div>
 					</div>
 				</article>
@@ -433,6 +437,25 @@
 		</div>
 	</div>
 
+	<!--이전버튼 취소하기 팝업-->
+	<div id="cancel_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">입력취소</div>
+			<div class="modal_context">입력을 취소하시겠습니까?</div>
+			<div class="modal_brick_api_two_btn_area">
+				<div id="modal_left_cancel_btn" class="modal_left_btn">
+					<p>아니요</p>
+				</div>
+
+				<div id="modal_right_cancel_btn" class="modal_right_btn">
+					<p>네</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <footer id="footer">
@@ -492,6 +515,80 @@
   var login_dropdown = $('#login_dropdown');
 
   var img_url;
+
+  var charLimit = 100;
+  //enter key event
+  $('#self_introduction_area').keydown(function (key) {
+
+    $('.user_profile_self_introduction_01').keypress(function () {
+      if (this.value.length >= charLimit) {
+        console.log('this.value.length=>' + this.value.length);
+        $(this).next('.user_profile_self_introduction_01').focus();
+        return false;
+      }
+    });
+
+    if (key.keyCode == 13) {
+      var self_introduction_length = $('.user_profile_self_introduction_01').length + 1;
+      console.log('self_introduction_length=>' + self_introduction_length);
+
+      var addLine = (
+        `<input type="text" id="user_profile_self_introduction_01_`+self_introduction_length+`" class="baseInputText_02 user_profile_self_introduction_01">`
+      );
+      $('#self_introduction_area').append(addLine);
+      $(this).next('.user_profile_self_introduction_01').focus();
+    }
+//    $('.user_profile_self_introduction_01').addClass('transparent');
+  });
+
+
+  //복붙이벤트
+  $(".user_profile_self_introduction_01").bind('paste',function(e){
+    var el = $(this);
+    var strList = [];
+    setTimeout(function() {
+      var text = $(el).val();
+//      var charLimit = 68;
+      console.log('text length=>' + text.length);
+      if (text.length >= charLimit) {
+
+        strList.push(text.substring(0,charLimit));
+
+        for (var i = charLimit+1; i < text.length; i+=charLimit) {
+          console.log('i=>' +text.substring(i,i+charLimit));
+          strList.push(text.substring(i,i+charLimit));
+				}
+
+        var index = 0;
+				for (var i = 1; i <= strList.length; i ++) {
+				  if (i > 5) {
+
+				    if (i <= $('.user_profile_self_introduction_01').length) {
+				      console.log('이미 라인이 있음');
+						} else {
+              var addLine = (
+                `<input type="text" id="user_profile_self_introduction_01_`+i+`" class="baseInputText_02 user_profile_self_introduction_01">`
+              );
+              $('#self_introduction_area').append(addLine);
+						}
+//            $('.user_profile_self_introduction_01').addClass('transparent');
+            //todo: 지금은 복붙하면 첫줄부터 채움
+						$('#user_profile_self_introduction_01_'+i).val(strList[index]);
+
+					} else {
+            //todo: 지금은 복붙하면 첫줄부터 채움
+            $('#user_profile_self_introduction_01_'+i).val(strList[index]);
+					}
+          index ++;
+				}
+        return false;
+      } else {
+        console.log('자동개행 예외상황!');
+//        $(this).next('#user_profile_self_introduction_01_1').val(text);
+//				$(this).next('#user_profile_self_introduction_01_1').focus();
+			}
+    },100);
+  });
 
   $.ajax({
     url: 'https://www.chatbrick.io/api/login/',
@@ -579,7 +676,7 @@
         success: function (body, status, res) {
           if (body.success) {
             img_url = body.data.url;
-            console.log('upliad success!');
+            console.log('upload success!');
             console.log('res img url=>' + img_url);
 
             user_profile_photo_upload_btn.hide();
@@ -767,14 +864,22 @@
       var user_profile_skill_info_03_result = user_profile_skill_info_03_1 + user_profile_skill_info_03_2;
 
 
-      var user_profile_self_introduction_01_1 = $('#user_profile_self_introduction_01_1').val();
-      var user_profile_self_introduction_01_2 = $('#user_profile_self_introduction_01_2').val();
-      var user_profile_self_introduction_01_3 = $('#user_profile_self_introduction_01_3').val();
-      var user_profile_self_introduction_01_4 = $('#user_profile_self_introduction_01_4').val();
-      var user_profile_self_introduction_01_5 = $('#user_profile_self_introduction_01_5').val();
-      var user_profile_self_introduction_01_result = user_profile_self_introduction_01_1 +'\n' + user_profile_self_introduction_01_2 +'\n'
-        + user_profile_self_introduction_01_3 +'\n' + user_profile_self_introduction_01_4 +'\n' + user_profile_self_introduction_01_5;
+//      var user_profile_self_introduction_01_1 = $('#user_profile_self_introduction_01_1').val();
+//      var user_profile_self_introduction_01_2 = $('#user_profile_self_introduction_01_2').val();
+//      var user_profile_self_introduction_01_3 = $('#user_profile_self_introduction_01_3').val();
+//      var user_profile_self_introduction_01_4 = $('#user_profile_self_introduction_01_4').val();
+//      var user_profile_self_introduction_01_5 = $('#user_profile_self_introduction_01_5').val();
+//      var user_profile_self_introduction_01_result = user_profile_self_introduction_01_1 +'\n' + user_profile_self_introduction_01_2 +'\n'
+//        + user_profile_self_introduction_01_3 +'\n' + user_profile_self_introduction_01_4 +'\n' + user_profile_self_introduction_01_5;
 
+			var user_profile_self_introduction_01_result = '';
+			for (var i = 1; i <= $('.user_profile_self_introduction_01').length; i ++) {
+			  if (i == $('.user_profile_self_introduction_01').length) {
+          user_profile_self_introduction_01_result +=($('#user_profile_self_introduction_01_'+i).val());
+				} else {
+          user_profile_self_introduction_01_result +=($('#user_profile_self_introduction_01_'+i).val() + '\n');
+				}
+			}
       console.log('user name->' + $('#user_profile_data_name').val());
 
       var submitData = {
@@ -856,64 +961,43 @@
         }
       }
 
-      if (submitData.data.basic.name =='' || submitData.data.basic.email ==''
-        || submitData.data.basic.special =='' || submitData.data.basic.residence ==''
-        || submitData.data.basic.social =='') {
-        portfolioList = [];
-        console.log('in popup')
-        var default_modal = document.getElementById('default_modal');
-        var modal_one_btn = $('#modal_one_btn');
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/',
+        type: 'PUT',
+        async: false,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: 'JSON',
+        data: JSON.stringify(submitData),
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('upload success!');
 
-        default_modal.style.display = "block";
+            var setId = body.data.id;
+            window.location.href = '/platform/connect' + '?setId=' + setId;
+          } else {
+            if (body.action == 'ERR0002') {
+              portfolioList = [];
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
 
-        modal_one_btn.hover(function () {
-          $(this).css('background-color', '#fb7c7e');
-        }, function () {
-          $(this).css('background-color', '#ff753c');
-        });
-
-        modal_one_btn.click(function () {
-          default_modal.style.display = "none";
-        });
-      } else {
-        portfolioList = [];
-        $.ajax({
-          url: 'https://www.chatbrick.io/api/brick/',
-          type: 'PUT',
-          async: false,
-          crossDomain: true,
-          contentType: 'application/json',
-          dataType: 'JSON',
-          data: JSON.stringify(submitData),
-          success: function (body, status, res) {
-            if (body.success) {
-              console.log('upload success!');
-
-              var setId = body.data.id;
-              window.location.href = '/platform/connect' + '?setId=' + setId;
-            } else {
-              if (body.action == 'ERR0002') {
-                var default_error_modal = document.getElementById('default_error_modal');
-                var modal_one_error_btn = $('#modal_one_error_btn');
-
-                default_error_modal.style.display = "block";
-                $('#modal_error_context').text(body.msg);
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
 
 
-                modal_one_error_btn.hover(function () {
-                  $(this).css('background-color', '#fb7c7e');
-                }, function () {
-                  $(this).css('background-color', '#ff753c');
-                });
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
 
-                modal_one_error_btn.click(function () {
-                  default_error_modal.style.display = "none";
-                });
-              }
-						}
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
           }
-        });
-      }
+        }
+      });
 
     } else {
       console.log('portfolioList=> 없음');
@@ -925,32 +1009,109 @@
 
   pre_page.click( function () {
     $(this).css('background-color','#bd292c');
-    window.location.href = '/chatbot/create';
+//    window.location.href = '/chatbot/create';
+//    window.history.back();
 
+    var cancel_modal = document.getElementById('cancel_modal');
+    var modal_left_cancel_btn = $('#modal_left_cancel_btn');
+    var modal_right_cancel_btn = $('#modal_right_cancel_btn');
+
+    cancel_modal.style.display = "block";
+
+    modal_left_cancel_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_left_cancel_btn.click(function () {
+      cancel_modal.style.display = "none";
+    });
+
+    modal_right_cancel_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_right_cancel_btn.click(function () {
+      cancel_modal.style.display = "none";
+//      window.location.href = '/chatbot/list'
+      window.history.back();
+    });
   });
 
-  next_page.click( function () {
-    $(this).css('background-color','#bd292c');
-    lego_loading_modal.style.display = "block";
+  next_page.click(function () {
+    $(this).css('background-color', '#bd292c');
 
-    var designer_portfolio_url_list = [];
-    var user_profile_portfolio_01 = $('#user_profile_portfolio_01').val();
-    var user_profile_portfolio_02 = $('#user_profile_portfolio_02').val();
-    var user_profile_portfolio_03 = $('#user_profile_portfolio_03').val();
-    var user_profile_portfolio_04 = $('#user_profile_portfolio_04').val();
-    var user_profile_portfolio_05 = $('#user_profile_portfolio_05').val();
-    var user_profile_portfolio_06 = $('#user_profile_portfolio_06').val();
-    var user_profile_portfolio_07 = $('#user_profile_portfolio_07').val();
-    var user_profile_portfolio_08 = $('#user_profile_portfolio_08').val();
-    var user_profile_portfolio_09 = $('#user_profile_portfolio_09').val();
-    var user_profile_portfolio_10 = $('#user_profile_portfolio_10').val();
+    var user_profile_check = false;
+    for (var i = 1; i <= 3; i++) {
 
-    designer_portfolio_url_list.push(user_profile_portfolio_01,user_profile_portfolio_02,
-      user_profile_portfolio_03,user_profile_portfolio_04,user_profile_portfolio_05,
-      user_profile_portfolio_06,user_profile_portfolio_07,user_profile_portfolio_08,
-      user_profile_portfolio_09, user_profile_portfolio_10)
+      if (!($('#user_profile_company_name_0' + i).val() != ''
+        && $('#user_profile_company_term_0' + i).val() != ''
+        && $('#user_profile_company_major_0' + i).val() != '')
+			&& (!($('#user_profile_company_name_0' + i).val() == ''
+        && $('#user_profile_company_term_0' + i).val() == ''
+        && $('#user_profile_company_major_0' + i).val() == ''))) {
 
-    getAllImages(designer_portfolio_url_list, 10);
+        user_profile_check = true;
+      }
+
+      if (!($('#user_profile_skill_name_0' + i).val() != ''
+        && $('#user_profile_skill_info_0' + i + '_1').val() != '')
+				&& !($('#user_profile_skill_name_0' + i).val() == ''
+        && $('#user_profile_skill_info_0' + i + '_1').val() == '')) {
+        user_profile_check = true;
+      }
+    }
+
+    if ($('#user_profile_data_name').val() == '' || $('#user_profile_data_professional').val() == ''
+      || $('#user_profile_data_location').val() == '' || $('#user_profile_data_appeal').val() == ''
+      || $('#profile_img').src == ''
+      || $('#user_profile_start_message_01').val() == '' || $('#user_profile_not_ready_mesage_01').val() == ''
+      || user_profile_check == true) {
+      //      portfolioList = [];
+
+      console.log('user_profile_check1 =>' + user_profile_check);
+      var default_modal = document.getElementById('default_modal');
+      var modal_one_btn = $('#modal_one_btn');
+
+      default_modal.style.display = "block";
+
+      modal_one_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_btn.click(function () {
+        default_modal.style.display = "none";
+      });
+
+    } else {
+      console.log('user_profile_check2 =>' + user_profile_check);
+
+      lego_loading_modal.style.display = "block";
+      var designer_portfolio_url_list = [];
+      var user_profile_portfolio_01 = $('#user_profile_portfolio_01').val();
+      var user_profile_portfolio_02 = $('#user_profile_portfolio_02').val();
+      var user_profile_portfolio_03 = $('#user_profile_portfolio_03').val();
+      var user_profile_portfolio_04 = $('#user_profile_portfolio_04').val();
+      var user_profile_portfolio_05 = $('#user_profile_portfolio_05').val();
+      var user_profile_portfolio_06 = $('#user_profile_portfolio_06').val();
+      var user_profile_portfolio_07 = $('#user_profile_portfolio_07').val();
+      var user_profile_portfolio_08 = $('#user_profile_portfolio_08').val();
+      var user_profile_portfolio_09 = $('#user_profile_portfolio_09').val();
+      var user_profile_portfolio_10 = $('#user_profile_portfolio_10').val();
+
+      designer_portfolio_url_list.push(user_profile_portfolio_01, user_profile_portfolio_02,
+        user_profile_portfolio_03, user_profile_portfolio_04, user_profile_portfolio_05,
+        user_profile_portfolio_06, user_profile_portfolio_07, user_profile_portfolio_08,
+        user_profile_portfolio_09, user_profile_portfolio_10)
+
+            getAllImages(designer_portfolio_url_list, 10);
+    }
+
   });
 
   pre_page.hover(function () {
@@ -1115,6 +1276,66 @@
     }
     getNextImage(count);
   }
+  
+  
+  $('#test_full_input_text').click(function () {
+    //기본 정보 영역
+//    $('#baseInfo_name').val('Jordan');
+//    $('#baseInfo_context_01').val('디자이너포폴 소개용 챗봇입니다.');
+
+		//프로필 정보 영역
+    $('#profile_img').attr("src", 'http://www.chatbrick.io/api/file/fccfaabd-c475-497e-899b-3808d50f6e23_2018-01-12_11.56.00.png');
+    img_url = 'http://www.chatbrick.io/api/file/fccfaabd-c475-497e-899b-3808d50f6e23_2018-01-12_11.56.00.png';
+    $('#user_profile_data_name').val('Kai Jordan');
+    $('#user_profile_data_professional').val('UX Design');
+    $('#user_profile_data_location').val('Cupertino, CA');
+    $('#user_profile_data_appeal').val('https://dribbble.com/Chon_June');
+    $('#user_profile_data_email').val('devops@bluehack.net');
+
+    //사용자 데이터 입력 영역 (챗봇방문, 준비되지 않았을때 보내는 메시지)
+    $('#user_profile_start_message_01').val('안녕하세요, Jordan의 디자인포트폴리오입니다.');
+    $('#user_profile_not_ready_mesage_01').val('제가 알수없는 키워드가 입력되었습니다. 다른 키워드를 입력하시거나 시작하기(or /start)를 입력해서 다시 시작해보세요');
+
+    //사용자 데이터 입력 _ 업무경험 (WORK)
+    $('#user_profile_company_name_01').val('Apple');
+    $('#user_profile_company_name_02').val('QILA ENERGY');
+    $('#user_profile_company_name_03').val('Apple');
+
+    $('#user_profile_company_term_01').val('May - August 2016');
+    $('#user_profile_company_term_02').val('September - December 2015');
+    $('#user_profile_company_term_03').val('UX Engineering Intern');
+
+    $('#user_profile_company_major_01').val('삼성전자');
+    $('#user_profile_company_major_02').val('September 2012 - December 2014');
+    $('#user_profile_company_major_03').val('Visual Designer');
+
+    //사용자 데이터 입력 _ 보유기술 및 능력 (SPECIALTIES)
+    $('#user_profile_skill_name_01').val('UX Design');
+    $('#user_profile_skill_name_02').val('User Flow, Scenario, Wireframe 설계 및 제작');
+    $('#user_profile_skill_info_01_1').val('GUI Design');
+    $('#user_profile_skill_info_02_1').val('Mobile/Web Design / Sketch, Zeplin, Flinto, Framer, Adobe XD, Photoshop, illrustrator 사용');
+
+    //사용자 데이터 입력 _ 간략한 자기소개 (SUMMARY)
+    $('#user_profile_self_introduction_01_1').val('Kai is a recent Wellesley College graduate and San Francisco transplant who has always been passionately involved in design within the digital world.');
+    $('#user_profile_self_introduction_01_2').val('She begins her career at Apple in California as an Interaction Designer on the Worldwide Enterprise Team.');
+    $('#user_profile_self_introduction_01_3').val('Her major, Media Arts and Sciences, combined both the creativity and usability of human-centered design, alongside the more technical aspects of backend programming');
+    $('#user_profile_self_introduction_01_4').val('but she also has experience in website-building, mobile app development, photo manipulation, and HTML, CSS, Javascript, jQuery, and Python programming languages');
+    $('#user_profile_self_introduction_01_5').val('And, she is extremely passionate about travel and how photography can affect prosocial causes - check out her photography tab up above!');
+
+    //사용자 데이터 입력 _ 포트폴리오 (PORTFOLIO)
+    $('#user_profile_portfolio_01').val('https://www.behance.net/gallery/61584443/Taylor-Francis');
+    $('#user_profile_portfolio_02').val('https://www.behance.net/gallery/58406567/Waze-Carpool');
+    $('#user_profile_portfolio_03').val('https://www.behance.net/gallery/61185723/LANTERN');
+    $('#user_profile_portfolio_04').val('https://www.behance.net/gallery/60734601/The-Shura-and-winter');
+    $('#user_profile_portfolio_05').val('https://www.behance.net/gallery/35129169/POP-UP-Library-exhibition');
+    $('#user_profile_portfolio_06').val('https://dribbble.com/shots/4204027-Saying-no-to-the-customer');
+    $('#user_profile_portfolio_07').val('https://dribbble.com/shots/4203218-Messenger-App');
+    $('#user_profile_portfolio_08').val('https://dribbble.com/shots/4072614-ADER-Website-Concept');
+    $('#user_profile_portfolio_09').val('https://dribbble.com/shots/4201166-T-letter-mark-blockchain-software-developer-logo-design');
+    $('#user_profile_portfolio_10').val('https://dribbble.com/shots/4201566-Pop-Payment-confirmation-Make-list');
+
+  })
+
 </script>
 <script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 <script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>

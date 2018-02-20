@@ -1,416 +1,423 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>Title</title>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Title</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 </head>
 <body>
 <header id="header">
-  <div class="wrapper wrapper_header">
-    <div class="top_01 top_common">
-      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+	<div class="wrapper wrapper_header">
+		<div class="top_01 top_common">
+			<img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
 
-      <div class="top_01 top_user_profile_common">
-        <img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
-        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
-        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
-             alt="login_dropdown">
-      </div>
-    </div>
+			<div class="top_01 top_user_profile_common">
+				<img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+				<div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+				<img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
+						 alt="login_dropdown">
+			</div>
+		</div>
 
-    <div class="top_02 top_common">
-      <div class="top_02 title_area">
-        <div id="title">CREAT CHATBOT</div>
-        <div id="sub_title">| BRICK 선택하기</div>
-      </div>
-      <div id="context">
-        <p>
-          BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요.
-          세트와 마찬가지로 “미리보기”버튼을 통해 해당 BRICK을 미리 체험해볼 수 있어요.
-        </p>
-      </div>
-    </div>
-  </div>
+		<div class="top_02 top_common">
+			<div class="top_02 title_area">
+				<div id="title">CREAT CHATBOT</div>
+				<div id="sub_title">| BRICK 선택하기</div>
+			</div>
+			<div id="context">
+				<p>
+					BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요.
+					세트와 마찬가지로 “미리보기”버튼을 통해 해당 BRICK을 미리 체험해볼 수 있어요.
+				</p>
+			</div>
+		</div>
+	</div>
 </header>
 
 <!--브릭 선택 페이지-->
 <div id="page_select_bricks">
 
-  <!--브릭 선택 영역-->
-  <section id="section_01">
-    <div class="content_title">
-      <p>
-        브릭선택
-      </p>
-    </div>
+	<!--브릭 선택 영역-->
+	<section id="section_01">
+		<div class="content_title">
+			<p>
+				브릭선택
+			</p>
+		</div>
 
-    <div class="wrapper_article _select_brick_wrapper">
-      <article id="article_01" class="_article">
-        <div class="wrapper">
-          <div class="select_brick bricklist" id="brick_list">
+		<div class="wrapper_article _select_brick_wrapper">
+			<article id="article_01" class="_article">
+				<div class="wrapper">
+					<div class="select_brick bricklist" id="brick_list">
 
-            <!--<div class="brick_item">-->
-            <!--<img src="http://localhost:63342/cb-web/dist/824126bd7bcc1478656d0c85f8e11038.png" alt="brick image"-->
-            <!--class="brick_img">-->
-            <!--<div class="brick_name">날씨정보-->
-            <!--</div>-->
-            <!--<div class="item_brick_event">-->
-            <!--<div class="brick_choice">브릭 선택하기</div>-->
-            <!--<div class="brick_preview">-->
-            <!--<img src="http://localhost:63342/cb-web/dist/36301c74710f6da599bd68485babe274.png"-->
-            <!--alt="preview_img">-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
+						<!--<div class="brick_item">-->
+						<!--<img src="http://localhost:63342/cb-web/dist/824126bd7bcc1478656d0c85f8e11038.png" alt="brick image"-->
+						<!--class="brick_img">-->
+						<!--<div class="brick_name">날씨정보-->
+						<!--</div>-->
+						<!--<div class="item_brick_event">-->
+						<!--<div class="brick_choice">브릭 선택하기</div>-->
+						<!--<div class="brick_preview">-->
+						<!--<img src="http://localhost:63342/cb-web/dist/36301c74710f6da599bd68485babe274.png"-->
+						<!--alt="preview_img">-->
+						<!--</div>-->
+						<!--</div>-->
+						<!--</div>-->
 
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
 </div>
 
 <!--브릭 apikey 입력 페이지-->
 <div id="page_bricks_apikey">
-  <div class="wrapper_section _apikey_section">
-    <section id="section_01">
-      <div class="content_title">
-        <p>
-          API KEY
-        </p>
-      </div>
+	<div class="wrapper_section _apikey_section">
+		<section id="section_01">
+			<div class="content_title">
+				<p>
+					API KEY
+				</p>
+			</div>
 
-      <div class="wrapper_article _apikey_wrapper">
-        <article id="article_01" class="_article">
-          <div class="wrapper">
+			<div class="wrapper_article _apikey_wrapper">
+				<article id="article_01" class="_article">
+					<div class="wrapper">
 
-            <div id="api_set_list" class="api_set_list">
-              <!--start api_set area-->
+						<div id="api_set_list" class="api_set_list">
+							<!--start api_set area-->
 
-              <!--<div class="api_set">-->
-              <!--<div class="api_title">-->
-              <!--<img src="../public/images/test_img.png"-->
-              <!--class="api_img">-->
-              <!--<div class="api_name">날씨정보</div>-->
-              <!--</div>-->
-              <!--<div class="api_content">-->
-              <!--<div class="api_content_context">-->
-              <!--<p>-->
-              <!--Shows search results for a request. You can use a specific request or-->
-              <!--a user attribute saved in a «User input», «Quick Reply» or «Setup user attribute» plugins.-->
-              <!--</p>-->
-              <!--</div>-->
-              <!--<div class="api_content_key_title">-->
-              <!--API KEY-->
-              <!--</div>-->
-              <!--<input type="text" class="apikeyInputText" placeholder="발급받은 API KEY를 입력해주세요.">-->
-              <!--<a href="https://www.linkedin.com" class="create_apikey_link">-->
-              <!--<p>-->
-              <!--API KEY 신청하기-->
-              <!--</p>-->
-              <!--</a>-->
-              <!--</div>-->
-              <!--<hr class="apikey_underline">-->
-              <!--</div>-->
+							<!--<div class="api_set">-->
+							<!--<div class="api_title">-->
+							<!--<img src="../public/images/test_img.png"-->
+							<!--class="api_img">-->
+							<!--<div class="api_name">날씨정보</div>-->
+							<!--</div>-->
+							<!--<div class="api_content">-->
+							<!--<div class="api_content_context">-->
+							<!--<p>-->
+							<!--Shows search results for a request. You can use a specific request or-->
+							<!--a user attribute saved in a «User input», «Quick Reply» or «Setup user attribute» plugins.-->
+							<!--</p>-->
+							<!--</div>-->
+							<!--<div class="api_content_key_title">-->
+							<!--API KEY-->
+							<!--</div>-->
+							<!--<input type="text" class="apikeyInputText" placeholder="발급받은 API KEY를 입력해주세요.">-->
+							<!--<a href="https://www.linkedin.com" class="create_apikey_link">-->
+							<!--<p>-->
+							<!--API KEY 신청하기-->
+							<!--</p>-->
+							<!--</a>-->
+							<!--</div>-->
+							<!--<hr class="apikey_underline">-->
+							<!--</div>-->
 
-              <!--end api_set area-->
-            </div>
+							<!--end api_set area-->
+						</div>
 
-          </div>
-        </article>
-      </div>
-    </section>
-  </div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
 </div>
 
 <!--브릭 apikey 확인 페이지-->
 <div id="page_bricks_confirm_apikey">
 
-  <!--사용자 데이터 입력 영역-->
-  <div class="wrapper_section _user_profile_section">
-    <section id="section_01" class="_profile_section">
-      <div class="content_title">
-        <p>
-          사용자 데이터 입력 _ 기본정보
-        </p>
-      </div>
+	<!--사용자 데이터 입력 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_01" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 기본정보
+				</p>
+			</div>
 
-      <div class="wrapper_article _user_profile_wrapper">
-        <article id="article_02" class="_article">
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_02" class="_article">
 
-          <div class="wrapper">
-            <div class="user_profile_data_area">
-              <div class="article_title_profile">
-                챗봇에 방문하였을 때, 처음으로 보내는 메세지
-              </div>
-              <input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
-              <input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
-              <input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								챗봇에 방문하였을 때, 처음으로 보내는 메세지
+							</div>
+							<input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message"
+										 placeholder="가나다">
+							<input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message"
+										 placeholder="가나다">
+							<input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message"
+										 placeholder="가나다">
 
-              <div class="article_title_profile">
-                방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
-              </div>
-              <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
-              <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
-              <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </div>
+							<div class="article_title_profile">
+								방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
+							</div>
+							<input type="text" id="user_profile_not_ready_mesage_01"
+										 class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_02"
+										 class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+							<input type="text" id="user_profile_not_ready_mesage_03"
+										 class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
 
-  <!--브릭 수정 영역-->
-  <div id="brick_api_section" class="wrapper_section _brick_api_section">
-    <section id="section_02" class="_brick_api_section">
-      <div class="content_title">
-        <p>
-          브릭 수정
-        </p>
-      </div>
-      <div class="wrapper_article _brick_api_wrapper">
-        <article id="article_03" class="_article">
-          <div class="wrapper">
+	<!--브릭 수정 영역-->
+	<div id="brick_api_section" class="wrapper_section _brick_api_section">
+		<section id="section_02" class="_brick_api_section">
+			<div class="content_title">
+				<p>
+					브릭 수정
+				</p>
+			</div>
+			<div class="wrapper_article _brick_api_wrapper">
+				<article id="article_03" class="_article">
+					<div class="wrapper">
 
-            <div class="brick_api_zone" id="brick_api_zone">
-              <!--브릭 아이템 영역-->
-              <!--<div class="brick_api_item_area">-->
-                <!--<div class="brick_api_item_name">-->
-                  <!--<p>날씨정보</p>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;브릭 아이템 태그 영역&ndash;&gt;-->
-                <!--<div class="brick_api_item_tag_area">-->
-                  <!--<div class="brick_api_item_tag">-->
-                    <!--<p>weather</p>-->
-                  <!--</div>-->
+						<div class="brick_api_zone" id="brick_api_zone">
+							<!--브릭 아이템 영역-->
+							<!--<div class="brick_api_item_area">-->
+							<!--<div class="brick_api_item_name">-->
+							<!--<p>날씨정보</p>-->
+							<!--</div>-->
+							<!--&lt;!&ndash;브릭 아이템 태그 영역&ndash;&gt;-->
+							<!--<div class="brick_api_item_tag_area">-->
+							<!--<div class="brick_api_item_tag">-->
+							<!--<p>weather</p>-->
+							<!--</div>-->
 
-                  <!--<div class="brick_api_item_tag">-->
-                    <!--<p>재난상황정보</p>-->
-                  <!--</div>-->
+							<!--<div class="brick_api_item_tag">-->
+							<!--<p>재난상황정보</p>-->
+							<!--</div>-->
 
-                  <!--<div class="brick_api_item_tag">-->
-                    <!--<p>재난</p>-->
-                  <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;브릭 아이템 버튼 영역&ndash;&gt;-->
-                <!--<div class="brick_api_item_btn_area">-->
-                  <!--<div class="brick_api_item_btn_motify">-->
-                    <!--<p>수정하기</p>-->
-                  <!--</div>-->
+							<!--<div class="brick_api_item_tag">-->
+							<!--<p>재난</p>-->
+							<!--</div>-->
+							<!--</div>-->
+							<!--&lt;!&ndash;브릭 아이템 버튼 영역&ndash;&gt;-->
+							<!--<div class="brick_api_item_btn_area">-->
+							<!--<div class="brick_api_item_btn_motify">-->
+							<!--<p>수정하기</p>-->
+							<!--</div>-->
 
-                  <!--<div class="brick_api_item_btn_delete">-->
-                    <!--<p>삭제</p>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            </div>
+							<!--<div class="brick_api_item_btn_delete">-->
+							<!--<p>삭제</p>-->
+							<!--</div>-->
+							<!--</div>-->
+							<!--</div>-->
+						</div>
 
-          </div>
-        </article>
-      </div>
-    </section>
-  </div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
 </div>
 
 <!--디바이스 모양 팝업-->
 <div id="modal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
+	<!-- Modal content -->
+	<div class="modal-content">
 
-    <div class="modal_device_wapper">
-      <div class="device_img">
-        <img src="" id="modal_device_img">
-        <img src="../public/images/img-device1.png" id="landing_device_img">
-      </div>
-      <!--<img src="../public/images/img-device.png" id="modal_device_img" class="device_img">-->
-      <div class="modal_device_content">
-        <div class="modal_device_set_content">
+		<div class="modal_device_wapper">
+			<div class="device_img">
+				<img src="" id="modal_device_img">
+				<img src="../public/images/img-device1.png" id="landing_device_img">
+			</div>
+			<!--<img src="../public/images/img-device.png" id="modal_device_img" class="device_img">-->
+			<div class="modal_device_content">
+				<div class="modal_device_set_content">
 
-          <div class="modal_device_set_title_area">
-            <div class="modal_device_set_title">
-              | SET DEMO
-            </div>
-            <div id="modal_device_set_name" class="modal_device_set_name">
-              : HACKATHON
-            </div>
-          </div>
-          <img src="../public/images/img-hackathon.png" id="modal_device_set_img" class="modal_device_set_img">
-        </div>
+					<div class="modal_device_set_title_area">
+						<div class="modal_device_set_title">
+							| SET DEMO
+						</div>
+						<div id="modal_device_set_name" class="modal_device_set_name">
+							: HACKATHON
+						</div>
+					</div>
+					<img src="../public/images/img-hackathon.png" id="modal_device_set_img" class="modal_device_set_img">
+				</div>
 
-        <hr class="modal_device_underline">
-        <div id="modal_device_context_desc" class="modal_device_context_desc">
-          Build a Facebook bot without coding. Launch a full-featured <br>
-          chatbot in 7 minutes. We believe in the power of chatbots to<br>
-          strengthen your connection to your audience—whether <br>
-          that's your customers, readers, fans, or others. <br>
-          And we're committed to making that as easy as we can.
-        </div>
-      </div>
+				<hr class="modal_device_underline">
+				<div id="modal_device_context_desc" class="modal_device_context_desc">
+					Build a Facebook bot without coding. Launch a full-featured <br>
+					chatbot in 7 minutes. We believe in the power of chatbots to<br>
+					strengthen your connection to your audience—whether <br>
+					that's your customers, readers, fans, or others. <br>
+					And we're committed to making that as easy as we can.
+				</div>
+			</div>
 
-      <img src="../public/images/btn-close-nor.png" id="close_modal_img" class="close_modal_img">
-    </div>
-  </div>
+			<img src="../public/images/btn-close-nor.png" id="close_modal_img" class="close_modal_img">
+		</div>
+	</div>
 </div>
 
 <!--브릭 api 관련 팝업-->
 
 <div id="modal_brick_api" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <img src="../public/images/btn-close-nor.png" id="close_modal_brick_api_img" class="close_modal_brick_api_img">
-    <div class="modal_brick_api_wapper">
-      <div class="modal_brick_api_summary">
-        <img src="../public/images/img-brick-02.png" class="modal_brick_api_img">
-        <div class="modal_brick_api_summary_text">
-          <div class="modal_brick_api_title">날씨정보</div>
-          <div class="modal_brick_api_desc">데이터 수정</div>
-        </div>
-      </div>
+	<!-- Modal content -->
+	<div class="modal-content">
+		<img src="../public/images/btn-close-nor.png" id="close_modal_brick_api_img" class="close_modal_brick_api_img">
+		<div class="modal_brick_api_wapper">
+			<div class="modal_brick_api_summary">
+				<img src="../public/images/img-brick-02.png" class="modal_brick_api_img">
+				<div class="modal_brick_api_summary_text">
+					<div class="modal_brick_api_title">날씨정보</div>
+					<div class="modal_brick_api_desc">데이터 수정</div>
+				</div>
+			</div>
 
-      <div class="modal_brick_api_context">
+			<div class="modal_brick_api_context">
 
-        <div class="modal_brick_api_context_01" id="modal_brick_api_context_01">
-          <div class="modal_brick_api_guild">
-            호출키워드 목록
-          </div>
+				<div class="modal_brick_api_context_01" id="modal_brick_api_context_01">
+					<div class="modal_brick_api_guild">
+						호출키워드 목록
+					</div>
 
-          <!--브릭 아이템 태그 영역-->
-          <!--<div class="modal_brick_api_item_tag_area">-->
-            <!--<div class="modal_brick_api_item_tag">-->
-              <!--<p>weather</p>-->
-              <!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
-            <!--</div>-->
-          <!--</div>-->
+					<!--브릭 아이템 태그 영역-->
+					<!--<div class="modal_brick_api_item_tag_area">-->
+					<!--<div class="modal_brick_api_item_tag">-->
+					<!--<p>weather</p>-->
+					<!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
+					<!--</div>-->
+					<!--</div>-->
 
-        <!--브릭 아이템 태그 영역-->
-        <!--<div class="modal_brick_api_item_tag_area">-->
-          <!--<div class="modal_brick_api_item_tag">-->
-            <!--<p>weather</p>-->
-            <!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
-          <!--</div>-->
-          <!--<input type="text" class="modalTagInputText">-->
-        <!--</div>-->
+					<!--브릭 아이템 태그 영역-->
+					<!--<div class="modal_brick_api_item_tag_area">-->
+					<!--<div class="modal_brick_api_item_tag">-->
+					<!--<p>weather</p>-->
+					<!--<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img">-->
+					<!--</div>-->
+					<!--<input type="text" class="modalTagInputText">-->
+					<!--</div>-->
 
-        </div>
+				</div>
 
-        <div class="modal_brick_api_context_02">
-          <div class="modal_brick_api_guild">
-            추가하고 싶은 호출 키워드를 입력해주세요
-          </div>
-          <input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input" placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요">
+				<div class="modal_brick_api_context_02">
+					<div class="modal_brick_api_guild">
+						추가하고 싶은 호출 키워드를 입력해주세요
+					</div>
+					<input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input"
+								 placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요">
 
-          <div class="modal_brick_api_guild_desc">
-            * 호출키워드의 글자수는 8자까지만 가능해요<br>
-            * 호출키워드에서 띄어쓰기를 사용할 수 없어요<br>
-            * 호출키워드는 총 5개까지만 등록할 수 있어요<br>
-          </div>
-        </div>
+					<div class="modal_brick_api_guild_desc">
+						* 호출키워드의 글자수는 8자까지만 가능해요<br>
+						* 호출키워드에서 띄어쓰기를 사용할 수 없어요<br>
+						* 호출키워드는 총 5개까지만 등록할 수 있어요<br>
+					</div>
+				</div>
 
-      </div>
+			</div>
 
-      <div class="modal_brick_api_two_btn_area">
-        <div id="modal_left_tag_save_btn" class="modal_left_btn">
-          <p>저장</p>
-        </div>
+			<div class="modal_brick_api_two_btn_area">
+				<div id="modal_left_tag_save_btn" class="modal_left_btn">
+					<p>저장</p>
+				</div>
 
-        <div id="modal_right_tag_cancel_btn" class="modal_right_btn">
-          <p>취소</p>
-        </div>
-      </div>
-    </div>
-  </div>
+				<div id="modal_right_tag_cancel_btn" class="modal_right_btn">
+					<p>취소</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--디폴트 모양 팝업-->
 <div id="default_modal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
+	<!-- Modal content -->
+	<div class="modal-content">
 
-    <div class="modal_title">확인</div>
-    <div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
-    <div id="modal_one_btn" class="modal_one_btn">
-      <p>확인</p></div>
-  </div>
+		<div class="modal_title">확인</div>
+		<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
+		<div id="modal_one_btn" class="modal_one_btn">
+			<p>확인</p></div>
+	</div>
 </div>
 
 <!--브릭 선택하기 확인 팝업-->
 <div id="select_brick_modal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
+	<!-- Modal content -->
+	<div class="modal-content">
 
-    <div class="modal_title">확인</div>
-    <div class="modal_context">브릭은 최소 1개 이상, 최대 10개 이하로 선택하셔야 합니다.</div>
-    <div id="modal_one_select_btn" class="modal_one_btn">
-      <p>확인</p></div>
-  </div>
+		<div class="modal_title">확인</div>
+		<div class="modal_context">브릭은 최소 1개 이상, 최대 10개 이하로 선택하셔야 합니다.</div>
+		<div id="modal_one_select_btn" class="modal_one_btn">
+			<p>확인</p></div>
+	</div>
 </div>
 
 <!--다음화면으로 넘어가기전 확인 모양 팝업-->
 <div id="next_step_modal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
+	<!-- Modal content -->
+	<div class="modal-content">
 
-    <div class="modal_title">확인</div>
-    <div class="modal_context">챗봇 생성을 완료하시곘습니까?</div>
-    <div class="modal_brick_api_two_btn_area">
-      <div id="modal_left_next_step_btn" class="modal_left_next_step_btn">
-        <p>아니요</p>
-      </div>
+		<div class="modal_title">확인</div>
+		<div class="modal_context">챗봇 생성을 완료하시곘습니까?</div>
+		<div class="modal_brick_api_two_btn_area">
+			<div id="modal_left_next_step_btn" class="modal_left_next_step_btn">
+				<p>아니요</p>
+			</div>
 
-      <div id="modal_right_next_step_btn" class="modal_right_next_step_btn">
-        <p>네</p>
-      </div>
-    </div>
-  </div>
+			<div id="modal_right_next_step_btn" class="modal_right_next_step_btn">
+				<p>네</p>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--로그아웃 모양 팝업-->
 <div id="logout_modal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
+	<!-- Modal content -->
+	<div class="modal-content">
 
-    <div class="modal_title">로그아웃</div>
-    <div class="modal_context">chatbrick에서 로그아웃하시겠습니까?</div>
-    <div class="modal_brick_api_two_btn_area">
-      <div id="modal_left_logout_btn" class="modal_left_btn">
-        <p>아니요</p>
-      </div>
+		<div class="modal_title">로그아웃</div>
+		<div class="modal_context">chatbrick에서 로그아웃하시겠습니까?</div>
+		<div class="modal_brick_api_two_btn_area">
+			<div id="modal_left_logout_btn" class="modal_left_btn">
+				<p>아니요</p>
+			</div>
 
-      <div id="modal_right_logout_btn" class="modal_right_btn">
-        <p>네</p>
-      </div>
-    </div>
-  </div>
+			<div id="modal_right_logout_btn" class="modal_right_btn">
+				<p>네</p>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--에러 모양 팝업-->
 <div id="default_error_modal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
+	<!-- Modal content -->
+	<div class="modal-content">
 
-    <div class="modal_title">확인</div>
-    <div class="modal_context" id="modal_error_context"></div>
-    <div id="modal_one_error_btn" class="modal_one_btn">
-      <p>확인</p></div>
-  </div>
+		<div class="modal_title">확인</div>
+		<div class="modal_context" id="modal_error_context"></div>
+		<div id="modal_one_error_btn" class="modal_one_btn">
+			<p>확인</p></div>
+	</div>
 </div>
 
 
 <footer id="footer">
-  <div class="bottom_common">
-    <div id="pre_page">
-      <p>
-        이전
-      </p>
-    </div>
-    <div id="next_page" align="center">
-      <p>
-        다음
-      </p>
-    </div>
-  </div>
+	<div class="bottom_common">
+		<div id="pre_page">
+			<p>
+				이전
+			</p>
+		</div>
+		<div id="next_page" align="center">
+			<p>
+				다음
+			</p>
+		</div>
+	</div>
 </footer>
 
 <script>
@@ -418,6 +425,7 @@
 
   var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
   var baseInfo_context = `<%=jsonData.baseInfo_context%>`;
+  var baseInfo_set = `<%=jsonData.baseInfo_set%>`;
 
   console.log('baseInfo_name=>' + baseInfo_name +
     'baseInfo_context=>' + baseInfo_context);
@@ -483,17 +491,17 @@
           preview_desc = item.preview.desc;
 
           var brick = (
-            `<div class="brick_item"  id="brick_item` + index + `">` +
-            // `<img src="`+item.img+`" alt="brick image" class="brick_img"> ` +
-            `<img src="../public/images/img-brick-01.png" alt="brick image" class="brick_img"> ` +
-            `<div class="brick_name">` + item.name + `</div> ` +
-            `<div class="item_brick_event"> ` +
-            `<div class="brick_choice">브릭 선택하기</div> ` +
-            `<div class="brick_preview"> ` +
-            `<img src="../public/images/btn-preview-01-nor.png" alt="preview_img"> ` +
-            `</div> ` +
-            `</div>` +
-            `</div>`);
+          `<div class="brick_item"  id="brick_item` + index + `">` +
+          // `<img src="`+item.img+`" alt="brick image" class="brick_img"> ` +
+          `<img src="../public/images/img-brick-01.png" alt="brick image" class="brick_img"> ` +
+          `<div class="brick_name">` + item.name + `</div> ` +
+          `<div class="item_brick_event"> ` +
+          `<div class="brick_choice">브릭 선택하기</div> ` +
+          `<div class="brick_preview"> ` +
+          `<img src="../public/images/btn-preview-01-nor.png" alt="preview_img"> ` +
+          `</div> ` +
+          `</div>` +
+          `</div>`);
 
           brick_list.append(brick);
 
@@ -534,40 +542,69 @@
   console.log('brick_choice->' + brick_choice.text());
 
   brick_choice.click(function () {
-    // var api_set_html = $(this).parent().parent().html();
-    // var api_set_id_Html ='#api_set'+$(this).parent().parent().index();
 
     var itemIndex = $(this).parent().parent().index();
-    $(this).toggleClass('black');
-    if($(this).hasClass('black')) {
-      console.log('블랙됨')
-      console.log('itemIndex=>' + itemIndex);
-      $(this).text('선택해제 하기');
 
-      if (selected_brick_list.includes(itemIndex)) {
-        console.log('이미 선택리스트에 있음');
+      $(this).toggleClass('black');
+
+      if ($(this).hasClass('black')) {
+
+        console.log('블랙됨')
+        console.log('itemIndex=>' + itemIndex);
+        $(this).text('선택해제 하기');
+
+        if (selected_brick_list.includes(itemIndex)) {
+          console.log('이미 선택리스트에 있음');
+        } else {
+
+          if ($('.black').length > 10) {
+            $(this).removeClass('black');
+            //갯수 제한 팝업
+            console.log('갯수 제한 팝업!');
+
+            $(this).text('브릭 선택하기');
+            var select_brick_modal = document.getElementById('select_brick_modal');
+            var modal_one_select_btn = $('#modal_one_select_btn');
+
+            select_brick_modal.style.display = "block";
+
+            modal_one_select_btn.hover(function () {
+              $(this).css('background-color', '#fb7c7e');
+            }, function () {
+              $(this).css('background-color', '#ff753c');
+            });
+
+            modal_one_select_btn.click(function () {
+              select_brick_modal.style.display = "none";
+            });
+
+          } else {
+            console.log('선택리스트에 추가');
+            selected_brick_list.push(itemIndex);
+					}
+
+
+        }
+        console.log('selected_brick_list=>' + selected_brick_list);
+
       } else {
-        console.log('선택리스트에 추가');
-        selected_brick_list.push(itemIndex);
-      }
-      console.log('selected_brick_list=>'+selected_brick_list);
+        console.log('블랙해제')
+        console.log('itemIndex=>' + itemIndex);
+        $(this).text('브릭 선택하기');
 
-    } else {
-      console.log('블랙해제')
-      console.log('itemIndex=>' + itemIndex);
-      $(this).text('브릭 선택하기');
+        //해당 아이템 index 찾아서 제거
+        if (selected_brick_list.includes(itemIndex)) {
+          var find_item_index = selected_brick_list.indexOf(itemIndex);
+          selected_brick_list.splice(find_item_index, 1);
+        } else {
+          console.log('error => 제거해야할 브릭의 itemIndex가 포함되어 있지 않음');
+        }
 
-      //해당 아이템 index 찾아서 제거
-      if (selected_brick_list.includes(itemIndex)) {
-        var find_item_index = selected_brick_list.indexOf(itemIndex);
-        selected_brick_list.splice(find_item_index, 1);
-      } else {
-        console.log('error => 제거해야할 브릭의 itemIndex가 포함되어 있지 않음');
+        console.log('selected_brick_list=>' + selected_brick_list);
+        console.log('selected_brick_list length=>' + selected_brick_list.length);
       }
 
-      console.log('selected_brick_list=>'+selected_brick_list);
-      console.log('selected_brick_list length=>'+selected_brick_list.length);
-    }
+
   });
 
 
@@ -579,14 +616,14 @@
         `<div class="api_title">` +
         `<img src="` + resData[itemIndex].img + `" class="api_img">` +
         `<div class="api_name">` + resData[itemIndex].name + `</div>` +
-        `<a href="` + resData[itemIndex].api.provider + `" class="create_apikey_link" target="_blank"> <p> API KEY 신청하기 </p> </a>` +
+        `<a href="` + resData[itemIndex].api.provider + `" class="create_apikey_link" id="create_apikey_link` + listIndex + `" target="_blank"> <p> API KEY 신청하기 </p> </a>` +
         `</div>` +
         `<div class="api_content">` +
         `<div class="api_content_context">` +
         `<p>` + resData[itemIndex].api.desc + `</p>` +
         `</div>` +
 
-        `<div class="api_content_kind" id="api_content_kind`+listIndex+`">` +
+        `<div class="api_content_kind" id="api_content_kind` + listIndex + `">` +
 
         // `<div class="api_content_key_title"> API KEY </div>` +
         // `<input type="text" class="apikeyInputText" id="apikeyInputText`+itemIndex+`" placeholder="발급받은 API KEY를 입력해주세요.">` +
@@ -598,23 +635,24 @@
       );
       api_set_list.append(brickApiSet);
 
-      if (resData[itemIndex].api.input.length <=0) {
+      if (resData[itemIndex].api.input.length <= 0) {
 
         var api_input_key_kind = (
           `<div class="api_content_key_title">* 해당 BRICK은 요청하는 항목이 없어요.</div>`
         );
-        $('#api_content_kind'+listIndex).append(api_input_key_kind);
+        $('#api_content_kind' + listIndex).append(api_input_key_kind);
+        $('#create_apikey_link' + listIndex).hide();
 
       } else {
         resData[itemIndex].api.input.forEach(function (api_key_item, index, array) {
           console.log('api_key_kind=>' + JSON.stringify(api_key_item));
 
           var api_input_key_kind = (
-            `<div class="api_content_key_title"> `+api_key_item.name+` </div>` +
-            `<input type="text" class="apikeyInputText" id="apikeyInputText`+listIndex+'_'+index+`" placeholder="`+api_key_item.holder+`">`
+            `<div class="api_content_key_title"> ` + api_key_item.name + ` </div>` +
+            `<input type="text" class="apikeyInputText" id="apikeyInputText` + listIndex + '_' + index + `" placeholder="` + api_key_item.holder + `">`
           );
 
-          $('#api_content_kind'+listIndex).append(api_input_key_kind);
+          $('#api_content_kind' + listIndex).append(api_input_key_kind);
 
           //write apikey
           // switch (api_key_item.key) {
@@ -647,28 +685,26 @@
       }
 
 
-
-
       var brickApiItem = (
         `<div class="brick_api_item_area" id="brick_api_item_area` + itemIndex + `">` +
-        `<div class="brick_api_item_name">`+
-        `<p>`+resData[itemIndex].name+`</p>`+
-        `</div>`+
-        `<div class="brick_api_item_tag_area" id="brick_api_item_tag_area` + itemIndex +`">`+
-        `</div>`+
-        `<div class="brick_api_item_btn_area">`+
-        `<div class="brick_api_item_btn_motify" id="brick_api_item_btn_motify` + itemIndex +`">`+
-        `<p>수정하기</p>`+
-        `</div>`+
-        `<div class="brick_api_item_btn_delete" id="brick_api_item_btn_delete` + itemIndex +`">`+
-        `<p>삭제</p>`+
-        `</div>`+
-        `</div>`+
+        `<div class="brick_api_item_name">` +
+        `<p>` + resData[itemIndex].name + `</p>` +
+        `</div>` +
+        `<div class="brick_api_item_tag_area" id="brick_api_item_tag_area` + itemIndex + `">` +
+        `</div>` +
+        `<div class="brick_api_item_btn_area">` +
+        `<div class="brick_api_item_btn_motify" id="brick_api_item_btn_motify` + itemIndex + `">` +
+        `<p>수정하기</p>` +
+        `</div>` +
+        `<div class="brick_api_item_btn_delete" id="brick_api_item_btn_delete` + itemIndex + `">` +
+        `<p>삭제</p>` +
+        `</div>` +
+        `</div>` +
         `</div>`
       );
 
       var modalBrickApiItem = (
-        `<div class="modal_brick_api_item_tag_area" id="modal_brick_api_item_tag_area` + itemIndex +`">`+
+        `<div class="modal_brick_api_item_tag_area" id="modal_brick_api_item_tag_area` + itemIndex + `">` +
         `</div>`
       );
 
@@ -676,28 +712,28 @@
       $('#modal_brick_api_context_01').append(modalBrickApiItem);
 
       //Added brick api tag
-        resData[itemIndex].api.keywords.forEach(function (item, index, array) {
+      resData[itemIndex].api.keywords.forEach(function (item, index, array) {
 
-          console.log('apitag=>' + item);
+        console.log('apitag=>' + item);
 
-          var brick_tag = (
-            `<div class="brick_api_item_tag" id="brick_api_item_tag` + index+`">`+
-            `<p>`+item+`</p>`+
-            `</div>`
-          );
+        var brick_tag = (
+          `<div class="brick_api_item_tag" id="brick_api_item_tag` + index + `">` +
+          `<p>` + item + `</p>` +
+          `</div>`
+        );
 
-          var modal_brick_tag = (
-            `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index +`">`+
-            `<p>`+item+ ' ' +`</p>`+
-            `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index +`">`+
-            `</div>`
-          );
+        var modal_brick_tag = (
+          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index + `">` +
+          `<p>` + item + ' ' + `</p>` +
+          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index + `">` +
+          `</div>`
+        );
 
 
-          $('#brick_api_item_tag_area'+ itemIndex).append(brick_tag);
-          $('#modal_brick_api_item_tag_area'+ itemIndex).append(modal_brick_tag);
+        $('#brick_api_item_tag_area' + itemIndex).append(brick_tag);
+        $('#modal_brick_api_item_tag_area' + itemIndex).append(modal_brick_tag);
 
-        });
+      });
     });
 
   }
@@ -706,7 +742,7 @@
     var itemIndex = $(this).parent().parent().index();
     console.log('itemIndex=>' + itemIndex);
 
-    });
+  });
 
 
   var modal_brick_api = document.getElementById('modal_brick_api');
@@ -721,18 +757,18 @@
 
   $(document).on('click', '.brick_api_item_btn_motify', function () {
     var itemIndex = $(this).parent().parent().index();
-    console.log('itemIndex->'+itemIndex );
+    console.log('itemIndex->' + itemIndex);
 
     pageClickIndex = selected_brick_list[itemIndex];
 
     $('.modal_brick_api_item_tag_area').hide();
 
-    $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]).show();
-    modalClickTagArea = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex]);
-    modalNewTagStartIndex = $('#modal_brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .modal_brick_api_item_tag').length;
+    $('#modal_brick_api_item_tag_area' + selected_brick_list[itemIndex]).show();
+    modalClickTagArea = $('#modal_brick_api_item_tag_area' + selected_brick_list[itemIndex]);
+    modalNewTagStartIndex = $('#modal_brick_api_item_tag_area' + selected_brick_list[itemIndex] + '> .modal_brick_api_item_tag').length;
 
-    pageClickTagArea = $('#brick_api_item_tag_area'+selected_brick_list[itemIndex]);
-    pageTagLength = $('#brick_api_item_tag_area'+selected_brick_list[itemIndex] +'> .brick_api_item_tag').length;
+    pageClickTagArea = $('#brick_api_item_tag_area' + selected_brick_list[itemIndex]);
+    pageTagLength = $('#brick_api_item_tag_area' + selected_brick_list[itemIndex] + '> .brick_api_item_tag').length;
     console.log('pageClickTagArea=>' + pageClickTagArea.html());
     console.log('pageNewTagStartIndex=>' + pageTagLength);
 
@@ -748,7 +784,7 @@
   $(document).on('click', '.brick_api_item_btn_delete', function () {
 
     var itemIndex = $(this).parent().parent().index();
-    $('#brick_api_item_area'+selected_brick_list[itemIndex]).hide();
+    $('#brick_api_item_area' + selected_brick_list[itemIndex]).hide();
     // $('#brick_api_item_area'+selected_brick_list[itemIndex]).toggleClass('hide');
     // console.log('after brick_api_item_area.length=>'+$('.hide').length);
   });
@@ -756,37 +792,37 @@
   $(document).on('click', '.modal_brick_api_item_del_img', function () {
 //    console.log('test!2');
     var itemIndex = $(this).parent().index();
-    console.log('tagid=>'+ itemIndex);
+    console.log('tagid=>' + itemIndex);
 //    console.log('this1=>' + $(this).attr('id'));
     console.log('this2=>' + $(this).parent().attr('id'));
 //    console.log('this3=>' + $(this).parent().parent().attr('id'));
     var removeId = $(this).parent().attr('id');
-    $('#'+removeId).remove();
+    $('#' + removeId).remove();
   });
 
   //enter key event
   var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input');
   modal_brick_api_item_tag_add_input.keypress(function (key) {
 
-    if(key.keyCode == 13) {
+    if (key.keyCode == 13) {
 
       //입력 필드 글자수 제한 modal_brick_api_item_tag_add_input.val().length > 8 ||
       if (modal_brick_api_item_tag_add_input.val().length > 8) {
         console.log('입력필드의 글자수가 8자 초과');
-      } else if(modal_brick_api_item_tag_add_input.val().includes(' ')) {
+      } else if (modal_brick_api_item_tag_add_input.val().includes(' ')) {
         console.log('입력필드의 글자에 공백 포함');
       } else {
         console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
         var modal_brick_tag = (
-          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex +`">`+
-          `<p>`+modal_brick_api_item_tag_add_input.val() +' '+`</p>`+
-          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex +`">`+
+          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex + `">` +
+          `<p>` + modal_brick_api_item_tag_add_input.val() + ' ' + `</p>` +
+          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex + `">` +
           `</div>`
         );
 
 
         modalClickTagArea.append(modal_brick_tag);
-        modalNewTagStartIndex ++;
+        modalNewTagStartIndex++;
         console.log('after modalNewTagStartIndex=>' + modalNewTagStartIndex);
         console.log('modal_brick_api_item_tag_add_input=>' + modal_brick_api_item_tag_add_input.val());
 
@@ -801,25 +837,25 @@
   //modal tag save btn click event
   $('#modal_left_tag_save_btn').click(function () {
 
-    console.log('tt3=>'+pageClickIndex);
+    console.log('tt3=>' + pageClickIndex);
     //기존의 page brick tag 아이템들을 지운다.
-    for (var i = 0; i < pageTagLength; i ++) {
-      $('#brick_api_item_tag_area'+pageClickIndex +'> #brick_api_item_tag'+i).remove();
+    for (var i = 0; i < pageTagLength; i++) {
+      $('#brick_api_item_tag_area' + pageClickIndex + '> #brick_api_item_tag' + i).remove();
     }
 
     //modal의 현재 태그정보를 가져온다
-    var resultModalTag = modalClickTagArea.text().split(' ').slice(0,-1);
+    var resultModalTag = modalClickTagArea.text().split(' ').slice(0, -1);
 //    console.log('resultModalTag text=>' + resultModalTag);
 
     //새롭게 변경된 modal brick tag 아이템들로 다시 채운다
     console.log('resultModalTag length=>' + resultModalTag.length);
     resultModalTag.forEach(function (item, index, array) {
       var brick_tag = (
-        `<div class="brick_api_item_tag" id="brick_api_item_tag` + index+`">`+
-        `<p>`+item+`</p>`+
+        `<div class="brick_api_item_tag" id="brick_api_item_tag` + index + `">` +
+        `<p>` + item + `</p>` +
         `</div>`
       );
-      $('#brick_api_item_tag_area'+pageClickIndex).append(brick_tag);
+      $('#brick_api_item_tag_area' + pageClickIndex).append(brick_tag);
     })
 
     modal_brick_api.style.display = "none";
@@ -862,18 +898,18 @@
 
   });
 
-//  $(document).on('click', '.press', function () {
-//    var itemIndex = $(this).parent().parent().index();
-//    console.log('itemIndex=>' + itemIndex);
-//    console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
-//
-//    modal_device_set_img.attr("src", resData[itemIndex].thumb);
-//    modal_device_set_name.text(resData[itemIndex].name);
-//    modal_device_context_desc.text(resData[itemIndex].preview.desc);
-//
-//    //add gif in preview iphone img
-//    $('#modal_device_img').attr("src", resData[itemIndex].preview.img);
-//  });
+  //  $(document).on('click', '.press', function () {
+  //    var itemIndex = $(this).parent().parent().index();
+  //    console.log('itemIndex=>' + itemIndex);
+  //    console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
+  //
+  //    modal_device_set_img.attr("src", resData[itemIndex].thumb);
+  //    modal_device_set_name.text(resData[itemIndex].name);
+  //    modal_device_context_desc.text(resData[itemIndex].preview.desc);
+  //
+  //    //add gif in preview iphone img
+  //    $('#modal_device_img').attr("src", resData[itemIndex].preview.img);
+  //  });
 
   brick_preview.hover(function () {
     $(this).css('background-color', '#fb7c7e');
@@ -898,8 +934,11 @@
     pageNumber--;
 
     if (pageNumber < 0) {
-      // pageNumber = 0;
-      window.location.href = '/chatbot/create';
+//       pageNumber = 0;
+      var request_query = '?baseInfo_name=' + $('#baseInfo_name').val() + '&baseInfo_context=' + $('#baseInfo_context_01').val() + '\n' + $('#baseInfo_context_02').val();
+      var set_list_query = '&set_list_query=';
+//      window.location.href = '/chatbot/create'+ request_query + set_list_query + baseInfo_set;
+      window.history.back();
     }
 
     if (pageNumber == 0) {
@@ -930,7 +969,7 @@
 
     }
 
-    window.location.hash = pageNumber.toString();
+//    window.location.hash = pageNumber.toString();
     // window.location.href = '/chatbot/create';
   });
 
@@ -947,8 +986,8 @@
 
     if (pageNumber == 1) {
 
-      if (selected_brick_list.length <=0
-          || selected_brick_list.length > 10) {
+      if (selected_brick_list.length <= 0
+        || selected_brick_list.length > 10) {
         console.log('in popup')
         var select_brick_modal = document.getElementById('select_brick_modal');
         var modal_one_select_btn = $('#modal_one_select_btn');
@@ -962,7 +1001,8 @@
         });
 
         modal_one_select_btn.click(function () {
-          pageNumber --;
+//          pageNumber--;
+          pageNumber = 0;
           select_brick_modal.style.display = "none";
         });
 
@@ -990,7 +1030,7 @@
       next_step_modal.style.display = "block";
     }
 
-    window.location.hash = pageNumber.toString();
+//    window.location.hash = pageNumber.toString();
   });
 
   modal_left_next_step_btn.hover(function () {
@@ -1016,12 +1056,12 @@
     var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
     var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
     var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
-    var user_profile_start_message_result = user_profile_start_message_01 +'\n'+ user_profile_start_message_02 +'\n' + user_profile_start_message_03;
+    var user_profile_start_message_result = user_profile_start_message_01 + '\n' + user_profile_start_message_02 + '\n' + user_profile_start_message_03;
 
     var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
     var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
     var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
-    var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 +'\n' + user_profile_not_ready_mesage_02 +'\n' + user_profile_not_ready_mesage_03;
+    var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + '\n' + user_profile_not_ready_mesage_02 + '\n' + user_profile_not_ready_mesage_03;
 
     $.ajax({
       url: 'https://www.chatbrick.io/api/brick/list/',
@@ -1060,39 +1100,39 @@
                   }
                 }
 
-                if (item.api.input.length <=0) {
+                if (item.api.input.length <= 0) {
                   console.log('item.api.input.length == 0');
                 } else {
                   item.api.input.forEach(function (api_key_item, api_key_index, array) {
                     // console.log('api_key_kind=>' + JSON.stringify(api_key_item));
 
-                    console.log('api_keyInputText_1t=>' + $('#apikeyInputText'+i+'_'+api_key_index).val());
+                    console.log('api_keyInputText_1t=>' + $('#apikeyInputText' + i + '_' + api_key_index).val());
                     console.log('api_keyInputText_2t=>' + i);
                     console.log('api_keyInputText_3t=>' + api_key_index);
                     //write apikey
                     switch (api_key_item.key) {
                       case 'api_key' :
-                        brickJson.data.api_key = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        brickJson.data.api_key = $('#apikeyInputText' + i + '_' + api_key_index).val();
                         break;
 
                       case 'username' :
-                        brickJson.data.username = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        brickJson.data.username = $('#apikeyInputText' + i + '_' + api_key_index).val();
                         break;
 
                       case 'password' :
-                        brickJson.data.password = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        brickJson.data.password = $('#apikeyInputText' + i + '_' + api_key_index).val();
                         break;
 
                       case 'client_id':
-                        brickJson.data.client_id = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        brickJson.data.client_id = $('#apikeyInputText' + i + '_' + api_key_index).val();
                         break;
 
                       case 'client_secret':
-                        brickJson.data.client_secret = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        brickJson.data.client_secret = $('#apikeyInputText' + i + '_' + api_key_index).val();
                         break;
 
                       case 'subscription':
-                        brickJson.data.subscription = $('#apikeyInputText'+i+'_'+api_key_index).val();
+                        brickJson.data.subscription = $('#apikeyInputText' + i + '_' + api_key_index).val();
                         break;
                     }
                   });
@@ -1205,6 +1245,7 @@
     if (document.location.hash) {
       var hashNumber = document.location.hash;
       hashNumber = hashNumber.replace('#', '');
+      console.log('hashNumber=>' + hashNumber);
 
       if (hashNumber == '0') {
         page_select_bricks.show();
@@ -1246,11 +1287,11 @@
 
     } else if (response.status === 'not_authorized') {
       console.log('not_authorized!')
-      window.location.href  = '/';
+      window.location.href = '/';
       // window.location.href = 'http://www.localhost:3000';
     } else {
       console.log('connected error!')
-      window.location.href  = '/';
+      window.location.href = '/';
       // window.location.href = 'http://www.localhost:3000';
     }
   }
@@ -1281,7 +1322,7 @@
   });
 
   modal_right_logout_btn.click(function () {
-    FB.logout(function(response) {
+    FB.logout(function (response) {
       console.log('logout=>' + JSON.stringify(response));
       window.location.href = '/';
     });

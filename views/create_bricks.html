@@ -307,7 +307,7 @@
 						추가하고 싶은 호출 키워드를 입력해주세요
 					</div>
 					<input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input"
-								 placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요" maxlength="8">
+								 placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요" maxlength="8" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">
 
 					<div class="modal_brick_api_guild_desc">
 						* 호출키워드의 글자수는 8자까지만 가능해요<br>
@@ -467,7 +467,7 @@
   var preview_desc;
 
   var brick_id;
-	var tagCount = 0;
+	var tagCount;
 
   checkForHash();
 
@@ -752,6 +752,7 @@
 
     console.log('resData[itemIndex].name=>' + resData[itemIndex].name);
     $('#modal_brick_api_title').text(resData[itemIndex].name);
+
     modal_brick_api.style.display = "block";
 
   });
@@ -778,34 +779,47 @@
 //    console.log('this3=>' + $(this).parent().parent().attr('id'));
     var removeId = $(this).parent().attr('id');
     $('#' + removeId).remove();
+    --tagCount;
+    //tag수 제한
+    console.log('tagCount--=>' + tagCount);
+    if (tagCount < 5) {
+      console.log('tag수가 5개이하!');
+      $('.modalInputText').css("border-bottom-color", "#000000");
+      $('#modal_brick_api_item_tag_add_input').attr("disabled", false).attr("readonly", false);
+      $('#modal_brick_api_item_tag_add_input').focus();
+    }
   });
 
 
   //enter key event
   var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input');
-  modal_brick_api_item_tag_add_input.keyup(function (key) {
+  modal_brick_api_item_tag_add_input.keydown(function (key) {
 
     //공백 체크
     if (key.keyCode == 32) {
       console.log('keycode 32 공백 있음')
 //      $(this).focus()
-      this.value = this.value.replace(' ','');
-      return false;
+//      this.value = this.value.replace(' ','');
+//      return false;
 //      $('#modal_brick_api_item_tag_add_input').val($('#modal_brick_api_item_tag_add_input').val().replace(' ',''));
 		} else {
 
       //enter key event
       if (key.keyCode == 13) {
 
+
+        ++tagCount;
+
+        //TODO: modal_brick_api_item_tag_add_input마다 index를 부여해줘야함
         //tag수 제한
-        tagCount ++;
-				if (tagCount > 5) {
-          console.log('tag수가 6개이상!');
+				if (tagCount > 4) {
+          console.log('tag수가 5개이상!');
           $('.modalInputText').css("border-bottom-color", "#d8d8d8");
           $('#modal_brick_api_item_tag_add_input').attr("disabled",false).attr("readonly",true);
-        } else {
-          $('.modalInputText').css("border-bottom-color", "#000000");
-          $('#modal_brick_api_item_tag_add_input').attr("disabled",false).attr("readonly",false);
+        }
+//        else {
+//          $('.modalInputText').css("border-bottom-color", "#000000");
+//          $('#modal_brick_api_item_tag_add_input').attr("disabled",false).attr("readonly",false);
 
           console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
           var modal_brick_tag = (
@@ -823,22 +837,21 @@
 
           //등록 성공시 입력필드값 초기화
           modal_brick_api_item_tag_add_input.val('');
-        }
+//        }
       }
 		}
   });
 
-
-  // 공백이 있나 없나 체크
-//  function noSpaceForm(obj) { // 공백사용못하게
-//    var str_space = /\s/;  // 공백체크
-//    if(str_space.exec(obj.value)) { //공백 체크
-////      alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
-//      obj.focus();
-//      obj.value = obj.value.replace(' ',''); // 공백제거
-//      return false;
-//    }
-//  }
+    // 공백이 있나 없나 체크
+  function noSpaceForm(obj) { // 공백사용못하게
+    var str_space = /\s/;  // 공백체크
+    if(str_space.exec(obj.value)) { //공백 체크
+//      alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
+      obj.focus();
+      obj.value = obj.value.replace(' ',''); // 공백제거
+      return false;
+    }
+  }
 
 
   //modal tag save btn click event

@@ -5,7 +5,7 @@
   <title>Title</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
+  <script type="text/javascript" src="/public/javascripts/href_event.js"></script>
 </head>
 <body>
 <header id="header">
@@ -254,6 +254,9 @@
 </footer>
 
 <script type="text/javascript">
+  $('#logo').click(function () {
+    logoClickSendHomeEvent();
+  });
   $('input[type=text]').addClass('placeholder');
 
   var baseInfo_name = $('#baseInfo_name');

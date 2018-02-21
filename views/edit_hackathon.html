@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
+  <script type="text/javascript" src="/public/javascripts/href_event.js"></script>
   <link rel="stylesheet" href="../public/stylesheets/style.css">
 
 </head>
@@ -812,6 +813,9 @@
 </footer>
 
 <script type="text/javascript">
+  $('#logo').click(function () {
+    logoClickSendHomeEvent();
+  });
   $('input[type=text]').addClass('placeholder');
 
   var setId = `<%=setId%>`;
@@ -1942,24 +1946,19 @@
       }
     };
 
-    if ($('.hackathon_1day_content').val() != '' ||
-      $('.hackathon_1day_content').val() != null) {
+    if ($('.hackathon_1day_content').val() != '') {
       submitData.data.contents['main-meeting'].push(hackathon_1day_content);
     }
-    if ($('.hackathon_2day_content').val() != '' ||
-      $('.hackathon_2day_content').val() != null) {
+    if ($('.hackathon_2day_content').val() != '') {
       submitData.data.contents['main-meeting'].push(hackathon_2day_content);
     }
-    if ($('.hackathon_3day_content').val() != '' ||
-      $('.hackathon_3day_content').val() != null) {
+    if ($('.hackathon_3day_content').val() != '') {
       submitData.data.contents['main-meeting'].push(hackathon_3day_content);
     }
-    if ($('.hackathon_4day_content').val() != '' ||
-      $('.hackathon_4day_content').val() != null) {
+    if ($('.hackathon_4day_content').val() != '') {
       submitData.data.contents['main-meeting'].push(hackathon_4day_content);
     }
-    if ($('.hackathon_5day_content').val() != '' ||
-      $('.hackathon_5day_content').val() != null) {
+    if ($('.hackathon_5day_content').val() != '') {
       submitData.data.contents['main-meeting'].push(hackathon_5day_content);
     }
 
@@ -1985,7 +1984,7 @@
       data: JSON.stringify(submitData),
       success: function (body, status, res) {
         if (body.success) {
-          console.log('upliad success!');
+          console.log('upload success!');
           window.location.href = '/chatbot/list';
         } else {
           if (body.action == 'ERR0002') {

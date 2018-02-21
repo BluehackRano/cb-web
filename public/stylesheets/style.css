@@ -459,6 +459,16 @@ div.botlist .my_bot {
     border-bottom: 1px solid #000000;
     margin-top: 11px;
     padding-bottom: 11px;
+
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
 }
 
 .baseInputText_02 {
@@ -469,6 +479,16 @@ div.botlist .my_bot {
     border-bottom: 2px solid #000000;
     margin-top: 11px;
     padding-bottom: 11px;
+
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
 }
 
 ._baseInfo_section {
@@ -2388,7 +2408,8 @@ hr.modal_device_underline {
 }
 
 .modal_brick_api_title {
-    width: 148px;
+    /*width: 148px;*/
+    width: auto;
     height: 59px;
     font-family: "Noto Sans KR";
     font-size: 40px;

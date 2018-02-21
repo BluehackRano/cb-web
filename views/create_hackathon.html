@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/public/javascripts/href_event.js"></script>
 	<link rel="stylesheet" href="../public/stylesheets/style.css">
 
 </head>
@@ -34,6 +35,8 @@
 					SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더
 					{{사용자의 이름}}에 잘어울리는 챗봇으로 만들어보세요.
 				</p>
+
+				<!--<button id="test_full_input_text">클릭하면 전체항목을 채워줘요(테스트용)</button>-->
 			</div>
 		</div>
 	</div>
@@ -619,6 +622,9 @@
 </footer>
 
 <script type="text/javascript">
+  $('#logo').click(function () {
+    logoClickSendHomeEvent();
+  });
   $('input[type=text]').addClass('placeholder');
 
   var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
@@ -1354,9 +1360,9 @@
         },
         "contents": {
           "main-meeting": [
-            hackathon_1day_content, hackathon_2day_content,
-            hackathon_3day_content, hackathon_4day_content,
-            hackathon_5day_content
+//            hackathon_1day_content, hackathon_2day_content,
+//            hackathon_3day_content, hackathon_4day_content,
+//            hackathon_5day_content
           ],
 //          "pre-meeting": before_meeting_clicked_content //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
         }
@@ -1391,6 +1397,22 @@
       }
     };
 
+    if ($('.hackathon_1day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_1day_content);
+    }
+    if ($('.hackathon_2day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_2day_content);
+    }
+    if ($('.hackathon_3day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_3day_content);
+    }
+    if ($('.hackathon_4day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_4day_content);
+    }
+    if ($('.hackathon_5day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_5day_content);
+    }
+
     //사전모임 날짜가 체크 되어 있는 경우
     if (!($('#start_date_before_meeting').val() == '')) {
       submitData.data.date['pre-meeting'] = $('#start_date_before_meeting').val();
@@ -1402,8 +1424,9 @@
       };
     }
 
-    if (submitData.name == '' || submitData.desc == ''
-			|| submitData.data.basic.name == '' || submitData.data.basic.email == ''
+    console.log('submitData=>' + JSON.stringify(submitData));
+
+    if (submitData.data.basic.name == '' || submitData.data.basic.email == ''
       || submitData.data.basic.tel == '') {
       console.log('in popup')
       var default_modal = document.getElementById('default_modal');
@@ -1511,6 +1534,11 @@
       window.location.href = '/';
     });
   });
+
+
+//  $('#test_full_input_text').click(function () {
+//  });
+
 </script>
 <!--https://xdsoft.net/jqplugins/datetimepicker/#trigger-->
 <script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>

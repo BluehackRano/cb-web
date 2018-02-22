@@ -689,8 +689,8 @@
       brick_api_zone.append(brickApiItem);
       $('#modal_brick_api_context_01').append(modalBrickApiItem);
 
-      console.log('resData[itemIndex].api.keywords=>' + JSON.stringify(resData[itemIndex].api.keywords));
       //Added brick api tag
+      console.log('resData[itemIndex].api.keywords=>' + JSON.stringify(resData[itemIndex].api.keywords));
       resData[itemIndex].api.keywords.forEach(function (item, index, array) {
 
         console.log('apitag=>' + item);
@@ -825,7 +825,11 @@
     console.log('this2=>' + $(this).parent().attr('id'));
 //    console.log('this3=>' + $(this).parent().parent().attr('id'));
     var removeId = $(this).parent().attr('id');
-    $('#' + removeId).remove();
+
+    console.log('removeId=>' + $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #' + removeId).text());
+    $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #' + removeId).remove();
+    console.log('removeId=>' + $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #' + removeId).text());
+
     --tagCount;
     //tag수 제한
     console.log('tagCount2=>' + tagCount);
@@ -1191,6 +1195,15 @@
                   //"삭제"버튼 누른 api tag는 제외
                   if (excloudeApiTag.includes(index)) {
                     console.log('제외된apitag=>' + index);
+
+                    var brickJson = {
+                      id: item.id,
+                      name: item.name,
+//                      keywords: [],
+                      data: {
+                        // api_key: $('#apikeyInputText' + index).val()
+                      }
+                    }
                   } else {
 
 
@@ -1213,6 +1226,7 @@
                         // api_key: $('#apikeyInputText' + index).val()
                       }
                     }
+                  }
 
                     if (item.api.input.length <= 0) {
                       console.log('item.api.input.length == 0');
@@ -1255,7 +1269,7 @@
 
                     submitBrickList.push(brickJson);
                     keywords = [];
-                  }
+
                 }
               });
             }

@@ -359,7 +359,7 @@
       <div class="modal_brick_api_summary">
         <img src="../public/images/img-brick-02.png" class="modal_brick_api_img">
         <div class="modal_brick_api_summary_text">
-          <div class="modal_brick_api_title">날씨정보</div>
+          <div class="modal_brick_api_title" id="modal_brick_api_title">타이틀</div>
           <div class="modal_brick_api_desc">데이터 수정</div>
         </div>
       </div>
@@ -394,7 +394,9 @@
           <div class="modal_brick_api_guild">
             추가하고 싶은 호출 키워드를 입력해주세요
           </div>
-          <input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input" placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요">
+          <input type="text" class="modalInputText modal_brick_api_item_tag_add_input"
+                 placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요" maxlength="8" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">
+
 
           <div class="modal_brick_api_guild_desc">
             * 호출키워드의 글자수는 8자까지만 가능해요<br>
@@ -563,6 +565,8 @@
   var fb_name;
 
   var brick_id;
+  var tagCount;
+  var excloudeApiTag = [];
 
   var api_set_list = $('#api_set_list');
   var brick_api_zone = $('#brick_api_zone');
@@ -725,27 +729,33 @@
           $('#modal_brick_api_context_01').append(modalBrickApiItem);
 
           //Added brick api tag
-          item.keywords.forEach(function (item, index, array) {
+          if (item.keywords == undefined) {
+            console.log('해당아이템의 keywords는 없습니다');
+            $('#brick_api_item_area'+itemIndex).hide();
 
-            console.log('apitag=>' + item);
+          } else {
+            item.keywords.forEach(function (item, index, array) {
 
-            var brick_tag = (
-              `<div class="brick_api_item_tag" id="brick_api_item_tag` + index+`">`+
-              `<p>`+item+`</p>`+
-              `</div>`
-            );
+              console.log('apitag=>' + item);
 
-            var modal_brick_tag = (
-              `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index +`">`+
-              `<p>`+item+ ' ' +`</p>`+
-              `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index +`">`+
-              `</div>`
-            );
+              var brick_tag = (
+                `<div class="brick_api_item_tag" id="brick_api_item_tag` + index + `">` +
+                `<p>` + item + `</p>` +
+                `</div>`
+              );
 
-            $('#brick_api_item_tag_area'+ itemIndex).append(brick_tag);
-            $('#modal_brick_api_item_tag_area'+ itemIndex).append(modal_brick_tag);
+              var modal_brick_tag = (
+                `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index + `">` +
+                `<p>` + item + `</p>` +
+                `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index + `">` +
+                `</div>`
+              );
 
-          });
+              $('#brick_api_item_tag_area' + itemIndex).append(brick_tag);
+              $('#modal_brick_api_item_tag_area' + itemIndex).append(modal_brick_tag);
+
+            });
+          }
         });
 
       } else {
@@ -792,37 +802,87 @@
 
   $(document).on('click', '.brick_api_item_btn_motify', function () {
     var itemIndex = $(this).parent().parent().index();
+    console.log('itemIndex->' + itemIndex);
+
     pageClickIndex = itemIndex;
-    console.log('itemIndex->'+itemIndex );
-    console.log('pageClickIndex=>' + pageClickIndex);
+    console.log('motify pageClickIndex1=>' + pageClickIndex);
 
     $('.modal_brick_api_item_tag_area').hide();
 
-    $('#modal_brick_api_item_tag_area'+itemIndex).show();
-    modalClickTagArea = $('#modal_brick_api_item_tag_area'+itemIndex);
-    modalNewTagStartIndex = $('#modal_brick_api_item_tag_area'+itemIndex +'> .modal_brick_api_item_tag').length;
+    $('#modal_brick_api_item_tag_area' + itemIndex).show();
+    modalClickTagArea = $('#modal_brick_api_item_tag_area' + itemIndex);
+    modalNewTagStartIndex = $('#modal_brick_api_item_tag_area' + itemIndex + '> .modal_brick_api_item_tag').length;
 
-    pageClickTagArea = $('#brick_api_item_tag_area'+itemIndex);
-    pageTagLength = $('#brick_api_item_tag_area'+itemIndex +'> .brick_api_item_tag').length;
+
+    pageClickTagArea = $('#brick_api_item_tag_area' + itemIndex);
+    pageTagLength = $('#brick_api_item_tag_area' + itemIndex + '> .brick_api_item_tag').length;
     console.log('pageClickTagArea=>' + pageClickTagArea.html());
     console.log('pageNewTagStartIndex=>' + pageTagLength);
+    tagCount = 0;
+    tagCount = modalNewTagStartIndex;
+    console.log('tagCount1=>' + tagCount);
 
+
+    console.log('resBricksList[pageClickIndex].name=>' + resBricksList[pageClickIndex].name);
+    $('#modal_brick_api_title').text(resBricksList[pageClickIndex].name);
+
+    $('.modal_brick_api_item_tag_add_input').attr('id', 'modal_brick_api_item_tag_add_input' + pageClickIndex);
+    $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+//tag수 제한
+    if (tagCount > 4) {
+      console.log('tag수가 5개이상!');
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",true);
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+    }
+    else {
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",false);
+    }
     modal_brick_api.style.display = "block";
+
 
   });
 
   close_modal_brick_api_img.onclick = function () {
+    //    console.log('tt33=>' + pageTagLength);
+    //기존의 page brick tag 아이템들을 지운다.
+    var madalMaxCount = 5;
+    for (var i = 0; i < madalMaxCount; i++) {
+      $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).remove();
+    }
+
+    //page의 현재 태그정보를 가져온다
+    var resultModalTag = pageClickTagArea.text().split(' ').slice(0, -1);
+    console.log('resultModalTag text=>' + resultModalTag);
+    console.log('pageClickTagArea=>' + pageClickTagArea.html());
+
+    //변경되기전 page brick tag 아이템들로 다시 채운다
+    console.log('resultModalTag length=>' + resultModalTag.length);
+    resultModalTag.forEach(function (item, index, array) {
+      var modal_brick_tag = (
+        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index + `">` +
+        `<p>` + item + ' ' + `</p>` +
+        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index + `">` +
+        `</div>`
+      );
+      $('#modal_brick_api_item_tag_area' + pageClickIndex).append(modal_brick_tag);
+    })
+
     modal_brick_api.style.display = "none";
+
   }
 
   $(document).on('click', '.brick_api_item_btn_delete', function () {
 
     var itemIndex = $(this).parent().parent().index();
     $('#brick_api_item_area'+itemIndex).hide();
-    // console.log('after brick_api_item_area.length=>'+$('.hide').length);
+    //서버로 보내는 keywords 필드에서 제외
+    excloudeApiTag.push(itemIndex);
   });
 
   $(document).on('click', '.modal_brick_api_item_del_img', function () {
+
     //    console.log('test!2');
     var itemIndex = $(this).parent().index();
     console.log('tagid=>'+ itemIndex);
@@ -830,41 +890,78 @@
     console.log('this2=>' + $(this).parent().attr('id'));
 //    console.log('this3=>' + $(this).parent().parent().attr('id'));
     var removeId = $(this).parent().attr('id');
-    $('#'+removeId).remove();
+    console.log('removeId=>' + $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #' + removeId).text());
+    $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #' + removeId).remove();
+    console.log('removeId=>' + $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #' + removeId).text());
+    --tagCount;
+    //tag수 제한
+    console.log('tagCount2=>' + tagCount);
+    if (tagCount > 5) {
+      console.log('tag수가 5개이상!');
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled", false).attr("readonly", true);
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+//      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).focus();
+    } else {
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",false);
+    }
   });
 
 
   //enter key event
-  var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input');
-  modal_brick_api_item_tag_add_input.keypress(function (key) {
+  $('.modal_brick_api_item_tag_add_input').keydown(function (key) {
+    var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input' + pageClickIndex);
+//    console.log('motify pageClickIndex2=>' + pageClickIndex);
+    //공백 체크
+    if (key.keyCode == 32) {
+      console.log('keycode 32 공백 있음')
+    } else {
 
-    if(key.keyCode == 13) {
+      //enter key event
+      if (key.keyCode == 13) {
 
-      //입력 필드 글자수 제한 modal_brick_api_item_tag_add_input.val().length > 8 ||
-      if (modal_brick_api_item_tag_add_input.val().length > 8) {
-        console.log('입력필드의 글자수가 8자 초과');
-      } else if(modal_brick_api_item_tag_add_input.val().includes(' ')) {
-        console.log('입력필드의 글자에 공백 포함');
-      } else {
-        console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
+//          console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
         var modal_brick_tag = (
-          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex +`">`+
-          `<p>`+modal_brick_api_item_tag_add_input.val() +' '+`</p>`+
-          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex +`">`+
+          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex + `">` +
+          `<p>` + modal_brick_api_item_tag_add_input.val() + ' ' + `</p>` +
+          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex + `">` +
           `</div>`
         );
 
 
         modalClickTagArea.append(modal_brick_tag);
-        modalNewTagStartIndex ++;
-        console.log('after modalNewTagStartIndex=>' + modalNewTagStartIndex);
-        console.log('modal_brick_api_item_tag_add_input=>' + modal_brick_api_item_tag_add_input.val());
-
+        modalNewTagStartIndex++;
         //등록 성공시 입력필드값 초기화
         modal_brick_api_item_tag_add_input.val('');
+
+        ++tagCount;
+        //tag수 제한
+        console.log('tagCount3=>' + tagCount);
+        if (tagCount > 4) {
+          console.log('tag수가 5개이상!');
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",true);
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+        }
+        else {
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled", false).attr("readonly", false);
+        }
       }
     }
   });
+
+  // 공백이 있나 없나 체크
+  function noSpaceForm(obj) { // 공백사용못하게
+    var str_space = /\s/;  // 공백체크
+    if(str_space.exec(obj.value)) { //공백 체크
+//      alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
+      obj.focus();
+      obj.value = obj.value.replace(' ',''); // 공백제거
+      return false;
+    }
+  }
 
   //modal tag save btn click event
   $('#modal_left_tag_save_btn').click(function () {
@@ -884,7 +981,7 @@
     resultModalTag.forEach(function (item, index, array) {
       var brick_tag = (
         `<div class="brick_api_item_tag" id="brick_api_item_tag` + index+`">`+
-        `<p>`+item+`</p>`+
+        `<p>` + item + ' ' + `</p>`+
         `</div>`
       );
       $('#brick_api_item_tag_area'+pageClickIndex).append(brick_tag);
@@ -895,18 +992,42 @@
 
   //modal tag cancel btn click event
   $('#modal_right_tag_cancel_btn').click(function () {
+//    console.log('tt33=>' + pageTagLength);
+    //기존의 page brick tag 아이템들을 지운다.
+    var madalMaxCount = 5;
+    for (var i = 0; i < madalMaxCount; i++) {
+      $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).remove();
+    }
 
+    //page의 현재 태그정보를 가져온다
+    var resultModalTag = pageClickTagArea.text().split(' ').slice(0, -1);
+    console.log('resultModalTag text=>' + resultModalTag);
+    console.log('pageClickTagArea=>' + pageClickTagArea.html());
+
+    //변경되기전 page brick tag 아이템들로 다시 채운다
+    console.log('resultModalTag length=>' + resultModalTag.length);
+    resultModalTag.forEach(function (item, index, array) {
+      var modal_brick_tag = (
+        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index + `">` +
+        `<p>` + item + ' ' + `</p>` +
+        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index + `">` +
+        `</div>`
+      );
+      $('#modal_brick_api_item_tag_area' + pageClickIndex).append(modal_brick_tag);
+    })
+
+    modal_brick_api.style.display = "none";
   });
 
-  $(document).on('click', '.press', function () {
-    var itemIndex = $(this).parent().parent().index();
-    console.log('itemIndex=>' + itemIndex);
-    console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
-
-    modal_device_set_img.attr("src", resData[itemIndex].img);
-    modal_device_set_name.text(resData[itemIndex].name);
-    modal_device_context_desc.text(resData[itemIndex].preview.desc);
-  });
+//  $(document).on('click', '.press', function () {
+//    var itemIndex = $(this).parent().parent().index();
+//    console.log('itemIndex=>' + itemIndex);
+//    console.log('resData[itemIndex]=>' + JSON.stringify(resData[itemIndex]));
+//
+//    modal_device_set_img.attr("src", resData[itemIndex].img);
+//    modal_device_set_name.text(resData[itemIndex].name);
+//    modal_device_context_desc.text(resData[itemIndex].preview.desc);
+//  });
 
 
   var pre_page = $('#pre_page');
@@ -1023,94 +1144,8 @@
   next_page.click(function () {
     $(this).css('background-color', '#bd292c');
 
-    var keywords = [];
-    resBricksList.forEach(function (item, index, array) {
-      var brick_tags = $('#brick_api_item_tag_area'+index +'> .brick_api_item_tag');
-      console.log('brick_tags=> '+ brick_tags.html());
-
-      for (var i = 0; i < brick_tags.length; i ++) {
-
-        var tag_text = $('#brick_api_item_tag_area'+index +'> #brick_api_item_tag'+i).text();
-//        console.log('tag_text=> '+ tag_text);
-        keywords.push(tag_text);
-
-      }
-      console.log('keywords=> '+ keywords);
-
-
-      var brickJson = {
-        id: item.id,
-        name: item.name,
-        keywords: keywords,
-        data: {
-          // api_key: $('#apikeyInputText' + index).val()
-        }
-      }
-
-      if (item.api.input.length <=0) {
-        console.log('item.api.input.length == 0');
-      } else {
-        item.api.input.forEach(function (api_key_item, api_key_index, array) {
-          console.log('api_key_kind=>' + JSON.stringify(api_key_item));
-
-          //write apikey
-          switch (api_key_item.key) {
-            case 'api_key' :
-              brickJson.data.api_key = $('#apikeyInputText'+index+'_'+api_key_index).val();
-              break;
-
-            case 'username' :
-              brickJson.data.username = $('#apikeyInputText'+index+'_'+api_key_index).val();
-              break;
-
-            case 'password' :
-              brickJson.data.password = $('#apikeyInputText'+index+'_'+api_key_index).val();
-              break;
-
-            case 'client_id':
-              brickJson.data.client_id = $('#apikeyInputText'+index+'_'+api_key_index).val();
-              break;
-
-            case 'client_secret':
-              brickJson.data.client_secret = $('#apikeyInputText'+index+'_'+api_key_index).val();
-              break;
-
-            case 'subscription':
-              brickJson.data.subscription = $('#apikeyInputText'+index+'_'+api_key_index).val();
-              break;
-          }
-        });
-
-      }
-
-      submitBrickList.push(brickJson);
-      keywords = [];
-    });
-
-    //make send jsonData
-    var submitData = {
-      "id": setId,
-      "type": "bricks",
-      "name": $('#baseInfo_name').val(),
-      "desc": $('#baseInfo_context_01').val()+'\n'+$('#baseInfo_context_02').val(),
-      "data": {
-        "brick": JSON.parse(JSON.stringify(submitBrickList)),
-        "custom_settings": {
-          "get_started": $('#user_profile_start_message_01').val() + '\n'
-          + $('#user_profile_start_message_02').val() + '\n'
-          + $('#user_profile_start_message_03').val(),
-          "error_msg": $('#user_profile_not_ready_mesage_01').val() + '\n'
-          + $('#user_profile_not_ready_mesage_02').val() + '\n'
-          + $('#user_profile_not_ready_mesage_03').val()
-        }
-      },
-
-    };
-
-    console.log('submitBrickList=>' + JSON.stringify(submitBrickList));
-
-    if (submitData.data.custom_settings.get_started == ''
-      || submitData.data.custom_settings.error_msg == '') {
+    if ($('#user_profile_start_message_01').val() == ''
+      || $('#user_profile_not_ready_mesage_01').val() == '') {
       console.log('in popup')
       var default_modal = document.getElementById('default_modal');
       var modal_one_btn = $('#modal_one_btn');
@@ -1127,6 +1162,109 @@
         default_modal.style.display = "none";
       });
     } else {
+
+    var keywords = [];
+    resBricksList.forEach(function (item, index, array) {
+
+      //"삭제"버튼 누른 api tag는 제외
+      if (excloudeApiTag.includes(index)) {
+        console.log('제외된apitag=>' + index);
+
+        var brickJson = {
+          id: item.id,
+          name: item.name,
+//                      keywords: [],
+          data: {
+            // api_key: $('#apikeyInputText' + index).val()
+          }
+        }
+      } else {
+        var brick_tags = $('#brick_api_item_tag_area' + index + '> .brick_api_item_tag');
+        console.log('brick_tags=> ' + brick_tags.html());
+
+        for (var i = 0; i < brick_tags.length; i++) {
+
+          var tag_text = $('#brick_api_item_tag_area' + index + '> #brick_api_item_tag' + i).text();
+//        console.log('tag_text=> '+ tag_text);
+          keywords.push(tag_text);
+
+        }
+        console.log('keywords=> ' + keywords);
+
+
+        var brickJson = {
+          id: item.id,
+          name: item.name,
+          keywords: keywords,
+          data: {
+            // api_key: $('#apikeyInputText' + index).val()
+          }
+        }
+      }
+        if (item.api.input.length <= 0) {
+          console.log('item.api.input.length == 0');
+        } else {
+          item.api.input.forEach(function (api_key_item, api_key_index, array) {
+            console.log('api_key_kind=>' + JSON.stringify(api_key_item));
+
+            //write apikey
+            switch (api_key_item.key) {
+              case 'api_key' :
+                brickJson.data.api_key = $('#apikeyInputText' + index + '_' + api_key_index).val();
+                break;
+
+              case 'username' :
+                brickJson.data.username = $('#apikeyInputText' + index + '_' + api_key_index).val();
+                break;
+
+              case 'password' :
+                brickJson.data.password = $('#apikeyInputText' + index + '_' + api_key_index).val();
+                break;
+
+              case 'client_id':
+                brickJson.data.client_id = $('#apikeyInputText' + index + '_' + api_key_index).val();
+                break;
+
+              case 'client_secret':
+                brickJson.data.client_secret = $('#apikeyInputText' + index + '_' + api_key_index).val();
+                break;
+
+              case 'subscription':
+                brickJson.data.subscription = $('#apikeyInputText' + index + '_' + api_key_index).val();
+                break;
+            }
+          });
+
+        }
+
+        submitBrickList.push(brickJson);
+        keywords = [];
+
+
+    });
+
+    //make send jsonData
+    var submitData = {
+      "id": setId,
+      "type": "bricks",
+      "name": $('#baseInfo_name').val(),
+      "desc": $('#baseInfo_context_01').val() + '\n' + $('#baseInfo_context_02').val(),
+      "data": {
+        "brick": JSON.parse(JSON.stringify(submitBrickList)),
+        "custom_settings": {
+          "get_started": $('#user_profile_start_message_01').val() + '\n'
+          + $('#user_profile_start_message_02').val() + '\n'
+          + $('#user_profile_start_message_03').val(),
+          "error_msg": $('#user_profile_not_ready_mesage_01').val() + '\n'
+          + $('#user_profile_not_ready_mesage_02').val() + '\n'
+          + $('#user_profile_not_ready_mesage_03').val()
+        }
+      },
+
+    };
+
+    console.log('submitBrickList=>' + JSON.stringify(submitBrickList));
+
       //send jsonData in brick api
       $.ajax({
         url: 'https://www.chatbrick.io/api/brick/',
@@ -1162,7 +1300,9 @@
           }
         }
       });
-    }
+
+
+  }
   });
 
   pre_page.hover(function () {

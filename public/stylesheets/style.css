@@ -2523,9 +2523,9 @@ hr.modal_device_underline {
 }
 
 .modal_brick_api_item_del_img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
+    width: 32px;
+    height: 32px;
+    /*object-fit: contain;*/
 
     float: left;
 }

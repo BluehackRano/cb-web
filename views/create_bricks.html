@@ -27,10 +27,8 @@
 				<div id="sub_title">| BRICK 선택하기</div>
 			</div>
 			<div id="context">
-				<p>
-					BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요.
+					BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요.<br>
 					세트와 마찬가지로 “미리보기”버튼을 통해 해당 BRICK을 미리 체험해볼 수 있어요.
-				</p>
 			</div>
 		</div>
 	</div>
@@ -144,24 +142,22 @@
 					<div class="wrapper">
 						<div class="user_profile_data_area">
 							<div class="article_title_profile">
-								챗봇에 방문하였을 때, 처음으로 보내는 메세지
+								환영메세지
 							</div>
 							<input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message"
-										 placeholder="가나다">
-							<input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message"
-										 placeholder="가나다">
-							<input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message"
-										 placeholder="가나다">
+										 placeholder="방문자에게 처음으로 보낼 메세지를 입력해주세요.">
+							<input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message">
+							<input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message">
 
 							<div class="article_title_profile">
-								방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
+								오류메세지
 							</div>
 							<input type="text" id="user_profile_not_ready_mesage_01"
-										 class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+										 class="baseInputText_02 user_profile_not_ready_mesage" placeholder="방문자가 준비되지 않은 메세지를 보냈을 때, 보낼 메세지를 입력해주세요.">
 							<input type="text" id="user_profile_not_ready_mesage_02"
-										 class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+										 class="baseInputText_02 user_profile_not_ready_mesage">
 							<input type="text" id="user_profile_not_ready_mesage_03"
-										 class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+										 class="baseInputText_02 user_profile_not_ready_mesage">
 						</div>
 					</div>
 				</article>
@@ -499,7 +495,7 @@
           var brick = (
           `<div class="brick_item"  id="brick_item` + index + `">` +
           // `<img src="`+item.img+`" alt="brick image" class="brick_img"> ` +
-          `<img src="../public/images/img-brick-01.png" alt="brick image" class="brick_img"> ` +
+          `<img src="`+item.thumb+`" alt="brick image" class="brick_img"> ` +
           `<div class="brick_name">` + item.name + `</div> ` +
           `<div class="item_brick_event"> ` +
           `<div class="brick_choice">브릭 선택하기</div> ` +
@@ -626,7 +622,8 @@
         `</div>` +
         `<div class="api_content">` +
         `<div class="api_content_context">` +
-        `<p>` + resData[itemIndex].api.desc + `</p>` +
+        `<p>BRICK 이름 아래에 위치한 “API KEY 신청하기” 버튼을 클릭하여 해당 웹사이트에서 API 사용을 신청하실 수 있어요. 사용 신청 후, 발급받으신 항목들 중 아래의 요청하는 항목들의 내용을 입력해주세요.</p>` +
+//        `<p>` + resData[itemIndex].api.desc + `</p>` +
         `</div>` +
 
         `<div class="api_content_kind" id="api_content_kind` + listIndex + `">` +
@@ -751,6 +748,7 @@
     pageTagLength = $('#brick_api_item_tag_area' + selected_brick_list[itemIndex] + '> .brick_api_item_tag').length;
     console.log('pageClickTagArea=>' + pageClickTagArea.html());
     console.log('pageNewTagStartIndex=>' + pageTagLength);
+
     tagCount = 0;
     tagCount = modalNewTagStartIndex;
     console.log('tagCount1=>' + tagCount);
@@ -1037,8 +1035,7 @@
       page_bricks_apikey.hide();
       page_bricks_confirm_apikey.hide();
       // page_bricks_platform.hide();
-      context.text('BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요.\n' +
-        '세트와 마찬가지로 “미리보기”버튼을 통해 해당 BRICK을 미리 체험해볼 수 있어요.');
+      context.text('BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요. 세트와 마찬가지로 “미리보기”버튼을 통해 해당 BRICK을 미리 체험해볼 수 있어요.');
       sub_title.text('| BRICK 선택하기');
       window.location.reload()
 
@@ -1055,7 +1052,7 @@
       page_bricks_apikey.hide();
       page_bricks_confirm_apikey.show();
       // page_bricks_platform.hide();
-      context.text('{{사용자가 선택한 세트}}에 ' + fb_name + '님의 데이터 정보를 입력하는 단계에요. SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더 ' + fb_name + '에 잘어울리는 챗봇으로 만들어보세요.');
+      context.text(baseInfo_name+'에 ' + fb_name + '님의 데이터 정보를 입력하는 단계에요. SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더 ' + fb_name + '에 잘어울리는 챗봇으로 만들어보세요.');
       sub_title.text('| 데이터 정보 입력하기');
 
     }
@@ -1113,7 +1110,7 @@
       page_bricks_apikey.hide();
       page_bricks_confirm_apikey.show();
       // page_bricks_platform.hide();
-      context.text('{{사용자가 선택한 세트}}에 ' + fb_name + '님의 데이터 정보를 입력하는 단계에요. SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더 ' + fb_name + '에 잘어울리는 챗봇으로 만들어보세요.');
+      context.text(baseInfo_name+'에 ' + fb_name + '님의 데이터 정보를 입력하는 단계에요. SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더 ' + fb_name + '에 잘어울리는 챗봇으로 만들어보세요.');
       sub_title.text('| 데이터 정보 입력하기');
 
     } else if (pageNumber == 3) {

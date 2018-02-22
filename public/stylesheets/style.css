@@ -165,7 +165,8 @@ div.top_02 {
 }
 
 div.top_02 #title {
-    width: 336px;
+    /*width: 336px;*/
+    width: auto;
     height: 59px;
     font-size: 40px;
     font-weight: 900;
@@ -189,7 +190,7 @@ div.top_02 #sub_title {
 }
 
 div.top_02 #context {
-    width: 810px;
+    width: 880px;
     height: 40px;
     font-family: "Noto Sans KR";
     font-size: 12px;
@@ -201,6 +202,8 @@ div.top_02 #context {
     text-align: left;
     color: #000000;
     float: left;
+
+    margin-top: 12px;
 }
 
 /*

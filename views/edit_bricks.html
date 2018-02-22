@@ -52,18 +52,18 @@
         <div class="wrapper">
           <div class="baseInfo_01 article_title">
             <p>
-              이름
+              챗봇 이름
             </p>
           </div>
-          <input type="text" id="baseInfo_name" class="baseInputText" placeholder="가나다">
+          <input type="text" id="baseInfo_name" class="baseInputText" placeholder="생성하려는 챗봇의 이름을 입력해주세요. (최대8자)">
 
           <div class="baseInfo_02 article_title">
             <p>
-              설명
+              챗봇 설명
             </p>
           </div>
-          <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
-          <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder" placeholder="가나다">
+          <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder" placeholder="생성하려는 챗봇의 설명문구를 입력해주세요.">
+          <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder">
 
         </div>
       </article>
@@ -139,18 +139,18 @@
         <div class="wrapper">
           <div class="user_profile_data_area">
             <div class="article_title_profile">
-              챗봇에 방문하였을 때, 처음으로 보내는 메세지
+              환영메세지
             </div>
-            <input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
-            <input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
-            <input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message" placeholder="가나다">
+            <input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message" placeholder="방문자에게 처음으로 보낼 메세지를 입력해주세요.">
+            <input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message">
+            <input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message">
 
             <div class="article_title_profile">
-              방문자가 준비되지 않은 메세지를 보냈을 때, 보내는 메세지
+              오류메세지
             </div>
-            <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
-            <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
-            <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="가나다">
+            <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="방문자가 준비되지 않은 메세지를 보냈을 때, 보낼 메세지를 입력해주세요.">
+            <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02 user_profile_not_ready_mesage">
+            <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02 user_profile_not_ready_mesage">
           </div>
         </div>
       </article>
@@ -563,6 +563,7 @@
 
   var resData;
   var fb_name;
+  var project_name;
 
   var brick_id;
   var tagCount;
@@ -610,7 +611,7 @@
         var settings_desc = body.data.settings.desc.split('\n');
         var custom_settings_get_started = body.data.settings.data.custom_settings.get_started.split('\n');
         var custom_settings_error_msg = body.data.settings.data.custom_settings.error_msg.split('\n');
-
+        project_name = settings_name;
 
         $('#baseInfo_name').val(settings_name);
         $('#baseInfo_context_01').val(settings_desc[0]);
@@ -633,7 +634,8 @@
             `</div>` +
             `<div class="api_content">` +
             `<div class="api_content_context">` +
-            `<p>` + item.api.desc + `</p>` +
+            `<p>` + 'BRICK 이름 아래에 위치한 “API KEY 신청하기” 버튼을 클릭하여 해당 웹사이트에서 API 사용을 신청하실 수 있어요. 사용 신청 후, 발급받으신 항목들 중 아래의 요청하는 항목들의 내용을 입력해주세요.' + `</p>` +
+//            `<p>` + item.api.desc + `</p>` +
             `</div>` +
 
             `<div class="api_content_kind" id="api_content_kind`+itemIndex+`">` +
@@ -1339,8 +1341,13 @@
         xhrFields: {withCredentials: true},
         success: function (body, status, res) {
           if (body.success) {
+
+            fb_name = body.facebook.fb_name;
             login_logo.attr("src", body.facebook.fb_profile);
-            login_name.text(body.facebook.fb_name);
+            login_name.text(fb_name);
+
+            $('#title').text(project_name);
+            $('#context').text(project_name+'에 내용을 수정하실 수 있어요. 기본정보 / 사용자 데이터 입력 / 플랫폼 연동하기 / 챗봇삭제 등을 하실 수 있어요. 챗봇의 내용을 수정해서 보다 '+fb_name+'에 잘맞는 챗봇으로 만들어보세요.');
 
             fb_id = body.facebook.fb_id;
             console.log('body.facebook.fb_id=>' + fb_id);

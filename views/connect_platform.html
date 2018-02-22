@@ -225,6 +225,7 @@
   var fb_pages_info = {};
   var registered_fb_name;
   var registered_page_list_copy;
+  var fb_name = '';
 
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -241,8 +242,9 @@
         xhrFields: {withCredentials: true},
         success: function (body, status, res) {
           if (body.success) {
+            fb_name = body.facebook.fb_name;
             login_logo.attr("src", body.facebook.fb_profile);
-            login_name.text(body.facebook.fb_name);
+            login_name.text(fb_name);
 
             fb_id = body.facebook.fb_id;
             console.log('body.facebook.fb_id=>' + fb_id);
@@ -628,6 +630,20 @@
               }); //tele_page_disconnect_btn click event
 
 
+            });
+
+            $.ajax({
+              // url: 'https://www.chatbrick.io/api/brick/3785c81a-c040-4d6c-9de0-fb875dc3eb9e/',
+              url: 'https://www.chatbrick.io/api/brick/' + setId + '/',
+              type: 'GET',
+              async: false,
+              crossDomain: true,
+              xhrFields: {withCredentials: true},
+              success: function (body, status, res) {
+                if (body.success) {
+                  $('#context').text('고생하셨어요. 이제 '+body.data.name + 'SET를 완성하기 위한 마지막단계에요. '+fb_name+'님이 소유하고 있는 페이스북의 페이지 또는 텔레그램의 토큰값을 입력하여 챗봇생성을 완료해주세요. 챗봇 수정하기에서 플랫폼 연동을 변경할 수 있어요.')
+                }
+              }
             });
           } else {
             if (body.action == 'ERR0002') {

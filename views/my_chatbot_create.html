@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script type="text/javascript" src="/public/javascripts/href_event.js"></script>
+  <link rel="stylesheet" href="../public/stylesheets/style.css">
 </head>
 <body>
 <header id="header">
@@ -27,7 +28,7 @@
       </div>
       <div id="context">
         <p>
-          챗봇 생성 첫번째 단계로 생성하려는 챗봇의 이름, 설명을 입력하고 봇에 적용할 세트를 선택할 수 있어요.
+          챗봇 생성 첫번째 단계로 생성하려는 챗봇의 이름, 설명을 입력하고 봇에 적용할 세트를 선택할 수 있어요.<br>
           세트 선택하기 버튼 옆의 “미리보기” 버튼을 클릭하여 해당 세트를 체험해 볼 수 있어요.
         </p>
       </div>
@@ -50,18 +51,18 @@
           <div class="wrapper">
             <div class="baseInfo_01 article_title">
               <p>
-                이름
+                챗봇 이름
               </p>
             </div>
-            <input type="text" id="baseInfo_name" class="baseInputText" placeholder="가나다" maxlength="8">
+            <input type="text" id="baseInfo_name" class="baseInputText" placeholder="생성하려는 챗봇의 이름을 입력해주세요. (최대8자)" maxlength="8">
 
             <div class="baseInfo_02 article_title">
               <p>
-                설명
+                챗봇 설명
               </p>
             </div>
-            <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder testInput" placeholder="가나다" maxlength=50>
-            <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder testInput" placeholder="가나다" maxlength=50>
+            <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder testInput" placeholder="생성하려는 챗봇의 설명문구를 입력해주세요." maxlength=50>
+            <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder testInput" maxlength=50>
 
           </div>
         </article>

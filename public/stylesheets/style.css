@@ -1751,17 +1751,21 @@ div._brick_api_section {
 }
 
 .brick_api_item_area {
-    height: 38px;
-    width: auto;
+    /*height: 38px;*/
+    height: 120px;
+    /*width: auto;*/
+    width: 700px;
     margin-bottom: 28px;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .brick_api_item_name {
     height: 32px;
     width: 78px;
-    margin-right: 35px;
+    /*margin-right: 35px;*/
+    margin-bottom: 12px;
 
-    float: left;
+    /*float: left;*/
 }
 
 .brick_api_item_name p {
@@ -1780,7 +1784,7 @@ div._brick_api_section {
 }
 
 .brick_api_item_tag_area {
-    width: 382px;
+    width: 495px;
     height: 38px;
 
     border-bottom: 2px solid #000000;

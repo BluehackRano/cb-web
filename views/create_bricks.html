@@ -306,7 +306,7 @@
 					<div class="modal_brick_api_guild">
 						추가하고 싶은 호출 키워드를 입력해주세요
 					</div>
-					<input type="text" class="modalInputText" id="modal_brick_api_item_tag_add_input"
+					<input type="text" class="modalInputText modal_brick_api_item_tag_add_input"
 								 placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요" maxlength="8" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">
 
 					<div class="modal_brick_api_guild_desc">
@@ -468,6 +468,7 @@
 
   var brick_id;
 	var tagCount;
+	var excloudeApiTag = [];
 
   checkForHash();
 
@@ -696,7 +697,7 @@
 
         var brick_tag = (
           `<div class="brick_api_item_tag" id="brick_api_item_tag` + index + `">` +
-          `<p>` + item + `</p>` +
+          `<p>` + item + ' ' + `</p>` +
           `</div>`
         );
 
@@ -737,27 +738,69 @@
     console.log('itemIndex->' + itemIndex);
 
     pageClickIndex = selected_brick_list[itemIndex];
+    console.log('motify pageClickIndex1=>' + pageClickIndex);
 
     $('.modal_brick_api_item_tag_area').hide();
 
     $('#modal_brick_api_item_tag_area' + selected_brick_list[itemIndex]).show();
     modalClickTagArea = $('#modal_brick_api_item_tag_area' + selected_brick_list[itemIndex]);
     modalNewTagStartIndex = $('#modal_brick_api_item_tag_area' + selected_brick_list[itemIndex] + '> .modal_brick_api_item_tag').length;
-    tagCount = modalNewTagStartIndex;
+
 
     pageClickTagArea = $('#brick_api_item_tag_area' + selected_brick_list[itemIndex]);
     pageTagLength = $('#brick_api_item_tag_area' + selected_brick_list[itemIndex] + '> .brick_api_item_tag').length;
     console.log('pageClickTagArea=>' + pageClickTagArea.html());
     console.log('pageNewTagStartIndex=>' + pageTagLength);
+    tagCount = 0;
+    tagCount = modalNewTagStartIndex;
+    console.log('tagCount1=>' + tagCount);
 
-    console.log('resData[itemIndex].name=>' + resData[itemIndex].name);
-    $('#modal_brick_api_title').text(resData[itemIndex].name);
 
-    modal_brick_api.style.display = "block";
+    console.log('resData[itemIndex].name=>' + resData[pageClickIndex].name);
+    $('#modal_brick_api_title').text(resData[pageClickIndex].name);
+
+    $('.modal_brick_api_item_tag_add_input').attr('id', 'modal_brick_api_item_tag_add_input' + pageClickIndex);
+    $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+//tag수 제한
+    if (tagCount > 4) {
+      console.log('tag수가 5개이상!');
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",true);
+      		$('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+    }
+        else {
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",false);
+    }
+			modal_brick_api.style.display = "block";
 
   });
 
   close_modal_brick_api_img.onclick = function () {
+    //    console.log('tt33=>' + pageTagLength);
+    //기존의 page brick tag 아이템들을 지운다.
+    var madalMaxCount = 5;
+    for (var i = 0; i < madalMaxCount; i++) {
+      $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).remove();
+    }
+
+    //page의 현재 태그정보를 가져온다
+    var resultModalTag = pageClickTagArea.text().split(' ').slice(0, -1);
+    console.log('resultModalTag text=>' + resultModalTag);
+    console.log('pageClickTagArea=>' + pageClickTagArea.html());
+
+    //변경되기전 page brick tag 아이템들로 다시 채운다
+    console.log('resultModalTag length=>' + resultModalTag.length);
+    resultModalTag.forEach(function (item, index, array) {
+      var modal_brick_tag = (
+        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index + `">` +
+        `<p>` + item + ' ' + `</p>` +
+        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index + `">` +
+        `</div>`
+      );
+      $('#modal_brick_api_item_tag_area' + pageClickIndex).append(modal_brick_tag);
+    })
+
     modal_brick_api.style.display = "none";
 
   }
@@ -766,6 +809,10 @@
 
     var itemIndex = $(this).parent().parent().index();
     $('#brick_api_item_area' + selected_brick_list[itemIndex]).hide();
+    //서버로 보내는 keywords 필드에서 제외
+		excloudeApiTag.push(selected_brick_list[itemIndex]);
+
+
     // $('#brick_api_item_area'+selected_brick_list[itemIndex]).toggleClass('hide');
     // console.log('after brick_api_item_area.length=>'+$('.hide').length);
   });
@@ -781,47 +828,33 @@
     $('#' + removeId).remove();
     --tagCount;
     //tag수 제한
-    console.log('tagCount--=>' + tagCount);
-    if (tagCount < 5) {
-      console.log('tag수가 5개이하!');
-      $('.modalInputText').css("border-bottom-color", "#000000");
-      $('#modal_brick_api_item_tag_add_input').attr("disabled", false).attr("readonly", false);
-      $('#modal_brick_api_item_tag_add_input').focus();
+    console.log('tagCount2=>' + tagCount);
+    if (tagCount > 5) {
+      console.log('tag수가 5개이상!');
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled", false).attr("readonly", true);
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+//      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).focus();
+    } else {
+			$('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
+      $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",false);
     }
   });
 
 
   //enter key event
-  var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input');
-  modal_brick_api_item_tag_add_input.keydown(function (key) {
-
+  $('.modal_brick_api_item_tag_add_input').keydown(function (key) {
+    var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input' + pageClickIndex);
+//    console.log('motify pageClickIndex2=>' + pageClickIndex);
     //공백 체크
     if (key.keyCode == 32) {
       console.log('keycode 32 공백 있음')
-//      $(this).focus()
-//      this.value = this.value.replace(' ','');
-//      return false;
-//      $('#modal_brick_api_item_tag_add_input').val($('#modal_brick_api_item_tag_add_input').val().replace(' ',''));
 		} else {
 
       //enter key event
       if (key.keyCode == 13) {
 
-
-        ++tagCount;
-
-        //TODO: modal_brick_api_item_tag_add_input마다 index를 부여해줘야함
-        //tag수 제한
-				if (tagCount > 4) {
-          console.log('tag수가 5개이상!');
-          $('.modalInputText').css("border-bottom-color", "#d8d8d8");
-          $('#modal_brick_api_item_tag_add_input').attr("disabled",false).attr("readonly",true);
-        }
-//        else {
-//          $('.modalInputText').css("border-bottom-color", "#000000");
-//          $('#modal_brick_api_item_tag_add_input').attr("disabled",false).attr("readonly",false);
-
-          console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
+//          console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
           var modal_brick_tag = (
             `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex + `">` +
             `<p>` + modal_brick_api_item_tag_add_input.val() + ' ' + `</p>` +
@@ -832,12 +865,22 @@
 
           modalClickTagArea.append(modal_brick_tag);
           modalNewTagStartIndex++;
-          console.log('after modalNewTagStartIndex=>' + modalNewTagStartIndex);
-          console.log('modal_brick_api_item_tag_add_input=>' + modal_brick_api_item_tag_add_input.val());
-
           //등록 성공시 입력필드값 초기화
           modal_brick_api_item_tag_add_input.val('');
-//        }
+
+        ++tagCount;
+        //tag수 제한
+        console.log('tagCount3=>' + tagCount);
+        if (tagCount > 4) {
+          console.log('tag수가 5개이상!');
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",true);
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+        }
+        else {
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
+          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled", false).attr("readonly", false);
+        }
       }
 		}
   });
@@ -872,7 +915,7 @@
     resultModalTag.forEach(function (item, index, array) {
       var brick_tag = (
         `<div class="brick_api_item_tag" id="brick_api_item_tag` + index + `">` +
-        `<p>` + item + `</p>` +
+        `<p>` + item + ' ' + `</p>` +
         `</div>`
       );
       $('#brick_api_item_tag_area' + pageClickIndex).append(brick_tag);
@@ -883,7 +926,31 @@
 
   //modal tag cancel btn click event
   $('#modal_right_tag_cancel_btn').click(function () {
+//    console.log('tt33=>' + pageTagLength);
+    //기존의 page brick tag 아이템들을 지운다.
+		var madalMaxCount = 5;
+    for (var i = 0; i < madalMaxCount; i++) {
+      $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).remove();
+    }
 
+    //page의 현재 태그정보를 가져온다
+    var resultModalTag = pageClickTagArea.text().split(' ').slice(0, -1);
+    console.log('resultModalTag text=>' + resultModalTag);
+    console.log('pageClickTagArea=>' + pageClickTagArea.html());
+
+    //변경되기전 page brick tag 아이템들로 다시 채운다
+    console.log('resultModalTag length=>' + resultModalTag.length);
+    resultModalTag.forEach(function (item, index, array) {
+      var modal_brick_tag = (
+        `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + index + `">` +
+        `<p>` + item + ' ' + `</p>` +
+        `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + index + `">` +
+        `</div>`
+      );
+      $('#modal_brick_api_item_tag_area' + pageClickIndex).append(modal_brick_tag);
+    })
+
+    modal_brick_api.style.display = "none";
   });
 
   brick_preview.click(function () {
@@ -1083,129 +1150,10 @@
     var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
     var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + '\n' + user_profile_not_ready_mesage_02 + '\n' + user_profile_not_ready_mesage_03;
 
-    $.ajax({
-      url: 'https://www.chatbrick.io/api/brick/list/',
-      async: false,
-      crossDomain: true,
-      xhrFields: {withCredentials: true},
-      type: 'GET',
-      success: function (body, status, res) {
+    if (user_profile_start_message_01 == ''
+      || user_profile_not_ready_mesage_01 == '') {
 
-        console.log(body.success);
-        resData = body.data;
-
-        if (body.success) {
-
-          for (var i = 0; i < selected_brick_list.length; i++) {
-            resData.forEach(function (item, index, array) {
-
-              if (index == selected_brick_list[i]) {
-                var brick_tags = $('#brick_api_item_tag_area' + index + '> .brick_api_item_tag');
-                console.log('brick_tags=> ' + brick_tags.html());
-
-                for (var j = 0; j < brick_tags.length; j++) {
-
-                  var tag_text = $('#brick_api_item_tag_area' + index + '> #brick_api_item_tag' + j).text();
-                  keywords.push(tag_text);
-
-                }
-                console.log('keywords=> ' + keywords);
-
-                var brickJson = {
-                  id: item.id,
-                  name: item.name,
-                  keywords: keywords,
-                  data: {
-                    // api_key: $('#apikeyInputText' + index).val()
-                  }
-                }
-
-                if (item.api.input.length <= 0) {
-                  console.log('item.api.input.length == 0');
-                } else {
-                  item.api.input.forEach(function (api_key_item, api_key_index, array) {
-                    // console.log('api_key_kind=>' + JSON.stringify(api_key_item));
-
-                    console.log('api_keyInputText_1t=>' + $('#apikeyInputText' + i + '_' + api_key_index).val());
-                    console.log('api_keyInputText_2t=>' + i);
-                    console.log('api_keyInputText_3t=>' + api_key_index);
-                    //write apikey
-                    switch (api_key_item.key) {
-                      case 'api_key' :
-                        brickJson.data.api_key = $('#apikeyInputText' + i + '_' + api_key_index).val();
-                        break;
-
-                      case 'username' :
-                        brickJson.data.username = $('#apikeyInputText' + i + '_' + api_key_index).val();
-                        break;
-
-                      case 'password' :
-                        brickJson.data.password = $('#apikeyInputText' + i + '_' + api_key_index).val();
-                        break;
-
-                      case 'client_id':
-                        brickJson.data.client_id = $('#apikeyInputText' + i + '_' + api_key_index).val();
-                        break;
-
-                      case 'client_secret':
-                        brickJson.data.client_secret = $('#apikeyInputText' + i + '_' + api_key_index).val();
-                        break;
-
-                      case 'subscription':
-                        brickJson.data.subscription = $('#apikeyInputText' + i + '_' + api_key_index).val();
-                        break;
-                    }
-                  });
-
-                }
-
-                submitBrickList.push(brickJson);
-                keywords = [];
-              }
-            });
-          }
-        } else {
-          if (body.action == 'ERR0002') {
-            var default_error_modal = document.getElementById('default_error_modal');
-            var modal_one_error_btn = $('#modal_one_error_btn');
-
-            default_error_modal.style.display = "block";
-            $('#modal_error_context').text(body.msg);
-
-
-            modal_one_error_btn.hover(function () {
-              $(this).css('background-color', '#fb7c7e');
-            }, function () {
-              $(this).css('background-color', '#ff753c');
-            });
-
-            modal_one_error_btn.click(function () {
-              default_error_modal.style.display = "none";
-            });
-          }
-        }
-      }
-    })
-
-    //make send jsonData
-    var submitData = {
-      "type": "bricks",
-      "name": baseInfo_name,
-      "desc": baseInfo_context,
-      "data": {
-        "brick": JSON.parse(JSON.stringify(submitBrickList)),
-        "custom_settings": {
-          "get_started": user_profile_start_message_result,
-          "error_msg": user_profile_not_ready_mesage_result
-        }
-      },
-
-    };
-
-    console.log('submitBrickList=>' + JSON.stringify(submitBrickList));
-
-    if (submitData.data.custom_settings.get_started == ''
-      || submitData.data.custom_settings.error_msg == '') {
+      next_step_modal.style.display = "none";
       console.log('in popup')
       var default_modal = document.getElementById('default_modal');
       var modal_one_btn = $('#modal_one_btn');
@@ -1222,6 +1170,135 @@
         default_modal.style.display = "none";
       });
     } else {
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/list/',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        type: 'GET',
+        success: function (body, status, res) {
+
+          console.log(body.success);
+          resData = body.data;
+
+          if (body.success) {
+
+            for (var i = 0; i < selected_brick_list.length; i++) {
+              resData.forEach(function (item, index, array) {
+
+                if (index == selected_brick_list[i]) {
+
+                  //"삭제"버튼 누른 api tag는 제외
+                  if (excloudeApiTag.includes(index)) {
+                    console.log('제외된apitag=>' + index);
+                  } else {
+
+
+                    var brick_tags = $('#brick_api_item_tag_area' + index + '> .brick_api_item_tag');
+                    console.log('brick_tags=> ' + brick_tags.html());
+
+                    for (var j = 0; j < brick_tags.length; j++) {
+
+                      var tag_text = $('#brick_api_item_tag_area' + index + '> #brick_api_item_tag' + j).text();
+                      keywords.push(tag_text);
+
+                    }
+                    console.log('keywords=> ' + keywords);
+
+                    var brickJson = {
+                      id: item.id,
+                      name: item.name,
+                      keywords: keywords,
+                      data: {
+                        // api_key: $('#apikeyInputText' + index).val()
+                      }
+                    }
+
+                    if (item.api.input.length <= 0) {
+                      console.log('item.api.input.length == 0');
+                    } else {
+                      item.api.input.forEach(function (api_key_item, api_key_index, array) {
+                        // console.log('api_key_kind=>' + JSON.stringify(api_key_item));
+
+                        console.log('api_keyInputText_1t=>' + $('#apikeyInputText' + i + '_' + api_key_index).val());
+                        console.log('api_keyInputText_2t=>' + i);
+                        console.log('api_keyInputText_3t=>' + api_key_index);
+                        //write apikey
+                        switch (api_key_item.key) {
+                          case 'api_key' :
+                            brickJson.data.api_key = $('#apikeyInputText' + i + '_' + api_key_index).val();
+                            break;
+
+                          case 'username' :
+                            brickJson.data.username = $('#apikeyInputText' + i + '_' + api_key_index).val();
+                            break;
+
+                          case 'password' :
+                            brickJson.data.password = $('#apikeyInputText' + i + '_' + api_key_index).val();
+                            break;
+
+                          case 'client_id':
+                            brickJson.data.client_id = $('#apikeyInputText' + i + '_' + api_key_index).val();
+                            break;
+
+                          case 'client_secret':
+                            brickJson.data.client_secret = $('#apikeyInputText' + i + '_' + api_key_index).val();
+                            break;
+
+                          case 'subscription':
+                            brickJson.data.subscription = $('#apikeyInputText' + i + '_' + api_key_index).val();
+                            break;
+                        }
+                      });
+
+                    }
+
+                    submitBrickList.push(brickJson);
+                    keywords = [];
+                  }
+                }
+              });
+            }
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+          }
+        }
+      })
+
+      //make send jsonData
+      var submitData = {
+        "type": "bricks",
+        "name": baseInfo_name,
+        "desc": baseInfo_context,
+        "data": {
+          "brick": JSON.parse(JSON.stringify(submitBrickList)),
+          "custom_settings": {
+            "get_started": user_profile_start_message_result,
+            "error_msg": user_profile_not_ready_mesage_result
+          }
+        },
+
+      };
+
+      console.log('submitBrickList=>' + JSON.stringify(submitBrickList));
+
       //send jsonData in brick api
       $.ajax({
         url: 'https://www.chatbrick.io/api/brick/',

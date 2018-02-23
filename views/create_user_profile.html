@@ -503,9 +503,9 @@
     $('.user_profile_skill_info_03').addClass('transparent');
   });
 
-  $('.user_profile_self_introduction_01').keydown(function (key) {
-    $('.user_profile_self_introduction_01').addClass('transparent');
-  });
+//  $('.user_profile_self_introduction_01').keydown(function (key) {
+//    $('.user_profile_self_introduction_01').addClass('transparent');
+//  });
 
 
 	var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
@@ -524,15 +524,22 @@
 
   var charLimit = 63;
   //enter key event
-  $('#self_introduction_area').keydown(function (key) {
+  $('.user_profile_self_introduction_01').keydown(function (key) {
+//    $('.user_profile_self_introduction_01').addClass('transparent');
 
-    $('.user_profile_self_introduction_01').keypress(function () {
-      if (this.value.length >= charLimit) {
-        console.log('this.value.length=>' + this.value.length);
-        $(this).next('.user_profile_self_introduction_01').focus();
-        return false;
-      }
-    });
+		console.log('keyCode =>' + key.keyCode);
+    if(key.keyCode == 8 || key.keyCode ==91 || key.keyCode ==17 || key.keyCode ==63 || key.keyCode ==65) {
+      console.log('backspace!');
+		} else {
+			if (this.value.length >= charLimit) {
+      console.log('this.value.length=>' + this.value.length);
+      $(this).next('.user_profile_self_introduction_01').focus();
+      return false;
+    }
+		}
+  });
+
+  $('#self_introduction_area').keydown(function (key) {
 
     if (key.keyCode == 13) {
       var self_introduction_length = $('.user_profile_self_introduction_01').length + 1;
@@ -542,7 +549,7 @@
         `<input type="text" id="user_profile_self_introduction_01_`+self_introduction_length+`" class="baseInputText_02 user_profile_self_introduction_01">`
       );
       $('#self_introduction_area').append(addLine);
-      $(this).next('.user_profile_self_introduction_01').focus();
+//      $(this).next('.user_profile_self_introduction_01').focus();
     }
 //    $('.user_profile_self_introduction_01').addClass('transparent');
   });
@@ -558,6 +565,7 @@
       console.log('text length=>' + text.length);
       if (text.length >= charLimit) {
 
+        //첫라인
         strList.push(text.substring(0,charLimit));
 
         for (var i = charLimit+1; i < text.length; i+=charLimit) {
@@ -589,7 +597,7 @@
 				}
         return false;
       } else {
-        console.log('자동개행 예외상황!');
+        console.log('한줄 텍스트!');
 //        $(this).next('#user_profile_self_introduction_01_1').val(text);
 //				$(this).next('#user_profile_self_introduction_01_1').focus();
 			}
@@ -838,12 +846,12 @@
       var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
       var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
       var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
-      var user_profile_start_message_result = user_profile_start_message_01 + user_profile_start_message_02 + user_profile_start_message_03;
+      var user_profile_start_message_result = user_profile_start_message_01 + '\n' + user_profile_start_message_02 + '\n' + user_profile_start_message_03;
 
       var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
       var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
       var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
-      var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + user_profile_not_ready_mesage_02 + user_profile_not_ready_mesage_03;
+      var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + '\n' + user_profile_not_ready_mesage_02 + '\n' + user_profile_not_ready_mesage_03;
 
       var user_profile_company_name_01 = $('#user_profile_company_name_01').val();
       var user_profile_company_name_02 = $('#user_profile_company_name_02').val();
@@ -863,15 +871,15 @@
 
       var user_profile_skill_info_01_1 = $('#user_profile_skill_info_01_1').val();
       var user_profile_skill_info_01_2 = $('#user_profile_skill_info_01_2').val();
-      var user_profile_skill_info_01_result = user_profile_skill_info_01_1 + user_profile_skill_info_01_2;
+      var user_profile_skill_info_01_result = user_profile_skill_info_01_1 + '\n' + user_profile_skill_info_01_2;
 
       var user_profile_skill_info_02_1 = $('#user_profile_skill_info_02_1').val();
       var user_profile_skill_info_02_2 = $('#user_profile_skill_info_02_2').val();
-      var user_profile_skill_info_02_result = user_profile_skill_info_02_1 + user_profile_skill_info_02_2;
+      var user_profile_skill_info_02_result = user_profile_skill_info_02_1 + '\n' + user_profile_skill_info_02_2;
 
       var user_profile_skill_info_03_1 = $('#user_profile_skill_info_03_1').val();
       var user_profile_skill_info_03_2 = $('#user_profile_skill_info_03_2').val();
-      var user_profile_skill_info_03_result = user_profile_skill_info_03_1 + user_profile_skill_info_03_2;
+      var user_profile_skill_info_03_result = user_profile_skill_info_03_1 + '\n' + user_profile_skill_info_03_2;
 
 
 //      var user_profile_self_introduction_01_1 = $('#user_profile_self_introduction_01_1').val();

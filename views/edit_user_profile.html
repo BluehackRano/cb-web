@@ -1590,15 +1590,23 @@
 
   var charLimit = 63;
   //enter key event
+  $('.user_profile_self_introduction_01').keydown(function () {
+    if (this.value.length >= charLimit) {
+      console.log('this.value.length=>' + this.value.length);
+      $(this).next('.user_profile_self_introduction_01').focus();
+      return false;
+    }
+  });
+
   $('#self_introduction_area').keydown(function (key) {
 
-    $('.user_profile_self_introduction_01').keypress(function () {
-      if (this.value.length >= charLimit) {
-        console.log('this.value.length=>' + this.value.length);
-        $(this).next('.user_profile_self_introduction_01').focus();
-        return false;
-      }
-    });
+//    $('.user_profile_self_introduction_01').keypress(function () {
+//      if (this.value.length >= charLimit) {
+//        console.log('this.value.length=>' + this.value.length);
+//        $(this).next('.user_profile_self_introduction_01').focus();
+//        return false;
+//      }
+//    });
 
     if (key.keyCode == 13) {
       var self_introduction_length = $('.user_profile_self_introduction_01').length + 1;

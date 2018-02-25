@@ -285,7 +285,7 @@
                 </div>
 
                 <div class="tg_input_btn_line">
-                  <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
+                  <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 TOKEN KEY를 입력해주세요.">
                   <div class="tele_page_btn" id="tele_page_btn">연결하기</div>
                 </div>
                 <div class="tg_content_context">
@@ -395,13 +395,13 @@
             추가하고 싶은 호출 키워드를 입력해주세요
           </div>
           <input type="text" class="modalInputText modal_brick_api_item_tag_add_input"
-                 placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요" maxlength="8" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">
+                 placeholder="추가하려는 호출키워드를 입력하고 엔터키를 눌러주세요" maxlength="6" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">
 
 
           <div class="modal_brick_api_guild_desc">
-            * 호출키워드의 글자수는 8자까지만 가능해요<br>
+            * 호출키워드의 글자수는 6자까지만 가능해요<br>
             * 호출키워드에서 띄어쓰기를 사용할 수 없어요<br>
-            * 호출키워드는 총 5개까지만 등록할 수 있어요<br>
+            * 호출키워드는 총 4개까지만 등록할 수 있어요<br>
           </div>
         </div>
 
@@ -831,8 +831,8 @@
     $('.modal_brick_api_item_tag_add_input').attr('id', 'modal_brick_api_item_tag_add_input' + pageClickIndex);
     $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
 //tag수 제한
-    if (tagCount > 4) {
-      console.log('tag수가 5개이상!');
+    if (tagCount > 3) {
+      console.log('tag수가 4개이상!');
       $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
       $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",true);
       $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
@@ -848,11 +848,12 @@
 
   close_modal_brick_api_img.onclick = function () {
     //    console.log('tt33=>' + pageTagLength);
-    //기존의 page brick tag 아이템들을 지운다.
-    var madalMaxCount = 5;
-    for (var i = 0; i < madalMaxCount; i++) {
-      $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).remove();
-    }
+    //기존의 modal brick tag 아이템들을 지운다.
+    $('#modal_brick_api_item_tag_area' + pageClickIndex + '> .modal_brick_api_item_tag').remove();
+    // var madalMaxCount = 40;
+    // for (var i = 0; i < madalMaxCount; i++) {
+    //   $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).remove();
+    // }
 
     //page의 현재 태그정보를 가져온다
     var resultModalTag = pageClickTagArea.text().split(' ').slice(0, -1);
@@ -898,8 +899,8 @@
     --tagCount;
     //tag수 제한
     console.log('tagCount2=>' + tagCount);
-    if (tagCount > 5) {
-      console.log('tag수가 5개이상!');
+    if (tagCount > 4) {
+      console.log('tag수가 4개이상!');
       $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
       $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled", false).attr("readonly", true);
       $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
@@ -915,6 +916,7 @@
   $('.modal_brick_api_item_tag_add_input').keydown(function (key) {
     var modal_brick_api_item_tag_add_input = $('#modal_brick_api_item_tag_add_input' + pageClickIndex);
 //    console.log('motify pageClickIndex2=>' + pageClickIndex);
+
     //공백 체크
     if (key.keyCode == 32) {
       console.log('keycode 32 공백 있음')
@@ -923,32 +925,35 @@
       //enter key event
       if (key.keyCode == 13) {
 
-//          console.log('before modalNewTagStartIndex=>' + modalNewTagStartIndex);
-        var modal_brick_tag = (
-          `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex + `">` +
-          `<p>` + modal_brick_api_item_tag_add_input.val() + ' ' + `</p>` +
-          `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex + `">` +
-          `</div>`
-        );
+        if (modal_brick_api_item_tag_add_input.val() == '') {
+          console.log('입력값이 공백!');
+        } else {
+          var modal_brick_tag = (
+            `<div class="modal_brick_api_item_tag" id="modal_brick_api_item_tag` + modalNewTagStartIndex + `">` +
+            `<p>` + modal_brick_api_item_tag_add_input.val() + ' ' + `</p>` +
+            `<img src="../public/images/brtn-tag-delete-nor.png" class="modal_brick_api_item_del_img" id="modal_brick_api_item_del_img` + modalNewTagStartIndex + `">` +
+            `</div>`
+          );
 
 
-        modalClickTagArea.append(modal_brick_tag);
-        modalNewTagStartIndex++;
-        //등록 성공시 입력필드값 초기화
-        modal_brick_api_item_tag_add_input.val('');
+          modalClickTagArea.append(modal_brick_tag);
+          modalNewTagStartIndex++;
+          //등록 성공시 입력필드값 초기화
+          modal_brick_api_item_tag_add_input.val('');
 
-        ++tagCount;
-        //tag수 제한
-        console.log('tagCount3=>' + tagCount);
-        if (tagCount > 4) {
-          console.log('tag수가 5개이상!');
-          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
-          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",true);
-          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
-        }
-        else {
-          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
-          $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled", false).attr("readonly", false);
+          ++tagCount;
+          //tag수 제한
+          console.log('tagCount3=>' + tagCount);
+          if (tagCount > 3) {
+            console.log('tag수가 4개이상!');
+            $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#d8d8d8");
+            $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled", false).attr("readonly", true);
+            $('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
+          }
+          else {
+            $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
+            $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled", false).attr("readonly", false);
+          }
         }
       }
     }
@@ -961,6 +966,13 @@
 //      alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
       obj.focus();
       obj.value = obj.value.replace(' ',''); // 공백제거
+      return false;
+    }
+
+    //한글일때 글자 수 예외처리
+    // console.log('글자수체크=>'+obj.value.length);
+    if (obj.value.length == 7) {
+      obj.value = obj.value.substr(0, 6);
       return false;
     }
   }
@@ -995,11 +1007,13 @@
   //modal tag cancel btn click event
   $('#modal_right_tag_cancel_btn').click(function () {
 //    console.log('tt33=>' + pageTagLength);
-    //기존의 page brick tag 아이템들을 지운다.
-    var madalMaxCount = 5;
-    for (var i = 0; i < madalMaxCount; i++) {
-      $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).remove();
-    }
+    //기존의 modal brick tag 아이템들을 지운다.
+    $('#modal_brick_api_item_tag_area' + pageClickIndex + '> .modal_brick_api_item_tag').remove();
+    // var madalMaxCount = 40;
+    // for (var i = 0; i < madalMaxCount; i++) {
+      // console.log($('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).html());
+      // $('#modal_brick_api_item_tag_area' + pageClickIndex + '> #modal_brick_api_item_tag' + i).remove();
+    // }
 
     //page의 현재 태그정보를 가져온다
     var resultModalTag = pageClickTagArea.text().split(' ').slice(0, -1);

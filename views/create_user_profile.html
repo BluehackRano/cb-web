@@ -33,10 +33,9 @@
 					SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더
 					{{사용자의 이름}}에 잘어울리는 챗봇으로 만들어보세요.
 				</p>
-
-				<button id="test_full_input_text">클릭하면 전체항목을 채워줘요(테스트용)</button>
 			</div>
 		</div>
+		<button id="test_full_input_text">클릭하면 전체항목을 채워줘요(테스트용)</button>
 	</div>
 </header>
 
@@ -399,7 +398,7 @@
 		<div class="modal-content">
 
 			<div class="modal_title">로그아웃</div>
-			<div class="modal_context">chatbrick에서 로그아웃하시겠습니까?</div>
+			<div class="modal_context">chatbrick에서 로그아웃하시겠어요?</div>
 			<div class="modal_brick_api_two_btn_area">
 				<div id="modal_left_logout_btn" class="modal_left_btn">
 					<p>아니요</p>
@@ -417,7 +416,7 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<div id="animationWindow"></div>
-			<div class="modal_title" id="lego_loading_title">{{프로젝트명}} 포트폴리오</div>
+			<div class="modal_title" id="lego_loading_title">포트폴리오 불러오기</div>
 			<div class="lego_loading_context_area">
 				<div class="lego_loading_context" id="lego_loading_context_01">{{프로젝트명}}의 포트폴리오를 읽어오고 있어요.</div>
 				<div class="lego_loading_context" id="lego_loading_context_02">지금 {{순서}}. {{포트폴리오명}}의 정보를 불러오고 있어요.</div>
@@ -452,6 +451,31 @@
 				</div>
 
 				<div id="modal_right_cancel_btn" class="modal_right_btn">
+					<p>네</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--다음화면으로 넘어가기전 확인 모양 팝업-->
+	<div id="next_step_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<img src="../public/images/img-cb-pop-logo.png" class="create_modal_img">
+			<div class="modal_title">프로젝트 생성확인</div>
+			<div class="create_context_area">
+				<div id="create_modal_context_01">챗봇을 생성하시겠어요?</div>
+				<div id="create_modal_context_02">이후단계에서 페이스북/텔레그램에 연동할 수 있어요.</div>
+			</div>
+			<!--<div class="modal_context">챗봇 생성을 완료하시곘습니까?</div>-->
+
+			<div class="modal_brick_api_two_btn_area">
+				<div id="modal_left_next_step_btn" class="modal_left_next_step_btn">
+					<p>아니요</p>
+				</div>
+
+				<div id="modal_right_next_step_btn" class="modal_right_next_step_btn">
 					<p>네</p>
 				</div>
 			</div>
@@ -528,7 +552,7 @@
 //    $('.user_profile_self_introduction_01').addClass('transparent');
 
 		console.log('keyCode =>' + key.keyCode);
-    if(key.keyCode == 8 || key.keyCode ==91 || key.keyCode ==17 || key.keyCode ==63 || key.keyCode ==65) {
+    if(key.keyCode == 8 || key.keyCode ==91 || key.keyCode ==17 || key.keyCode ==63 || key.keyCode ==65 || key.keyCode ==67) {
       console.log('backspace!');
 		} else {
 			if (this.value.length >= charLimit) {
@@ -1062,47 +1086,71 @@
   next_page.click(function () {
     $(this).css('background-color', '#bd292c');
 
-    var user_profile_check = false;
-    for (var i = 1; i <= 3; i++) {
+    var next_step_modal = document.getElementById('next_step_modal');
+    var modal_left_next_step_btn = $('#modal_left_next_step_btn');
+    var modal_right_next_step_btn = $('#modal_right_next_step_btn');
+    next_step_modal.style.display = "block";
 
-      if (!($('#user_profile_company_name_0' + i).val() != ''
-        && $('#user_profile_company_term_0' + i).val() != ''
-        && $('#user_profile_company_major_0' + i).val() != '')
-			&& (!($('#user_profile_company_name_0' + i).val() == ''
-        && $('#user_profile_company_term_0' + i).val() == ''
-        && $('#user_profile_company_major_0' + i).val() == ''))) {
+    modal_left_next_step_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
 
+    modal_right_next_step_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#fd6246');
+    });
+
+    modal_left_next_step_btn.click(function () {
+      next_step_modal.style.display = "none";
+    });
+
+    modal_right_next_step_btn.click(function () {
+      next_step_modal.style.display = "none";
+
+      var user_profile_check = false;
+      for (var i = 1; i <= 3; i++) {
+
+        if (!($('#user_profile_company_name_0' + i).val() != ''
+            && $('#user_profile_company_term_0' + i).val() != ''
+            && $('#user_profile_company_major_0' + i).val() != '')
+          && (!($('#user_profile_company_name_0' + i).val() == ''
+            && $('#user_profile_company_term_0' + i).val() == ''
+            && $('#user_profile_company_major_0' + i).val() == ''))) {
+
+          user_profile_check = true;
+        }
+
+        if (!($('#user_profile_skill_name_0' + i).val() != ''
+            && $('#user_profile_skill_info_0' + i + '_1').val() != '')
+          && (!($('#user_profile_skill_name_0' + i).val() == ''
+            && $('#user_profile_skill_info_0' + i + '_1').val() == ''))) {
+          user_profile_check = true;
+        }
+      }
+
+      if (($('#user_profile_company_name_01').val() == ''
+          && $('#user_profile_company_term_01').val() == ''
+          && $('#user_profile_company_major_01').val() == '')
+        && ($('#user_profile_company_name_02').val() == ''
+          && $('#user_profile_company_term_02').val() == ''
+          && $('#user_profile_company_major_02').val() == '')
+        && ($('#user_profile_company_name_03').val() == ''
+          && $('#user_profile_company_term_03').val() == ''
+          && $('#user_profile_company_major_03').val() == '')) {
         user_profile_check = true;
       }
 
-      if (!($('#user_profile_skill_name_0' + i).val() != ''
-					&& $('#user_profile_skill_info_0' + i + '_1').val() != '')
-				&& (!($('#user_profile_skill_name_0' + i).val() == ''
-        	&& $('#user_profile_skill_info_0' + i + '_1').val() == ''))) {
+      if (($('#user_profile_skill_name_01').val() == ''
+          && $('#user_profile_skill_info_01_1').val() == '')
+        && ($('#user_profile_skill_name_02').val() == ''
+          && $('#user_profile_skill_info_02_1').val() == '')
+        && ($('#user_profile_skill_name_03').val() == ''
+          && $('#user_profile_skill_info_03_1').val() == '')) {
         user_profile_check = true;
       }
-    }
-
-    if (($('#user_profile_company_name_01').val() == ''
-      && $('#user_profile_company_term_01').val() == ''
-      && $('#user_profile_company_major_01').val() == '')
-		&& ($('#user_profile_company_name_02').val() == ''
-      && $('#user_profile_company_term_02').val() == ''
-      && $('#user_profile_company_major_02').val() == '')
-		&& ($('#user_profile_company_name_03').val() == ''
-      && $('#user_profile_company_term_03').val() == ''
-      && $('#user_profile_company_major_03').val() == '')) {
-      user_profile_check = true;
-		}
-
-    if (($('#user_profile_skill_name_01').val() == ''
-      && $('#user_profile_skill_info_01_1').val() == '')
-		&& ($('#user_profile_skill_name_02').val() == ''
-      && $('#user_profile_skill_info_02_1').val() == '')
-		&& ($('#user_profile_skill_name_03').val() == ''
-      && $('#user_profile_skill_info_03_1').val() == '')) {
-      user_profile_check = true;
-    }
 
 //    if ($('.user_profile_company').val() == '' || $('.user_profile_skill').val() == '') {
 //
@@ -1111,52 +1159,53 @@
 //      user_profile_check = true;
 //		}
 
-    if ($('#user_profile_data_name').val() == '' || $('#user_profile_data_professional').val() == ''
-      || $('#user_profile_data_location').val() == '' || $('#user_profile_data_appeal').val() == ''
-      || $('#profile_img').src == ''
-      || $('#user_profile_start_message_01').val() == '' || $('#user_profile_not_ready_mesage_01').val() == ''
-      || user_profile_check == true) {
-      //      portfolioList = [];
+      if ($('#user_profile_data_name').val() == '' || $('#user_profile_data_professional').val() == ''
+        || $('#user_profile_data_location').val() == '' || $('#user_profile_data_appeal').val() == ''
+        || $('#profile_img').src == ''
+        || $('#user_profile_start_message_01').val() == '' || $('#user_profile_not_ready_mesage_01').val() == ''
+        || user_profile_check == true) {
+        //      portfolioList = [];
 
-      console.log('user_profile_check1 =>' + user_profile_check);
-      var default_modal = document.getElementById('default_modal');
-      var modal_one_btn = $('#modal_one_btn');
+        console.log('user_profile_check1 =>' + user_profile_check);
+        var default_modal = document.getElementById('default_modal');
+        var modal_one_btn = $('#modal_one_btn');
 
-      default_modal.style.display = "block";
+        default_modal.style.display = "block";
 
-      modal_one_btn.hover(function () {
-        $(this).css('background-color', '#fb7c7e');
-      }, function () {
-        $(this).css('background-color', '#ff753c');
-      });
+        modal_one_btn.hover(function () {
+          $(this).css('background-color', '#fb7c7e');
+        }, function () {
+          $(this).css('background-color', '#ff753c');
+        });
 
-      modal_one_btn.click(function () {
-        default_modal.style.display = "none";
-      });
+        modal_one_btn.click(function () {
+          default_modal.style.display = "none";
+        });
 
-    } else {
-      console.log('user_profile_check2 =>' + user_profile_check);
+      } else {
+        console.log('user_profile_check2 =>' + user_profile_check);
 
-      lego_loading_modal.style.display = "block";
-      var designer_portfolio_url_list = [];
-      var user_profile_portfolio_01 = $('#user_profile_portfolio_01').val();
-      var user_profile_portfolio_02 = $('#user_profile_portfolio_02').val();
-      var user_profile_portfolio_03 = $('#user_profile_portfolio_03').val();
-      var user_profile_portfolio_04 = $('#user_profile_portfolio_04').val();
-      var user_profile_portfolio_05 = $('#user_profile_portfolio_05').val();
-      var user_profile_portfolio_06 = $('#user_profile_portfolio_06').val();
-      var user_profile_portfolio_07 = $('#user_profile_portfolio_07').val();
-      var user_profile_portfolio_08 = $('#user_profile_portfolio_08').val();
-      var user_profile_portfolio_09 = $('#user_profile_portfolio_09').val();
-      var user_profile_portfolio_10 = $('#user_profile_portfolio_10').val();
+        lego_loading_modal.style.display = "block";
+        var designer_portfolio_url_list = [];
+        var user_profile_portfolio_01 = $('#user_profile_portfolio_01').val();
+        var user_profile_portfolio_02 = $('#user_profile_portfolio_02').val();
+        var user_profile_portfolio_03 = $('#user_profile_portfolio_03').val();
+        var user_profile_portfolio_04 = $('#user_profile_portfolio_04').val();
+        var user_profile_portfolio_05 = $('#user_profile_portfolio_05').val();
+        var user_profile_portfolio_06 = $('#user_profile_portfolio_06').val();
+        var user_profile_portfolio_07 = $('#user_profile_portfolio_07').val();
+        var user_profile_portfolio_08 = $('#user_profile_portfolio_08').val();
+        var user_profile_portfolio_09 = $('#user_profile_portfolio_09').val();
+        var user_profile_portfolio_10 = $('#user_profile_portfolio_10').val();
 
-      designer_portfolio_url_list.push(user_profile_portfolio_01, user_profile_portfolio_02,
-        user_profile_portfolio_03, user_profile_portfolio_04, user_profile_portfolio_05,
-        user_profile_portfolio_06, user_profile_portfolio_07, user_profile_portfolio_08,
-        user_profile_portfolio_09, user_profile_portfolio_10)
+        designer_portfolio_url_list.push(user_profile_portfolio_01, user_profile_portfolio_02,
+          user_profile_portfolio_03, user_profile_portfolio_04, user_profile_portfolio_05,
+          user_profile_portfolio_06, user_profile_portfolio_07, user_profile_portfolio_08,
+          user_profile_portfolio_09, user_profile_portfolio_10)
 
-            getAllImages(designer_portfolio_url_list, 10);
-    }
+        getAllImages(designer_portfolio_url_list, 10);
+      }
+    });
 
   });
 

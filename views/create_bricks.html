@@ -356,8 +356,14 @@
 	<!-- Modal content -->
 	<div class="modal-content">
 
-		<div class="modal_title">확인</div>
-		<div class="modal_context">챗봇 생성을 완료하시곘습니까?</div>
+		<img src="../public/images/img-cb-pop-logo.png" class="create_modal_img">
+		<div class="modal_title">프로젝트 생성확인</div>
+		<div class="create_context_area">
+			<div id="create_modal_context_01">챗봇을 생성하시겠어요?</div>
+			<div id="create_modal_context_02">이후단계에서 페이스북/텔레그램에 연동할 수 있어요.</div>
+		</div>
+		<!--<div class="modal_context">챗봇 생성을 완료하시곘습니까?</div>-->
+
 		<div class="modal_brick_api_two_btn_area">
 			<div id="modal_left_next_step_btn" class="modal_left_next_step_btn">
 				<p>아니요</p>
@@ -376,7 +382,7 @@
 	<div class="modal-content">
 
 		<div class="modal_title">로그아웃</div>
-		<div class="modal_context">chatbrick에서 로그아웃하시겠습니까?</div>
+		<div class="modal_context">chatbrick에서 로그아웃하시겠어요?</div>
 		<div class="modal_brick_api_two_btn_area">
 			<div id="modal_left_logout_btn" class="modal_left_btn">
 				<p>아니요</p>
@@ -767,6 +773,7 @@
       		$('#modal_brick_api_item_tag_add_input' + pageClickIndex).val('');
     }
         else {
+
           $('#modal_brick_api_item_tag_add_input' + pageClickIndex).css("border-bottom-color", "#000000");
           $('#modal_brick_api_item_tag_add_input' + pageClickIndex).attr("disabled",false).attr("readonly",false);
     }

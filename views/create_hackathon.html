@@ -180,7 +180,7 @@
 
 								<div class="date_form_one" id="before_meeting_checked">
 									<input type="text" class="date_format_one" id="start_date_before_meeting"
-												 placeholder="사전모임일을 선택하여 입력">
+												 placeholder=" 클릭하여 사전모임 날짜 입력">
 								</div>
 							</div>
 
@@ -243,9 +243,9 @@
 								</div>
 								<div id="hackathon_1day_input_content">
 								<input type="text" id="hackathon_1day_content_01" class="baseInputText_02 hackathon_1day_content"
-											 placeholder="예 : 네트워킹 및 팀빌딩">
+											 placeholder="(09:00 ~ 19:00) 자유진행시간">
 								<input type="text" id="hackathon_1day_content_02" class="baseInputText_02 hackathon_1day_content"
-											 placeholder="(13:00 ~ 13:30) 개인별 자기소개 시간">
+											 placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
 								<input type="text" id="hackathon_1day_content_03" class="baseInputText_02 hackathon_1day_content"
 											 placeholder="(엔터를 입력하면 더 많이 작성할 수 있어요)">
 								</div>
@@ -258,7 +258,7 @@
 								</div>
 								<div id="hackathon_2day_input_content">
 								<input type="text" id="hackathon_2day_content_01" class="baseInputText_02 hackathon_2day_content"
-											 placeholder="(18:30 ~ 19:00) 참가자 등록">
+											 placeholder="(09:00 ~ 19:00) 자유진행시간">
 								<input type="text" id="hackathon_2day_content_02" class="baseInputText_02 hackathon_2day_content"
 											 placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
 								<input type="text" id="hackathon_2day_content_03" class="baseInputText_02 hackathon_2day_content"
@@ -273,7 +273,7 @@
 								</div>
 								<div id="hackathon_3day_input_content">
 								<input type="text" id="hackathon_3day_content_01" class="baseInputText_02 hackathon_3day_content"
-											 placeholder="(18:30 ~ 19:00) 참가자 등록">
+											 placeholder="(09:00 ~ 19:00) 자유진행시간">
 								<input type="text" id="hackathon_3day_content_02" class="baseInputText_02 hackathon_3day_content"
 											 placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
 								<input type="text" id="hackathon_3day_content_03" class="baseInputText_02 hackathon_3day_content"
@@ -288,7 +288,7 @@
 								</div>
 								<div id="hackathon_4day_input_content">
 								<input type="text" id="hackathon_4day_content_01" class="baseInputText_02 hackathon_4day_content"
-											 placeholder="(18:30 ~ 19:00) 참가자 등록">
+											 placeholder="(09:00 ~ 19:00) 자유진행시간">
 								<input type="text" id="hackathon_4day_content_02" class="baseInputText_02 hackathon_4day_content"
 											 placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
 								<input type="text" id="hackathon_4day_content_03" class="baseInputText_02 hackathon_4day_content"
@@ -303,7 +303,7 @@
 								</div>
 								<div id="hackathon_5day_input_content">
 								<input type="text" id="hackathon_5day_content_01" class="baseInputText_02 hackathon_5day_content"
-											 placeholder="(18:30 ~ 19:00) 참가자 등록">
+											 placeholder="(09:00 ~ 19:00) 자유진행시간">
 								<input type="text" id="hackathon_5day_content_02" class="baseInputText_02 hackathon_5day_content"
 											 placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
 								<input type="text" id="hackathon_5day_content_03" class="baseInputText_02 hackathon_5day_content"
@@ -572,7 +572,7 @@
 		<div class="modal-content">
 
 			<div class="modal_title">로그아웃</div>
-			<div class="modal_context">chatbrick에서 로그아웃하시겠습니까?</div>
+			<div class="modal_context">chatbrick에서 로그아웃하시겠어요?</div>
 			<div class="modal_brick_api_two_btn_area">
 				<div id="modal_left_logout_btn" class="modal_left_btn">
 					<p>아니요</p>
@@ -594,6 +594,31 @@
 			<div class="modal_context" id="modal_error_context"></div>
 			<div id="modal_one_error_btn" class="modal_one_btn">
 				<p>확인</p></div>
+		</div>
+	</div>
+
+	<!--다음화면으로 넘어가기전 확인 모양 팝업-->
+	<div id="next_step_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<img src="../public/images/img-cb-pop-logo.png" class="create_modal_img">
+			<div class="modal_title">프로젝트 생성확인</div>
+			<div class="create_context_area">
+				<div id="create_modal_context_01">챗봇을 생성하시겠어요?</div>
+				<div id="create_modal_context_02">이후단계에서 페이스북/텔레그램에 연동할 수 있어요.</div>
+			</div>
+			<!--<div class="modal_context">챗봇 생성을 완료하시곘습니까?</div>-->
+
+			<div class="modal_brick_api_two_btn_area">
+				<div id="modal_left_next_step_btn" class="modal_left_next_step_btn">
+					<p>아니요</p>
+				</div>
+
+				<div id="modal_right_next_step_btn" class="modal_right_next_step_btn">
+					<p>네</p>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -1229,255 +1254,279 @@
   next_page.click(function () {
     $(this).css('background-color', '#bd292c');
 
-    var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
-    var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
-    var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
-    var user_profile_start_message_result = user_profile_start_message_01 + '\n' + user_profile_start_message_02 + '\n' + user_profile_start_message_03;
+    var next_step_modal = document.getElementById('next_step_modal');
+    var modal_left_next_step_btn = $('#modal_left_next_step_btn');
+    var modal_right_next_step_btn = $('#modal_right_next_step_btn');
+    next_step_modal.style.display = "block";
 
-    var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
-    var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
-    var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
-    var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + '\n' + user_profile_not_ready_mesage_02 + '\n' + user_profile_not_ready_mesage_03;
+    modal_left_next_step_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
 
-    //make award json data
-    var awardItemList = [];
-    for (var i = 1; i <= Number($('#hackathon_award_kind_count').val()); i++) {
+    modal_right_next_step_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#fd6246');
+    });
 
-      console.log('i=>' + i);
-      console.log('name==>' + $('#hackathon_award_kind_name_0' + i).val());
-      var awardJson = {
-        "name": $('#hackathon_award_kind_name_0' + i).val(),
-        "desc": $('#hackathon_award_taken_number_0' + i).val(),
-        "benefit": $('#hackathon_award_reward_0' + i).val()
+    modal_left_next_step_btn.click(function () {
+      next_step_modal.style.display = "none";
+    });
+
+    modal_right_next_step_btn.click(function () {
+      next_step_modal.style.display = "none";
+      var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
+      var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
+      var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
+      var user_profile_start_message_result = user_profile_start_message_01 + '\n' + user_profile_start_message_02 + '\n' + user_profile_start_message_03;
+
+      var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
+      var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
+      var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
+      var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + '\n' + user_profile_not_ready_mesage_02 + '\n' + user_profile_not_ready_mesage_03;
+
+      //make award json data
+      var awardItemList = [];
+      for (var i = 1; i <= Number($('#hackathon_award_kind_count').val()); i++) {
+
+        console.log('i=>' + i);
+        console.log('name==>' + $('#hackathon_award_kind_name_0' + i).val());
+        var awardJson = {
+          "name": $('#hackathon_award_kind_name_0' + i).val(),
+          "desc": $('#hackathon_award_taken_number_0' + i).val(),
+          "benefit": $('#hackathon_award_reward_0' + i).val()
+        }
+
+        awardItemList.push(awardJson);
       }
+      console.log('awardItemList=>' + JSON.stringify(awardItemList));
 
-      awardItemList.push(awardJson);
-    }
-    console.log('awardItemList=>' + JSON.stringify(awardItemList));
+      var hackathon_1day_content = "";
+      $('.hackathon_1day_content').each(function () {
+        hackathon_1day_content += $(this).val() + '\n';
+      })
+      console.log('hackathon_1day_content=>' + hackathon_1day_content);
 
-    var hackathon_1day_content = "";
-    $('.hackathon_1day_content').each(function () {
-      hackathon_1day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_1day_content=>' + hackathon_1day_content);
+      var hackathon_2day_content = "";
+      $('.hackathon_2day_content').each(function () {
+        hackathon_2day_content += $(this).val() + '\n';
+      })
+      console.log('hackathon_2day_content=>' + hackathon_2day_content);
 
-    var hackathon_2day_content = "";
-    $('.hackathon_2day_content').each(function () {
-      hackathon_2day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_2day_content=>' + hackathon_2day_content);
+      var hackathon_3day_content = "";
+      $('.hackathon_3day_content').each(function () {
+        hackathon_3day_content += $(this).val() + '\n';
+      })
+      console.log('hackathon_3day_content=>' + hackathon_3day_content);
 
-    var hackathon_3day_content = "";
-    $('.hackathon_3day_content').each(function () {
-      hackathon_3day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_3day_content=>' + hackathon_3day_content);
+      var hackathon_4day_content = "";
+      $('.hackathon_4day_content').each(function () {
+        hackathon_4day_content += $(this).val() + '\n';
+      })
+      console.log('hackathon_4day_content=>' + hackathon_4day_content);
 
-    var hackathon_4day_content = "";
-    $('.hackathon_4day_content').each(function () {
-      hackathon_4day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_4day_content=>' + hackathon_4day_content);
+      var hackathon_5day_content = "";
+      $('.hackathon_5day_content').each(function () {
+        hackathon_5day_content += $(this).val() + '\n';
+      })
+      console.log('hackathon_5day_content=>' + hackathon_5day_content);
 
-    var hackathon_5day_content = "";
-    $('.hackathon_5day_content').each(function () {
-      hackathon_5day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_5day_content=>' + hackathon_5day_content);
+      var before_meeting_clicked_content = "";
+      $('.before_meeting_clicked_content').each(function () {
+        before_meeting_clicked_content += $(this).val() + '\n';
+      })
+      console.log('before_meeting_clicked_content=>' + before_meeting_clicked_content);
 
-    var before_meeting_clicked_content = "";
-    $('.before_meeting_clicked_content').each(function () {
-      before_meeting_clicked_content += $(this).val() + '\n';
-    })
-    console.log('before_meeting_clicked_content=>' + before_meeting_clicked_content);
+      var hackathon_participation_confirm = "";
+      $('.hackathon_participation_confirm').each(function () {
+        hackathon_participation_confirm += $(this).val() + '\n';
+      })
+      console.log('hackathon_participation_confirm=>' + hackathon_participation_confirm);
 
-    var hackathon_participation_confirm = "";
-    $('.hackathon_participation_confirm').each(function () {
-      hackathon_participation_confirm += $(this).val() + '\n';
-    })
-    console.log('hackathon_participation_confirm=>' + hackathon_participation_confirm);
+      var hackathon_participation_ready_info = "";
+      $('.hackathon_participation_ready_info').each(function () {
+        hackathon_participation_ready_info += $(this).val() + '\n';
+      })
+      console.log('hackathon_participation_ready_info=>' + hackathon_participation_ready_info);
 
-    var hackathon_participation_ready_info = "";
-    $('.hackathon_participation_ready_info').each(function () {
-      hackathon_participation_ready_info += $(this).val() + '\n';
-    })
-    console.log('hackathon_participation_ready_info=>' + hackathon_participation_ready_info);
-
-    var reward_addInputLine = "";
-    $('.reward_addInputLine').each(function () {
-      reward_addInputLine += $(this).val() + '\n';
-    })
-    console.log('reward_addInputLine=>' + reward_addInputLine);
+      var reward_addInputLine = "";
+      $('.reward_addInputLine').each(function () {
+        reward_addInputLine += $(this).val() + '\n';
+      })
+      console.log('reward_addInputLine=>' + reward_addInputLine);
 
 
-    var organizer_addInputLine = "";
-    $('.organizer_addInputLine').each(function () {
-      organizer_addInputLine += $(this).val() + '\n';
-    })
-    console.log('organizer_addInputLine=>' + organizer_addInputLine);
+      var organizer_addInputLine = "";
+      $('.organizer_addInputLine').each(function () {
+        organizer_addInputLine += $(this).val() + '\n';
+      })
+      console.log('organizer_addInputLine=>' + organizer_addInputLine);
 
-    var supervisor_addInputLine = "";
-    $('.supervisor_addInputLine').each(function () {
-      supervisor_addInputLine += $(this).val() + '\n';
-    })
-    console.log('supervisor_addInputLine=>' + supervisor_addInputLine);
+      var supervisor_addInputLine = "";
+      $('.supervisor_addInputLine').each(function () {
+        supervisor_addInputLine += $(this).val() + '\n';
+      })
+      console.log('supervisor_addInputLine=>' + supervisor_addInputLine);
 
-    var sponsor_addInputLine = "";
-    $('.sponsor_addInputLine').each(function () {
-      sponsor_addInputLine += $(this).val() + '\n';
-    })
-    console.log('sponsor_addInputLine=>' + sponsor_addInputLine);
+      var sponsor_addInputLine = "";
+      $('.sponsor_addInputLine').each(function () {
+        sponsor_addInputLine += $(this).val() + '\n';
+      })
+      console.log('sponsor_addInputLine=>' + sponsor_addInputLine);
 
-    console.log('img_url=>' + img_url);
-    var submitData = {
-      "type": "hackathon",
-      "name": baseInfo_name,
-      "desc": baseInfo_context,
-      "data": {
-        "basic": {
-          "poster_image": img_url,
-          "name": $('#user_profile_data_name').val(),
-          "tel": $('#user_profile_data_tel').val(),
-          "email": $('#user_profile_data_professional').val()
-        },
-        "custom_settings": {
-          "get_started": user_profile_start_message_result,
-          "error_msg": user_profile_not_ready_mesage_result
-        },
-        "date": {
-          "application_period": {
-            "start": $('#start_date_participation').val(),
-            "end": $('#end_date_participation').val()
+      console.log('img_url=>' + img_url);
+      var submitData = {
+        "type": "hackathon",
+        "name": baseInfo_name,
+        "desc": baseInfo_context,
+        "data": {
+          "basic": {
+            "poster_image": img_url,
+            "name": $('#user_profile_data_name').val(),
+            "tel": $('#user_profile_data_tel').val(),
+            "email": $('#user_profile_data_professional').val()
           },
+          "custom_settings": {
+            "get_started": user_profile_start_message_result,
+            "error_msg": user_profile_not_ready_mesage_result
+          },
+          "date": {
+            "application_period": {
+              "start": $('#start_date_participation').val(),
+              "end": $('#end_date_participation').val()
+            },
 //          "pre-meeting": $('#start_date_before_meeting').val(), //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
-          "main-meeting": {
-            "start": $('#start_date_dday_meeting').val(),
-            "end": $('#end_date_dday_meeting').val()
-          }
-        },
-        "contents": {
-          "main-meeting": [
+            "main-meeting": {
+              "start": $('#start_date_dday_meeting').val(),
+              "end": $('#end_date_dday_meeting').val()
+            }
+          },
+          "contents": {
+            "main-meeting": [
 //            hackathon_1day_content, hackathon_2day_content,
 //            hackathon_3day_content, hackathon_4day_content,
 //            hackathon_5day_content
-          ],
+            ],
 //          "pre-meeting": before_meeting_clicked_content //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
-        }
-        ,
-        "application": {
-          "url": $('#hackathon_participation_url').val(),
-          "requirements": hackathon_participation_confirm,
-          "preparation": hackathon_participation_ready_info
-        },
-        "place": {
-          "main-meeting": {
-            "name": $('#hackathon_place_name').val(),
-            "address": $('#hackathon_place_address').val(),
-            "url": $('#hackathon_place_navi_url').val()
+          }
+          ,
+          "application": {
+            "url": $('#hackathon_participation_url').val(),
+            "requirements": hackathon_participation_confirm,
+            "preparation": hackathon_participation_ready_info
           },
+          "place": {
+            "main-meeting": {
+              "name": $('#hackathon_place_name').val(),
+              "address": $('#hackathon_place_address').val(),
+              "url": $('#hackathon_place_navi_url').val()
+            },
 //          "pre-meeting": { //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
 //            "name": $('#before_meeting_place_name').val(),
 //            "address": $('#before_meeting_place_address').val(),
 //            "url": $('#before_meeting_place_navi_url').val()
 //          }
-        },
-        "prize": awardItemList, //typeof array
-        "benefit_of_participant": reward_addInputLine,
-        "thanks": {
-          // "hoster": supervisor_addInputLine,
-          "hoster": $('#hackathon_organizer_info_01').val() + '\n' + $('#hackathon_organizer_info_02').val() + '\n' +$('#hackathon_organizer_info_03').val(),
-          // "organizer": organizer_addInputLine,
-          "organizer": $('#hackathon_supervisor_info_01').val() + '\n' + $('#hackathon_supervisor_info_02').val() + '\n' +$('#hackathon_supervisor_info_03').val(),
-          // "sponsor": sponsor_addInputLine
-          "sponsor": $('#hackathon_sponsor_info_01').val() + '\n' + $('#hackathon_sponsor_info_02').val() + '\n' +$('#hackathon_sponsor_info_03').val(),
+          },
+          "prize": awardItemList, //typeof array
+          "benefit_of_participant": reward_addInputLine,
+          "thanks": {
+            // "hoster": supervisor_addInputLine,
+            "hoster": $('#hackathon_organizer_info_01').val() + '\n' + $('#hackathon_organizer_info_02').val() + '\n' +$('#hackathon_organizer_info_03').val(),
+            // "organizer": organizer_addInputLine,
+            "organizer": $('#hackathon_supervisor_info_01').val() + '\n' + $('#hackathon_supervisor_info_02').val() + '\n' +$('#hackathon_supervisor_info_03').val(),
+            // "sponsor": sponsor_addInputLine
+            "sponsor": $('#hackathon_sponsor_info_01').val() + '\n' + $('#hackathon_sponsor_info_02').val() + '\n' +$('#hackathon_sponsor_info_03').val(),
+          }
         }
-      }
-    };
-
-    if ($('.hackathon_1day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_1day_content);
-    }
-    if ($('.hackathon_2day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_2day_content);
-    }
-    if ($('.hackathon_3day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_3day_content);
-    }
-    if ($('.hackathon_4day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_4day_content);
-    }
-    if ($('.hackathon_5day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_5day_content);
-    }
-
-    //사전모임 날짜가 체크 되어 있는 경우
-    if (!($('#start_date_before_meeting').val() == '')) {
-      submitData.data.date['pre-meeting'] = $('#start_date_before_meeting').val();
-      submitData.data.contents['pre-meeting'] = before_meeting_clicked_content;
-      submitData.data.place['pre-meeting'] = {
-        "name": $('#user_profile_data_name').val(),
-        "address": $('#before_meeting_place_address').val(),
-        "url": $('#before_meeting_place_navi_url').val()
       };
-    }
 
-    console.log('submitData=>' + JSON.stringify(submitData));
+      if ($('.hackathon_1day_content').val() != '') {
+        submitData.data.contents['main-meeting'].push(hackathon_1day_content);
+      }
+      if ($('.hackathon_2day_content').val() != '') {
+        submitData.data.contents['main-meeting'].push(hackathon_2day_content);
+      }
+      if ($('.hackathon_3day_content').val() != '') {
+        submitData.data.contents['main-meeting'].push(hackathon_3day_content);
+      }
+      if ($('.hackathon_4day_content').val() != '') {
+        submitData.data.contents['main-meeting'].push(hackathon_4day_content);
+      }
+      if ($('.hackathon_5day_content').val() != '') {
+        submitData.data.contents['main-meeting'].push(hackathon_5day_content);
+      }
 
-    if (submitData.data.basic.name == '' || submitData.data.basic.email == ''
-      || submitData.data.basic.tel == '') {
-      console.log('in popup')
-      var default_modal = document.getElementById('default_modal');
-      var modal_one_btn = $('#modal_one_btn');
+      //사전모임 날짜가 체크 되어 있는 경우
+      if (!($('#start_date_before_meeting').val() == '')) {
+        submitData.data.date['pre-meeting'] = $('#start_date_before_meeting').val();
+        submitData.data.contents['pre-meeting'] = before_meeting_clicked_content;
+        submitData.data.place['pre-meeting'] = {
+          "name": $('#user_profile_data_name').val(),
+          "address": $('#before_meeting_place_address').val(),
+          "url": $('#before_meeting_place_navi_url').val()
+        };
+      }
 
-      default_modal.style.display = "block";
+      console.log('submitData=>' + JSON.stringify(submitData));
 
-      modal_one_btn.hover(function () {
-        $(this).css('background-color', '#fb7c7e');
-      }, function () {
-        $(this).css('background-color', '#ff753c');
-      });
+      if (submitData.data.basic.name == '' || submitData.data.basic.email == ''
+        || submitData.data.basic.tel == '') {
+        console.log('in popup')
+        var default_modal = document.getElementById('default_modal');
+        var modal_one_btn = $('#modal_one_btn');
 
-      modal_one_btn.click(function () {
-        default_modal.style.display = "none";
-      });
-    }else {
-      console.log('no popup')
-      $.ajax({
-        url: 'https://www.chatbrick.io/api/brick/',
-        type: 'PUT',
-        async: false,
-        crossDomain: true,
-        contentType: 'application/json',
-        dataType: 'JSON',
-        data: JSON.stringify(submitData),
-        success: function (body, status, res) {
-          if (body.success) {
-            console.log('upload success!');
-            var setId = body.data.id;
-            window.location.href = '/platform/connect' + '?setId=' + setId;
-          } else {
-            if (body.action == 'ERR0002') {
-              var default_error_modal = document.getElementById('default_error_modal');
-              var modal_one_error_btn = $('#modal_one_error_btn');
+        default_modal.style.display = "block";
 
-              default_error_modal.style.display = "block";
-              $('#modal_error_context').text(body.msg);
+        modal_one_btn.hover(function () {
+          $(this).css('background-color', '#fb7c7e');
+        }, function () {
+          $(this).css('background-color', '#ff753c');
+        });
+
+        modal_one_btn.click(function () {
+          default_modal.style.display = "none";
+        });
+      }else {
+        console.log('no popup')
+        $.ajax({
+          url: 'https://www.chatbrick.io/api/brick/',
+          type: 'PUT',
+          async: false,
+          crossDomain: true,
+          contentType: 'application/json',
+          dataType: 'JSON',
+          data: JSON.stringify(submitData),
+          success: function (body, status, res) {
+            if (body.success) {
+              console.log('upload success!');
+              var setId = body.data.id;
+              window.location.href = '/platform/connect' + '?setId=' + setId;
+            } else {
+              if (body.action == 'ERR0002') {
+                var default_error_modal = document.getElementById('default_error_modal');
+                var modal_one_error_btn = $('#modal_one_error_btn');
+
+                default_error_modal.style.display = "block";
+                $('#modal_error_context').text(body.msg);
 
 
-              modal_one_error_btn.hover(function () {
-                $(this).css('background-color', '#fb7c7e');
-              }, function () {
-                $(this).css('background-color', '#ff753c');
-              });
+                modal_one_error_btn.hover(function () {
+                  $(this).css('background-color', '#fb7c7e');
+                }, function () {
+                  $(this).css('background-color', '#ff753c');
+                });
 
-              modal_one_error_btn.click(function () {
-                default_error_modal.style.display = "none";
-              });
+                modal_one_error_btn.click(function () {
+                  default_error_modal.style.display = "none";
+                });
+              }
             }
-					}
-        }
-      });
-    }
+          }
+        });
+      }
+    });
   });
 
   function statusChangeCallback(response) {

@@ -111,7 +111,7 @@
                   </div>
 
                   <div class="tg_input_btn_line">
-                    <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 API KEY를 입력해주세요.">
+                    <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 TOKEN KEY를 입력해주세요.">
                     <div class="tele_page_btn" id="tele_page_btn">연결하기</div>
                   </div>
                   <div class="tg_content_context">
@@ -172,7 +172,7 @@
     <div class="modal-content">
 
       <div class="modal_title">로그아웃</div>
-      <div class="modal_context">chatbrick에서 로그아웃하시겠습니까?</div>
+      <div class="modal_context">chatbrick에서 로그아웃하시겠어요?</div>
       <div class="modal_brick_api_two_btn_area">
         <div id="modal_left_logout_btn" class="modal_left_btn">
           <p>아니요</p>
@@ -210,6 +210,7 @@
 </footer>
 
 <script type="text/javascript">
+  $('input[type=text]').addClass('placeholder');
   $('#logo').click(function () {
     logoClickSendHomeEvent();
   });

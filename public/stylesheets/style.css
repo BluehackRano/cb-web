@@ -5,6 +5,11 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 body, table, div, p {font-family:'Noto Sans KR';}
 
+@font-face {
+    font-family: "Apple SD Gothic Neo";
+    src: url('../../public/fonts/AppleSDGothicNeoH.otf');
+}
+
 .hello {
     color: red;
     /*background: url("../images/test_img.png");*/
@@ -739,6 +744,9 @@ select_brick
     width: auto;
     height: 20px;
     font-family: "Noto Sans KR";
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
     font-size: 18px;
     text-align: center;
     color: #000000;
@@ -766,6 +774,9 @@ select_brick
 
     font-family: "Noto Sans KR";
     font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
     text-align: center;
     color: #ffffff;
 
@@ -1575,7 +1586,7 @@ landing page
     text-align: center;
     vertical-align: middle;
 
-    font-family: AppleSDGothicNeo;
+    font-family: "Apple SD Gothic Neo";
     font-size: 20px;
     font-weight: 900;
     font-style: normal;
@@ -1604,7 +1615,7 @@ landing page
 }
 
 .landing_set_title {
-    font-family: AppleSDGothicNeo;
+    font-family: "Apple SD Gothic Neo";
     font-size: 30px;
     font-weight: 900;
     font-style: normal;
@@ -1667,7 +1678,7 @@ landing page
 .landing_item_name {
     width: auto;
     height: 52px;
-    font-family: AppleSDGothicNeo;
+    font-family: "Apple SD Gothic Neo";
     font-size: 20px;
     font-weight: 900;
     font-style: normal;
@@ -1684,7 +1695,7 @@ landing page
 .landing_item_context {
     width: auto;
     height: 51px;
-    font-family: AppleSDGothicNeo;
+    font-family: "Apple SD Gothic Neo";
     font-size: 14px;
     font-weight: 500;
     font-style: normal;
@@ -1698,7 +1709,7 @@ landing page
 #landing_commingsoon_name {
     width: auto;
     height: 52px;
-    font-family: AppleSDGothicNeo;
+    font-family: "Apple SD Gothic Neo";
     font-size: 20px;
     font-weight: 900;
     font-style: normal;
@@ -1715,7 +1726,7 @@ landing page
 #landing_commingsoon_context {
     width: auto;
     height: 51px;
-    font-family: AppleSDGothicNeo;
+    font-family: "Apple SD Gothic Neo";
     font-size: 14px;
     font-weight: 500;
     font-style: normal;
@@ -2080,6 +2091,8 @@ input[type=checkbox]:checked + label {
     letter-spacing: normal;
     text-align: left;
     color: #000000;
+
+    padding-left: 19px;
 }
 
 .date_form {
@@ -2348,6 +2361,10 @@ modal zone
     /*height: 200px;*/
     height: auto;
 
+    object-fit: contain;
+    display: block;
+    margin-top: 60px;
+    /*margin: 0 auto;*/
     float: left;
 }
 
@@ -2679,11 +2696,49 @@ hr.modal_device_underline {
     color: #fd6246;
 }
 
+#create_modal_context_01 {
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+#create_modal_context_02 {
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+
 .lego_loading_context_area {
     width: 700px;
     height: 54px;
 
     margin-bottom: 39px;
+}
+
+.create_context_area {
+    width: 700px;
+    height: 54px;
+
+    margin-bottom: 39px;
+}
+
+.create_modal_img {
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 #animationWindow {

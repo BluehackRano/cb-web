@@ -904,7 +904,7 @@
         var place_pre_metting_url = '';
 
         if (body.data.settings.data.contents['pre-meeting'] != undefined) {
-          hackathon_day_pre_meeting = body.data.settings.data.contents['pre-meeting'];
+          hackathon_day_pre_meeting = body.data.settings.data.contents['pre-meeting'].split('\n');
           place_pre_metting_name = body.data.settings.data.place['pre-meeting'].name;
           place_pre_metting_address = body.data.settings.data.place['pre-meeting'].address;
           place_pre_metting_url = body.data.settings.data.place['pre-meeting'].url;
@@ -918,7 +918,7 @@
         var place_main_metting_address = body.data.settings.data.place['main-meeting'].address;
         var place_main_metting_url = body.data.settings.data.place['main-meeting'].url;
 
-        var benefit_of_participant = body.data.settings.data.benefit_of_participant;
+        var benefit_of_participant = body.data.settings.data.benefit_of_participant.split('\n');
 
         var thanks_hoster = body.data.settings.data.thanks.hoster.split('\n');
         var thanks_organizer = body.data.settings.data.thanks.organizer.split('\n');
@@ -967,83 +967,201 @@
         //본모임
         if (hackathon_day_main_meeting_1day != null) {
           var hack_day_1day = hackathon_day_main_meeting_1day.split("\n");
-          $('#hackathon_1day_content_01').val(hack_day_1day[0]);
-          $('#hackathon_1day_content_02').val(hack_day_1day[1]);
-          $('#hackathon_1day_content_03').val(hack_day_1day[2]);
+          var hackathon_1day_content_index = 1;
+          for (var i = 0; i < hack_day_1day.length; i ++) {
+            if (hack_day_1day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_1day_content_0' + hackathon_1day_content_index).val(hack_day_1day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_1day_content_0`+hackathon_1day_content_index+`" class="baseInputText_02 hackathon_1day_content">`
+                );
+                $('#hackathon_1day_input_content').append(hackathon_value);
+                $('#hackathon_1day_content_0' + hackathon_1day_content_index).val(hack_day_1day[i]);
+              }
+
+            } else {
+              $('#hackathon_1day_content_0' + hackathon_1day_content_index).val(hack_day_1day[i]);
+            }
+            hackathon_1day_content_index ++;
+          }
         }
 
         if (hackathon_day_main_meeting_2day != null) {
           var hack_day_2day = hackathon_day_main_meeting_2day.split("\n");
-          $('#hackathon_2day_content_01').val(hack_day_2day[0]);
-          $('#hackathon_2day_content_02').val(hack_day_2day[1]);
-          $('#hackathon_2day_content_03').val(hack_day_2day[2]);
+          var hackathon_2day_content_index = 1;
+          for (var i = 0; i < hack_day_2day.length; i ++) {
+            if (hack_day_2day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_2day_content_0' + hackathon_2day_content_index).val(hack_day_2day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_2day_content_0`+hackathon_2day_content_index+`" class="baseInputText_02 hackathon_2day_content">`
+                );
+                $('#hackathon_2day_input_content').append(hackathon_value);
+                $('#hackathon_2day_content_0' + hackathon_2day_content_index).val(hack_day_2day[i]);
+              }
+
+            } else {
+              $('#hackathon_2day_content_0' + hackathon_2day_content_index).val(hack_day_2day[i]);
+            }
+            hackathon_2day_content_index ++;
+          }
         }
 
         if (hackathon_day_main_meeting_3day != null) {
           var hack_day_3day = hackathon_day_main_meeting_3day.split("\n");
-          $('#hackathon_3day_content_01').val(hack_day_3day[0]);
-          $('#hackathon_3day_content_02').val(hack_day_3day[1]);
-          $('#hackathon_3day_content_03').val(hack_day_3day[2]);
+          var hackathon_3day_content_index = 1;
+          for (var i = 0; i < hack_day_3day.length; i ++) {
+            if (hack_day_3day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_3day_content_0' + hackathon_3day_content_index).val(hack_day_3day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_3day_content_0`+hackathon_3day_content_index+`" class="baseInputText_02 hackathon_3day_content">`
+                );
+                $('#hackathon_3day_input_content').append(hackathon_value);
+                $('#hackathon_3day_content_0' + hackathon_3day_content_index).val(hack_day_3day[i]);
+              }
+
+            } else {
+              $('#hackathon_3day_content_0' + hackathon_3day_content_index).val(hack_day_3day[i]);
+            }
+            hackathon_3day_content_index ++;
+          }
         }
 
         if (hackathon_day_main_meeting_4day != null) {
           var hack_day_4day = hackathon_day_main_meeting_4day.split("\n");
-          $('#hackathon_4day_content_01').val(hack_day_4day[0]);
-          $('#hackathon_4day_content_02').val(hack_day_4day[1]);
-          $('#hackathon_4day_content_03').val(hack_day_4day[2]);
+          var hackathon_4day_content_index = 1;
+          for (var i = 0; i < hack_day_4day.length; i ++) {
+            if (hack_day_4day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_4day_content_0' + hackathon_4day_content_index).val(hack_day_4day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_4day_content_0`+hackathon_4day_content_index+`" class="baseInputText_02 hackathon_4day_content">`
+                );
+                $('#hackathon_4day_input_content').append(hackathon_value);
+                $('#hackathon_4day_content_0' + hackathon_4day_content_index).val(hack_day_4day[i]);
+              }
+
+            } else {
+              $('#hackathon_4day_content_0' + hackathon_4day_content_index).val(hack_day_4day[i]);
+            }
+            hackathon_4day_content_index ++;
+          }
         }
 
         if (hackathon_day_main_meeting_5day != null) {
           var hack_day_5day = hackathon_day_main_meeting_5day.split("\n");
-          $('#hackathon_5day_content_01').val(hack_day_5day[0]);
-          $('#hackathon_5day_content_02').val(hack_day_5day[1]);
-          $('#hackathon_5day_content_03').val(hack_day_5day[2]);
+          var hackathon_5day_content_index = 1;
+          for (var i = 0; i < hack_day_5day.length; i ++) {
+            if (hack_day_5day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_5day_content_0' + hackathon_5day_content_index).val(hack_day_5day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_5day_content_0`+hackathon_5day_content_index+`" class="baseInputText_02 hackathon_5day_content">`
+                );
+                $('#hackathon_5day_input_content').append(hackathon_value);
+                $('#hackathon_5day_content_0' + hackathon_5day_content_index).val(hack_day_5day[i]);
+              }
+
+            } else {
+              $('#hackathon_5day_content_0' + hackathon_5day_content_index).val(hack_day_5day[i]);
+            }
+            hackathon_5day_content_index ++;
+          }
         }
 
-
-//        for (var i = 0; i < hack_day_1day.length; i ++) {
-//          var index = 1;
-//          $('#hackathon_1day_content_0'+index).val(hack_day_1day[i]);
-//          index ++;
-//        }
-//
-//        for (var i = 0; i < hack_day_2day.length; i ++) {
-//          var index = 1;
-//          $('#hackathon_2day_content_0'+index).val(hack_day_2day[i]);
-//          index ++;
-//        }
-//
-//        for (var i = 0; i < hack_day_3day.length; i ++) {
-//          var index = 1;
-//          $('#hackathon_3day_content_0'+index).val(hack_day_3day[i]);
-//          index ++;
-//        }
-//
-//        for (var i = 0; i < hack_day_4day.length; i ++) {
-//          var index = 1;
-//          $('#hackathon_4day_content_0'+index).val(hack_day_4day[i]);
-//          index ++;
-//        }
-//
-//        for (var i = 0; i < hack_day_5day.length; i ++) {
-//          var index = 1;
-//          $('#hackathon_5day_content_0'+index).val(hack_day_5day[i]);
-//          index ++;
-//        }
-
-
-
         //사전모임
-        $('#before_meeting_clicked_content_01').val(hackathon_day_pre_meeting);
+        // $('#before_meeting_clicked_content_01').val(hackathon_day_pre_meeting);
+        var pre_meeting_index = 1;
+        for (var i = 0; i < hackathon_day_pre_meeting.length; i ++) {
+          if (hackathon_day_pre_meeting.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#before_meeting_clicked_content_0' + pre_meeting_index).val(hackathon_day_pre_meeting[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var before_meeting_value = (
+                `<input type="text" id="before_meeting_clicked_content_0`+pre_meeting_index+`" class="baseInputText_02 before_meeting_clicked_content">`
+              );
+              $('#before_meeting_clicked').append(before_meeting_value);
+              $('#before_meeting_clicked_content_0' + pre_meeting_index).val(hackathon_day_pre_meeting[i]);
+            }
+
+          } else {
+            $('#before_meeting_clicked_content_0' + pre_meeting_index).val(hackathon_day_pre_meeting[i]);
+          }
+          pre_meeting_index ++;
+        }
 
         //해커톤 참가신청정보
         $('#hackathon_participation_url').val(hackathon_participation_application_url);
-        $('#hackathon_participation_confirm_01').val(hackathon_participation_application_requirements[0]);
-        $('#hackathon_participation_confirm_02').val(hackathon_participation_application_requirements[1]);
-        $('#hackathon_participation_confirm_03').val(hackathon_participation_application_requirements[2]);
-        $('#hackathon_participation_ready_info_01').val(hackathon_participation_application_preparation[0]);
-        $('#hackathon_participation_ready_info_02').val(hackathon_participation_application_preparation[1]);
-        $('#hackathon_participation_ready_info_03').val(hackathon_participation_application_preparation[2]);
+
+        //참가요건
+        var participation_confirm_index = 1;
+        for (var i = 0; i < hackathon_participation_application_requirements.length; i ++) {
+          if (hackathon_participation_application_requirements.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_participation_confirm_0' + participation_confirm_index).val(hackathon_participation_application_requirements[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var participation_confirm_value = (
+                `<input type="text" id="hackathon_participation_confirm_0`+participation_confirm_index+`" class="baseInputText_02 hackathon_participation_confirm">`
+              );
+              $('#hackathon_participation_confirm_input').append(participation_confirm_value);
+              $('#hackathon_participation_confirm_0' + participation_confirm_index).val(hackathon_participation_application_requirements[i]);
+            }
+
+          } else {
+            $('#hackathon_participation_confirm_0' + participation_confirm_index).val(hackathon_participation_application_requirements[i]);
+          }
+          participation_confirm_index ++;
+        }
+
+        //참가 준비사항
+        var participation_ready_info_index = 1;
+        for (var i = 0; i < hackathon_participation_application_preparation.length; i ++) {
+          if (hackathon_participation_application_preparation.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_participation_ready_info_0' + participation_ready_info_index).val(hackathon_participation_application_preparation[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var participation_ready_info_value = (
+                `<input type="text" id="hackathon_participation_ready_info_0`+participation_ready_info_index+`" class="baseInputText_02 hackathon_participation_ready_info">`
+              );
+              $('#hackathon_participation_ready_info_input').append(participation_ready_info_value);
+              $('#hackathon_participation_ready_info_0' + participation_ready_info_index).val(hackathon_participation_application_preparation[i]);
+            }
+
+          } else {
+            $('#hackathon_participation_ready_info_0' + participation_ready_info_index).val(hackathon_participation_application_preparation[i]);
+          }
+          participation_ready_info_index ++;
+        }
 
         //해커톤 장소정보 (본모임)
         $('#hackathon_place_name').val(place_main_metting_name);
@@ -1093,20 +1211,108 @@
 
 
         //참가자 혜택을 입력해주세요
-        $('#hackathon_participation_reward_01').val(benefit_of_participant);
+        var reward_index = 1;
+        for (var i = 0; i < benefit_of_participant.length; i ++) {
+          if (benefit_of_participant.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_participation_reward_0' + reward_index).val(benefit_of_participant[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var reward_value = (
+                `<input type="text" id="hackathon_participation_reward_0`+reward_index+`" class="baseInputText_02 reward_addInputLine">`
+              );
+              $('#hackathon_participation_reward').append(reward_value);
+              $('#hackathon_participation_reward_0' + reward_index).val(benefit_of_participant[i]);
+            }
+
+          } else {
+            $('#hackathon_participation_reward_0' + reward_index).val(benefit_of_participant[i]);
+          }
+          reward_index ++;
+        }
+        // $('#hackathon_participation_reward_01').val(benefit_of_participant);
 
         //해커톤 주최/주관/후원정보
-        $('#hackathon_organizer_info_01').val(thanks_hoster[0]);
-        $('#hackathon_organizer_info_02').val(thanks_hoster[1]);
-        $('#hackathon_organizer_info_03').val(thanks_hoster[2]);
+        var organizer_index = 1;
+        console.log('thanks_organizer.length=>' + thanks_organizer.length);
+        for (var i = 0; i < thanks_organizer.length; i ++) {
+          if (thanks_organizer.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_organizer_info_0' + organizer_index).val(thanks_organizer[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var organizer_value = (
+               `<input type="text" id="hackathon_organizer_info_0`+organizer_index+`" class="baseInputText_02 organizer_addInputLine">`
+              );
+              $('#hackathon_organizer').append(organizer_value);
+              $('#hackathon_organizer_info_0' + organizer_index).val(thanks_organizer[i]);
+            }
 
-        $('#hackathon_supervisor_info_01').val(thanks_organizer[0]);
-        $('#hackathon_supervisor_info_02').val(thanks_organizer[1]);
-        $('#hackathon_supervisor_info_03').val(thanks_organizer[2]);
+          } else {
+            $('#hackathon_organizer_info_0' + organizer_index).val(thanks_organizer[i]);
+          }
+          organizer_index ++;
+        }
 
-        $('#hackathon_sponsor_info_01').val(thanks_sponsor[0]);
-        $('#hackathon_sponsor_info_02').val(thanks_sponsor[1]);
-        $('#hackathon_sponsor_info_03').val(thanks_sponsor[2]);
+        // $('#hackathon_organizer_info_01').val(thanks_organizer[0]);
+        // $('#hackathon_organizer_info_02').val(thanks_organizer[1]);
+        // $('#hackathon_organizer_info_03').val(thanks_organizer[2]);
+
+        var hoster_index = 1;
+        for (var i = 0; i < thanks_hoster.length; i ++) {
+          if (thanks_hoster.length > 3) {
+
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_supervisor_info_0' + hoster_index).val(thanks_hoster[i]);
+            } else {
+              // 새로운 라인을 만든 후 값 넣기
+              var hoster_value = (
+                `<input type="text" id="hackathon_supervisor_info_0`+hoster_index+`" class="baseInputText_02 supervisor_addInputLine">`
+              );
+              $('#hackathon_supervisor').append(hoster_value);
+              $('#hackathon_supervisor_info_0' + hoster_index).val(thanks_hoster[i]);
+            }
+
+          } else {
+            $('#hackathon_supervisor_info_0' + hoster_index).val(thanks_hoster[i]);
+          }
+          hoster_index ++;
+        }
+
+        // $('#hackathon_supervisor_info_01').val(thanks_hoster[0]);
+        // $('#hackathon_supervisor_info_02').val(thanks_hoster[1]);
+        // $('#hackathon_supervisor_info_03').val(thanks_hoster[2]);
+
+        var sponsor_index = 1;
+        for (var i = 0; i < thanks_sponsor.length; i ++) {
+          if (thanks_sponsor.length > 3) {
+
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_sponsor_info_0' + sponsor_index).val(thanks_sponsor[i]);
+            } else {
+              // 새로운 라인을 만든 후 값 넣기
+              var sponsor_value = (
+                `<input type="text" id="hackathon_sponsor_info_0`+sponsor_index+`" class="baseInputText_02 sponsor_addInputLine">`
+              );
+              $('#hackathon_sponsor').append(sponsor_value);
+              $('#hackathon_sponsor_info_0' + sponsor_index).val(thanks_sponsor[i]);
+            }
+
+          } else {
+            $('#hackathon_sponsor_info_0' + sponsor_index).val(thanks_sponsor[i]);
+          }
+          sponsor_index ++;
+        }
+
+        // $('#hackathon_sponsor_info_01').val(thanks_sponsor[0]);
+        // $('#hackathon_sponsor_info_02').val(thanks_sponsor[1]);
+        // $('#hackathon_sponsor_info_03').val(thanks_sponsor[2]);
 
         initHackathonDay();
       } else {
@@ -1498,145 +1704,157 @@
   $('#before_meeting_clicked').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var before_meeting_clicked_content_length = $('.before_meeting_clicked_content').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 before_meeting_clicked_content placeholder">`
+        `<input type="text" class="baseInputText_02 before_meeting_clicked_content placeholder" id="before_meeting_clicked_content_0`+before_meeting_clicked_content_length+`">`
       );
 
       $('#before_meeting_clicked').append(addLine);
     }
-    $('.before_meeting_clicked_content').addClass('transparent');
+    // $('.before_meeting_clicked_content').addClass('transparent');
   });
 
   $('#hackathon_1day_input_content').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var hackathon_1day_content_length = $('.hackathon_1day_content').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 hackathon_1day_content placeholder">`
+        `<input type="text" class="baseInputText_02 hackathon_1day_content placeholder" id="hackathon_1day_content_0`+hackathon_1day_content_length+`">`
       );
 
       $('#hackathon_1day_input_content').append(addLine);
     }
-    $('.hackathon_1day_content').addClass('transparent');
+    // $('.hackathon_1day_content').addClass('transparent');
   });
 
   $('#hackathon_2day_input_content').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var hackathon_2day_content_length = $('.hackathon_2day_content').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 hackathon_2day_content placeholder">`
+        `<input type="text" class="baseInputText_02 hackathon_2day_content placeholder" id="hackathon_2day_content_0`+hackathon_2day_content_length+`">`
       );
 
       $('#hackathon_2day_input_content').append(addLine);
     }
-    $('.hackathon_2day_content').addClass('transparent');
+    // $('.hackathon_2day_content').addClass('transparent');
   });
 
   $('#hackathon_3day_input_content').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var hackathon_3day_content_length = $('.hackathon_3day_content').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 hackathon_3day_content placeholder">`
+        `<input type="text" class="baseInputText_02 hackathon_3day_content placeholder" id="hackathon_3day_content_0`+hackathon_3day_content_length+`">`
       );
 
       $('#hackathon_3day_input_content').append(addLine);
     }
-    $('.hackathon_3day_content').addClass('transparent');
+    // $('.hackathon_3day_content').addClass('transparent');
   });
 
   $('#hackathon_4day_input_content').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var hackathon_4day_content_length = $('.hackathon_4day_content').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 hackathon_4day_content placeholder">`
+        `<input type="text" class="baseInputText_02 hackathon_4day_content placeholder" id="hackathon_4day_content_0`+hackathon_4day_content_length+`">`
       );
 
       $('#hackathon_4day_input_content').append(addLine);
     }
-    $('.hackathon_4day_content').addClass('transparent');
+    // $('.hackathon_4day_content').addClass('transparent');
   });
 
   $('#hackathon_5day_input_content').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var hackathon_5day_content_length = $('.hackathon_5day_content').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 hackathon_5day_content placeholder">`
+        `<input type="text" class="baseInputText_02 hackathon_5day_content placeholder" id="hackathon_5day_content_0`+hackathon_5day_content_length+`">`
       );
 
       $('#hackathon_5day_input_content').append(addLine);
     }
-    $('.hackathon_5day_content').addClass('transparent');
+    // $('.hackathon_5day_content').addClass('transparent');
   });
 
   $('#hackathon_participation_confirm_input').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var hackathon_participation_confirm_length = $('.hackathon_participation_confirm').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 hackathon_participation_confirm placeholder">`
+        `<input type="text" class="baseInputText_02 hackathon_participation_confirm placeholder" id="hackathon_participation_confirm_0`+hackathon_participation_confirm_length+`">`
       );
 
       $('#hackathon_participation_confirm_input').append(addLine);
     }
-    $('.hackathon_participation_confirm').addClass('transparent');
+    // $('.hackathon_participation_confirm').addClass('transparent');
   });
 
   $('#hackathon_participation_ready_info_input').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var hackathon_participation_ready_info_length = $('.hackathon_participation_ready_info').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 hackathon_participation_ready_info placeholder">`
+        `<input type="text" class="baseInputText_02 hackathon_participation_ready_info placeholder" id="hackathon_participation_ready_info_0`+hackathon_participation_ready_info_length+`">`
       );
 
       $('#hackathon_participation_ready_info_input').append(addLine);
     }
-    $('.hackathon_participation_ready_info').addClass('transparent');
+    // $('.hackathon_participation_ready_info').addClass('transparent');
   });
 
   $('#hackathon_participation_reward').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var reward_addInputLine_length = $('.reward_addInputLine').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 reward_addInputLine placeholder">`
+        `<input type="text" class="baseInputText_02 reward_addInputLine placeholder" id="hackathon_participation_reward_0`+reward_addInputLine_length+`">`
       );
 
       $('#hackathon_participation_reward').append(addLine);
     }
-    $('.reward_addInputLine').addClass('transparent');
+    // $('.reward_addInputLine').addClass('transparent');
   });
 
   $('#hackathon_organizer').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var organizer_addInputLine_length = $('.organizer_addInputLine').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 organizer_addInputLine placeholder">`
+        `<input type="text" class="baseInputText_02 organizer_addInputLine placeholder" id="hackathon_organizer_info_0`+organizer_addInputLine_length+`">`
       );
 
       $('#hackathon_organizer').append(addLine);
     }
-    $('.organizer_addInputLine').addClass('transparent');
+    // $('.organizer_addInputLine').addClass('transparent');
   });
 
   $('#hackathon_supervisor').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var supervisor_addInputLine_length = $('.supervisor_addInputLine').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 supervisor_addInputLine placeholder">`
+        `<input type="text" class="baseInputText_02 supervisor_addInputLine placeholder" id="hackathon_supervisor_info_0`+supervisor_addInputLine_length+`">`
       );
 
       $('#hackathon_supervisor').append(addLine);
     }
-    $('.supervisor_addInputLine').addClass('transparent');
+    // $('.supervisor_addInputLine').addClass('transparent');
   });
 
   $('#hackathon_sponsor').keydown(function (key) {
 
     if (key.keyCode == 13) {
+      var sponsor_addInputLine_length = $('.sponsor_addInputLine').length + 1;
       var addLine = (
-        `<input type="text" class="baseInputText_02 sponsor_addInputLine placeholder">`
+        `<input type="text" class="baseInputText_02 sponsor_addInputLine placeholder" id="hackathon_sponsor_info_0`+sponsor_addInputLine_length+`">`
       );
 
       $('#hackathon_sponsor').append(addLine);
     }
-    $('.sponsor_addInputLine').addClass('transparent');
+    // $('.sponsor_addInputLine').addClass('transparent');
   });
 
   //hide placeholder
@@ -1804,78 +2022,131 @@
     }
     console.log('awardItemList=>' + JSON.stringify(awardItemList));
 
-    var hackathon_1day_content = "";
-    $('.hackathon_1day_content').each(function () {
-      hackathon_1day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_1day_content=>' + hackathon_1day_content);
+    var hackathon_1day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_1day_content').length; i ++) {
+      if (1 == $('.hackathon_1day_content').length) {
+        hackathon_1day_content_result +=($('#hackathon_1day_content_0'+i).val());
+      } else {
+        hackathon_1day_content_result +=($('#hackathon_1day_content_0'+i).val() + '\n');
+      }
+    }
 
-    var hackathon_2day_content = "";
-    $('.hackathon_2day_content').each(function () {
-      hackathon_2day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_2day_content=>' + hackathon_2day_content);
+    var hackathon_2day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_2day_content').length; i ++) {
+      if (1 == $('.hackathon_2day_content').length) {
+        hackathon_2day_content_result +=($('#hackathon_2day_content_0'+i).val());
+      } else {
+        hackathon_2day_content_result +=($('#hackathon_2day_content_0'+i).val() + '\n');
+      }
+    }
 
-    var hackathon_3day_content = "";
-    $('.hackathon_3day_content').each(function () {
-      hackathon_3day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_3day_content=>' + hackathon_3day_content);
+    var hackathon_3day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_3day_content').length; i ++) {
+      if (1 == $('.hackathon_3day_content').length) {
+        hackathon_3day_content_result +=($('#hackathon_3day_content_0'+i).val());
+      } else {
+        hackathon_3day_content_result +=($('#hackathon_3day_content_0'+i).val() + '\n');
+      }
+    }
 
-    var hackathon_4day_content = "";
-    $('.hackathon_4day_content').each(function () {
-      hackathon_4day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_4day_content=>' + hackathon_4day_content);
+    var hackathon_4day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_4day_content').length; i ++) {
+      if (1 == $('.hackathon_4day_content').length) {
+        hackathon_4day_content_result +=($('#hackathon_4day_content_0'+i).val());
+      } else {
+        hackathon_4day_content_result +=($('#hackathon_4day_content_0'+i).val() + '\n');
+      }
+    }
 
-    var hackathon_5day_content = "";
-    $('.hackathon_5day_content').each(function () {
-      hackathon_5day_content += $(this).val() + '\n';
-    })
-    console.log('hackathon_5day_content=>' + hackathon_5day_content);
+    var hackathon_5day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_5day_content').length; i ++) {
+      if (1 == $('.hackathon_5day_content').length) {
+        hackathon_5day_content_result +=($('#hackathon_5day_content_0'+i).val());
+      } else {
+        hackathon_5day_content_result +=($('#hackathon_5day_content_0'+i).val() + '\n');
+      }
+    }
 
-    var before_meeting_clicked_content = "";
-    $('.before_meeting_clicked_content').each(function () {
-      before_meeting_clicked_content += $(this).val() + '\n';
-    })
-    console.log('before_meeting_clicked_content=>' + before_meeting_clicked_content);
+    var before_meeting_clicked_content_result = '';
+    for (var i = 1; i <= $('.before_meeting_clicked_content').length; i ++) {
+      if (1 == $('.before_meeting_clicked_content').length) {
+        before_meeting_clicked_content_result +=($('#before_meeting_clicked_content_0'+i).val());
+      } else {
+        before_meeting_clicked_content_result +=($('#before_meeting_clicked_content_0'+i).val() + '\n');
+      }
+    }
 
-    var hackathon_participation_confirm = "";
-    $('.hackathon_participation_confirm').each(function () {
-      hackathon_participation_confirm += $(this).val() + '\n';
-    })
-    console.log('hackathon_participation_confirm=>' + hackathon_participation_confirm);
+    var hackathon_participation_confirm_result = '';
+    for (var i = 1; i <= $('.hackathon_participation_confirm').length; i ++) {
+      if (1 == $('.hackathon_participation_confirm').length) {
+        hackathon_participation_confirm_result +=($('#hackathon_participation_confirm_0'+i).val());
+      } else {
+        hackathon_participation_confirm_result +=($('#hackathon_participation_confirm_0'+i).val() + '\n');
+      }
+    }
 
-    var hackathon_participation_ready_info = "";
-    $('.hackathon_participation_ready_info').each(function () {
-      hackathon_participation_ready_info += $(this).val() + '\n';
-    })
-    console.log('hackathon_participation_ready_info=>' + hackathon_participation_ready_info);
+    var hackathon_participation_ready_info_result = '';
+    for (var i = 1; i <= $('.hackathon_participation_ready_info').length; i ++) {
+      if (1 == $('.hackathon_participation_ready_info').length) {
+        hackathon_participation_ready_info_result +=($('#hackathon_participation_ready_info_0'+i).val());
+      } else {
+        hackathon_participation_ready_info_result +=($('#hackathon_participation_ready_info_0'+i).val() + '\n');
+      }
+    }
 
-    var reward_addInputLine = "";
-    $('.reward_addInputLine').each(function () {
-      reward_addInputLine += $(this).val() + '\n';
-    })
-    console.log('reward_addInputLine=>' + reward_addInputLine);
+    var reward_addInputLine_result = '';
+    for (var i = 1; i <= $('.reward_addInputLine').length; i ++) {
+      if (1 == $('.reward_addInputLine').length) {
+        reward_addInputLine_result +=($('#hackathon_participation_reward_0'+i).val());
+      } else {
+        reward_addInputLine_result +=($('#hackathon_participation_reward_0'+i).val() + '\n');
+      }
+    }
 
 
-    var organizer_addInputLine = "";
-    $('.organizer_addInputLine').each(function () {
-      organizer_addInputLine += $(this).val() + '\n';
-    })
-    console.log('organizer_addInputLine=>' + organizer_addInputLine);
+    var organizer_addInputLine_result = '';
+    for (var i = 1; i <= $('.organizer_addInputLine').length; i ++) {
+      if (1 == $('.organizer_addInputLine').length) {
+        organizer_addInputLine_result +=($('#hackathon_organizer_info_0'+i).val());
+      } else {
+        organizer_addInputLine_result +=($('#hackathon_organizer_info_0'+i).val() + '\n');
+      }
+    }
 
-    var supervisor_addInputLine = "";
-    $('.supervisor_addInputLine').each(function () {
-      supervisor_addInputLine += $(this).val() + '\n';
-    })
-    console.log('supervisor_addInputLine=>' + supervisor_addInputLine);
+    var supervisor_addInputLine_result = '';
+    for (var i = 1; i <= $('.supervisor_addInputLine').length; i ++) {
+      if (1 == $('.supervisor_addInputLine').length) {
+        supervisor_addInputLine_result +=($('#hackathon_supervisor_info_0'+i).val());
+      } else {
+        supervisor_addInputLine_result +=($('#hackathon_supervisor_info_0'+i).val() + '\n');
+      }
+    }
 
-    var sponsor_addInputLine = "";
-    $('.sponsor_addInputLine').each(function () {
-      sponsor_addInputLine += $(this).val() + '\n';
-    })
-    console.log('sponsor_addInputLine=>' + sponsor_addInputLine);
+    var sponsor_addInputLine_result = '';
+    for (var i = 1; i <= $('.sponsor_addInputLine').length; i ++) {
+      if (1 == $('.sponsor_addInputLine').length) {
+        sponsor_addInputLine_result +=($('#hackathon_sponsor_info_0'+i).val());
+      } else {
+        sponsor_addInputLine_result +=($('#hackathon_sponsor_info_0'+i).val() + '\n');
+      }
+    }
+    // var organizer_addInputLine = "";
+    // $('.organizer_addInputLine').each(function () {
+    //   organizer_addInputLine += $(this).val() + '\n';
+    // })
+    // console.log('organizer_addInputLine=>' + organizer_addInputLine);
+    //
+    // var supervisor_addInputLine = "";
+    // $('.supervisor_addInputLine').each(function () {
+    //   supervisor_addInputLine += $(this).val() + '\n';
+    // })
+    // console.log('supervisor_addInputLine=>' + supervisor_addInputLine);
+    //
+    // var sponsor_addInputLine = "";
+    // $('.sponsor_addInputLine').each(function () {
+    //   sponsor_addInputLine += $(this).val() + '\n';
+    // })
+    // console.log('sponsor_addInputLine=>' + sponsor_addInputLine);
 
     var submitData = {
       "id": setId,
@@ -1915,8 +2186,8 @@
         ,
         "application": {
           "url": $('#hackathon_participation_url').val(),
-          "requirements": hackathon_participation_confirm,
-          "preparation": hackathon_participation_ready_info
+          "requirements": hackathon_participation_confirm_result,
+          "preparation": hackathon_participation_ready_info_result
         },
         "place": {
           "main-meeting": {
@@ -1931,38 +2202,38 @@
 //          }
         },
         "prize": awardItemList, //typeof array
-        "benefit_of_participant": reward_addInputLine,
+        "benefit_of_participant": reward_addInputLine_result,
         "thanks": {
-          // "hoster": supervisor_addInputLine,
-          "hoster": $('#hackathon_organizer_info_01').val() + '\n' + $('#hackathon_organizer_info_02').val() + '\n' +$('#hackathon_organizer_info_03').val(),
-          // "organizer": organizer_addInputLine,
-          "organizer": $('#hackathon_supervisor_info_01').val() + '\n' + $('#hackathon_supervisor_info_02').val() + '\n' +$('#hackathon_supervisor_info_03').val(),
-          // "sponsor": sponsor_addInputLine
-          "sponsor": $('#hackathon_sponsor_info_01').val() + '\n' + $('#hackathon_sponsor_info_02').val() + '\n' +$('#hackathon_sponsor_info_03').val(),
+          "hoster": supervisor_addInputLine_result,
+          // "hoster": $('#hackathon_organizer_info_01').val() + '\n' + $('#hackathon_organizer_info_02').val() + '\n' +$('#hackathon_organizer_info_03').val(),
+          "organizer": organizer_addInputLine_result,
+          // "organizer": $('#hackathon_supervisor_info_01').val() + '\n' + $('#hackathon_supervisor_info_02').val() + '\n' +$('#hackathon_supervisor_info_03').val(),
+          "sponsor": sponsor_addInputLine_result
+          // "sponsor": $('#hackathon_sponsor_info_01').val() + '\n' + $('#hackathon_sponsor_info_02').val() + '\n' +$('#hackathon_sponsor_info_03').val(),
         }
       }
     };
 
     if ($('.hackathon_1day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_1day_content);
+      submitData.data.contents['main-meeting'].push(hackathon_1day_content_result);
     }
     if ($('.hackathon_2day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_2day_content);
+      submitData.data.contents['main-meeting'].push(hackathon_2day_content_result);
     }
     if ($('.hackathon_3day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_3day_content);
+      submitData.data.contents['main-meeting'].push(hackathon_3day_content_result);
     }
     if ($('.hackathon_4day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_4day_content);
+      submitData.data.contents['main-meeting'].push(hackathon_4day_content_result);
     }
     if ($('.hackathon_5day_content').val() != '') {
-      submitData.data.contents['main-meeting'].push(hackathon_5day_content);
+      submitData.data.contents['main-meeting'].push(hackathon_5day_content_result);
     }
 
     //사전모임 날짜가 체크 되어 있는 경우
     if (!($('#start_date_before_meeting').val() == '')) {
       submitData.data.date['pre-meeting'] = $('#start_date_before_meeting').val();
-      submitData.data.contents['pre-meeting'] = before_meeting_clicked_content;
+      submitData.data.contents['pre-meeting'] = before_meeting_clicked_content_result;
       submitData.data.place['pre-meeting'] = {
         "name": $('#user_profile_data_name').val(),
         "address": $('#before_meeting_place_address').val(),

@@ -31,9 +31,6 @@
 			</div>
 			<div id="context">
 				<p>
-					{{사용자가 선택한 세트}}에 {{사용자의 이름}}님의 데이터 정보를 입력하는 단계에요.
-					SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더
-					{{사용자의 이름}}에 잘어울리는 챗봇으로 만들어보세요.
 				</p>
 
 				<!--<button id="test_full_input_text">클릭하면 전체항목을 채워줘요(테스트용)</button>-->
@@ -1319,7 +1316,9 @@
       for (var i = 1; i <= $('.hackathon_1day_content').length; i ++) {
         if (1 == $('.hackathon_1day_content').length) {
           hackathon_1day_content_result +=($('#hackathon_1day_content_0'+i).val());
-        } else {
+        } else if (i == $('.hackathon_1day_content').length) {
+          hackathon_1day_content_result +=($('#hackathon_1day_content_0'+i).val());
+        }else {
           hackathon_1day_content_result +=($('#hackathon_1day_content_0'+i).val() + '\n');
         }
       }
@@ -1328,7 +1327,9 @@
       for (var i = 1; i <= $('.hackathon_2day_content').length; i ++) {
         if (1 == $('.hackathon_2day_content').length) {
           hackathon_2day_content_result +=($('#hackathon_2day_content_0'+i).val());
-        } else {
+        } else if (i == $('.hackathon_2day_content').length) {
+          hackathon_2day_content_result +=($('#hackathon_2day_content_0'+i).val());
+        }else {
           hackathon_2day_content_result +=($('#hackathon_2day_content_0'+i).val() + '\n');
         }
       }
@@ -1337,7 +1338,9 @@
       for (var i = 1; i <= $('.hackathon_3day_content').length; i ++) {
         if (1 == $('.hackathon_3day_content').length) {
           hackathon_3day_content_result +=($('#hackathon_3day_content_0'+i).val());
-        } else {
+        } else if (i == $('.hackathon_3day_content').length) {
+          hackathon_3day_content_result +=($('#hackathon_3day_content_0'+i).val());
+        }else {
           hackathon_3day_content_result +=($('#hackathon_3day_content_0'+i).val() + '\n');
         }
       }
@@ -1346,7 +1349,9 @@
       for (var i = 1; i <= $('.hackathon_4day_content').length; i ++) {
         if (1 == $('.hackathon_4day_content').length) {
           hackathon_4day_content_result +=($('#hackathon_4day_content_0'+i).val());
-        } else {
+        } else if (i == $('.hackathon_4day_content').length) {
+          hackathon_4day_content_result +=($('#hackathon_4day_content_0'+i).val());
+        }else {
           hackathon_4day_content_result +=($('#hackathon_4day_content_0'+i).val() + '\n');
         }
       }
@@ -1355,7 +1360,9 @@
       for (var i = 1; i <= $('.hackathon_5day_content').length; i ++) {
         if (1 == $('.hackathon_5day_content').length) {
           hackathon_5day_content_result +=($('#hackathon_5day_content_0'+i).val());
-        } else {
+        } else if (i == $('.hackathon_5day_content').length) {
+          hackathon_5day_content_result +=($('#hackathon_5day_content'+i).val());
+        }else {
           hackathon_5day_content_result +=($('#hackathon_5day_content_0'+i).val() + '\n');
         }
       }
@@ -1364,7 +1371,9 @@
       for (var i = 1; i <= $('.before_meeting_clicked_content').length; i ++) {
         if (1 == $('.before_meeting_clicked_content').length) {
           before_meeting_clicked_content_result +=($('#before_meeting_clicked_content_0'+i).val());
-        } else {
+        } else if (i == $('.before_meeting_clicked_content').length) {
+          before_meeting_clicked_content_result +=($('#before_meeting_clicked_content_0'+i).val());
+        }else {
           before_meeting_clicked_content_result +=($('#before_meeting_clicked_content_0'+i).val() + '\n');
         }
       }
@@ -1373,7 +1382,9 @@
       for (var i = 1; i <= $('.hackathon_participation_confirm').length; i ++) {
         if (1 == $('.hackathon_participation_confirm').length) {
           hackathon_participation_confirm_result +=($('#hackathon_participation_confirm_0'+i).val());
-        } else {
+        } else if (i == $('.hackathon_participation_confirm').length) {
+          hackathon_participation_confirm_result +=($('#hackathon_participation_confirm_0'+i).val());
+        }else {
           hackathon_participation_confirm_result +=($('#hackathon_participation_confirm_0'+i).val() + '\n');
         }
       }
@@ -1382,26 +1393,32 @@
       for (var i = 1; i <= $('.hackathon_participation_ready_info').length; i ++) {
         if (1 == $('.hackathon_participation_ready_info').length) {
           hackathon_participation_ready_info_result +=($('#hackathon_participation_ready_info_0'+i).val());
-        } else {
+        } else if (i == $('.hackathon_participation_ready_info').length) {
+          hackathon_participation_ready_info_result +=($('#hackathon_participation_ready_info_0'+i).val());
+        }else {
           hackathon_participation_ready_info_result +=($('#hackathon_participation_ready_info_0'+i).val() + '\n');
         }
       }
-
 
       var reward_addInputLine_result = '';
       for (var i = 1; i <= $('.reward_addInputLine').length; i ++) {
         if (1 == $('.reward_addInputLine').length) {
           reward_addInputLine_result +=($('#hackathon_participation_reward_0'+i).val());
-        } else {
+        } else if (i == $('.reward_addInputLine').length) {
+          reward_addInputLine_result +=($('#hackathon_participation_reward_0'+i).val());
+        }else {
           reward_addInputLine_result +=($('#hackathon_participation_reward_0'+i).val() + '\n');
         }
       }
+
 
       var organizer_addInputLine_result = '';
       for (var i = 1; i <= $('.organizer_addInputLine').length; i ++) {
         if (1 == $('.organizer_addInputLine').length) {
           organizer_addInputLine_result +=($('#hackathon_organizer_info_0'+i).val());
-        } else {
+        } else if (i == $('.organizer_addInputLine').length) {
+          organizer_addInputLine_result +=($('#hackathon_organizer_info_0'+i).val());
+        }else {
           organizer_addInputLine_result +=($('#hackathon_organizer_info_0'+i).val() + '\n');
         }
       }
@@ -1410,7 +1427,9 @@
       for (var i = 1; i <= $('.supervisor_addInputLine').length; i ++) {
         if (1 == $('.supervisor_addInputLine').length) {
           supervisor_addInputLine_result +=($('#hackathon_supervisor_info_0'+i).val());
-        } else {
+        } else if (i == $('.supervisor_addInputLine').length) {
+          supervisor_addInputLine_result +=($('#hackathon_supervisor_info_0'+i).val());
+        }else {
           supervisor_addInputLine_result +=($('#hackathon_supervisor_info_0'+i).val() + '\n');
         }
       }
@@ -1419,7 +1438,9 @@
       for (var i = 1; i <= $('.sponsor_addInputLine').length; i ++) {
         if (1 == $('.sponsor_addInputLine').length) {
           sponsor_addInputLine_result +=($('#hackathon_sponsor_info_0'+i).val());
-        } else {
+        } else if (i == $('.sponsor_addInputLine').length) {
+          sponsor_addInputLine_result +=($('#hackathon_sponsor_info_0'+i).val());
+        }else {
           sponsor_addInputLine_result +=($('#hackathon_sponsor_info_0'+i).val() + '\n');
         }
       }

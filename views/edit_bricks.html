@@ -24,13 +24,11 @@
 
     <div class="top_02 top_common">
       <div class="top_02 title_area">
-        <div id="title">CREAT CHATBOT</div>
-        <div id="sub_title">| 챗봇 수정하기</div>
+        <div id="title"></div>
+        <div id="sub_title"></div>
       </div>
       <div id="context">
         <p>
-          Build a Facebook bot without coding. Launch a full-featured chatbot in 7 minutes. We believe in the power of chatbots to strengthen your <br>
-          connection to your audience—whether that's your customers, readers, fans, or others. And we're committed to making that as easy as we can.
         </p>
       </div>
     </div>
@@ -1361,6 +1359,7 @@
             login_name.text(fb_name);
 
             $('#title').text(project_name);
+            $('#sub_title').text('| 챗봇 수정하기');
             $('#context').text(project_name+'에 내용을 수정하실 수 있어요. 기본정보 / 사용자 데이터 입력 / 플랫폼 연동하기 / 챗봇삭제 등을 하실 수 있어요. 챗봇의 내용을 수정해서 보다 '+fb_name+'에 잘맞는 챗봇으로 만들어보세요.');
 
             fb_id = body.facebook.fb_id;

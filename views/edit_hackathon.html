@@ -732,10 +732,10 @@
       <div class="modal_title">제거</div>
       <div class="modal_context" id="modal_remove_context">챗봇을 제거하시겠어요?</div>
       <div class="modal_brick_api_two_btn_area" id="modal_brick_api_remove_two_btn_area">
-        <div id="modal_right_remove_btn" class="modal_right_btn">
+        <div id="modal_right_remove_btn" class="modal_left_btn">
           <p>챗봇 제거</p>
         </div>
-        <div id="modal_left_remove_btn" class="modal_left_btn">
+        <div id="modal_left_remove_btn" class="modal_right_btn">
           <p>아니요</p>
         </div>
       </div>
@@ -2313,6 +2313,9 @@
       var registered_fb_name;
       var registered_page_list_copy;
 
+      var is_check_fb_connected = false;
+      var fb_page_index;
+
       $.ajax({
         url: 'https://www.chatbrick.io/api/login/',
         type: 'GET',
@@ -2410,13 +2413,14 @@
                         if (fb_page_id_from_api == item.page_id) {
                           console.log('fb_page_id_from_api=>'+fb_page_id_from_api);
 
-                          var fb_page_index = fb_page_ids.indexOf(fb_page_id_from_api);
+                          fb_page_index = fb_page_ids.indexOf(fb_page_id_from_api);
                           console.log('fb_page_index=>' + fb_page_index);
-                          $('.fb_page_set').hide();
+//                          $('.fb_page_set').hide();
                           $('#fb_page_set' + fb_page_index).show();
                           $('#fb_page_btn' + fb_page_index).text("연결해제 하기");
                           $('#fb_page_btn' + fb_page_index).css('border', 'solid 1px #fd6246')
                           $('#fb_page_btn' + fb_page_index).css('color', '#ffffff')
+                          is_check_fb_connected = true;
 
                         } else {
                           for (var i = 0; i < fb_pages_info.length; i++) {
@@ -2447,6 +2451,15 @@
 
                       }
                     });
+
+                    if (is_check_fb_connected) {
+                      $('.fb_page_set').hide();
+                      $('#fb_page_set' + fb_page_index).show();
+                      $('#fb_page_btn' + fb_page_index).text("연결해제 하기");
+                      $('#fb_page_btn' + fb_page_index).css('border', 'solid 1px #fd6246')
+                      $('#fb_page_btn' + fb_page_index).css('color', '#ffffff')
+                    }
+
                   } else {
                     if (body.action == 'ERR0002') {
                       var default_error_modal = document.getElementById('default_error_modal');

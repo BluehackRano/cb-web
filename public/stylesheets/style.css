@@ -2270,6 +2270,8 @@ modal zone
     letter-spacing: normal;
     text-align: left;
     color: #000000;
+
+    margin-bottom: 39px;
 }
 
 .modal_one_btn {
@@ -2670,6 +2672,10 @@ hr.modal_device_underline {
     letter-spacing: normal;
     text-align: center;
     color: #ffffff;
+}
+
+#lego_loading_title {
+    margin-bottom: 11px;
 }
 
 #lego_loading_context_01 {

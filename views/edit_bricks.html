@@ -499,6 +499,22 @@
   </div>
 </div>
 
+<!--서버에러 모양 팝업-->
+<div id="default_server_error_modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="modal_title">확인</div>
+    <div class="create_context_area">
+      <div class="server_error_modal_context_01">에러가 발생했어요.</div>
+      <div class="server_error_modal_context_02">잠시후 다시 시도해주세요.</div>
+    </div>
+    <!--<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>-->
+    <div id="modal_one_server_error_btn" class="modal_one_btn">
+      <p>확인</p></div>
+  </div>
+</div>
+
 <footer id="footer">
   <div class="bottom_common">
     <div id="pre_page">
@@ -707,7 +723,7 @@
             `<div class="brick_api_item_name">`+
             `<p>`+item.name+`</p>`+
             `</div>`+
-            `<div class="brick_api_item_tag_area" id="brick_api_item_tag_area` + itemIndex +`">`+
+            `<div class="brick_api_item_tag_area" id="brick_api_item_tag_area` + itemIndex +`" contentEditable=false data-text="수정하기로 BRICK을 호출할 수 있는 키워드를 등록해보세요.">`+
             `</div>`+
             `<div class="brick_api_item_btn_area">`+
             `<div class="brick_api_item_btn_motify" id="brick_api_item_btn_motify` + itemIndex +`">`+
@@ -721,7 +737,7 @@
           );
 
           var modalBrickApiItem = (
-            `<div class="modal_brick_api_item_tag_area" id="modal_brick_api_item_tag_area` + itemIndex +`">`+
+            `<div class="modal_brick_api_item_tag_area" id="modal_brick_api_item_tag_area` + itemIndex +`" contentEditable=false data-text="수정하기로 BRICK을 호출할 수 있는 키워드를 등록해보세요.">`+
             `</div>`
           );
 
@@ -779,6 +795,22 @@
         }
       }
 
+    }
+    ,error:function(request,status,error) {
+      var default_server_error_modal = document.getElementById('default_server_error_modal');
+      var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+      default_server_error_modal.style.display = "block";
+
+      modal_one_server_error_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_server_error_btn.click(function () {
+        default_server_error_modal.style.display = "none";
+      });
     }
   })
 
@@ -1113,6 +1145,22 @@
             }
           }
         }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
       });
 
     });
@@ -1158,8 +1206,8 @@
   next_page.click(function () {
     $(this).css('background-color', '#bd292c');
 
-    if ($('#user_profile_start_message_01').val() == ''
-      || $('#user_profile_not_ready_mesage_01').val() == '') {
+    if (($('#user_profile_start_message_01').val() == '' && $('#user_profile_start_message_02').val() == '' && $('#user_profile_start_message_03').val() == '')
+      || ($('#user_profile_not_ready_mesage_01').val() == '' && $('#user_profile_not_ready_mesage_02').val() == '' && $('#user_profile_not_ready_mesage_03').val() == '')) {
       console.log('in popup')
       var default_modal = document.getElementById('default_modal');
       var modal_one_btn = $('#modal_one_btn');
@@ -1312,6 +1360,22 @@
               });
             }
           }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
         }
       });
 
@@ -1513,6 +1577,22 @@
                     }
                   }
                 }
+                ,error:function(request,status,error) {
+                  var default_server_error_modal = document.getElementById('default_server_error_modal');
+                  var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                  default_server_error_modal.style.display = "block";
+
+                  modal_one_server_error_btn.hover(function () {
+                    $(this).css('background-color', '#fb7c7e');
+                  }, function () {
+                    $(this).css('background-color', '#ff753c');
+                  });
+
+                  modal_one_server_error_btn.click(function () {
+                    default_server_error_modal.style.display = "none";
+                  });
+                }
               });
 
               console.log('fb_page_ids=>'+JSON.stringify(fb_page_ids));
@@ -1583,6 +1663,22 @@
                           });
                         }
                       }
+                    }
+                    ,error:function(request,status,error) {
+                      var default_server_error_modal = document.getElementById('default_server_error_modal');
+                      var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                      default_server_error_modal.style.display = "block";
+
+                      modal_one_server_error_btn.hover(function () {
+                        $(this).css('background-color', '#fb7c7e');
+                      }, function () {
+                        $(this).css('background-color', '#ff753c');
+                      });
+
+                      modal_one_server_error_btn.click(function () {
+                        default_server_error_modal.style.display = "none";
+                      });
                     }
                   });
 
@@ -1673,6 +1769,22 @@
                         }
                       }
                     }
+                    ,error:function(request,status,error) {
+                      var default_server_error_modal = document.getElementById('default_server_error_modal');
+                      var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                      default_server_error_modal.style.display = "block";
+
+                      modal_one_server_error_btn.hover(function () {
+                        $(this).css('background-color', '#fb7c7e');
+                      }, function () {
+                        $(this).css('background-color', '#ff753c');
+                      });
+
+                      modal_one_server_error_btn.click(function () {
+                        default_server_error_modal.style.display = "none";
+                      });
+                    }
                   });
                 }
               }) //fb.click event
@@ -1738,6 +1850,22 @@
                       }
                     }
                   }
+                  ,error:function(request,status,error) {
+                    var default_server_error_modal = document.getElementById('default_server_error_modal');
+                    var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                    default_server_error_modal.style.display = "block";
+
+                    modal_one_server_error_btn.hover(function () {
+                      $(this).css('background-color', '#fb7c7e');
+                    }, function () {
+                      $(this).css('background-color', '#ff753c');
+                    });
+
+                    modal_one_server_error_btn.click(function () {
+                      default_server_error_modal.style.display = "none";
+                    });
+                  }
                 });
               }); //tele_page_btn click event
 
@@ -1794,6 +1922,22 @@
                       }
                     }
                   }
+                  ,error:function(request,status,error) {
+                    var default_server_error_modal = document.getElementById('default_server_error_modal');
+                    var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                    default_server_error_modal.style.display = "block";
+
+                    modal_one_server_error_btn.hover(function () {
+                      $(this).css('background-color', '#fb7c7e');
+                    }, function () {
+                      $(this).css('background-color', '#ff753c');
+                    });
+
+                    modal_one_server_error_btn.click(function () {
+                      default_server_error_modal.style.display = "none";
+                    });
+                  }
                 });
               }); //tele_page_disconnect_btn click event
 
@@ -1819,6 +1963,22 @@
               });
             }
           }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
         }
       });
 

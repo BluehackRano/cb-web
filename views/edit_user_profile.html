@@ -659,6 +659,22 @@
     </div>
   </div>
 
+  <!--서버에러 모양 팝업-->
+  <div id="default_server_error_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">확인</div>
+      <div class="create_context_area">
+        <div class="server_error_modal_context_01">에러가 발생했어요.</div>
+        <div class="server_error_modal_context_02">잠시후 다시 시도해주세요.</div>
+      </div>
+      <!--<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>-->
+      <div id="modal_one_server_error_btn" class="modal_one_btn">
+        <p>확인</p></div>
+    </div>
+  </div>
+
 </div>
 
 
@@ -809,6 +825,22 @@
            }
          }
        }
+       ,error:function(request,status,error) {
+         var default_server_error_modal = document.getElementById('default_server_error_modal');
+         var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+         default_server_error_modal.style.display = "block";
+
+         modal_one_server_error_btn.hover(function () {
+           $(this).css('background-color', '#fb7c7e');
+         }, function () {
+           $(this).css('background-color', '#ff753c');
+         });
+
+         modal_one_server_error_btn.click(function () {
+           default_server_error_modal.style.display = "none";
+         });
+       }
      });
 
     };
@@ -880,6 +912,22 @@
             }
           }
         }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
       });
     }
     reader.readAsDataURL(file);
@@ -889,23 +937,25 @@
     $('#file').click();
   });
 
-  after_upload_del.click(function () {
-    after_upload.hide();
-    user_profile_photo_upload_btn.show();
-    profile_img.src = '../public/images/bg-img-upload-01.png';
-  })
-
   after_upload_motify.hover(function () {
     $(this).css('background-color', '#fb7c7e');
   }, function () {
     $(this).css('background-color', '#ff753c');
   });
 
+  after_upload_del.click(function () {
+    after_upload.hide();
+    user_profile_photo_upload_btn.show();
+    $('#uploadBtn').val('');
+    profile_img.src = '../public/images/bg-img-upload-01.png';
+  })
+
   after_upload_del.hover(function () {
     $(this).css('background-color', '#fb7c7e');
   }, function () {
     $(this).css('background-color', '#fd6246');
   });
+
 
   var fb_page_list = $('#fb_page_list');
 
@@ -1401,6 +1451,22 @@
             }
           }
         }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
       });
 
     } else if (response.status === 'not_authorized') {
@@ -1605,6 +1671,22 @@
         }
       }
     }
+    ,error:function(request,status,error) {
+      var default_server_error_modal = document.getElementById('default_server_error_modal');
+      var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+      default_server_error_modal.style.display = "block";
+
+      modal_one_server_error_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_server_error_btn.click(function () {
+        default_server_error_modal.style.display = "none";
+      });
+    }
   });
 
   var charLimit = 63;
@@ -1758,6 +1840,22 @@
               });
             }
           }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
         }
       });
 
@@ -2026,6 +2124,22 @@
             }
           }
         }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
       });
     } else {
       console.log('portfolioList=> 없음');
@@ -2084,8 +2198,9 @@
 
     if ($('#user_profile_data_name').val() == '' || $('#user_profile_data_professional').val() == ''
       || $('#user_profile_data_location').val() == '' || $('#user_profile_data_appeal').val() == ''
-      || $('#profile_img').src == ''
-      || $('#user_profile_start_message_01').val() == '' || $('#user_profile_not_ready_mesage_01').val() == ''
+      || ($('#profile_img').attr("src") == 'https://www.chatbrick.io/public/images/bg-img-upload-01.png' || $('#profile_img').attr("src") == '../public/images/bg-img-upload-01.png')
+      || ($('#user_profile_start_message_01').val() == '' && $('#user_profile_start_message_02').val() == '' && $('#user_profile_start_message_03').val() == '')
+      || ($('#user_profile_not_ready_mesage_01').val() == '' && $('#user_profile_not_ready_mesage_02').val() == '' && $('#user_profile_not_ready_mesage_03').val() == '')
       || user_profile_check == true) {
       //      portfolioList = [];
 
@@ -2222,6 +2337,22 @@
 
 
             }
+          }
+          ,error:function(request,status,error) {
+            var default_server_error_modal = document.getElementById('default_server_error_modal');
+            var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+            default_server_error_modal.style.display = "block";
+
+            modal_one_server_error_btn.hover(function () {
+              $(this).css('background-color', '#fb7c7e');
+            }, function () {
+              $(this).css('background-color', '#ff753c');
+            });
+
+            modal_one_server_error_btn.click(function () {
+              default_server_error_modal.style.display = "none";
+            });
           }
         });
 

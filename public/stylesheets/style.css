@@ -72,7 +72,7 @@ input.imgeFile {
 
 /*placeholder*/
 .placeholder::-webkit-input-placeholder {
-    color: #d8d8d8;
+    color: #9a9a9a;
 }
 
 .transparent::-webkit-input-placeholder {
@@ -2726,6 +2726,29 @@ hr.modal_device_underline {
     color: #000000;
 }
 
+.server_error_modal_context_01 {
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.server_error_modal_context_02 {
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
 
 .lego_loading_context_area {
     width: 700px;
@@ -2738,6 +2761,7 @@ hr.modal_device_underline {
     width: 700px;
     height: 54px;
 
+    margin-top: 11px;
     margin-bottom: 39px;
 }
 
@@ -2753,4 +2777,18 @@ hr.modal_device_underline {
     display: table;
     margin-left: auto;
     margin-right: auto;
+}
+
+/*브릭 태그가 하나도 없을때*/
+[contentEditable=false]:empty:not(:focus):before{
+    content:attr(data-text);
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #9a9a9a;
 }

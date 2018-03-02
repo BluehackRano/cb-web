@@ -1,7 +1,7 @@
 'use strict';
 
 var $  = require('jquery');
-imagePreview.src = previewIcon;
+// imagePreview.src = previewIcon;
 
 var hackathon_choice = $('#hackathon_choice');
 var designer_portfolio_choice = $('#designer_portfolio_choice');

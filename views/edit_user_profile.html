@@ -5,6 +5,7 @@
   <title>Title</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="../public/secret/config.js"></script>
   <script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
   <script type="text/javascript" src="/public/javascripts/href_event.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.8.0/bodymovin.min.js'></script>
@@ -1167,7 +1168,6 @@
                   //connect fb page api
                   $.ajax({
                     url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_ids[index]+'/'+fb_page_access_tokens[index]+'/',
-                    // url: 'https://www.chatbrick.io/api/brick/2df4de28-c1fa-4d8e-a29e-ad530705e5be/facebook/459495930768329/EAAB6GByVpNoBADNjX9W88rHx5Q6uSMtm7c4nhczvEhs2IJ0vbu5u2HO65Kc93BvnGJVG5SCswYAkSpiwZByiXftmSOzgLwod52AjcxIdw8VdQlu8UsLqglu9rx23t0Kwj2sBORyC8gpsZCrPZCuhEMgZAC8yDIyjO2nNos9DhYZCqh2QZBfR0tdi4eHtUZBUYEoRq5XLoqJHwZDZD/',
                     type: 'PUT',
                     async: false,
                     crossDomain: true,
@@ -1236,7 +1236,6 @@
                   $.ajax({
                     //TODO: url
                     url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
-                    // url: 'https://www.chatbrick.io/api/brick/portfolio/facebook/',
                     type: 'DELETE',
                     async: false,
                     crossDomain: true,
@@ -1325,7 +1324,6 @@
                 $.ajax({
                   //TODO: url
                   url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
-                  // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
                   type: 'PUT',
                   async: false,
                   crossDomain: true,
@@ -1382,7 +1380,6 @@
                 $.ajax({
                   //TODO: url
                   url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
-                  // url: 'https://www.chatbrick.io/api/brick/portfolio/telegram/481112996:AAHeqd29aBmPRlnJlo7kllN-fUhtPe8dyzs/',
                   type: 'DELETE',
                   async: false,
                   crossDomain: true,
@@ -1810,7 +1807,6 @@
       remove_modal.style.display = "none";
 
       $.ajax({
-        // url: 'https://www.chatbrick.io/api/brick/3785c81a-c040-4d6c-9de0-fb875dc3eb9e/',
         url: 'https://www.chatbrick.io/api/brick/' + setId + '/',
         type: 'DELETE',
         async: false,

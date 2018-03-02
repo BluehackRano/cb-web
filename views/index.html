@@ -5,6 +5,7 @@
 	<title>chatbrick</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="../public/secret/config.js"></script>
 	<script type="text/javascript">
 
     function statusChangeCallback(response) {
@@ -73,13 +74,9 @@
           console.log(data);
           console.log('code=>' + data.code);
 //              window.location.href = "/chatbot/list";
-          var redirect_url = 'https://www.chatbrick.io';
-          var client_id = '134243977372890';
+          var redirect_url = appConfig.redirect_url;
+          var client_id = appConfig.client_id;
 
-//							FB.api('/oauth/access_token?code='+data.code+'&client_id='+'134243977372890'+'&redirect_uri='+redirect_url, function (response) {
-//								console.log('oauth=>' + JSON.stringify(response));
-//                window.location.href = "/chatbot/list";
-//              });
 
           $.ajax({
             url: 'https://graph.facebook.com/oauth/access_token?code=' + data.code + '&client_id=' + client_id + '&redirect_uri=' + redirect_url,
@@ -305,6 +302,5 @@
 
 </script>
 <script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
-<!--<script type="text/javascript" src="/public/javascripts/index.js"></script>-->
 </body>
 </html>

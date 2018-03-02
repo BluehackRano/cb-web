@@ -137,3 +137,6 @@ package-lock.json
 
 #dist
 /dist
+
+#sercet config file
+/public/secret/config.js

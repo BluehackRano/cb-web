@@ -6,12 +6,14 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="../public/secret/config.js"></script>
+  <script src="../secret/config.js"></script>
   <script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
   <script type="text/javascript" src="/public/javascripts/href_event.js"></script>
   <link rel="stylesheet" href="../public/stylesheets/style.css">
   <script src="../public/javascripts/connect_facebook.js"></script>
-
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="../public/javascripts/loading.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/loading.css">
 </head>
 <body>
 <header id="header">
@@ -2368,7 +2370,7 @@
       $.ajax({
         url: 'https://www.chatbrick.io/api/brick/',
         type: 'PATCH',
-        async: false,
+//        async: false,
         crossDomain: true,
         contentType: 'application/json',
         dataType: 'JSON',
@@ -2413,6 +2415,13 @@
           modal_one_server_error_btn.click(function () {
             default_server_error_modal.style.display = "none";
           });
+        }
+        ,beforeSend: function () {
+          $("body").loading("start");
+
+        }
+        ,complete: function () {
+          $("body").loading("stop");
         }
       });
     }
@@ -2644,7 +2653,7 @@
                   $.ajax({
                     url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_ids[index]+'/'+fb_page_access_tokens[index]+'/',
                     type: 'PUT',
-                    async: false,
+//                    async: false,
                     crossDomain: true,
                     xhrFields: {withCredentials: true},
                     success: function (body, status, res) {
@@ -2703,6 +2712,13 @@
                         default_server_error_modal.style.display = "none";
                       });
                     }
+                    ,beforeSend: function () {
+                      $("body").loading("start");
+
+                    }
+                    ,complete: function () {
+                      $("body").loading("stop");
+                    }
                   });
 
                   //facebook subscribed
@@ -2728,7 +2744,7 @@
                     //TODO: url
                     url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
                     type: 'DELETE',
-                    async: false,
+//                    async: false,
                     crossDomain: true,
                     xhrFields: {withCredentials: true},
                     success: function (body, status, res) {
@@ -2808,6 +2824,13 @@
                         default_server_error_modal.style.display = "none";
                       });
                     }
+                    ,beforeSend: function () {
+                      $("body").loading("start");
+
+                    }
+                    ,complete: function () {
+                      $("body").loading("stop");
+                    }
                   });
                 }
               }) //fb.click event
@@ -2831,7 +2854,7 @@
                   //TODO: url
                   url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
                   type: 'PUT',
-                  async: false,
+//                  async: false,
                   crossDomain: true,
                   xhrFields: {withCredentials: true},
                   success: function (body, status, res) {
@@ -2841,6 +2864,7 @@
                         console.log('connected telegram.ok=>' + body.data.telegram.ok);
                         tg_connect_page.hide();
                         tele_page_set.show();
+                        $('.tele_page_title').text(body.data.bot.username);
                       }
                     } else {
                       if (body.action == 'ERR0002') {
@@ -2879,6 +2903,13 @@
                       default_server_error_modal.style.display = "none";
                     });
                   }
+                  ,beforeSend: function () {
+                    $("body").loading("start");
+
+                  }
+                  ,complete: function () {
+                    $("body").loading("stop");
+                  }
                 });
               }); //tele_page_btn click event
 
@@ -2894,7 +2925,7 @@
                   //TODO: url
                   url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
                   type: 'DELETE',
-                  async: false,
+//                  async: false,
                   crossDomain: true,
                   xhrFields: {withCredentials: true},
                   success: function (body, status, res) {
@@ -2951,6 +2982,13 @@
                     modal_one_server_error_btn.click(function () {
                       default_server_error_modal.style.display = "none";
                     });
+                  }
+                  ,beforeSend: function () {
+                    $("body").loading("start");
+
+                  }
+                  ,complete: function () {
+                    $("body").loading("stop");
                   }
                 });
               }); //tele_page_disconnect_btn click event

@@ -6,9 +6,12 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	<script src="../public/secret/config.js"></script>
+	<script src="../secret/config.js"></script>
 	<script type="text/javascript" src="/public/javascripts/href_event.js"></script>
 	<link rel="stylesheet" href="../public/stylesheets/style.css">
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="../public/javascripts/loading.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/loading.css">
 
 </head>
 <body>
@@ -18,7 +21,7 @@
 			<img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
 
 			<div class="top_01 top_user_profile_common">
-				<img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+				<img id="login_logo" class="login_logo">
 				<div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
 				<img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
 						 alt="login_dropdown">
@@ -1633,7 +1636,7 @@
         $.ajax({
           url: 'https://www.chatbrick.io/api/brick/',
           type: 'PUT',
-          async: false,
+//          async: false,
           crossDomain: true,
           contentType: 'application/json',
           dataType: 'JSON',
@@ -1679,6 +1682,13 @@
             modal_one_server_error_btn.click(function () {
               default_server_error_modal.style.display = "none";
             });
+          }
+          ,beforeSend: function () {
+            $("body").loading("start");
+
+          }
+          ,complete: function () {
+            $("body").loading("stop");
           }
         });
       }

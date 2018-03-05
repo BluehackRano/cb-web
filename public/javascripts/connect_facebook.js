@@ -1,6 +1,6 @@
 
 window.onload = function() {
-  `<script src="../public/secret/config.js"></script>`
+  `<!--<script src="../public/secret/config.js"></script>-->`
   window.fbAsyncInit = function () {
     FB.init({
       appId: appConfig.client_id,

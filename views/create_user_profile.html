@@ -6,9 +6,12 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.8.0/bodymovin.min.js'></script>
-	<script src="../public/secret/config.js"></script>
+	<script src="../secret/config.js"></script>
 	<script type="text/javascript" src="/public/javascripts/href_event.js"></script>
 	<link rel="stylesheet" href="../public/stylesheets/style.css">
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="../public/javascripts/loading.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/loading.css">
 </head>
 <body>
 <header id="header">
@@ -925,7 +928,7 @@
     lego_loading_modal.style.display = "none";
 
     //팝업 초기화
-    $('#lego_loading_title').text('{{프로젝트명}} 포트폴리오');
+//    $('#lego_loading_title').text('{{프로젝트명}} 포트폴리오');
     $('#lego_loading_context_01').text('{{프로젝트명}}의 포트폴리오를 읽어오고 있어요.');
     $('#lego_loading_context_02').text('지금 {{순서}}. {{포트폴리오명}}의 정보를 불러오고 있어요.');
     $('#modal_one_lego_loading_btn').css('background-color', '#c0c0c0');
@@ -1089,7 +1092,7 @@
       $.ajax({
         url: 'https://www.chatbrick.io/api/brick/',
         type: 'PUT',
-        async: false,
+//        async: false,
         crossDomain: true,
         contentType: 'application/json',
         dataType: 'JSON',
@@ -1137,6 +1140,13 @@
           modal_one_server_error_btn.click(function () {
             default_server_error_modal.style.display = "none";
           });
+        }
+        ,beforeSend: function () {
+          $("body").loading("start");
+
+        }
+        ,complete: function () {
+          $("body").loading("stop");
         }
       });
 
@@ -1399,7 +1409,7 @@
           console.log('확인 버튼 활성화');
 
           //확인 누르면 서버에 데이터 전송
-          $('#lego_loading_title').text($('#baseInfo_name').val() + '포트폴리오');
+//          $('#lego_loading_title').text($('#baseInfo_name').val() + '포트폴리오');
           $('#lego_loading_context_01').text($('#baseInfo_name').val() + '의 포트폴리오를 읽어오고 있어요.');
           $('#lego_loading_context_02').text('포트폴리오를 모두 불러왔어요.');
           $('#modal_one_lego_loading_btn').css('background-color', '#ff753c');
@@ -1430,7 +1440,7 @@
                   console.log('확인 버튼 활성화');
 
                   //확인 누르면 서버에 데이터 전송
-                  $('#lego_loading_title').text(baseInfo_name + '포트폴리오');
+//                  $('#lego_loading_title').text(baseInfo_name + '포트폴리오');
                   $('#lego_loading_context_01').text(baseInfo_name + '의 포트폴리오를 읽어오고 있어요.');
                   $('#lego_loading_context_02').text('지금 '+count+'. '+body.data.title + '의 정보를 불러오고 있어요.');
 
@@ -1444,7 +1454,7 @@
                   $("#modal_one_lego_loading_btn").unbind( "click", loading_click_handler);
                   $("#modal_one_lego_loading_btn").unbind( "click", loading_click_error_handler);
 
-                  $('#lego_loading_title').text(baseInfo_name + '포트폴리오');
+//                  $('#lego_loading_title').text(baseInfo_name + '포트폴리오');
                   $('#lego_loading_context_01').text(baseInfo_name + '의 포트폴리오를 읽어오고 있어요.');
                   $('#lego_loading_context_02').text('지금 '+count+'. '+body.data.title + '의 정보를 불러오고 있어요.');
                   $('#modal_one_lego_loading_btn').css('background-color', '#c0c0c0');

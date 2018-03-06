@@ -590,6 +590,7 @@
   var api_set_list = $('#api_set_list');
   var brick_api_zone = $('#brick_api_zone');
 
+  var is_telegram_connected = false;
 
   var resBricksList;
   $.ajax({
@@ -623,6 +624,10 @@
         if (body.data.telegram.token != undefined) {
           $('#tg_content_name').val(body.data.telegram.token);
           console.log('tg_content_name=>' + $('#tg_content_name').val());
+
+          if (body.data.telegram.token != '') {
+            is_telegram_connected = true;
+          }
         }
         var settings_name = body.data.settings.name;
         var settings_desc = body.data.settings.desc.split('\n');
@@ -1096,6 +1101,7 @@
       '이 동작은 실행 취소할 수 없습니다.');
 
     remove_modal.style.display = "block";
+    console.log('is_telegram_connected=>' + is_telegram_connected);
 
     modal_left_remove_btn.hover(function () {
       $(this).css('background-color', '#fb7c7e');
@@ -1116,6 +1122,79 @@
     modal_right_remove_btn.click(function () {
       remove_modal.style.display = "none";
 
+      //disconnect telegram api
+      if (is_telegram_connected) {
+        $.ajax({
+          //TODO: url
+          url: 'https://www.chatbrick.io/api/brick/' + setId + '/telegram/' + $('#tg_content_name').val() + '/',
+          type: 'DELETE',
+//                  async: false,
+          crossDomain: true,
+          xhrFields: {withCredentials: true},
+          success: function (body, status, res) {
+
+            if (body.success) {
+              if (body.data.telegram.ok) {
+
+                //check end time
+                var date = new Date();
+                var end_time = date.getTime();
+                console.log('end_time=>' + end_time);
+                var tag = '텔레그램 페이지 앱 삭제';
+                var remark = '텔레그램 페이지 앱 삭제를 위해 사용';
+                sendTimeLog(setId, start_time, end_time, tag, remark);
+
+                console.log('connected telegram.ok=>' + body.data.telegram.ok);
+                tg_connect_page.show();
+                tele_page_set.hide();
+              }
+            } else {
+              if (body.action == 'ERR0002') {
+                var default_error_modal = document.getElementById('default_error_modal');
+                var modal_one_error_btn = $('#modal_one_error_btn');
+
+                default_error_modal.style.display = "block";
+                $('#modal_error_context').text(body.msg);
+
+
+                modal_one_error_btn.hover(function () {
+                  $(this).css('background-color', '#fb7c7e');
+                }, function () {
+                  $(this).css('background-color', '#ff753c');
+                });
+
+                modal_one_error_btn.click(function () {
+                  default_error_modal.style.display = "none";
+                });
+              }
+            }
+          }
+          , error: function (request, status, error) {
+            var default_server_error_modal = document.getElementById('default_server_error_modal');
+            var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+            default_server_error_modal.style.display = "block";
+
+            modal_one_server_error_btn.hover(function () {
+              $(this).css('background-color', '#fb7c7e');
+            }, function () {
+              $(this).css('background-color', '#ff753c');
+            });
+
+            modal_one_server_error_btn.click(function () {
+              default_server_error_modal.style.display = "none";
+            });
+          }
+//        ,beforeSend: function () {
+//          $("body").loading("start");
+//
+//        }
+//        ,complete: function () {
+//          $("body").loading("stop");
+//        }
+        });
+      }
+      //delete chatbrick project api
       $.ajax({
         url: 'https://www.chatbrick.io/api/brick/' + setId + '/',
         type: 'DELETE',
@@ -1849,7 +1928,7 @@
                         tg_connect_page.hide();
                         tele_page_set.show();
                         $('.tele_page_title').text(body.data.bot.username);
-
+                        is_telegram_connected = true;
                       }
                     } else {
                       if (body.action == 'ERR0002') {
@@ -1928,6 +2007,8 @@
                         console.log('delete telegram.ok=>' + body.data.telegram.ok);
                         tg_connect_page.show();
                         tele_page_set.hide();
+
+                        is_telegram_connected = false;
                       }
                     } else {
                       if (body.action == 'ERR0002') {

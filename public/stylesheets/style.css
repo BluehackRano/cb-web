@@ -6,9 +6,15 @@
 body, table, div, p {font-family:'Noto Sans KR';}
 
 @font-face {
-    font-family: "Apple SD Gothic Neo";
-    src: url('../../public/fonts/AppleSDGothicNeoH.otf');
+    font-family: "Noto Sans KR-black";
+    src: url('../../public/fonts/NotoSansCJKkr-Black.otf');
 }
+
+@font-face {
+    font-family: "Noto Sans KR-bold";
+    src: url('../../public/fonts/NotoSansCJKkr-Bold.otf');
+}
+
 
 .hello {
     color: red;
@@ -1586,7 +1592,7 @@ landing page
     text-align: center;
     vertical-align: middle;
 
-    font-family: "Apple SD Gothic Neo";
+    font-family: "Noto Sans KR-black";
     font-size: 20px;
     font-weight: 900;
     font-style: normal;
@@ -1615,7 +1621,7 @@ landing page
 }
 
 .landing_set_title {
-    font-family: "Apple SD Gothic Neo";
+    font-family: "Noto Sans KR-black";
     font-size: 30px;
     font-weight: 900;
     font-style: normal;
@@ -1678,7 +1684,7 @@ landing page
 .landing_item_name {
     width: auto;
     height: 52px;
-    font-family: "Apple SD Gothic Neo";
+    font-family: "Noto Sans KR-bold";
     font-size: 20px;
     font-weight: 900;
     font-style: normal;
@@ -1695,7 +1701,7 @@ landing page
 .landing_item_context {
     width: auto;
     height: 51px;
-    font-family: "Apple SD Gothic Neo";
+    font-family: "Noto Sans KR";
     font-size: 14px;
     font-weight: 500;
     font-style: normal;
@@ -1709,7 +1715,7 @@ landing page
 #landing_commingsoon_name {
     width: auto;
     height: 52px;
-    font-family: "Apple SD Gothic Neo";
+    font-family: "Noto Sans KR-bold";
     font-size: 20px;
     font-weight: 900;
     font-style: normal;
@@ -1726,7 +1732,7 @@ landing page
 #landing_commingsoon_context {
     width: auto;
     height: 51px;
-    font-family: "Apple SD Gothic Neo";
+    font-family: "Noto Sans KR";
     font-size: 14px;
     font-weight: 500;
     font-style: normal;
@@ -2338,11 +2344,30 @@ modal zone
     letter-spacing: normal;
     text-align: left;
     color: #000000;
+    margin-bottom: 5px;
 
 }
 
 .modal_device_set_name {
     width: 118px;
+    height: 22px;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-left: 16px;
+}
+
+.modal_device_set_kind_name {
+    width: 22px;
+    /*width: 118px;*/
+    /*height: 22px;*/
     height: 22px;
     font-family: "Noto Sans KR";
     font-size: 18px;
@@ -2366,6 +2391,18 @@ modal zone
     object-fit: contain;
     display: block;
     margin-top: 60px;
+    /*margin: 0 auto;*/
+    float: left;
+}
+
+.modal_device_set_kind_img {
+    /*width: 200px;*/
+    width: auto;
+    /*height: 200px;*/
+    height: auto;
+
+    object-fit: contain;
+    display: block;
     /*margin: 0 auto;*/
     float: left;
 }
@@ -2396,6 +2433,9 @@ hr.modal_device_underline {
     color: #000000;
 
     margin-left: 16px;
+    border-bottom: none;
+    border-top: 1px solid #d8d8d8;
+    padding-top: 13px;
 }
 
 .close_modal_img {

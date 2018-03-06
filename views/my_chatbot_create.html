@@ -186,15 +186,15 @@
               <div class="modal_device_set_title">
                 | SET DEMO
               </div>
-              <div class="modal_device_set_name" id="modal_device_set_name">
-                : HACKATHON
+              <div class="modal_device_set_kind_name" id="modal_device_set_kind_name">
+                HACKATHON
               </div>
             </div>
-            <img src="../public/images/img-hackathon.png" class="modal_device_set_img">
+            <img src="../public/images/img-hackathon.png" class="modal_device_set_kind_img" id="modal_device_set_kind_img">
           </div>
 
-          <hr class="modal_device_underline">
-          <div class="modal_device_context_desc">
+          <!--<hr class="modal_device_underline">-->
+          <div class="modal_device_context_desc" id="modal_device_context_desc">
             Build a Facebook bot without coding. Launch a full-featured <br>
             chatbot in 7 minutes. We believe in the power of chatbots to<br>
             strengthen your connection to your audience—whether <br>
@@ -373,7 +373,8 @@
   var set_designer_portfolio = $('#set_designer_portfolio');
   var set_bricks = $('#set_bricks');
   var set_preview = $('.set_preview');
-  var modal_device_set_name = $('#modal_device_set_name');
+  var modal_device_set_kind_name = $('#modal_device_set_kind_name');
+  var modal_device_context_desc = $('#modal_device_context_desc');
 
   var hackathon_choice = $('#hackathon_choice');
   var designer_portfolio_choice = $('#designer_portfolio_choice');
@@ -388,14 +389,21 @@
     modal.style.display = "block";
 
     if (itemIndex == '0') {
-      modal_device_set_name.text('HACKATHON');
+      modal_device_set_kind_name.text('HACKATHON');
+      modal_device_context_desc.text('해커톤을 운영하고 계신가요? 몇가지 필요한 정보들을 입력하면 운영하는 해커톤의 일정 및 장소, 참가요건, 시상 및 참가혜택, 참가신청 홈페이지로 이동, 이메일로 문의, 주최/주관/후원처에 대한 안내를 할 수 있어요.');
       $('#modal_device_img').attr("src", '../public/images/gif_s01.gif');
+      $('#modal_device_set_kind_img').attr("src", '../public/images/img-hackathon.png');
+
     } else if (itemIndex == '1') {
-      modal_device_set_name.text('DESIGNER PORTFOLIO');
+      modal_device_set_kind_name.text('DESIGNER PORTFOLIO');
+      modal_device_context_desc.text('디자이너이신가요? 디자이너 포트폴리오에 필요한 정보들을 입력하면 나를 궁금해하는 사람들에게 보다 효과적으로 소개할 수 있어요. 나의 이름, 전문분야, 거주지역, 개인 홈페이지, 경력사항, 스킬, 포트폴리오, 간단한 자기소개에 대한 안내를 할 수 있어요.')
       $('#modal_device_img').attr("src", '../public/images/gif_s02.gif');
+      $('#modal_device_set_kind_img').attr("src", '../public/images/img-designer-portfolio-01.png');
     } else if (itemIndex == '2') {
-      modal_device_set_name.text('BRICKS');
+      modal_device_set_kind_name.text('BRICKS');
+      modal_device_context_desc.text('나만을 위한 챗봇을 원하시나요? 20개의 BRICK 중 최대 10개를 선택하여 챗봇에 적용할 수 있어요. BRICK에는 열차조회, 습득물조회, 메일보내기, 로또당첨번호, 해외국가정보, 우체국택배, 공공취업정보, 우편번호찾기, 오늘의운세, 응급실검색, 쉬는날검색, 해외SOS, 인천출국장, 전기차충전소, 여행경보조회, 얼마나닮았지, 내기분어때,  스타일렌즈, 자소서분석, 누구냐넌이 있어요.');
       $('#modal_device_img').attr("src", '../public/images/gif_b18.gif');
+      $('#modal_device_set_kind_img').attr("src", '../public/images/img-bricks.png');
     }
   });
 

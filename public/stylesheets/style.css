@@ -7,12 +7,14 @@ body, table, div, p {font-family:'Noto Sans KR';}
 
 @font-face {
     font-family: "Noto Sans KR-black";
-    src: url('../../public/fonts/NotoSansCJKkr-Black.otf');
+    /*src: url('../../public/fonts/NotoSansCJKkr-Black.otf');*/
+url(https://fonts.gstatic.com/s/notosanskr/v3/Pby7FmXiEBPT4ITbgNA5CgmOUlnI7bgWsWdx7ChvM9uykRdOOtLIUWN5hnygm9uOTewk_n_VgmoBNBuDxS8.0.woff2) format('woff2');
 }
 
 @font-face {
     font-family: "Noto Sans KR-bold";
-    src: url('../../public/fonts/NotoSansCJKkr-Bold.otf');
+    /*src: url('../../public/fonts/NotoSansCJKkr-Bold.otf');*/
+url(https://fonts.gstatic.com/s/notosanskr/v3/Pby7FmXiEBPT4ITbgNA5CgmOalvI7bgWsWdx7ChvM9uykRdOOtLIUWN5hnygm9uOTewk_n_VgmoBNBuDxS8.0.woff2) format('woff2');
 }
 
 

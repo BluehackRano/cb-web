@@ -6,7 +6,21 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<script src="../secret/config.js"></script>
+	<script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
 	<script type="text/javascript">
+
+		var start_time;
+
+    var startbtn = $('#landing_start_btn');
+    startbtn.click(function () {
+      $(this).css('background-color', '#bd292c');
+    })
+
+    startbtn.hover(function () {
+      startbtn.css('background-color', '#fb7c7e');
+    }, function () {
+      startbtn.css('background-color', '#fd6246');
+    });
 
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
@@ -61,6 +75,10 @@
 
     function getFBAPI(authResponse) {
       console.log('Welcome! Fetching your information.... ');
+
+      var log_id = 'login_facebook' + start_time;
+      console.log('log_id=>' + log_id);
+
       $.ajax({
         url: 'https://www.chatbrick.io/api/login/',
         type: 'POST',
@@ -69,14 +87,25 @@
         xhrFields: {withCredentials: true},
         data: {
           fb_access_token: authResponse.accessToken,
+          log_id: log_id
         },
         success: function (data, textStatus, res) {
           console.log(data);
           console.log('code=>' + data.code);
-//              window.location.href = "/chatbot/list";
+
+          //check end time
+          var date = new Date();
+          var end_time = date.getTime();
+          var task_code = 'login_facebook';
+          var remark = '페북 페이지 로그인을 위해 사용';
+          sendTaskLog(log_id, task_code, start_time, end_time, remark);
+
+          var api_code = 'login_facebook';
+          var api_provider_code = 'chatbrick';
+          sendAPILog(log_id, api_code, api_provider_code, start_time, end_time, remark)
+
           var redirect_url = appConfig.redirect_url;
           var client_id = appConfig.client_id;
-
 
           $.ajax({
             url: 'https://graph.facebook.com/oauth/access_token?code=' + data.code + '&client_id=' + client_id + '&redirect_uri=' + redirect_url,
@@ -115,6 +144,9 @@
         console.log("Response goes here!");
         console.log(response);
 
+        var date = new Date();
+        start_time = date.getTime();
+
         var authResponse = response.authResponse;
         console.log('authResponse =>' + JSON.stringify(authResponse));
         getFBAPI(authResponse);
@@ -125,6 +157,8 @@
         'manage_pages, pages_show_list,read_insights'
       });
     }
+
+
 	</script>
 	<link rel="stylesheet" href="../public/stylesheets/style.css">
 </head>
@@ -287,20 +321,20 @@
 <footer id="footer"></footer>
 <!--<button onclick="javascript:login();">Login Facebook</button>-->
 
-<script>
-  var startbtn = $('#landing_start_btn');
-  startbtn.click(function () {
-    $(this).css('background-color', '#bd292c');
+<!--<script>-->
+  <!--var startbtn = $('#landing_start_btn');-->
+  <!--startbtn.click(function () {-->
+    <!--$(this).css('background-color', '#bd292c');-->
+    <!---->
+  <!--})-->
 
-  })
+  <!--startbtn.hover(function () {-->
+    <!--startbtn.css('background-color', '#fb7c7e');-->
+  <!--}, function () {-->
+    <!--startbtn.css('background-color', '#fd6246');-->
+  <!--});-->
 
-  startbtn.hover(function () {
-    startbtn.css('background-color', '#fb7c7e');
-  }, function () {
-    startbtn.css('background-color', '#fd6246');
-  });
-
-</script>
+<!--</script>-->
 <script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
 </body>
 </html>

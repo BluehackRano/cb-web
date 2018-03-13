@@ -392,6 +392,8 @@
                 //check start time
                 var date = new Date();
                 var start_time = date.getTime();
+                var log_id = 'reg_facebook' + start_time;
+                var log_id_dele_fb = 'del_facebook' + start_time;
                 console.log('start_time=>' + start_time);
 
                 var index = $(this).parent().parent().index();
@@ -422,6 +424,9 @@
                         var remark = '페북 페이지 등록을 위해 사용';
                         sendTimeLog(setId, start_time, end_time, tag, remark);
 
+                        var api_code = 'reg_facebook';
+                        var api_provider_code = 'chatbrick';
+                        sendAPILog(log_id, api_code, api_provider_code, start_time, end_time, remark)
 
                         $('.fb_page_set').hide();
                         $('#fb_page_set' + index).show();
@@ -471,25 +476,34 @@
                     }
                     ,complete: function () {
                       $("body").loading("stop");
+
+                      //check start time
+                      var date = new Date();
+                      var start_time = date.getTime();
+                      var log_id = 'reg_facebook' + start_time;
+                      console.log('start_time=>' + start_time);
+
+                      //facebook subscribed
+                      FB.api(
+                        '/'+fb_page_ids[index]+'/subscribed_apps',
+                        'POST',
+                        {'access_token': fb_page_access_tokens[index]},
+                        function(response) {
+                          //check end time
+                          var date = new Date();
+                          var end_time = date.getTime();
+                          console.log('end_time=>' + end_time);
+                          var tag = '페북 페이지 앱 등록';
+                          var remark = '페북 페이지 subscribed 위해 사용';
+                          sendTimeLog(setId, start_time, end_time, tag, remark);
+
+                          var api_code = 'reg_facebook';
+                          var api_provider_code = 'facebook';
+                          sendAPILog(log_id, api_code, api_provider_code, start_time, end_time, remark)
+                        }
+                      );
                     }
                   });
-
-                  //facebook subscribed
-                  FB.api(
-                    '/'+fb_page_ids[index]+'/subscribed_apps',
-                    'POST',
-                    {'access_token': fb_page_access_tokens[index]},
-                    function(response) {
-                      //check end time
-                      var date = new Date();
-                      var end_time = date.getTime();
-                      console.log('end_time=>' + end_time);
-                      var tag = '페북 페이지 앱 등록';
-                      var remark = '페북 페이지 subscribed 위해 사용';
-                      sendTimeLog(setId, start_time, end_time, tag, remark);
-
-                    }
-                  );
 
                 } else {
 
@@ -513,6 +527,10 @@
                         var tag = '페북 페이지 앱 삭제';
                         var remark = '페북 페이지 삭제를 위해 사용';
                         sendTimeLog(setId, start_time, end_time, tag, remark);
+
+                        var api_code = 'del_facebook';
+                        var api_provider_code = 'chatbrick';
+                        sendAPILog(log_id_dele_fb, api_code, api_provider_code, start_time, end_time, remark)
 
                         $('.fb_page_set').show();
                         $('#fb_page_btn' + index).text('연결하기');
@@ -598,6 +616,7 @@
                 //check start time
                 var date = new Date();
                 var start_time = date.getTime();
+                var log_id = 'reg_telegram' + start_time;
                 console.log('start_time=>' + start_time);
 
                 //connect telegram api
@@ -622,6 +641,10 @@
                         var tag = '텔레그램 페이지 앱 등록';
                         var remark = '텔레그램 페이지 앱 등록을 위해 사용';
                         sendTimeLog(setId, start_time, end_time, tag, remark);
+
+                        var api_code = 'reg_telegram';
+                        var api_provider_code = 'chatbrick';
+                        sendAPILog(log_id, api_code, api_provider_code, start_time, end_time, remark)
 
                         console.log('connected telegram.ok=>' + body.data.telegram.ok);
                         console.log('connected telegram.bot.username=>' + body.data.bot.username);
@@ -682,6 +705,7 @@
                 //check start time
                 var date = new Date();
                 var start_time = date.getTime();
+                var log_id = 'del_telegram' + start_time;
                 console.log('start_time=>' + start_time);
 
                 //disconnect telegram api
@@ -704,6 +728,10 @@
                         var tag = '텔레그램 페이지 앱 삭제';
                         var remark = '텔레그램 페이지 앱 삭제를 위해 사용';
                         sendTimeLog(setId, start_time, end_time, tag, remark);
+
+                        var api_code = 'del_telegram';
+                        var api_provider_code = 'chatbrick';
+                        sendAPILog(log_id, api_code, api_provider_code, start_time, end_time, remark)
 
                         console.log('connected telegram.ok=>' + body.data.telegram.ok);
                         tg_connect_page.show();

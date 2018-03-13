@@ -8,6 +8,7 @@
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.8.0/bodymovin.min.js'></script>
 	<script src="../secret/config.js"></script>
 	<script type="text/javascript" src="/public/javascripts/href_event.js"></script>
+	<script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
 	<link rel="stylesheet" href="../public/stylesheets/style.css">
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="../public/javascripts/loading.js"></script>
@@ -736,9 +737,10 @@
       console.log('uploadFile=>' + uploadFile);
       fd.append('file', file);
 
-      //TODO: testcode
-      // user_profile_photo_upload_btn.hide();
-      // after_upload.show();
+      //check start time
+      var date = new Date();
+      var start_time = date.getTime();
+      var log_id = 'upload_profileimg' + start_time;
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/file/',
@@ -753,6 +755,13 @@
             img_url = body.data.url;
             console.log('upload success!');
             console.log('res img url=>' + img_url);
+
+            //check end time
+            var date = new Date();
+            var end_time = date.getTime();
+            var task_code = 'upload_profileimg';
+            var remark = '파일 업로드를 위해 사용';
+            sendTaskLog(log_id, task_code, start_time, end_time, remark);
 
             user_profile_photo_upload_btn.hide();
             after_upload.show();
@@ -823,9 +832,10 @@
       console.log('uploadFile=>' + uploadFile);
       fd.append('file', file);
 
-      //TODO: testcode
-//       user_profile_photo_upload_btn.hide();
-//       after_upload.show();
+      //check start time
+      var date = new Date();
+      var start_time = date.getTime();
+      var log_id = 'upload_profileimg' + start_time;
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/file/',
@@ -840,6 +850,13 @@
             img_url = body.data.url;
             console.log('upliad success!');
             console.log('res img url=>' + img_url);
+
+            //check end time
+            var date = new Date();
+            var end_time = date.getTime();
+            var task_code = 'upload_profileimg';
+            var remark = '파일 업로드를 위해 사용';
+            sendTaskLog(log_id, task_code, start_time, end_time, remark);
 
             user_profile_photo_upload_btn.hide();
             after_upload.show();
@@ -945,6 +962,12 @@
   function sendDataInServer(portfolioList) {
     if (portfolioList != undefined) {
       console.log('portfolioList=>' + JSON.stringify(portfolioList));
+
+      //check start time
+      var date = new Date();
+      var start_time = date.getTime();
+      var log_id = 'confirm_portfolio' + start_time;
+
       var user_profile_data_name =$('#user_profile_data_name').val();
       var user_profile_data_professional =$('#user_profile_data_professional').val();
       var user_profile_data_location =$('#user_profile_data_location').val();
@@ -1100,6 +1123,14 @@
         success: function (body, status, res) {
           if (body.success) {
             console.log('upload success!');
+
+            //check end time
+            var date = new Date();
+            var end_time = date.getTime();
+            var task_code = 'confirm_portfolio';
+            var remark = '디자이너 포토폴리오 생성을 위해 사용';
+            sendTaskLog(log_id, task_code, start_time, end_time, remark);
+
 
             var setId = body.data.id;
             window.location.href = '/platform/connect' + '?setId=' + setId;

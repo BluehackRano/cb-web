@@ -790,9 +790,10 @@
       console.log('uploadFile=>' + uploadFile);
       fd.append('file', file);
 
-      //TODO: testcode
-//       user_profile_photo_upload_btn.hide();
-//       after_upload.show();
+      //check start time
+      var date = new Date();
+      var start_time = date.getTime();
+      var log_id = 'upload_profileimg' + start_time;
 
      $.ajax({
        url: 'https://www.chatbrick.io/api/file/',
@@ -807,6 +808,13 @@
            img_url = body.data.url;
            console.log('upliad success!');
            console.log('res img url=>' + img_url);
+
+           //check end time
+           var date = new Date();
+           var end_time = date.getTime();
+           var task_code = 'upload_profileimg';
+           var remark = '파일 업로드를 위해 사용';
+           sendTaskLog(log_id, task_code, start_time, end_time, remark);
 
            user_profile_photo_upload_btn.hide();
            after_upload.show();
@@ -877,9 +885,10 @@
       console.log('uploadFile=>' + uploadFile);
       fd.append('file', file);
 
-      //TODO: testcode
-//       user_profile_photo_upload_btn.hide();
-//       after_upload.show();
+      //check start time
+      var date = new Date();
+      var start_time = date.getTime();
+      var log_id = 'upload_profileimg' + start_time;
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/file/',
@@ -894,6 +903,13 @@
             img_url = body.data.url;
             console.log('upload success!');
             console.log('res img url=>' + img_url);
+
+            //check end time
+            var date = new Date();
+            var end_time = date.getTime();
+            var task_code = 'upload_profileimg';
+            var remark = '파일 업로드를 위해 사용';
+            sendTaskLog(log_id, task_code, start_time, end_time, remark);
 
             user_profile_photo_upload_btn.hide();
             after_upload.show();
@@ -2281,6 +2297,7 @@
         success: function (body, status, res) {
           if (body.success) {
             console.log('upload success!');
+
             window.location.href = '/chatbot/list';
           } else {
             if (body.action == 'ERR0002') {

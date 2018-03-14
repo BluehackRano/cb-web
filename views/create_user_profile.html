@@ -565,6 +565,15 @@
   var img_url;
 
   var charLimit = 63;
+
+  var start_time_finish = '';
+  var start_time_file = '';
+
+  var end_time_finish = '';
+  var end_time_file = '';
+
+  var log_id_finish = '';
+
   //enter key event
   $('.user_profile_self_introduction_01').keydown(function (key) {
 //    $('.user_profile_self_introduction_01').addClass('transparent');
@@ -739,8 +748,8 @@
 
       //check start time
       var date = new Date();
-      var start_time = date.getTime();
-      var log_id = 'upload_profileimg' + start_time;
+      start_time_file = date.getTime();
+      var log_id = 'upload_profileimg' + start_time_file;
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/file/',
@@ -755,13 +764,6 @@
             img_url = body.data.url;
             console.log('upload success!');
             console.log('res img url=>' + img_url);
-
-            //check end time
-            var date = new Date();
-            var end_time = date.getTime();
-            var task_code = 'upload_profileimg';
-            var remark = '파일 업로드를 위해 사용';
-            sendTaskLog(log_id, task_code, start_time, end_time, remark);
 
             user_profile_photo_upload_btn.hide();
             after_upload.show();
@@ -801,6 +803,20 @@
           modal_one_server_error_btn.click(function () {
             default_server_error_modal.style.display = "none";
           });
+        }
+        ,beforeSend: function () {
+//         $("body").loading("start");
+        }
+        ,complete: function () {
+//         $("body").loading("stop");
+          //check end time
+          var date = new Date();
+          end_time_file = date.getTime();
+          var task_code = 'upload_profileimg';
+          var remark = '파일 업로드를 위해 사용';
+          var api_code = 'upload_profileimg';
+          var api_provider_code = 'chatbrick';
+          sendTaskAPILog(log_id, task_code, api_code, api_provider_code, start_time_file, end_time_file, remark);
         }
       });
 
@@ -834,8 +850,8 @@
 
       //check start time
       var date = new Date();
-      var start_time = date.getTime();
-      var log_id = 'upload_profileimg' + start_time;
+      start_time_file = date.getTime();
+      var log_id = 'upload_profileimg' + start_time_file;
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/file/',
@@ -850,13 +866,6 @@
             img_url = body.data.url;
             console.log('upliad success!');
             console.log('res img url=>' + img_url);
-
-            //check end time
-            var date = new Date();
-            var end_time = date.getTime();
-            var task_code = 'upload_profileimg';
-            var remark = '파일 업로드를 위해 사용';
-            sendTaskLog(log_id, task_code, start_time, end_time, remark);
 
             user_profile_photo_upload_btn.hide();
             after_upload.show();
@@ -896,6 +905,20 @@
           modal_one_server_error_btn.click(function () {
             default_server_error_modal.style.display = "none";
           });
+        }
+        ,beforeSend: function () {
+//         $("body").loading("start");
+        }
+        ,complete: function () {
+//         $("body").loading("stop");
+          //check end time
+          var date = new Date();
+          end_time_file = date.getTime();
+          var task_code = 'upload_profileimg';
+          var remark = '파일 업로드를 위해 사용';
+          var api_code = 'upload_profileimg';
+          var api_provider_code = 'chatbrick';
+          sendTaskAPILog(log_id, task_code, api_code, api_provider_code, start_time_file, end_time_file, remark);
         }
       });
     }
@@ -1124,14 +1147,6 @@
           if (body.success) {
             console.log('upload success!');
 
-            //check end time
-            var date = new Date();
-            var end_time = date.getTime();
-            var task_code = 'confirm_portfolio';
-            var remark = '디자이너 포토폴리오 생성을 위해 사용';
-            sendTaskLog(log_id, task_code, start_time, end_time, remark);
-
-
             var setId = body.data.id;
             window.location.href = '/platform/connect' + '?setId=' + setId;
           } else {
@@ -1175,9 +1190,22 @@
         ,beforeSend: function () {
           $("body").loading("start");
 
+          //check start time
+          var date = new Date();
+          start_time_finish = date.getTime();
+          log_id_finish = 'create_finish' + start_time_finish;
         }
         ,complete: function () {
           $("body").loading("stop");
+
+          //check end time
+          var date = new Date();
+          end_time_finish = date.getTime();
+          var task_code = 'confirm_portfolio';
+          var remark = '디자이너 포토폴리오 생성을 위해 사용';
+          var api_code = 'create_finish';
+          var api_provider_code = 'chatbrick';
+          sendTaskAPILog(log_id_finish, task_code, api_code, api_provider_code, start_time_finish, end_time_finish, remark);
         }
       });
 

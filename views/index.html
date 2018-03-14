@@ -7,9 +7,21 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<script src="../secret/config.js"></script>
 	<script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="../public/javascripts/loading.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/loading.css">
 	<script type="text/javascript">
 
 		var start_time;
+		var data_access_token = '';
+		var start_time_login_task = '';
+    var start_time_login_post = '';
+    var start_time_login_get = '';
+    var start_time_login_put = '';
+    var end_time_login_task = '';
+    var end_time_login_post = '';
+    var end_time_login_get = '';
+    var end_time_login_put = '';
 
     var startbtn = $('#landing_start_btn');
     startbtn.click(function () {
@@ -76,8 +88,14 @@
     function getFBAPI(authResponse) {
       console.log('Welcome! Fetching your information.... ');
 
-      var log_id = 'login_facebook' + start_time;
+      var log_id = 'login_facebook' + start_time_login_task;
       console.log('log_id=>' + log_id);
+
+      var data_code = '';
+      var redirect_url = '';
+      var client_id = '';
+
+
 
       $.ajax({
         url: 'https://www.chatbrick.io/api/login/',
@@ -93,22 +111,32 @@
           console.log(data);
           console.log('code=>' + data.code);
 
+					data_code = data.code;
+          redirect_url = appConfig.redirect_url;
+          client_id = appConfig.client_id;
+
+        }
+        ,beforeSend: function () {
+          $("body").loading("start");
+
+          var date = new Date();
+          start_time_login_post = date.getTime();
+
+
+        }
+        ,complete: function () {
+          $("body").loading("stop");
+
           //check end time
           var date = new Date();
-          var end_time = date.getTime();
-          var task_code = 'login_facebook';
-          var remark = '페북 페이지 로그인을 위해 사용';
-          sendTaskLog(log_id, task_code, start_time, end_time, remark);
-
-          var api_code = 'login_facebook';
+          end_time_login_post = date.getTime();
+          var remark = '챗브릭서버로 페이스북 토큰 전달';
+          var api_code = 'login_facebook_post_api';
           var api_provider_code = 'chatbrick';
-          sendAPILog(log_id, api_code, api_provider_code, start_time, end_time, remark)
-
-          var redirect_url = appConfig.redirect_url;
-          var client_id = appConfig.client_id;
+          sendAPILog(log_id, api_code, api_provider_code, start_time_login_post, end_time_login_post, remark)
 
           $.ajax({
-            url: 'https://graph.facebook.com/oauth/access_token?code=' + data.code + '&client_id=' + client_id + '&redirect_uri=' + redirect_url,
+            url: 'https://graph.facebook.com/oauth/access_token?code=' + data_code + '&client_id=' + client_id + '&redirect_uri=' + redirect_url,
             type: 'GET',
 //								 async: false,
 //                 crossDomain: true,
@@ -116,6 +144,30 @@
             // data: {},
             success: function (data, textStatus, res) {
               console.log('장기토근 res=>' + JSON.stringify(data));
+              data_access_token = data.access_token;
+            }
+            ,beforeSend: function () {
+//              $("body").loading("start");
+
+              var date = new Date();
+              start_time_login_get = date.getTime();
+
+            }
+            ,complete: function () {
+//              $("body").loading("stop");
+
+              //check end time
+              var date = new Date();
+              end_time_login_task = date.getTime();
+              end_time_login_get = date.getTime();
+
+              var task_code = 'login_facebook';
+              var remark = '페북 페이지에서 장기토큰을 가지고 오는 API';
+              var api_code = 'login_facebook_get_long_access_token';
+              var api_provider_code = 'facebook';
+              sendTaskLog(log_id, task_code, start_time_login_task, end_time_login_task, remark);
+              sendAPILog(log_id, api_code, api_provider_code, start_time_login_get, end_time_login_get, remark)
+
               $.ajax({
                 url: 'https://www.chatbrick.io/api/login/',
                 type: 'PUT',
@@ -123,14 +175,31 @@
                 crossDomain: true,
                 xhrFields: {withCredentials: true},
                 data: {
-                  fb_client_access_token: data.access_token,
+                  fb_client_access_token: data_access_token,
                 },
                 success: function (data, textStatus, res) {
                   console.log(data);
-                  console.log('code=>' + data.code);
+
+                }
+                ,beforeSend: function () {
+//              $("body").loading("start");
+                  var date = new Date();
+                  start_time_login_put = date.getTime();
+
+                }
+                ,complete: function () {
+//                  $("body").loading("stop");
+                  //check end time
+                  var date = new Date();
+                  end_time_login_put = date.getTime();
+                  var remark = '페북 페이지의 장기토큰을 챗브릭서버에 업데이트';
+                  var api_code = 'login_facebook_put_api';
+                  var api_provider_code = 'chatbrick';
+                  sendAPILog(log_id, api_code, api_provider_code, start_time_login_put, end_time_login_put, remark)
                   window.location.href = "/chatbot/list";
                 }
               });
+
             }
           });
         }
@@ -145,7 +214,7 @@
         console.log(response);
 
         var date = new Date();
-        start_time = date.getTime();
+        start_time_login_task = date.getTime();
 
         var authResponse = response.authResponse;
         console.log('authResponse =>' + JSON.stringify(authResponse));

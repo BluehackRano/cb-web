@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<script src="../secret/config.js"></script>
+	<script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
 	<script type="text/javascript" src="/public/javascripts/href_event.js"></script>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="../public/javascripts/loading.js"></script>
@@ -443,6 +444,53 @@
 </footer>
 
 <script>
+
+	var start_time_set_click = '';
+	var start_time_next_btn = '';
+	var start_time_page = '';
+	var end_time_page = '';
+
+  var log_id_page = '';
+
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+      return null;
+    }
+    else{
+      return results[1] || 0;
+    }
+  }
+
+  $(document).ready(function() {
+    //check start time
+    var date = new Date();
+    start_time_page = date.getTime();
+    log_id_page = 'create_bricks_step1' + start_time_page;
+
+    start_time_set_click = $.urlParam('start_time_next_btn_click');
+
+    var task_code = 'create_bricks_step1';
+    var remark = '데이터 정보 입력하기 페이지에서 다음 버튼 눌렀을때';
+    var api_code = 'create_bricks_step1';
+    var api_provider_code = 'chatbrick';
+    sendTaskAPILog(log_id_page, task_code, api_code, api_provider_code, start_time_set_click, start_time_page, remark);
+
+  });
+
+  $(window).load(function() {
+
+    //check end time
+    var date = new Date();
+    end_time_page = date.getTime();
+    var task_code = 'create_bricks_step1';
+    var remark = '브릭선택하기 페이지가 로드되었을때';
+    var api_code = 'create_bricks_step1';
+    var api_provider_code = 'chatbrick';
+    sendTaskAPILog(log_id_page, task_code, api_code, api_provider_code, start_time_page, end_time_page, remark);
+
+  });
+
   $('#logo').click(function () {
     logoClickSendHomeEvent();
   });

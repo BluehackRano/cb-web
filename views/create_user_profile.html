@@ -518,37 +518,57 @@
 </footer>
 
 <script type="text/javascript">
-  $('#logo').click(function () {
+
+  var start_time_set_click = '';
+  var start_time_next_btn = '';
+  var start_time_page = '';
+  var end_time_page = '';
+
+  var log_id_page = '';
+
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+      return null;
+    }
+    else{
+      return results[1] || 0;
+    }
+  }
+
+  $(document).ready(function() {
+    //check start time
+    var date = new Date();
+    start_time_page = date.getTime();
+    log_id_page = 'create_dpf_step1' + start_time_page;
+
+    start_time_set_click = $.urlParam('start_time_next_btn_click');
+
+    var task_code = 'create_dpf_step1';
+    var remark = '데이터 정보 입력하기 페이지에서 다음 버튼 눌렀을때';
+    var api_code = 'create_dpf_step1';
+    var api_provider_code = 'chatbrick';
+    sendTaskAPILog(log_id_page, task_code, api_code, api_provider_code, start_time_set_click, start_time_page, remark);
+
+  });
+
+  $(window).load(function() {
+
+    //check end time
+    var date = new Date();
+    end_time_page = date.getTime();
+    var task_code = 'create_dpf_step1';
+    var remark = '디자이너 포토폴리오 입력페이지가 로드되었을때';
+    var api_code = 'create_bricks_step1';
+    var api_provider_code = 'chatbrick';
+    sendTaskAPILog(log_id_page, task_code, api_code, api_provider_code, start_time_page, end_time_page, remark);
+
+  });
+
+	$('#logo').click(function () {
     logoClickSendHomeEvent();
   });
   $('input[type=text]').addClass('placeholder');
-//  logoClickSendHomeEvent()
-
-  //key press event
-//  $('.user_profile_start_message').keydown(function (key) {
-//    $('.user_profile_start_message').addClass('transparent');
-//  });
-//
-//	$('.user_profile_not_ready_mesage').keydown(function (key) {
-//    $('.user_profile_not_ready_mesage').addClass('transparent');
-//  });
-//
-//  $('.user_profile_skill_info_01').keydown(function (key) {
-//    $('.user_profile_skill_info_01').addClass('transparent');
-//  });
-//
-//  $('.user_profile_skill_info_02').keydown(function (key) {
-//    $('.user_profile_skill_info_02').addClass('transparent');
-//  });
-//
-//  $('.user_profile_skill_info_03').keydown(function (key) {
-//    $('.user_profile_skill_info_03').addClass('transparent');
-//  });
-
-//  $('.user_profile_self_introduction_01').keydown(function (key) {
-//    $('.user_profile_self_introduction_01').addClass('transparent');
-//  });
-
 
 	var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
 	var baseInfo_context = `<%=jsonData.baseInfo_context%>`;
@@ -813,7 +833,7 @@
           var date = new Date();
           end_time_file = date.getTime();
           var task_code = 'upload_profileimg';
-          var remark = '파일 업로드를 위해 사용';
+          var remark = '이미지 파일 업로드 버튼을 누른 후, 이미지가 로드되었을때';
           var api_code = 'upload_profileimg';
           var api_provider_code = 'chatbrick';
           sendTaskAPILog(log_id, task_code, api_code, api_provider_code, start_time_file, end_time_file, remark);
@@ -915,7 +935,7 @@
           var date = new Date();
           end_time_file = date.getTime();
           var task_code = 'upload_profileimg';
-          var remark = '파일 업로드를 위해 사용';
+          var remark = '이미지 파일 업로드 버튼을 누른 후, 이미지가 로드되었을때';
           var api_code = 'upload_profileimg';
           var api_provider_code = 'chatbrick';
           sendTaskAPILog(log_id, task_code, api_code, api_provider_code, start_time_file, end_time_file, remark);

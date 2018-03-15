@@ -967,7 +967,12 @@
 
   end_page.click(function () {
     $(this).css('background-color', '#bd292c');
-    window.location.href = '/chatbot/list';
+    var start_time_next_btn_click = '?start_time_next_btn_click=';
+    //check start time
+    var date = new Date();
+    var start_time_finish_click = date.getTime();
+    window.location.href = '/chatbot/list' + start_time_next_btn_click + start_time_finish_click;
+
   });
 
   var isEmpty = function (value) {

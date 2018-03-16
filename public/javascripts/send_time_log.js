@@ -34,6 +34,8 @@ var sendTaskLog = function (log_id, task_code, start_time, end_time, remark) {
       remark: remark
     };
 
+  console.log('sendTaskLog=>' + JSON.stringify(data));
+
   $.ajax({
     url: 'https://www.chatbrick.io/api/log/',
     type: 'PUT',
@@ -61,6 +63,7 @@ var sendAPILog = function (log_id, api_code, api_provider_code, start_time, end_
       remark: remark
   };
 
+  console.log('sendAPILog=>' + JSON.stringify(data));
   $.ajax({
     url: 'https://www.chatbrick.io/api/log/',
     type: 'PUT',
@@ -88,6 +91,8 @@ var sendTaskAPILog = function (log_id, task_code, api_code, api_provider_code, s
     end: end_time,
     remark: remark
   };
+
+  console.log('sendTaskAPILog=>' + JSON.stringify(data));
 
   $.ajax({
     url: 'https://www.chatbrick.io/api/log/',

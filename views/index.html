@@ -23,6 +23,59 @@
     var end_time_login_get = '';
     var end_time_login_put = '';
 
+    var start_time_set_click = '';
+    var start_time_create_bot_click = '';
+    var start_time_page = '';
+    var end_time_page = '';
+
+    var log_id_page = '';
+
+    $.urlParam = function(name){
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      if (results==null){
+        return null;
+      }
+      else{
+        return results[1] || 0;
+      }
+    }
+
+    $(document).ready(function() {
+
+      if (start_time_set_click != undefined ||
+        start_time_set_click != null) {
+        //check start time
+        var date = new Date();
+        start_time_page = date.getTime();
+
+        start_time_create_bot_click = $.urlParam('start_time_next_btn_click');
+        log_id_page = 'logout_facebook' + start_time_create_bot_click;
+
+        var task_code = 'logout_facebook';
+        var remark = '로그아웃 팝업에서 확인 버튼을 눌렀을때';
+        var api_code = 'logout_facebook';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, start_time_page, remark);
+      }
+    });
+
+    $(window).load(function() {
+
+      if (start_time_set_click != undefined ||
+        start_time_set_click != null) {
+        //check end time
+        var date = new Date();
+        end_time_page = date.getTime();
+        var task_code = 'logout_facebook';
+        var remark = '로그인 페이지가 로드되었을때';
+        var api_code = 'logout_facebook';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_page, end_time_page, remark);
+        sendTaskLog(log_id_page, task_code, start_time_create_bot_click, end_time_page, remark);
+        history.replaceState({}, null, location.pathname);
+      }
+    });
+
     var startbtn = $('#landing_start_btn');
     startbtn.click(function () {
       $(this).css('background-color', '#bd292c');

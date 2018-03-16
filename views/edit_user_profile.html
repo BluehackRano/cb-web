@@ -753,6 +753,58 @@
 
   var log_id_finish = '';
 
+  var start_time_set_click = '';
+  var start_time_create_bot_click = '';
+  var start_time_page = '';
+  var end_time_page = '';
+
+  var log_id_page = '';
+
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+      return null;
+    }
+    else{
+      return results[1] || 0;
+    }
+  }
+
+  $(document).ready(function() {
+    //check start time
+    var date = new Date();
+    start_time_page = date.getTime();
+    log_id_page = 'edit_bot' + start_time_page;
+
+    start_time_create_bot_click = $.urlParam('start_time_next_btn_click');
+    console.log('start_time_create_bot_click=>' + start_time_create_bot_click);
+
+    var task_code = 'edit_bot';
+    var remark = '봇리스트에서 해당 봇을 선택했을때';
+    var api_code = 'edit_bot';
+    var api_provider_code = 'chatbrick';
+    sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, start_time_page, remark);
+
+  });
+
+  $(window).load(function() {
+    console.log('start_time_create_bot_click=>' + start_time_create_bot_click);
+    //check end time
+    var date = new Date();
+    end_time_page = date.getTime();
+    var task_code = 'edit_bot';
+    var remark = '해당 봇 페이지가 로드되었을때';
+    var api_code = 'edit_bot';
+    var api_provider_code = 'chatbrick';
+    sendAPILog(log_id_page, api_code, api_provider_code, start_time_page, end_time_page, remark);
+    sendTaskLog(log_id_page, task_code, start_time_create_bot_click, end_time_page, remark);
+    history.replaceState({}, null, location.pathname);
+  });
+
+
+
+
+
   imgTmpFile.hide();
   after_upload.show();
   user_profile_photo_upload_btn.hide();
@@ -1419,9 +1471,8 @@
 
                 //check start time
                 var date = new Date();
-                start_time_tele_task = date.getTime();
-                var log_id = 'reg_telegram' + start_time_tele_task;
-                console.log('start_time=>' + start_time_tele_task);
+                var start_time = date.getTime();
+                console.log('start_time=>' + start_time);
 
                 //connect telegram api
                 $.ajax({
@@ -1677,9 +1728,24 @@
   });
 
   modal_right_logout_btn.click(function () {
+    var start_time_next_btn_click = '?start_time_next_btn_click=';
+    //check start time
+    var date = new Date();
+    var start_time_create_bot_click = date.getTime();
+
     FB.logout(function(response) {
       console.log('logout=>' + JSON.stringify(response));
-      window.location.href = '/';
+
+      //check end time
+      var date = new Date();
+      var end_time_page = date.getTime();
+      var log_id_page = 'logout_facebook' + start_time_create_bot_click;
+      var task_code = 'logout_facebook';
+      var remark = '로그아웃 버튼을 클릭후 페이스북에서 로그아웃를 성공적으로 처리했을때';
+      var api_code = 'logout_facebook';
+      var api_provider_code = 'facebook';
+      sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, end_time_page, remark);
+      window.location.href = '/' + start_time_next_btn_click + start_time_create_bot_click;
     });
   });
 
@@ -1985,6 +2051,10 @@
     modal_right_remove_btn.click(function () {
       remove_modal.style.display = "none";
 
+      //check start time
+      var date = new Date();
+      start_time_create_bot_click = date.getTime();
+
       //disconnect telegram api
       if (is_telegram_connected) {
         //disconnect telegram api
@@ -2071,7 +2141,6 @@
         success: function (body, status, res) {
           if (body.success) {
             console.log('success=>'+ body.success);
-            window.location.href = '/chatbot/list'
           } else {
             if (body.action == 'ERR0002') {
               var default_error_modal = document.getElementById('default_error_modal');
@@ -2108,6 +2177,21 @@
           modal_one_server_error_btn.click(function () {
             default_server_error_modal.style.display = "none";
           });
+        }
+        , beforeSend: function () {
+          $("body").loading("start");
+
+        }
+        , complete: function () {
+          $("body").loading("stop");
+
+          //check end time
+          var date = new Date();
+          end_time_finish = date.getTime();
+
+          var start_time_next_btn_click = '?start_time_next_btn_click=';
+          var remove_status = '&remove_status=true';
+          window.location.href = '/chatbot/list' + start_time_next_btn_click + end_time_finish + remove_status;
         }
       });
 
@@ -2406,13 +2490,10 @@
           //check end time
           var date = new Date();
           end_time_finish = date.getTime();
-          var task_code = 'edit_finish';
-          var remark = '디포폴 수정하기에서 저장버튼 누른 경우';
-          var api_code = 'edit_finish';
-          var api_provider_code = 'chatbrick';
-          sendTaskAPILog(log_id_finish, task_code, api_code, api_provider_code, start_time_finish, end_time_finish, remark);
 
-          window.location.href = '/chatbot/list';
+          var start_time_next_btn_click = '?start_time_next_btn_click=';
+          var edit_status = '&edit_status=true';
+          window.location.href = '/chatbot/list' + start_time_next_btn_click + end_time_finish + edit_status;
         }
       });
     } else {

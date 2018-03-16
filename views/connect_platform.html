@@ -927,9 +927,24 @@
   });
 
   modal_right_logout_btn.click(function () {
+    var start_time_next_btn_click = '?start_time_next_btn_click=';
+    //check start time
+    var date = new Date();
+    var start_time_create_bot_click = date.getTime();
+
     FB.logout(function(response) {
       console.log('logout=>' + JSON.stringify(response));
-      window.location.href = '/';
+
+      //check end time
+      var date = new Date();
+      var end_time_page = date.getTime();
+      var log_id_page = 'logout_facebook' + start_time_create_bot_click;
+      var task_code = 'logout_facebook';
+      var remark = '로그아웃 버튼을 클릭후 페이스북에서 로그아웃를 성공적으로 처리했을때';
+      var api_code = 'logout_facebook';
+      var api_provider_code = 'facebook';
+      sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, end_time_page, remark);
+      window.location.href = '/' + start_time_next_btn_click + start_time_create_bot_click;
     });
   });
 

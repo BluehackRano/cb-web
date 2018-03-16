@@ -113,37 +113,106 @@
 
   var start_time_create_bot_click = '';
   var start_time_page = '';
+  var start_time_set_click = '';
+  var edit_status = '';
+  var remove_status = '';
   var log_id_page = '';
 
   $(document).ready(function() {
-    var start_time_set_click = $.urlParam('start_time_next_btn_click');
+    start_time_set_click = $.urlParam('start_time_next_btn_click');
+    edit_status = $.urlParam('edit_status');
+    remove_status = $.urlParam('remove_status');
     console.log('start_time_set_click=>' + start_time_set_click);
     if (start_time_set_click != undefined ||
       start_time_set_click != null) {
-      //check start time
-      var date = new Date();
-      start_time_page = date.getTime();
-      log_id_page = 'finish_bot' + start_time_page;
 
-      var task_code = 'finish_bot';
-      var remark = '끝내기 버튼 클릭했을때';
-      var api_code = 'finish_bot';
-      var api_provider_code = 'chatbrick';
-      sendTaskAPILog(log_id_page, task_code, api_code, api_provider_code, start_time_set_click, start_time_page, remark);
+      if (edit_status) {
+
+        //check start time
+        var date = new Date();
+        start_time_page = date.getTime();
+        log_id_page = 'update_bot' + start_time_page;
+
+        var task_code = 'update_bot';
+        var remark = '봇 수정하기페이지에서 업데이트에 해당하는 버튼을 눌렀을때';
+        var api_code = 'update_bot';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_set_click, start_time_page, remark);
+
+      } else if (remove_status) {
+
+        //check start time
+        var date = new Date();
+        start_time_page = date.getTime();
+        log_id_page = 'remove_bot' + start_time_page;
+
+        var task_code = 'remove_bot';
+        var remark = '봇 수정하기페이지에서 봇 제거하기 확인 팝업 버튼을 눌렀을때';
+        var api_code = 'remove_bot';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_set_click, start_time_page, remark);
+
+
+      }else {
+
+        //check start time
+        var date = new Date();
+        start_time_page = date.getTime();
+        log_id_page = 'finish_bot' + start_time_page;
+
+        var task_code = 'finish_bot';
+        var remark = '끝내기 버튼 클릭했을때';
+        var api_code = 'finish_bot';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_set_click, start_time_page, remark);
+      }
+
     }
 	});
 
   $(window).load(function() {
+    console.log('edit_status=>' + edit_status);
 
-    //check end time
-    var date = new Date();
-    var end_time_page = date.getTime();
-    var task_code = 'finish_bot';
-    var remark = '봇리스트 페이지가 로드되었을때';
-    var api_code = 'finish_bot';
-    var api_provider_code = 'chatbrick';
-    sendTaskAPILog(log_id_page, task_code, api_code, api_provider_code, start_time_page, end_time_page, remark);
+    if (start_time_set_click != undefined ||
+      start_time_set_click != null) {
+      if (edit_status) {
 
+        //check end time
+        var date = new Date();
+        var end_time_page = date.getTime();
+        var task_code = 'update_bot';
+        var remark = '봇리스트 페이지가 로드되었을때';
+        var api_code = 'update_bot';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_page, end_time_page, remark);
+        sendTaskLog(log_id_page, task_code, start_time_set_click, end_time_page, remark);
+        history.replaceState({}, null, location.pathname);
+
+      } else if (remove_status) {
+        //check end time
+        var date = new Date();
+        var end_time_page = date.getTime();
+        var task_code = 'remove_bot';
+        var remark = '봇리스트 페이지가 로드되었을때';
+        var api_code = 'remove_bot';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_page, end_time_page, remark);
+        sendTaskLog(log_id_page, task_code, start_time_set_click, end_time_page, remark);
+        history.replaceState({}, null, location.pathname);
+
+      } else {
+        //check end time
+        var date = new Date();
+        var end_time_page = date.getTime();
+        var task_code = 'finish_bot';
+        var remark = '봇리스트 페이지가 로드되었을때';
+        var api_code = 'finish_bot';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_page, end_time_page, remark);
+        sendTaskLog(log_id_page, task_code, start_time_set_click, end_time_page, remark);
+        history.replaceState({}, null, location.pathname);
+      }
+    }
   });
 
 
@@ -227,11 +296,21 @@
                 break;
               case "portfolio":
                 // console.log('portfolio')
-                window.location.href = '/designerPortfolio/edit'+ '?setId='+setId;
+                var start_time_next_btn_click = '&start_time_next_btn_click=';
+
+                //check start time
+                var date = new Date();
+                start_time_create_bot_click = date.getTime();
+                window.location.href = '/designerPortfolio/edit'+ '?setId='+setId + start_time_next_btn_click + start_time_create_bot_click;
                 break;
               case "bricks":
                 // console.log('bricks')
-                window.location.href = '/bricks/edit'+ '?setId='+setId;
+                var start_time_next_btn_click = '&start_time_next_btn_click=';
+
+                //check start time
+                var date = new Date();
+                start_time_create_bot_click = date.getTime();
+                window.location.href = '/bricks/edit'+ '?setId='+setId + start_time_next_btn_click + start_time_create_bot_click;
                 break;
             }
           });
@@ -345,9 +424,25 @@
   });
 
   modal_right_logout_btn.click(function () {
+
+    var start_time_next_btn_click = '?start_time_next_btn_click=';
+    //check start time
+    var date = new Date();
+    var start_time_create_bot_click = date.getTime();
+
     FB.logout(function(response) {
       console.log('logout=>' + JSON.stringify(response));
-      window.location.href = '/';
+
+      //check end time
+      var date = new Date();
+      var end_time_page = date.getTime();
+      var log_id_page = 'logout_facebook' + start_time_create_bot_click;
+      var task_code = 'logout_facebook';
+      var remark = '로그아웃 버튼을 클릭후 페이스북에서 로그아웃를 성공적으로 처리했을때';
+      var api_code = 'logout_facebook';
+      var api_provider_code = 'facebook';
+      sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, end_time_page, remark);
+      window.location.href = '/' + start_time_next_btn_click + start_time_create_bot_click;
     });
   });
 </script>

@@ -9,7 +9,7 @@
   <script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
   <script type="text/javascript" src="/public/javascripts/href_event.js"></script>
   <link rel="stylesheet" href="../public/stylesheets/style.css">
-  <script src="../routes/bricks.js"></script>
+  <!--<script type="text/javascript" src="/public/routes/bricks.js"></script>-->
 </head>
 <body>
 <header id="header">
@@ -288,12 +288,11 @@
     var remark = '봇리스트에서 create bot을 선택했을때';
     var api_code = 'create_bot';
     var api_provider_code = 'chatbrick';
-    sendTaskAPILog(log_id_page, task_code, api_code, api_provider_code, start_time_create_bot_click, start_time_page, remark);
+    sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, start_time_page, remark);
 
   });
 
   $(window).load(function() {
-
     //check end time
     var date = new Date();
     end_time_page = date.getTime();
@@ -301,8 +300,9 @@
     var remark = '데이터 정보 입력하기 페이지가 로드되었을때';
     var api_code = 'create_bot';
     var api_provider_code = 'chatbrick';
-    sendTaskAPILog(log_id_page, task_code, api_code, api_provider_code, start_time_page, end_time_page, remark);
-
+    sendAPILog(log_id_page, api_code, api_provider_code, start_time_page, end_time_page, remark);
+    sendTaskLog(log_id_page, task_code, start_time_create_bot_click, end_time_page, remark);
+    history.replaceState({}, null, location.pathname);
   });
 
   $('#logo').click(function () {
@@ -643,9 +643,24 @@
   });
 
   modal_right_logout_btn.click(function () {
+    var start_time_next_btn_click = '?start_time_next_btn_click=';
+    //check start time
+    var date = new Date();
+    var start_time_create_bot_click = date.getTime();
+
     FB.logout(function(response) {
       console.log('logout=>' + JSON.stringify(response));
-      window.location.href = '/';
+
+      //check end time
+      var date = new Date();
+      var end_time_page = date.getTime();
+      var log_id_page = 'logout_facebook' + start_time_create_bot_click;
+      var task_code = 'logout_facebook';
+      var remark = '로그아웃 버튼을 클릭후 페이스북에서 로그아웃를 성공적으로 처리했을때';
+      var api_code = 'logout_facebook';
+      var api_provider_code = 'facebook';
+      sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, end_time_page, remark);
+      window.location.href = '/' + start_time_next_btn_click + start_time_create_bot_click;
     });
   });
 </script>

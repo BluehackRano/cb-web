@@ -214,11 +214,9 @@
               end_time_login_task = date.getTime();
               end_time_login_get = date.getTime();
 
-              var task_code = 'login_facebook';
               var remark = '페북 페이지에서 장기토큰을 가지고 오는 API';
               var api_code = 'login_facebook_get_long_access_token';
               var api_provider_code = 'facebook';
-              sendTaskLog(log_id, task_code, start_time_login_task, end_time_login_task, remark);
               sendAPILog(log_id, api_code, api_provider_code, start_time_login_get, end_time_login_get, remark)
 
               $.ajax({
@@ -248,8 +246,11 @@
                   var remark = '페북 페이지의 장기토큰을 챗브릭서버에 업데이트';
                   var api_code = 'login_facebook_put_api';
                   var api_provider_code = 'chatbrick';
+                  var task_code = 'login_facebook';
+
                   sendAPILog(log_id, api_code, api_provider_code, start_time_login_put, end_time_login_put, remark)
-                  window.location.href = "/chatbot/list";
+                  sendTaskLog(log_id, task_code, start_time_login_task, end_time_login_put, remark);
+									window.location.href = "/chatbot/list";
                 }
               });
 

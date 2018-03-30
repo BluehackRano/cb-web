@@ -118,6 +118,11 @@
   var remove_status = '';
   var log_id_page = '';
 
+  //check start time
+  var date = new Date();
+  start_time_page = date.getTime();
+  log_id_page = 'update_bot' + start_time_page;
+
   $(document).ready(function() {
     start_time_set_click = $.urlParam('start_time_next_btn_click');
     edit_status = $.urlParam('edit_status');
@@ -126,13 +131,9 @@
     if (start_time_set_click != undefined ||
       start_time_set_click != null) {
 
+
+
       if (edit_status) {
-
-        //check start time
-        var date = new Date();
-        start_time_page = date.getTime();
-        log_id_page = 'update_bot' + start_time_page;
-
         var task_code = 'update_bot';
         var remark = '봇 수정하기페이지에서 업데이트에 해당하는 버튼을 눌렀을때';
         var api_code = 'update_bot';
@@ -230,7 +231,7 @@
   `</div>`);
 
   $.ajax({
-    url : 'https://www.chatbrick.io/api/brick/',
+    url : 'https://www.chatbrick.io/api/brick/' + '?log_id=' + log_id_page,
     type : 'GET',
     async: false,
     crossDomain: true,
@@ -240,6 +241,7 @@
 //      console.log('fb_profile=>' + body.facebook.fb_profile);
       if (body.success) {
 
+        console.log('!!log_id_page=>' + log_id_page);
         login_logo.attr("src", body.facebook.fb_profile);
         login_name.text(body.facebook.fb_name);
 

@@ -1478,6 +1478,7 @@
 
     //make send jsonData
     var submitData = {
+      "log_id": log_id_page,
       "id": setId,
       "type": "bricks",
       "name": $('#baseInfo_name').val(),
@@ -1496,7 +1497,7 @@
 
     };
 
-    console.log('submitBrickList=>' + JSON.stringify(submitBrickList));
+    console.log('submitData=>' + JSON.stringify(submitData));
 
       //send jsonData in brick api
       $.ajax({

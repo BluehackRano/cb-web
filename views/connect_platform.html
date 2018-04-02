@@ -422,7 +422,7 @@
 
                   //connect fb page api
                   $.ajax({
-                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_ids[index]+'/'+fb_page_access_tokens[index]+'/',
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_ids[index]+'/'+fb_page_access_tokens[index]+'/'+'?log_id='+log_id,
                     type: 'PUT',
 //                    async: false,
                     crossDomain: true,
@@ -531,7 +531,7 @@
                   //delete fb page api
                   $.ajax({
                     //TODO: url
-                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+'?log_id='+log_id_dele_fb,
                     type: 'DELETE',
 //                    async: false,
                     crossDomain: true,
@@ -650,7 +650,7 @@
                 //connect telegram api
                 $.ajax({
                   //TODO: url
-                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id,
                   type: 'PUT',
 //                  async: false,
                   crossDomain: true,
@@ -744,7 +744,7 @@
                 //disconnect telegram api
                 $.ajax({
                   //TODO: url
-                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id,
                   type: 'DELETE',
 //                  async: false,
                   crossDomain: true,

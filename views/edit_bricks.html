@@ -621,6 +621,11 @@
 
   var log_id_page = '';
 
+  //check start time
+  var date = new Date();
+  start_time_page = date.getTime();
+  log_id_page = 'edit_bot' + start_time_page;
+
   $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results==null){
@@ -632,11 +637,6 @@
   }
 
   $(document).ready(function() {
-    //check start time
-    var date = new Date();
-    start_time_page = date.getTime();
-    log_id_page = 'edit_bot' + start_time_page;
-
     start_time_create_bot_click = $.urlParam('start_time_next_btn_click');
 
     var task_code = 'edit_bot';
@@ -665,7 +665,7 @@
 
   var resBricksList;
   $.ajax({
-    url: 'https://www.chatbrick.io/api/brick/'+setId+'/',
+    url: 'https://www.chatbrick.io/api/brick/'+setId+'/' + '?log_id='+log_id_page,
     type: 'GET',
     async: false,
     crossDomain: true,
@@ -1217,7 +1217,7 @@
                 console.log('end_time=>' + end_time);
                 var tag = '텔레그램 페이지 앱 삭제';
                 var remark = '텔레그램 페이지 앱 삭제를 위해 사용';
-                sendTimeLog(setId, start_time, end_time, tag, remark);
+//                sendTimeLog(setId, start_time, end_time, tag, remark);
 
                 console.log('connected telegram.ok=>' + body.data.telegram.ok);
                 tg_connect_page.show();
@@ -1499,9 +1499,14 @@
 
     console.log('submitData=>' + JSON.stringify(submitData));
 
+      //check start time
+      var date = new Date();
+      start_time_finish = date.getTime();
+      log_id_finish = 'edit_finish' + start_time_finish;
+
       //send jsonData in brick api
       $.ajax({
-        url: 'https://www.chatbrick.io/api/brick/',
+        url: 'https://www.chatbrick.io/api/brick/'+'?log_id='+log_id_finish,
         type: 'PATCH',
 //        async: false,
         crossDomain: true,
@@ -1550,12 +1555,6 @@
         }
         ,beforeSend: function () {
           $("body").loading("start");
-
-          //check start time
-          var date = new Date();
-          start_time_finish = date.getTime();
-          log_id_finish = 'edit_finish' + start_time_finish;
-
         }
         ,complete: function () {
           $("body").loading("stop");
@@ -1811,7 +1810,7 @@
 
                   //connect fb page api
                   $.ajax({
-                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_ids[index]+'/'+fb_page_access_tokens[index]+'/',
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_ids[index]+'/'+fb_page_access_tokens[index]+'/'+'?log_id='+log_id,
                     type: 'PUT',
 //                    async: false,
                     crossDomain: true,
@@ -1919,7 +1918,7 @@
 
                   //delete fb page api
                   $.ajax({
-                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+'?log_id='+log_id_dele_fb,
                     type: 'DELETE',
 //                    async: false,
                     crossDomain: true,
@@ -2033,12 +2032,14 @@
                 //check start time
                 var date = new Date();
                 var start_time = date.getTime();
+                var log_id = 'reg_telegram' + start_time;
+
                 console.log('start_time=>' + start_time);
 
                 //connect telegram api
                 $.ajax({
                   //TODO: url
-                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id,
                   type: 'PUT',
 //                  async: false,
                   crossDomain: true,
@@ -2128,7 +2129,7 @@
 
                 //disconnect telegram api
                 $.ajax({
-                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id,
                   type: 'DELETE',
 //                  async: false,
                   crossDomain: true,
@@ -2144,7 +2145,7 @@
                         console.log('end_time=>' + end_time);
                         var tag = '텔레그램 페이지 앱 삭제';
                         var remark = '텔레그램 페이지 앱 삭제를 위해 사용';
-                        sendTimeLog(setId, start_time, end_time, tag, remark);
+//                        sendTimeLog(setId, start_time, end_time, tag, remark);
 
                         console.log('delete telegram.ok=>' + body.data.telegram.ok);
                         tg_connect_page.show();

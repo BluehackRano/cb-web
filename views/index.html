@@ -42,13 +42,16 @@
 
     $(document).ready(function() {
 
-      if (start_time_set_click != undefined ||
-        start_time_set_click != null) {
+      start_time_create_bot_click = $.urlParam('start_time_next_btn_click');
+
+
+      if (start_time_create_bot_click != null) {
+
+        console.log('ready_start_time_create_bot_click=>' + start_time_create_bot_click);
         //check start time
         var date = new Date();
         start_time_page = date.getTime();
 
-        start_time_create_bot_click = $.urlParam('start_time_next_btn_click');
         log_id_page = 'logout_facebook' + start_time_create_bot_click;
 
         var task_code = 'logout_facebook';
@@ -61,8 +64,10 @@
 
     $(window).load(function() {
 
-      if (start_time_set_click != undefined ||
-        start_time_set_click != null) {
+//      console.log('load_start_time_create_bot_click=>' + start_time_create_bot_click);
+      if (start_time_create_bot_click != null) {
+
+        console.log('ready_start_time_create_bot_click=>' + start_time_create_bot_click);
         //check end time
         var date = new Date();
         end_time_page = date.getTime();

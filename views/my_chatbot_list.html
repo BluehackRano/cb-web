@@ -132,8 +132,8 @@
       start_time_set_click != null) {
 
 
-
-      if (edit_status) {
+      console.log('ready_edit_status=>' + edit_status);
+      if (edit_status == "true") {
         var task_code = 'update_bot';
         var remark = '봇 수정하기페이지에서 업데이트에 해당하는 버튼을 눌렀을때';
         var api_code = 'update_bot';
@@ -176,7 +176,7 @@
 
     if (start_time_set_click != undefined ||
       start_time_set_click != null) {
-      if (edit_status) {
+      if (edit_status == "true") {
 
         //check end time
         var date = new Date();

@@ -862,6 +862,8 @@
     success: function (body, status, res) {
       if (body.success) {
 
+        img_url = body.data.url;
+
         if (body.data.telegram != undefined) {
           console.log('in tele!');
           tg_connect_page.hide();
@@ -2338,6 +2340,10 @@
     // })
     // console.log('sponsor_addInputLine=>' + sponsor_addInputLine);
 
+    if (img_url == undefined) {
+      img_url = profile_img.src;
+    }
+
     var submitData = {
       "id": setId,
       "type": "hackathon",
@@ -2345,7 +2351,7 @@
       "desc": $('#baseInfo_context_01').val()+'\n'+$('#baseInfo_context_02').val(),
       "data": {
         "basic": {
-          "poster_image": profile_img.src,
+          "poster_image": img_url,
           "name": $('#user_profile_data_name').val(),
           "tel": $('#user_profile_data_tel').val(),
           "email": $('#user_profile_data_professional').val()

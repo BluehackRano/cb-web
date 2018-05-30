@@ -1880,7 +1880,7 @@
                       var remark = '페북 페이지 등록을 위해 사용';
 //                        sendTimeLog(setId, start_time, end_time, tag, remark);
 
-                      var api_code = 'reg_facebook';
+                      var api_code = 'connect_facebook';
                       var api_provider_code = 'chatbrick';
                       sendAPILog(log_id, api_code, api_provider_code, start_time_fb_api_connect, end_time_fb_api_connect, remark)
 
@@ -1902,11 +1902,11 @@
                           var remark = '페북 페이지 subscribed 위해 사용';
 //                          sendTimeLog(setId, start_time, end_time, tag, remark);
 
-                          var api_code = 'reg_facebook';
+                          var api_code = 'connect_facebook';
                           var api_provider_code = 'facebook';
                           sendAPILog(log_id, api_code, api_provider_code, start_time_fb_api_reg, end_time_fb_api_reg, remark)
 
-                          var task_code = 'reg_facebook';
+                          var task_code = 'connect_facebook';
                           sendTaskLog(log_id, task_code, start_time_fb_task, end_time_fb_api_reg, remark);
 
                         }
@@ -2031,10 +2031,10 @@
 
                 //check start time
                 var date = new Date();
-                var start_time = date.getTime();
-                var log_id = 'reg_telegram' + start_time;
+                start_time_tele_task = date.getTime();
+                var log_id = 'reg_telegram' + start_time_tele_task;
 
-                console.log('start_time=>' + start_time);
+                console.log('start_time=>' + start_time_tele_task);
 
                 //connect telegram api
                 $.ajax({
@@ -2050,6 +2050,12 @@
                       if (body.data.telegram.ok) {
 
                         console.log('connected telegram.ok=>' + body.data.telegram.ok);
+
+                        //check end time
+                        var date = new Date();
+                        end_time_tele_api_connect = date.getTime();
+                        console.log('end_time=>' + end_time_tele_api_connect);
+
                         tg_connect_page.hide();
                         tele_page_set.show();
                         $('.tele_page_title').text(body.data.bot.username);
@@ -2102,18 +2108,15 @@
                   ,complete: function () {
                     $("body").loading("stop");
 
-                    //check end time
-                    var date = new Date();
-                    end_time_tele_api_connect = date.getTime();
-                    console.log('end_time=>' + end_time_tele_api_connect);
+
                     var tag = '텔레그램 페이지 앱 등록';
                     var remark = '텔레그램 페이지 앱 등록을 위해 사용';
 //                        sendTimeLog(setId, start_time, end_time, tag, remark);
 
-                    var api_code = 'reg_telegram';
+                    var api_code = 'connect_telegram';
                     var api_provider_code = 'chatbrick';
                     sendAPILog(log_id, api_code, api_provider_code, start_time_tele_api_connect, end_time_tele_api_connect, remark)
-                    var task_code = 'reg_telegram';
+                    var task_code = 'connect_telegram';
                     sendTaskLog(log_id, task_code, start_time_tele_task, end_time_tele_api_connect, remark);
                   }
                 });

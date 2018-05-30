@@ -1320,7 +1320,7 @@
                       var remark = '페북 페이지 등록을 위해 사용';
 //                        sendTimeLog(setId, start_time, end_time, tag, remark);
 
-                      var api_code = 'reg_facebook';
+                      var api_code = 'connect_facebook';
                       var api_provider_code = 'chatbrick';
                       sendAPILog(log_id, api_code, api_provider_code, start_time_fb_api_connect, end_time_fb_api_connect, remark)
 
@@ -1342,11 +1342,11 @@
                           var remark = '페북 페이지 subscribed 위해 사용';
 //                          sendTimeLog(setId, start_time, end_time, tag, remark);
 
-                          var api_code = 'reg_facebook';
+                          var api_code = 'connect_facebook';
                           var api_provider_code = 'facebook';
                           sendAPILog(log_id, api_code, api_provider_code, start_time_fb_api_reg, end_time_fb_api_reg, remark)
 
-                          var task_code = 'reg_facebook';
+                          var task_code = 'connect_facebook';
                           sendTaskLog(log_id, task_code, start_time_fb_task, end_time_fb_api_reg, remark);
 
                         }
@@ -1473,14 +1473,14 @@
 
                 //check start time
                 var date = new Date();
-                var start_time = date.getTime();
-                var log_id = 'reg_telegram' + start_time;
-                console.log('start_time=>' + start_time);
+                start_time_tele_task = date.getTime();
+                var log_id_connect_tele = 'connect_telegram' + start_time_tele_task;
+                console.log('start_time=>' + start_time_tele_task);
 
                 //connect telegram api
                 $.ajax({
                   //TODO: url
-                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id,
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id_connect_tele,
                   type: 'PUT',
 //                  async: false,
                   crossDomain: true,
@@ -1491,10 +1491,18 @@
                       if (body.data.telegram.ok) {
 
                         console.log('connected telegram.ok=>' + body.data.telegram.ok);
+
+                        //check end time
+                        var date = new Date();
+                        end_time_tele_api_connect = date.getTime();
+                        console.log('end_time=>' + end_time_tele_api_connect);
+
                         tg_connect_page.hide();
                         tele_page_set.show();
                         $('.tele_page_title').text(body.data.bot.username);
                         is_telegram_connected = true;
+
+
                       }
                     } else {
                       if (body.action == 'ERR0002') {
@@ -1543,19 +1551,15 @@
                   ,complete: function () {
                     $("body").loading("stop");
 
-                    //check end time
-                    var date = new Date();
-                    end_time_tele_api_connect = date.getTime();
-                    console.log('end_time=>' + end_time_tele_api_connect);
                     var tag = '텔레그램 페이지 앱 등록';
                     var remark = '텔레그램 페이지 앱 등록을 위해 사용';
 //                        sendTimeLog(setId, start_time, end_time, tag, remark);
 
-                    var api_code = 'reg_telegram';
+                    var api_code = 'connect_telegram';
                     var api_provider_code = 'chatbrick';
-                    sendAPILog(log_id, api_code, api_provider_code, start_time_tele_api_connect, end_time_tele_api_connect, remark)
-                    var task_code = 'reg_telegram';
-                    sendTaskLog(log_id, task_code, start_time_tele_task, end_time_tele_api_connect, remark);
+                    sendAPILog(log_id_connect_tele, api_code, api_provider_code, start_time_tele_api_connect, end_time_tele_api_connect, remark)
+                    var task_code = 'connect_telegram';
+                    sendTaskLog(log_id_connect_tele, task_code, start_time_tele_task, end_time_tele_api_connect, remark);
                   }
                 });
               }); //tele_page_btn click event
@@ -1565,13 +1569,13 @@
                 //check start time
                 var date = new Date();
                 start_time_tele_task = date.getTime();
-                var log_id = 'del_telegram' + start_time_tele_task;
+                var log_id_tele_del = 'del_telegram&' + start_time_tele_task;
                 console.log('start_time=>' + start_time_tele_task);
 
                 //disconnect telegram api
                 $.ajax({
                   //TODO: url
-                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id,
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id_tele_del,
                   type: 'DELETE',
 //                  async: false,
                   crossDomain: true,
@@ -1586,6 +1590,8 @@
                         tele_page_set.hide();
 
                         is_telegram_connected = false;
+
+
                       }
                     } else {
                       if (body.action == 'ERR0002') {
@@ -1645,9 +1651,9 @@
 
                     var api_code = 'del_telegram';
                     var api_provider_code = 'chatbrick';
-                    sendAPILog(log_id, api_code, api_provider_code, start_time_tele_api_del_connect, end_time_tele_api_del_connect, remark)
+                    sendAPILog(log_id_tele_del, api_code, api_provider_code, start_time_tele_api_del_connect, end_time_tele_api_del_connect, remark)
                     var task_code = 'del_telegram';
-                    sendTaskLog(log_id, task_code, start_time_tele_task, end_time_tele_api_del_connect, remark);
+                    sendTaskLog(log_id_tele_del, task_code, start_time_tele_task, end_time_tele_api_del_connect, remark);
 
                   }
                 });
@@ -2072,14 +2078,6 @@
 
             if (body.success) {
               if (body.data.telegram.ok) {
-
-                //check end time
-                var date = new Date();
-                var end_time = date.getTime();
-                console.log('end_time=>' + end_time);
-                var tag = '텔레그램 페이지 앱 삭제';
-                var remark = '텔레그램 페이지 앱 삭제를 위해 사용';
-//                sendTimeLog(setId, start_time, end_time, tag, remark);
 
                 console.log('delete telegram.ok=>' + body.data.telegram.ok);
                 tg_connect_page.show();

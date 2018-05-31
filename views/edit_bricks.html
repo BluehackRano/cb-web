@@ -2051,15 +2051,22 @@
 
                         console.log('connected telegram.ok=>' + body.data.telegram.ok);
 
-                        //check end time
-                        var date = new Date();
-                        end_time_tele_api_connect = date.getTime();
-                        console.log('end_time=>' + end_time_tele_api_connect);
-
                         tg_connect_page.hide();
                         tele_page_set.show();
                         $('.tele_page_title').text(body.data.bot.username);
                         is_telegram_connected = true;
+
+                        //check end time
+                        var date = new Date();
+                        end_time_tele_api_connect = date.getTime();
+                        console.log('end_time=>' + end_time_tele_api_connect);
+                        var api_code = 'connect_telegram';
+                        var api_provider_code = 'chatbrick';
+                        var tag = '텔레그램 페이지 앱 등록';
+                        var remark = '텔레그램 페이지 앱 등록을 위해 사용';
+                        sendAPILog(log_id, api_code, api_provider_code, start_time_tele_api_connect, end_time_tele_api_connect, remark)
+                        var task_code = 'connect_telegram';
+                        sendTaskLog(log_id, task_code, start_time_tele_task, end_time_tele_api_connect, remark);
                       }
                     } else {
                       if (body.action == 'ERR0002') {
@@ -2107,17 +2114,7 @@
                   }
                   ,complete: function () {
                     $("body").loading("stop");
-
-
-                    var tag = '텔레그램 페이지 앱 등록';
-                    var remark = '텔레그램 페이지 앱 등록을 위해 사용';
 //                        sendTimeLog(setId, start_time, end_time, tag, remark);
-
-                    var api_code = 'connect_telegram';
-                    var api_provider_code = 'chatbrick';
-                    sendAPILog(log_id, api_code, api_provider_code, start_time_tele_api_connect, end_time_tele_api_connect, remark)
-                    var task_code = 'connect_telegram';
-                    sendTaskLog(log_id, task_code, start_time_tele_task, end_time_tele_api_connect, remark);
                   }
                 });
               }); //tele_page_btn click event

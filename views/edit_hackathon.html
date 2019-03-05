@@ -1,0 +1,3459 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>ChatBrick</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <!--<script src="../secret/config.js"></script>-->
+  <script src="../public/javascripts/config.js"></script>
+  <script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
+  <script type="text/javascript" src="/public/javascripts/href_event.js"></script>
+  <link rel="stylesheet" href="../public/stylesheets/style.css">
+  <!--<script src="../public/javascripts/connect_facebook.js"></script>-->
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="../public/javascripts/loading.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/loading.css">
+</head>
+<body>
+<header id="header">
+  <div class="wrapper wrapper_header">
+    <div class="top_01 top_common">
+      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+
+      <div class="top_01 top_user_profile_common">
+        <img id="login_logo" class="login_logo">
+        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png"
+             alt="login_dropdown">
+      </div>
+    </div>
+
+    <div class="top_02 top_common">
+      <div class="top_02 title_area">
+        <div id="title"></div>
+        <div id="sub_title"></div>
+      </div>
+      <div id="context">
+        <p>
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="content">
+
+  <!--기본정보 영역-->
+  <div class="wrapper_section _baseInfo_section">
+    <section id="section_00">
+      <div class="content_title">
+        <p>
+          기본정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _baseInfo_wrapper">
+        <article id="article_00" class="_article">
+
+          <div class="wrapper">
+            <div class="baseInfo_01 article_title">
+              <p>
+                챗봇 이름
+              </p>
+            </div>
+            <input type="text" id="baseInfo_name" class="baseInputText" placeholder="생성하려는 챗봇의 이름을 입력해주세요. (최대8자)">
+
+            <div class="baseInfo_02 article_title">
+              <p>
+                챗봇 설명
+              </p>
+            </div>
+            <input type="text" id="baseInfo_context_01" class="baseInputText baseInfo_placeHolder" placeholder="생성하려는 챗봇의 설명문구를 입력해주세요.">
+            <input type="text" id="baseInfo_context_02" class="baseInputText baseInfo_placeHolder">
+
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+
+  <!--프로필정보 영역-->
+  <div class="wrapper_section _hackathon_section">
+    <section id="section_01" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 프로필정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_01" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_photo_area">
+              <img src="../public/images/bg-img-upload-01.png" id="profile_img" class="user_profile_img">
+              <!--<div id="profile_img" class="user_profile_img">-->
+
+              <div class="user_profile_photo_guild_area">
+                <div class="user_profile_photo_title">
+                  PROFILE IMAGE
+                </div>
+
+                <div class="user_profile_photo_context">
+                  해커톤의 포스터 이미지를 업로드해주세요.
+                </div>
+
+                <div class="user_profile_photo_upload_btn">
+                  <label for="uploadBtn" class="btn_file">파일 업로드</label>
+                  <input type="file" id="uploadBtn" class="uploadBtn">
+                </div>
+
+                <div id="after_upload">
+                  <input id="file" type="file" class="imgeFile"/>
+                  <div id="after_upload_motify"><p>변경하기</p></div>
+                  <div id="after_upload_del"><p>제거하기</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                해커톤 이름
+              </div>
+              <input type="text" id="user_profile_data_name" class="baseInputText_02" placeholder="해커톤의 이름을 입력해주세요.">
+
+              <div class="article_title_profile">
+                문의받기 이메일 입력
+              </div>
+              <input type="text" id="user_profile_data_professional" class="baseInputText_02" placeholder="해커톤 관련 문의를 받을 이메일을 입력해주세요.">
+
+              <div class="article_title_profile">
+                문의받기 전화번호 입력
+              </div>
+              <input type="text" id="user_profile_data_tel" class="baseInputText_02" placeholder="해커톤 관련 문의를 받을 전화번호를 입력해주세요.">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--사용자 데이터 입력 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_02" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 기본정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_02" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                환영메세지
+              </div>
+              <input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message" placeholder="방문자에게 처음으로 보낼 메세지를 입력해주세요.">
+              <input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message">
+              <input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message">
+
+              <div class="article_title_profile">
+                오류메세지
+              </div>
+              <input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="방문자가 준비되지 않은 메세지를 보냈을 때, 보낼 메세지를 입력해주세요.">
+              <input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02 user_profile_not_ready_mesage">
+              <input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02 user_profile_not_ready_mesage">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--해커톤 일정정보 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_03" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 일정정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_03" class="_article">
+
+          <div class="wrapper">
+            <div class="hackathon_date_area">
+
+              <div class="hackathon_date_participation_meeting">
+                <div class="article_title_profile">
+                  참가신청 일정
+                </div>
+
+                <div class="date_form">
+                  <input type="text" class="date_format" id="start_date_participation" placeholder="클릭하여 시작일/시간 입력">
+                  <div class="date_swing"><p>~</p></div>
+                  <input type="text" class="date_format" id="end_date_participation" placeholder="클릭하여 마감일/시간 입력">
+                </div>
+              </div>
+
+              <div class="hackathon_date_before_meeting">
+                <div class="article_title_profile">
+                  사전모임 일정
+                </div>
+
+                <div class="before_meeting_checkbox_area">
+                  <img src="../public/images/btn-checkbox-unsel.png" id="date_checkbox">
+                  <div id="date_checkbox_text"><p>&nbsp;사전모임 일정이 있어요</p></div>
+                  <!--<input type="checkbox" class="date_checkbox" id="date_checkbox">-->
+                  <!--<label for="date_checkbox" id="date_checkbox_text">&nbsp;&nbsp;사전모임 일정이 있어요</label>-->
+                </div>
+
+                <div class="date_form_one" id="before_meeting_checked">
+                  <input type="text" class="date_format_one" id="start_date_before_meeting"
+                         placeholder="클릭하여 사전모임 날짜 입력">
+                </div>
+              </div>
+
+              <div class="hackathon_date_dday_meeting">
+                <div class="article_title_profile">
+                  본행사 일정
+                </div>
+
+                <div class="date_form">
+                  <input type="text" class="date_format" id="start_date_dday_meeting" placeholder="클릭하여 시작일 입력">
+                  <div class="date_swing"><p>~</p></div>
+                  <input type="text" class="date_format" id="end_date_dday_meeting" placeholder="클릭하여 종료일 입력">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--사용자 데이터 입력 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_04" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 일정내용정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_04" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+
+              <div class="before_meeting_content" id="before_meeting_content">
+                <div class="article_title_profile">
+                  사전모임 일정내용
+                </div>
+
+                <div id="before_meeting_clicked">
+                  <input type="text" id="before_meeting_clicked_content_01"
+                         class="baseInputText_02 before_meeting_clicked_content"
+                         placeholder="예 ) 네트워킹 및 팀빌딩">
+                  <input type="text" id="before_meeting_clicked_content_02"
+                         class="baseInputText_02 before_meeting_clicked_content"
+                         placeholder="(13:00 ~ 13:30) 개인별 자기소개 시간">
+                  <input type="text" id="before_meeting_clicked_content_03"
+                         class="baseInputText_02 before_meeting_clicked_content"
+                         placeholder="(엔터를 입력하면 더 많이 작성할 수 있어요)">
+                </div>
+                <hr class="user_profile_line">
+              </div>
+
+              <div id="hackathon_1day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 1일차 일정내용
+                </div>
+                <div id="hackathon_1day_input_content">
+                  <input type="text" id="hackathon_1day_content_01" class="baseInputText_02 hackathon_1day_content"
+                         placeholder="(09:00 ~ 19:00) 자유진행시간">
+                  <input type="text" id="hackathon_1day_content_02" class="baseInputText_02 hackathon_1day_content"
+                         placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
+                  <input type="text" id="hackathon_1day_content_03" class="baseInputText_02 hackathon_1day_content"
+                         placeholder="(엔터를 입력하면 더 많이 작성할 수 있어요)">
+                </div>
+                <hr class="user_profile_line">
+              </div>
+
+              <div id="hackathon_2day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 2일차 일정내용
+                </div>
+                <div id="hackathon_2day_input_content">
+                  <input type="text" id="hackathon_2day_content_01" class="baseInputText_02 hackathon_2day_content"
+                         placeholder="(09:00 ~ 19:00) 자유진행시간">
+                  <input type="text" id="hackathon_2day_content_02" class="baseInputText_02 hackathon_2day_content"
+                         placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
+                  <input type="text" id="hackathon_2day_content_03" class="baseInputText_02 hackathon_2day_content"
+                         placeholder="(엔터를 입력하면 더 많이 작성할 수 있어요)">
+                </div>
+                <hr class="user_profile_line">
+              </div>
+
+              <div id="hackathon_3day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 3일차 일정내용
+                </div>
+                <div id="hackathon_3day_input_content">
+                  <input type="text" id="hackathon_3day_content_01" class="baseInputText_02 hackathon_3day_content"
+                         placeholder="(09:00 ~ 19:00) 자유진행시간">
+                  <input type="text" id="hackathon_3day_content_02" class="baseInputText_02 hackathon_3day_content"
+                         placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
+                  <input type="text" id="hackathon_3day_content_03" class="baseInputText_02 hackathon_3day_content"
+                         placeholder="(엔터를 입력하면 더 많이 작성할 수 있어요)">
+                </div>
+                <hr class="user_profile_line">
+              </div>
+
+              <div id="hackathon_4day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 4일차 일정내용
+                </div>
+                <div id="hackathon_4day_input_content">
+                  <input type="text" id="hackathon_4day_content_01" class="baseInputText_02 hackathon_4day_content"
+                         placeholder="(09:00 ~ 19:00) 자유진행시간">
+                  <input type="text" id="hackathon_4day_content_02" class="baseInputText_02 hackathon_4day_content"
+                         placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
+                  <input type="text" id="hackathon_4day_content_03" class="baseInputText_02 hackathon_4day_content"
+                         placeholder="(엔터를 입력하면 더 많이 작성할 수 있어요)">
+                </div>
+                <hr class="user_profile_line">
+              </div>
+
+              <div id="hackathon_5day" class="hackathon_day">
+                <div class="article_title_profile">
+                  본행사 5일차 일정내용
+                </div>
+                <div id="hackathon_5day_input_content">
+                  <input type="text" id="hackathon_5day_content_01" class="baseInputText_02 hackathon_5day_content"
+                         placeholder="(09:00 ~ 19:00) 자유진행시간">
+                  <input type="text" id="hackathon_5day_content_02" class="baseInputText_02 hackathon_5day_content"
+                         placeholder="(19:00 ~ 20:00) 오프닝 _ 저녁식사 제공">
+                  <input type="text" id="hackathon_5day_content_03" class="baseInputText_02 hackathon_5day_content"
+                         placeholder="(엔터를 입력하면 더 많이 작성할 수 있어요)">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--해커톤 참가신청정보 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_05" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 참가신청정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_05" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                참가신청하기 URL
+              </div>
+              <input type="text" id="hackathon_participation_url" class="baseInputText_02" placeholder="참가신청을 받을 URL 주소를 입력해주세요.">
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                참가요건
+              </div>
+
+              <div id="hackathon_participation_confirm_input">
+                <input type="text" id="hackathon_participation_confirm_01"
+                       class="baseInputText_02 hackathon_participation_confirm" placeholder="참가요건 정보를 입력해주세요. (엔터를 입력하면 더 많이 작성할 수 있어요)">
+                <input type="text" id="hackathon_participation_confirm_02"
+                       class="baseInputText_02 hackathon_participation_confirm">
+                <input type="text" id="hackathon_participation_confirm_03"
+                       class="baseInputText_02 hackathon_participation_confirm">
+              </div>
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                참가자 준비사항
+              </div>
+
+              <div id="hackathon_participation_ready_info_input">
+                <input type="text" id="hackathon_participation_ready_info_01"
+                       class="baseInputText_02 hackathon_participation_ready_info" placeholder="참가자 준비사항 정보를 입력해주세요. (엔터를 입력하면 더 많이 작성할 수 있어요)">
+                <input type="text" id="hackathon_participation_ready_info_02"
+                       class="baseInputText_02 hackathon_participation_ready_info">
+                <input type="text" id="hackathon_participation_ready_info_03"
+                       class="baseInputText_02 hackathon_participation_ready_info">
+              </div>
+
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--해커톤 장소정보 영역-->
+  <div class="wrapper_section _user_profile_section" id="portfolio_endline">
+    <section id="section_06" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 장소정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_06" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+
+              <div class="before_meeting_info">
+                <div class="article_title_profile">
+                  사전모임 장소의 이름
+                </div>
+                <input type="text" id="before_meeting_place_name" class="baseInputText_02" placeholder="사전모임 장소의 이름을 입력해주세요.">
+
+                <div class="article_title_profile">
+                  사전모임 장소의 주소
+                </div>
+                <input type="text" id="before_meeting_place_address" class="baseInputText_02" placeholder="사전모임 장소의 주소를 입력해주세요.">
+
+                <div class="article_title_profile">
+                  사전모임 장소의 지도 URL
+                </div>
+                <input type="text" id="before_meeting_place_navi_url" class="baseInputText_02" placeholder="사전모임 장소의 지도 URL을 입력해주세요.">
+                <hr class="user_profile_line">
+              </div>
+
+              <div class="article_title_profile">
+                본행사 장소의 이름
+              </div>
+              <input type="text" id="hackathon_place_name" class="baseInputText_02" placeholder="본행사 장소의 이름을 입력해주세요.">
+
+              <div class="article_title_profile">
+                본행사 장소의 주소
+              </div>
+              <input type="text" id="hackathon_place_address" class="baseInputText_02" placeholder="본행사 장소의 주소를 입력해주세요.">
+
+              <div class="article_title_profile">
+                본행사 장소의 지도 URL
+              </div>
+              <input type="text" id="hackathon_place_navi_url" class="baseInputText_02" placeholder="본행사 장소의 지도 URL을 입력해주세요.">
+            </div>
+
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--해커톤 참가시상정보 영역-->
+  <div class="wrapper_section _user_profile_section">
+    <section id="section_07" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 시상정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_07" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                상의 갯수
+              </div>
+              <input type="text" id="hackathon_award_kind_count" class="baseInputText_02" placeholder="상의 종류의 갯수를 입력해주세요.">
+              <hr class="user_profile_line">
+
+              <div id="hackathon_award_kind_count_area">
+                <!--<div class="article_title_profile">-->
+                <!--[01] 상의 이름-->
+                <!--</div>-->
+                <!--<input type="text" id="hackathon_award_kind_name_01" class="baseInputText_02" placeholder="가나다">-->
+
+                <!--<div class="article_title_profile">-->
+                <!--[01] 해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요-->
+                <!--</div>-->
+                <!--<input type="text" id="hackathon_award_taken_number_01" class="baseInputText_02" placeholder="가나다">-->
+
+                <!--<div class="article_title_profile">-->
+                <!--[01] 해당 상의 상금 및 수상혜택을 입력해주세요-->
+                <!--</div>-->
+                <!--<input type="text" id="hackathon_award_reward_01" class="baseInputText_02" placeholder="가나다">-->
+
+                <!--<hr class="user_profile_line">-->
+              </div>
+              <div class="article_title_profile">
+                참가자 혜택을 입력해주세요
+              </div>
+              <div id="hackathon_participation_reward">
+                <input type="text" id="hackathon_participation_reward_01"
+                       class="baseInputText_02 reward_addInputLine" placeholder="참가자의 혜택을 입력해주세요. (엔터를 입력하면 더 많이 작성할 수 있어요)">
+                <input type="text" id="hackathon_participation_reward_02"
+                       class="baseInputText_02 reward_addInputLine">
+                <input type="text" id="hackathon_participation_reward_03"
+                       class="baseInputText_02 reward_addInputLine">
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--사용자 데이터 입력 영역-->
+  <div class="wrapper_section _user_profile_section" id="hackathon_endline">
+    <section id="section_08" class="_profile_section">
+      <div class="content_title">
+        <p>
+          사용자 데이터 입력 _ 해커톤 주최/주관/후원정보
+        </p>
+      </div>
+
+      <div class="wrapper_article _user_profile_wrapper">
+        <article id="article_08" class="_article">
+
+          <div class="wrapper">
+            <div class="user_profile_data_area">
+              <div class="article_title_profile">
+                주최처
+              </div>
+              <div id="hackathon_organizer">
+                <input type="text" id="hackathon_organizer_info_01" class="baseInputText_02 organizer_addInputLine"
+                       placeholder="주최처 목록을 입력해주세요. (엔터를 입력하면 더 많이 작성할 수 있어요)">
+                <input type="text" id="hackathon_organizer_info_02" class="baseInputText_02 organizer_addInputLine">
+                <input type="text" id="hackathon_organizer_info_03" class="baseInputText_02 organizer_addInputLine">
+              </div>
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                주관처
+              </div>
+              <div id="hackathon_supervisor">
+                <input type="text" id="hackathon_supervisor_info_01" class="baseInputText_02 supervisor_addInputLine"
+                       placeholder="주관처 목록을 입력해주세요. (엔터를 입력하면 더 많이 작성할 수 있어요)">
+                <input type="text" id="hackathon_supervisor_info_02" class="baseInputText_02 supervisor_addInputLine">
+                <input type="text" id="hackathon_supervisor_info_03" class="baseInputText_02 supervisor_addInputLine">
+              </div>
+              <hr class="user_profile_line">
+
+              <div class="article_title_profile">
+                후원처
+              </div>
+              <div id="hackathon_sponsor">
+                <input type="text" id="hackathon_sponsor_info_01" class="baseInputText_02 sponsor_addInputLine"
+                       placeholder="후원처 목록을 입력해주세요. (엔터를 입력하면 더 많이 작성할 수 있어요)">
+                <input type="text" id="hackathon_sponsor_info_02" class="baseInputText_02 sponsor_addInputLine">
+                <input type="text" id="hackathon_sponsor_info_03" class="baseInputText_02 sponsor_addInputLine">
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrapper_section _messenger_section">
+    <section id="section_09">
+      <div class="content_title">
+        <p>
+          필수 추가연동
+        </p>
+      </div>
+
+      <div class="wrapper_article _messenger_wrapper">
+        <article id="article_fb" class="_article">
+
+          <div class="wrapper _fb_messenger_wrapper">
+            <div class="messenger_set">
+              <img src="../public/images/img-fb-messenger.png"
+                   id="img_fb_messenger" class="messenger_img">
+              <div class="messenger_text">
+                <div class="messenger_title">
+                  페이지북 메신저
+                </div>
+                <div class="messenger_context">
+                  YOUR FACEBOOK PAGES
+                </div>
+              </div>
+            </div>
+
+
+            <div id="fb_page_list">
+
+              <!--fb_page_set_item 영역-->
+              <!--<div class="fb_page_set">-->
+              <!--<img src="../public/images/test_img.png"-->
+              <!--class="fb_page_img">-->
+              <!--<div class="fb_page_text">-->
+              <!--<div class="fb_page_title">-->
+              <!--Bluehack 01-->
+              <!--</div>-->
+              <!--<div class="fb_page_btn">-->
+              <!--<p>-->
+              <!--연결하기-->
+              <!--</p>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--</div>-->
+
+            </div>
+          </div>
+        </article>
+
+        <!--telegram article-->
+        <div class="wrapper_article _messenger_wrapper">
+          <article id="article_telegram">
+            <div class="wrapper _telegram_messenger_wrapper">
+              <div class="messenger_set">
+                <img src="../public/images/img-tele-messenger.png"
+                     id="img_telegram__messenger" class="messenger_img">
+                <div class="messenger_text">
+                  <div class="messenger_title">
+                    텔레그램
+                  </div>
+                  <div class="messenger_context">
+                    YOUR BOTS
+                  </div>
+                </div>
+              </div>
+
+              <div class="tg_content">
+                <div class="tg_connect_page">
+                  <div class="tg_content_title">
+                    <p>적용하려는 봇의 토큰값을 입력해주세요</p>
+                  </div>
+
+                  <div class="tg_input_btn_line">
+                    <input type="text" id="tg_content_name" class="tgInputText" placeholder="발급받은 TOKEN KEY를 입력해주세요.">
+                    <div class="tele_page_btn" id="tele_page_btn">연결하기</div>
+                  </div>
+                  <div class="tg_content_context">
+                    <p>
+                      토큰값을 발급받기 위해서는 텔레그램에서 @BotFather 을 검색한 뒤,
+                      안내에 따라 봇을 최초 생성하는 별도의 사전작업이 필요해요.
+                      자세한 안내는 텔레그램의 Bot Platform 페이지에서 확인하실 수 있어요.<br>
+                      https://telegram.org/blog/bot-revolution
+                    </p>
+                  </div>
+                </div>
+
+                <!--tele connected page-->
+                <div class="tele_page_set">
+                  <img src="../public/images/img-telegram-bot-default.png"
+                       class="tele_page_img">
+                  <div class="tele_page_text">
+                    <div class="tele_page_title" id="tele_page_title">
+                      Bot Name
+                    </div>
+                    <div class="tele_page_disconnect_btn" id="tele_page_disconnect_btn">
+                      연결해제 하기
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!--설정 영역-->
+  <div class="wrapper_section _baseInfo_section">
+    <section id="section_10">
+      <div class="content_title">
+        <p>
+          설정
+        </p>
+      </div>
+
+      <div class="wrapper_article _setting_wrapper">
+        <article id="article_10" class="_article">
+
+          <div class="wrapper">
+            <div class="setting article_title">
+              <p>
+                제거하기
+              </p>
+            </div>
+
+            <div class="setting_desc">
+              <p>아래의 “챗봇 제거하기”버튼을 클릭해서 이 챗봇을 제거할 수 있습니다.</p>
+            </div>
+
+            <div class="setting_remove_btn" id="setting_remove_btn">
+              <p>챗봇 제거하기</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+
+  <!--이전버튼 취소하기 팝업-->
+  <div id="cancel_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">수정취소</div>
+      <div class="modal_context">수정을 취소하시겠어요?</div>
+      <div class="modal_brick_api_two_btn_area">
+        <div id="modal_left_btn" class="modal_left_btn">
+          <p>아니요</p>
+        </div>
+
+        <div id="modal_right_btn" class="modal_right_btn">
+          <p>네</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--챗봇 제거하기 팝업-->
+  <div id="remove_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">제거</div>
+      <div class="modal_context" id="modal_remove_context">챗봇을 제거하시겠어요?</div>
+      <div class="modal_brick_api_two_btn_area" id="modal_brick_api_remove_two_btn_area">
+        <div id="modal_right_remove_btn" class="modal_left_btn">
+          <p>챗봇 제거</p>
+        </div>
+        <div id="modal_left_remove_btn" class="modal_right_btn">
+          <p>아니요</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--디폴트 모양 팝업-->
+  <div id="default_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">확인</div>
+      <div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
+      <div id="modal_one_btn" class="modal_one_btn">
+        <p>확인</p></div>
+    </div>
+  </div>
+
+  <!--로그아웃 모양 팝업-->
+  <div id="logout_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">로그아웃</div>
+      <div class="modal_context">chatbrick에서 로그아웃하시겠어요?</div>
+      <div class="modal_brick_api_two_btn_area">
+        <div id="modal_left_logout_btn" class="modal_left_btn">
+          <p>아니요</p>
+        </div>
+
+        <div id="modal_right_logout_btn" class="modal_right_btn">
+          <p>네</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--에러 모양 팝업-->
+  <div id="default_error_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">확인</div>
+      <div class="modal_context" id="modal_error_context"></div>
+      <div id="modal_one_error_btn" class="modal_one_btn">
+        <p>확인</p></div>
+    </div>
+  </div>
+
+  <!--서버에러 모양 팝업-->
+  <div id="default_server_error_modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="modal_title">확인</div>
+      <div class="create_context_area">
+        <div class="server_error_modal_context_01">에러가 발생했어요.</div>
+        <div class="server_error_modal_context_02">잠시후 다시 시도해주세요.</div>
+      </div>
+      <!--<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>-->
+      <div id="modal_one_server_error_btn" class="modal_one_btn">
+        <p>확인</p></div>
+    </div>
+  </div>
+
+</div>
+
+<footer id="footer">
+  <div class="bottom_common">
+    <div id="pre_page">
+      <p>
+        취소
+      </p>
+    </div>
+    <div id="next_page" align="center">
+      <p>
+        저장
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+  $('#logo').click(function () {
+    logoClickSendHomeEvent();
+  });
+//  $('input[type=text]').addClass('placeholder');
+
+  var setId = `<%=setId%>`;
+  console.log('in hackathon setId=>' + setId);
+
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+
+  var tg_connect_page = $('.tg_connect_page');
+  var tele_page_set = $('.tele_page_set');
+  var tele_page_btn = $('#tele_page_btn');
+  var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
+  var tele_page_val = '';
+  var fb_page_id_from_api = '';
+
+
+  var img_url;
+  var prize_name = [];
+  var prize_desc = [];
+  var prize_benefit = [];
+
+  var fb_name;
+  var project_name;
+
+  var is_telegram_connected = false;
+
+  $.ajax({
+    url: 'https://www.chatbrick.io/api/brick/'+setId+'/',
+    type: 'GET',
+    async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
+    success: function (body, status, res) {
+      if (body.success) {
+
+        img_url = body.data.url;
+
+        if (body.data.telegram != undefined) {
+          console.log('in tele!');
+          tg_connect_page.hide();
+          tele_page_set.show();
+
+          tele_page_val = body.data.telegram.token;
+          $('#tg_content_name').val(tele_page_val);
+
+        } else {
+
+          console.log('no tele!');
+          tg_connect_page.show();
+          tele_page_set.hide();
+        }
+
+        //check fb page access_token
+        if (body.data.page_id != undefined) {
+          fb_page_id_from_api = body.data.page_id;
+        }
+
+        if (body.data.telegram.token != undefined) {
+          $('#tg_content_name').val(body.data.telegram.token);
+          console.log('tg_content_name=>' + $('#tg_content_name').val());
+
+          if (body.data.telegram.token != '') {
+            is_telegram_connected = true;
+          }
+        }
+
+        project_name = body.data.settings.name;
+        var settings_name = body.data.settings.name;
+        var settings_desc = body.data.settings.desc.split('\n');
+
+        var basic_poster_image = body.data.settings.data.basic.poster_image;
+        var basic_name = body.data.settings.data.basic.name;
+        var basic_tel = body.data.settings.data.basic.tel;
+        var basic_email = body.data.settings.data.basic.email;
+
+        var custom_settings_get_started = body.data.settings.data.custom_settings.get_started.split('\n');
+        var custom_settings_error_msg = body.data.settings.data.custom_settings.error_msg.split('\n');
+
+        var date_application_period_start = body.data.settings.data.date.application_period.start;
+        var date_application_period_end = body.data.settings.data.date.application_period.end;
+
+        var date_pre_meeting = '';
+        if (body.data.settings.data.date['pre-meeting'] != undefined) {
+          date_pre_meeting = body.data.settings.data.date['pre-meeting']
+        }
+
+        var date_main_meeting_start = body.data.settings.data.date['main-meeting'].start;
+        var date_main_meeting_end = body.data.settings.data.date['main-meeting'].end;
+
+        var hackathon_day_main_meeting = body.data.settings.data.contents['main-meeting'];
+        var hackathon_day_main_meeting_1day = hackathon_day_main_meeting[0];
+        var hackathon_day_main_meeting_2day = hackathon_day_main_meeting[1];
+        var hackathon_day_main_meeting_3day = hackathon_day_main_meeting[2];
+        var hackathon_day_main_meeting_4day = hackathon_day_main_meeting[3];
+        var hackathon_day_main_meeting_5day = hackathon_day_main_meeting[4];
+
+        var hackathon_day_pre_meeting = '';
+        var place_pre_metting_name = '';
+        var place_pre_metting_address = '';
+        var place_pre_metting_url = '';
+
+        if (body.data.settings.data.contents['pre-meeting'] != undefined) {
+          hackathon_day_pre_meeting = body.data.settings.data.contents['pre-meeting'].split('\n');
+          place_pre_metting_name = body.data.settings.data.place['pre-meeting'].name;
+          place_pre_metting_address = body.data.settings.data.place['pre-meeting'].address;
+          place_pre_metting_url = body.data.settings.data.place['pre-meeting'].url;
+        }
+
+        var hackathon_participation_application_url = body.data.settings.data.application.url;
+        var hackathon_participation_application_requirements = body.data.settings.data.application.requirements.split('\n');
+        var hackathon_participation_application_preparation = body.data.settings.data.application.preparation.split('\n');
+
+        var place_main_metting_name = body.data.settings.data.place['main-meeting'].name;
+        var place_main_metting_address = body.data.settings.data.place['main-meeting'].address;
+        var place_main_metting_url = body.data.settings.data.place['main-meeting'].url;
+
+        var benefit_of_participant = body.data.settings.data.benefit_of_participant.split('\n');
+
+        var thanks_hoster = body.data.settings.data.thanks.hoster.split('\n');
+        var thanks_organizer = body.data.settings.data.thanks.organizer.split('\n');
+        var thanks_sponsor = body.data.settings.data.thanks.sponsor.split('\n');
+
+        $('#baseInfo_name').val(settings_name);
+        $('#baseInfo_context_01').val(settings_desc[0]);
+        $('#baseInfo_context_02').val(settings_desc[1]);
+
+        $('#profile_img').attr("src", basic_poster_image);
+        $('#user_profile_data_name').val(basic_name);
+        $('#user_profile_data_tel').val(basic_tel);
+        $('#user_profile_data_professional').val(basic_email);
+
+        $('#user_profile_start_message_01').val(custom_settings_get_started[0]);
+        $('#user_profile_start_message_02').val(custom_settings_get_started[1]);
+        $('#user_profile_start_message_03').val(custom_settings_get_started[2]);
+
+        $('#user_profile_not_ready_mesage_01').val(custom_settings_error_msg[0]);
+        $('#user_profile_not_ready_mesage_02').val(custom_settings_error_msg[1]);
+        $('#user_profile_not_ready_mesage_03').val(custom_settings_error_msg[2]);
+
+        $('#start_date_participation').val(date_application_period_start);
+        $('#end_date_participation').val(date_application_period_end);
+
+        //사전모임 날짜
+        $('#start_date_before_meeting').val(date_pre_meeting);
+
+        if ($('#start_date_before_meeting').val() == '') {
+          console.log('사전모임날짜가 없음!');
+          $('#before_meeting_checked').hide();
+          $('#before_meeting_content').hide();
+          $('.before_meeting_info').hide();
+        } else {
+          //init display date_checkbox
+          $('#date_checkbox').toggleClass('checked');
+          $('#before_meeting_checked').show();
+          $('#before_meeting_content').show();
+          $('.before_meeting_info').show();
+        }
+
+
+        $('#start_date_dday_meeting').val(date_main_meeting_start);
+        $('#end_date_dday_meeting').val(date_main_meeting_end);
+
+        //본모임
+        if (hackathon_day_main_meeting_1day != null) {
+          var hack_day_1day = hackathon_day_main_meeting_1day.split("\n");
+          var hackathon_1day_content_index = 1;
+          for (var i = 0; i < hack_day_1day.length; i ++) {
+            if (hack_day_1day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_1day_content_0' + hackathon_1day_content_index).val(hack_day_1day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_1day_content_0`+hackathon_1day_content_index+`" class="baseInputText_02 hackathon_1day_content">`
+                );
+                $('#hackathon_1day_input_content').append(hackathon_value);
+                $('#hackathon_1day_content_0' + hackathon_1day_content_index).val(hack_day_1day[i]);
+              }
+
+            } else {
+              $('#hackathon_1day_content_0' + hackathon_1day_content_index).val(hack_day_1day[i]);
+            }
+            hackathon_1day_content_index ++;
+          }
+        }
+
+        if (hackathon_day_main_meeting_2day != null) {
+          var hack_day_2day = hackathon_day_main_meeting_2day.split("\n");
+          var hackathon_2day_content_index = 1;
+          for (var i = 0; i < hack_day_2day.length; i ++) {
+            if (hack_day_2day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_2day_content_0' + hackathon_2day_content_index).val(hack_day_2day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_2day_content_0`+hackathon_2day_content_index+`" class="baseInputText_02 hackathon_2day_content">`
+                );
+                $('#hackathon_2day_input_content').append(hackathon_value);
+                $('#hackathon_2day_content_0' + hackathon_2day_content_index).val(hack_day_2day[i]);
+              }
+
+            } else {
+              $('#hackathon_2day_content_0' + hackathon_2day_content_index).val(hack_day_2day[i]);
+            }
+            hackathon_2day_content_index ++;
+          }
+        }
+
+        if (hackathon_day_main_meeting_3day != null) {
+          var hack_day_3day = hackathon_day_main_meeting_3day.split("\n");
+          var hackathon_3day_content_index = 1;
+          for (var i = 0; i < hack_day_3day.length; i ++) {
+            if (hack_day_3day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_3day_content_0' + hackathon_3day_content_index).val(hack_day_3day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_3day_content_0`+hackathon_3day_content_index+`" class="baseInputText_02 hackathon_3day_content">`
+                );
+                $('#hackathon_3day_input_content').append(hackathon_value);
+                $('#hackathon_3day_content_0' + hackathon_3day_content_index).val(hack_day_3day[i]);
+              }
+
+            } else {
+              $('#hackathon_3day_content_0' + hackathon_3day_content_index).val(hack_day_3day[i]);
+            }
+            hackathon_3day_content_index ++;
+          }
+        }
+
+        if (hackathon_day_main_meeting_4day != null) {
+          var hack_day_4day = hackathon_day_main_meeting_4day.split("\n");
+          var hackathon_4day_content_index = 1;
+          for (var i = 0; i < hack_day_4day.length; i ++) {
+            if (hack_day_4day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_4day_content_0' + hackathon_4day_content_index).val(hack_day_4day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_4day_content_0`+hackathon_4day_content_index+`" class="baseInputText_02 hackathon_4day_content">`
+                );
+                $('#hackathon_4day_input_content').append(hackathon_value);
+                $('#hackathon_4day_content_0' + hackathon_4day_content_index).val(hack_day_4day[i]);
+              }
+
+            } else {
+              $('#hackathon_4day_content_0' + hackathon_4day_content_index).val(hack_day_4day[i]);
+            }
+            hackathon_4day_content_index ++;
+          }
+        }
+
+        if (hackathon_day_main_meeting_5day != null) {
+          var hack_day_5day = hackathon_day_main_meeting_5day.split("\n");
+          var hackathon_5day_content_index = 1;
+          for (var i = 0; i < hack_day_5day.length; i ++) {
+            if (hack_day_5day.length > 3) {
+              if (i <= 2) {
+                // 기존 라인에 값 넣기
+                $('#hackathon_5day_content_0' + hackathon_5day_content_index).val(hack_day_5day[i]);
+              }
+              else {
+                // 새로운 라인을 만든 후 값 넣기
+                var hackathon_value = (
+                  `<input type="text" id="hackathon_5day_content_0`+hackathon_5day_content_index+`" class="baseInputText_02 hackathon_5day_content">`
+                );
+                $('#hackathon_5day_input_content').append(hackathon_value);
+                $('#hackathon_5day_content_0' + hackathon_5day_content_index).val(hack_day_5day[i]);
+              }
+
+            } else {
+              $('#hackathon_5day_content_0' + hackathon_5day_content_index).val(hack_day_5day[i]);
+            }
+            hackathon_5day_content_index ++;
+          }
+        }
+
+        //사전모임
+        // $('#before_meeting_clicked_content_01').val(hackathon_day_pre_meeting);
+        var pre_meeting_index = 1;
+        for (var i = 0; i < hackathon_day_pre_meeting.length; i ++) {
+          if (hackathon_day_pre_meeting.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#before_meeting_clicked_content_0' + pre_meeting_index).val(hackathon_day_pre_meeting[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var before_meeting_value = (
+                `<input type="text" id="before_meeting_clicked_content_0`+pre_meeting_index+`" class="baseInputText_02 before_meeting_clicked_content">`
+              );
+              $('#before_meeting_clicked').append(before_meeting_value);
+              $('#before_meeting_clicked_content_0' + pre_meeting_index).val(hackathon_day_pre_meeting[i]);
+            }
+
+          } else {
+            $('#before_meeting_clicked_content_0' + pre_meeting_index).val(hackathon_day_pre_meeting[i]);
+          }
+          pre_meeting_index ++;
+        }
+
+        //해커톤 참가신청정보
+        $('#hackathon_participation_url').val(hackathon_participation_application_url);
+
+        //참가요건
+        var participation_confirm_index = 1;
+        for (var i = 0; i < hackathon_participation_application_requirements.length; i ++) {
+          if (hackathon_participation_application_requirements.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_participation_confirm_0' + participation_confirm_index).val(hackathon_participation_application_requirements[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var participation_confirm_value = (
+                `<input type="text" id="hackathon_participation_confirm_0`+participation_confirm_index+`" class="baseInputText_02 hackathon_participation_confirm">`
+              );
+              $('#hackathon_participation_confirm_input').append(participation_confirm_value);
+              $('#hackathon_participation_confirm_0' + participation_confirm_index).val(hackathon_participation_application_requirements[i]);
+            }
+
+          } else {
+            $('#hackathon_participation_confirm_0' + participation_confirm_index).val(hackathon_participation_application_requirements[i]);
+          }
+          participation_confirm_index ++;
+        }
+
+        //참가 준비사항
+        var participation_ready_info_index = 1;
+        for (var i = 0; i < hackathon_participation_application_preparation.length; i ++) {
+          if (hackathon_participation_application_preparation.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_participation_ready_info_0' + participation_ready_info_index).val(hackathon_participation_application_preparation[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var participation_ready_info_value = (
+                `<input type="text" id="hackathon_participation_ready_info_0`+participation_ready_info_index+`" class="baseInputText_02 hackathon_participation_ready_info">`
+              );
+              $('#hackathon_participation_ready_info_input').append(participation_ready_info_value);
+              $('#hackathon_participation_ready_info_0' + participation_ready_info_index).val(hackathon_participation_application_preparation[i]);
+            }
+
+          } else {
+            $('#hackathon_participation_ready_info_0' + participation_ready_info_index).val(hackathon_participation_application_preparation[i]);
+          }
+          participation_ready_info_index ++;
+        }
+
+        //해커톤 장소정보 (본모임)
+        $('#hackathon_place_name').val(place_main_metting_name);
+        $('#hackathon_place_address').val(place_main_metting_address);
+        $('#hackathon_place_navi_url').val(place_main_metting_url);
+
+        //해커톤 장소정보 (사전모임)
+        $('#before_meeting_place_name').val(place_pre_metting_name);
+        $('#before_meeting_place_address').val(place_pre_metting_address);
+        $('#before_meeting_place_navi_url').val(place_pre_metting_url);
+
+
+        $('#hackathon_award_kind_count').val(body.data.settings.data.prize.length);
+
+        var hackathon_award_kind_count_area = $('#hackathon_award_kind_count_area');
+        var hackathon_award_kind_count = $('#hackathon_award_kind_count');
+
+        for (var i = 1; i <= Number(hackathon_award_kind_count.val()); i++) {
+          var awardHtml = (
+            `<div class="article_title_profile"> [0` + i + `] 상 이름 </div>` +
+            `<input type="text" id="hackathon_award_kind_name_0` + i + `" class="baseInputText_02" placeholder="상의 이름을 입력해주세요. (예 : 대상)">` +
+            `<div class="article_title_profile">[0` + i + `] 수상인원</div>` +
+            `<input type="text" id="hackathon_award_taken_number_0` + i + `" class="baseInputText_02" placeholder="해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요. (예 : 1명 or 1팀)">` +
+            `<div class="article_title_profile">[0` + i + `] 상금 및 수상혜택</div>` +
+            `<input type="text" id="hackathon_award_reward_0` + i + `" class="baseInputText_02" placeholder="해당 상의 상금 및 수상혜택을 입력해주세요.">` +
+            `<hr class="user_profile_line">`
+          );
+
+          hackathon_award_kind_count_area.append(awardHtml);
+        }
+
+        //해커톤 시상정보 (밑에서 데이터 넣어줌)
+        for (var i = 0; i < body.data.settings.data.prize.length; i++) {
+          prize_name.push(body.data.settings.data.prize[i].name);
+          prize_desc.push(body.data.settings.data.prize[i].desc);
+          prize_benefit.push(body.data.settings.data.prize[i].benefit);
+        }
+
+        var q = 1;
+        for (var i = 0; i < prize_name.length; i++) {
+          $('#hackathon_award_kind_name_0'+ q).val(prize_name[i]);
+          $('#hackathon_award_taken_number_0'+ q).val(prize_desc[i]);
+          $('#hackathon_award_reward_0'+ q).val(prize_benefit[i]);
+          q++;
+        }
+
+
+
+        //참가자 혜택을 입력해주세요
+        var reward_index = 1;
+        for (var i = 0; i < benefit_of_participant.length; i ++) {
+          if (benefit_of_participant.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_participation_reward_0' + reward_index).val(benefit_of_participant[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var reward_value = (
+                `<input type="text" id="hackathon_participation_reward_0`+reward_index+`" class="baseInputText_02 reward_addInputLine">`
+              );
+              $('#hackathon_participation_reward').append(reward_value);
+              $('#hackathon_participation_reward_0' + reward_index).val(benefit_of_participant[i]);
+            }
+
+          } else {
+            $('#hackathon_participation_reward_0' + reward_index).val(benefit_of_participant[i]);
+          }
+          reward_index ++;
+        }
+        // $('#hackathon_participation_reward_01').val(benefit_of_participant);
+
+        //해커톤 주최/주관/후원정보
+        var organizer_index = 1;
+        console.log('thanks_organizer.length=>' + thanks_organizer.length);
+        for (var i = 0; i < thanks_organizer.length; i ++) {
+          if (thanks_organizer.length > 3) {
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_organizer_info_0' + organizer_index).val(thanks_organizer[i]);
+            }
+            else {
+              // 새로운 라인을 만든 후 값 넣기
+              var organizer_value = (
+               `<input type="text" id="hackathon_organizer_info_0`+organizer_index+`" class="baseInputText_02 organizer_addInputLine">`
+              );
+              $('#hackathon_organizer').append(organizer_value);
+              $('#hackathon_organizer_info_0' + organizer_index).val(thanks_organizer[i]);
+            }
+
+          } else {
+            $('#hackathon_organizer_info_0' + organizer_index).val(thanks_organizer[i]);
+          }
+          organizer_index ++;
+        }
+
+        // $('#hackathon_organizer_info_01').val(thanks_organizer[0]);
+        // $('#hackathon_organizer_info_02').val(thanks_organizer[1]);
+        // $('#hackathon_organizer_info_03').val(thanks_organizer[2]);
+
+        var hoster_index = 1;
+        for (var i = 0; i < thanks_hoster.length; i ++) {
+          if (thanks_hoster.length > 3) {
+
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_supervisor_info_0' + hoster_index).val(thanks_hoster[i]);
+            } else {
+              // 새로운 라인을 만든 후 값 넣기
+              var hoster_value = (
+                `<input type="text" id="hackathon_supervisor_info_0`+hoster_index+`" class="baseInputText_02 supervisor_addInputLine">`
+              );
+              $('#hackathon_supervisor').append(hoster_value);
+              $('#hackathon_supervisor_info_0' + hoster_index).val(thanks_hoster[i]);
+            }
+
+          } else {
+            $('#hackathon_supervisor_info_0' + hoster_index).val(thanks_hoster[i]);
+          }
+          hoster_index ++;
+        }
+
+        // $('#hackathon_supervisor_info_01').val(thanks_hoster[0]);
+        // $('#hackathon_supervisor_info_02').val(thanks_hoster[1]);
+        // $('#hackathon_supervisor_info_03').val(thanks_hoster[2]);
+
+        var sponsor_index = 1;
+        for (var i = 0; i < thanks_sponsor.length; i ++) {
+          if (thanks_sponsor.length > 3) {
+
+            if (i <= 2) {
+              // 기존 라인에 값 넣기
+              $('#hackathon_sponsor_info_0' + sponsor_index).val(thanks_sponsor[i]);
+            } else {
+              // 새로운 라인을 만든 후 값 넣기
+              var sponsor_value = (
+                `<input type="text" id="hackathon_sponsor_info_0`+sponsor_index+`" class="baseInputText_02 sponsor_addInputLine">`
+              );
+              $('#hackathon_sponsor').append(sponsor_value);
+              $('#hackathon_sponsor_info_0' + sponsor_index).val(thanks_sponsor[i]);
+            }
+
+          } else {
+            $('#hackathon_sponsor_info_0' + sponsor_index).val(thanks_sponsor[i]);
+          }
+          sponsor_index ++;
+        }
+
+        // $('#hackathon_sponsor_info_01').val(thanks_sponsor[0]);
+        // $('#hackathon_sponsor_info_02').val(thanks_sponsor[1]);
+        // $('#hackathon_sponsor_info_03').val(thanks_sponsor[2]);
+
+        initHackathonDay();
+      } else {
+        if (body.action == 'ERR0002') {
+          var default_error_modal = document.getElementById('default_error_modal');
+          var modal_one_error_btn = $('#modal_one_error_btn');
+
+          default_error_modal.style.display = "block";
+          $('#modal_error_context').text(body.msg);
+
+
+          modal_one_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_error_btn.click(function () {
+            default_error_modal.style.display = "none";
+          });
+        }
+      }
+    }
+    ,error:function(request,status,error) {
+      var default_server_error_modal = document.getElementById('default_server_error_modal');
+      var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+      default_server_error_modal.style.display = "block";
+
+      modal_one_server_error_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_server_error_btn.click(function () {
+        default_server_error_modal.style.display = "none";
+      });
+    }
+  });
+
+
+  var upload = document.getElementById('uploadBtn'),
+    profile_img = document.getElementById('profile_img');
+
+  var user_profile_photo_upload_btn = $('.user_profile_photo_upload_btn');
+  var after_upload = $('#after_upload');
+  var after_upload_motify = $('#after_upload_motify');
+  var after_upload_del = $('#after_upload_del');
+  var imgTmpFile = $('#file');
+
+  imgTmpFile.hide();
+  after_upload.show();
+  user_profile_photo_upload_btn.hide();
+
+  upload.onchange = function (e) {
+    e.preventDefault();
+
+    var file = upload.files[0],
+      reader = new FileReader();
+
+    console.log('file=>' + file);
+    reader.onload = function (event) {
+      var img = new Image();
+      img.src = event.target.result;
+      if (img.width > 142) { // profile_img width
+        img.width = 142;
+      }
+      if (img.height > 32) {
+        img.height = 32;
+      }
+
+      profile_img.src = img.src;
+
+      //upload img file api
+      var fd = new FormData();
+      var uploadFile = $('#profile_img')[0].file;
+      console.log('uploadFile=>' + uploadFile);
+      fd.append('file', file);
+
+      //TODO: testcode
+      // user_profile_photo_upload_btn.hide();
+      // after_upload.show();
+
+     $.ajax({
+       url: 'https://www.chatbrick.io/api/file/',
+       type: 'POST',
+       async: false,
+       crossDomain: true,
+       contentType: false,
+       data: fd,
+       processData: false,
+       success: function (body, status, res) {
+         if (body.success) {
+           img_url = body.data.url;
+           console.log('upliad success!');
+           console.log('res img url=>' + img_url);
+
+           user_profile_photo_upload_btn.hide();
+           after_upload.show();
+         } else {
+           if (body.action == 'ERR0002') {
+             var default_error_modal = document.getElementById('default_error_modal');
+             var modal_one_error_btn = $('#modal_one_error_btn');
+
+             default_error_modal.style.display = "block";
+             $('#modal_error_context').text(body.msg);
+
+
+             modal_one_error_btn.hover(function () {
+               $(this).css('background-color', '#fb7c7e');
+             }, function () {
+               $(this).css('background-color', '#ff753c');
+             });
+
+             modal_one_error_btn.click(function () {
+               default_error_modal.style.display = "none";
+             });
+           }
+         }
+       }
+       ,error:function(request,status,error) {
+         var default_server_error_modal = document.getElementById('default_server_error_modal');
+         var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+         default_server_error_modal.style.display = "block";
+
+         modal_one_server_error_btn.hover(function () {
+           $(this).css('background-color', '#fb7c7e');
+         }, function () {
+           $(this).css('background-color', '#ff753c');
+         });
+
+         modal_one_server_error_btn.click(function () {
+           default_server_error_modal.style.display = "none";
+         });
+       }
+     });
+
+    };
+    reader.readAsDataURL(file);
+  };
+
+  $('#file').change(function (e) {
+    e.preventDefault();
+
+    var file = this.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+      var img = new Image();
+      img.src = event.target.result;
+      if (img.width > 142) { // profile_img width
+        img.width = 142;
+      }
+      if (img.height > 32) {
+        img.height = 32;
+      }
+
+      profile_img.src = img.src;
+
+      //upload img file api
+      var fd = new FormData();
+      var uploadFile = $('#profile_img')[0].file;
+      console.log('uploadFile=>' + uploadFile);
+      fd.append('file', file);
+
+      //TODO: testcode
+//       user_profile_photo_upload_btn.hide();
+//       after_upload.show();
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/file/',
+        type: 'POST',
+        async: false,
+        crossDomain: true,
+        contentType: false,
+        data: fd,
+        processData: false,
+        success: function (body, status, res) {
+          if (body.success) {
+            img_url = body.data.url;
+            console.log('upliad success!');
+            console.log('res img url=>' + img_url);
+
+            user_profile_photo_upload_btn.hide();
+            after_upload.show();
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+          }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
+      });
+    }
+    reader.readAsDataURL(file);
+  })
+
+  after_upload_motify.click(function () {
+    $('#file').click();
+  });
+
+  after_upload_del.click(function () {
+    after_upload.hide();
+    user_profile_photo_upload_btn.show();
+    $('#uploadBtn').val('');
+    profile_img.src = '../public/images/bg-img-upload-01.png';
+  })
+
+  after_upload_motify.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  after_upload_del.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  var before_meeting_checkbox_area = $('.before_meeting_checkbox_area');
+  var before_meeting_checked = $('#before_meeting_checked');
+  var date_checkbox = $('#date_checkbox');
+  var before_meeting_content = $('#before_meeting_content');
+  var before_meeting_info = $('.before_meeting_info');
+  var hackathon_day = $('.hackathon_day');
+  var section_04 = $('#section_04');
+
+//  section_04.hide();
+//  hackathon_day.hide();
+
+  before_meeting_checkbox_area.css('margin-bottom', 79 + 'px');
+
+
+  date_checkbox.click(function () {
+    $(this).toggleClass('checked');
+
+    if ($(this).hasClass('checked')) {
+      before_meeting_checked.show();
+      before_meeting_content.show();
+      before_meeting_info.show();
+    } else {
+      before_meeting_checked.hide();
+      before_meeting_content.hide();
+      before_meeting_info.hide();
+      before_meeting_checkbox_area.css('margin-bottom', 79 + 'px');
+    }
+  });
+
+  $(function () {
+    $('#start_date_participation').datetimepicker({
+      format: 'Y-m-d H:i',
+      lang: 'kr',
+      onShow: function (ct) {
+        this.setOptions({
+          maxDate: $('#end_date_participation').val() ? $('#end_date_participation').val() : false
+        })
+      },
+      timepicker: true
+    });
+    $('#end_date_participation').datetimepicker({
+      format: 'Y-m-d H:i',
+      lang: 'kr',
+      onShow: function (ct) {
+        this.setOptions({
+          minDate: $('#start_date_participation').val() ? $('#start_date_participation').val() : false
+        })
+      },
+      timepicker: true
+    });
+
+//    start_date_before_meeting
+    $('#start_date_before_meeting').datetimepicker({
+      format: 'Y-m-d',
+      lang: 'kr',
+      timepicker: false,
+      minDate: '-1970/01/02'//yesterday is minimum date(for today use 0 or -1970/01/01)
+    });
+
+    //본행사 기간
+    $('#start_date_dday_meeting').datetimepicker({
+      format: 'Y-m-d',
+      lang: 'kr',
+      onShow: function (ct) {
+        this.setOptions({
+          maxDate: $('#end_date_dday_meeting').val() ? $('#end_date_dday_meeting').val() : false
+        })
+      },
+      timepicker: false
+    });
+    $('#end_date_dday_meeting').datetimepicker({
+      format: 'Y-m-d',
+      lang: 'kr',
+      onShow: function (ct) {
+        this.setOptions({
+          minDate: $('#start_date_dday_meeting').val() ? $('#start_date_dday_meeting').val() : false
+        })
+      },
+      timepicker: false
+    });
+
+  });
+
+  $("#end_date_dday_meeting").on("change paste keyup", function () {
+    var start_dday = $('#start_date_dday_meeting').val();
+    var end_dday = $('#end_date_dday_meeting').val();
+    console.log('start_date_dday_meeting=>' + start_dday);
+    console.log('end_date_dday_meeting=>' + end_dday);
+
+    var startDateArray = start_dday.split("-");
+    var endDateArray = end_dday.split("-");
+
+    var startDateObj = new Date(startDateArray[0], Number(startDateArray[1]) - 1, startDateArray[2]);
+    var endDateObj = new Date(endDateArray[0], Number(endDateArray[1]) - 1, endDateArray[2]);
+
+    var betweenDay = (endDateObj.getTime() - startDateObj.getTime()) / 1000 / 60 / 60 / 24;
+    console.log('betweenDay=>' + betweenDay);
+
+    $('#section_04').show();
+    switch (betweenDay) {
+      case 0:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        break;
+
+      case 1:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        break;
+
+      case 2:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        $('#hackathon_3day').show();
+        break;
+
+      case 3:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        $('#hackathon_3day').show();
+        $('#hackathon_4day').show();
+        break;
+
+      case 4:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        $('#hackathon_3day').show();
+        $('#hackathon_4day').show();
+        $('#hackathon_5day').show();
+        break;
+
+      case 5:
+        $('.hackathon_day').show();
+        break;
+
+      default:
+        // alert('최대 4박 5일까지만 가능합니다.');
+        $('.hackathon_day').hide();
+        $('#section_04').hide();
+
+        break;
+    }
+
+  });
+
+
+  $("#hackathon_award_kind_count").on("change paste keyup", function () {
+
+    var hackathon_award_kind_count_area = $('#hackathon_award_kind_count_area');
+    var hackathon_award_kind_count = $('#hackathon_award_kind_count');
+    hackathon_award_kind_count_area.empty();
+
+    console.log('hackathon_award_kind_count=>' + hackathon_award_kind_count.val());
+    console.log('hackathon_award_kind_count=>' + typeof Number(hackathon_award_kind_count.val()));
+    for (var i = 1; i <= Number(hackathon_award_kind_count.val()); i++) {
+
+      var awardHtml = (
+        `<div class="article_title_profile"> [0` + i + `] 상의 이름 </div>` +
+        `<input type="text" id="hackathon_award_kind_name_0` + i + `" class="baseInputText_02 placeholder" placeholder="상의 이름을 입력해주세요. (예 : 대상)">` +
+        `<div class="article_title_profile">[0` + i + `] 해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요</div>` +
+        `<input type="text" id="hackathon_award_taken_number_0` + i + `" class="baseInputText_02 placeholder" placeholder="해당 상을 몇명(팀)이 수상할 수 있는지 입력해주세요. (예 : 1명 or 1팀)">` +
+        `<div class="article_title_profile">[0` + i + `] 해당 상의 상금 및 수상혜택을 입력해주세요</div>` +
+        `<input type="text" id="hackathon_award_reward_0` + i + `" class="baseInputText_02 placeholder" placeholder="해당 상의 상금 및 수상혜택을 입력해주세요.">` +
+        `<hr class="user_profile_line">`
+      );
+
+      hackathon_award_kind_count_area.append(awardHtml);
+    }
+
+    var w = 1;
+    for (var i = 0; i < prize_name.length; i++) {
+      $('#hackathon_award_kind_name_0'+ w).val(prize_name[i]);
+      $('#hackathon_award_taken_number_0'+ w).val(prize_desc[i]);
+      $('#hackathon_award_reward_0'+ w).val(prize_benefit[i]);
+      w++;
+    }
+
+  });
+
+
+  //enter key event
+  $('#before_meeting_clicked').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var before_meeting_clicked_content_length = $('.before_meeting_clicked_content').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 before_meeting_clicked_content placeholder" id="before_meeting_clicked_content_0`+before_meeting_clicked_content_length+`">`
+      );
+
+      $('#before_meeting_clicked').append(addLine);
+    }
+    // $('.before_meeting_clicked_content').addClass('transparent');
+  });
+
+  $('#hackathon_1day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var hackathon_1day_content_length = $('.hackathon_1day_content').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_1day_content placeholder" id="hackathon_1day_content_0`+hackathon_1day_content_length+`">`
+      );
+
+      $('#hackathon_1day_input_content').append(addLine);
+    }
+    // $('.hackathon_1day_content').addClass('transparent');
+  });
+
+  $('#hackathon_2day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var hackathon_2day_content_length = $('.hackathon_2day_content').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_2day_content placeholder" id="hackathon_2day_content_0`+hackathon_2day_content_length+`">`
+      );
+
+      $('#hackathon_2day_input_content').append(addLine);
+    }
+    // $('.hackathon_2day_content').addClass('transparent');
+  });
+
+  $('#hackathon_3day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var hackathon_3day_content_length = $('.hackathon_3day_content').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_3day_content placeholder" id="hackathon_3day_content_0`+hackathon_3day_content_length+`">`
+      );
+
+      $('#hackathon_3day_input_content').append(addLine);
+    }
+    // $('.hackathon_3day_content').addClass('transparent');
+  });
+
+  $('#hackathon_4day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var hackathon_4day_content_length = $('.hackathon_4day_content').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_4day_content placeholder" id="hackathon_4day_content_0`+hackathon_4day_content_length+`">`
+      );
+
+      $('#hackathon_4day_input_content').append(addLine);
+    }
+    // $('.hackathon_4day_content').addClass('transparent');
+  });
+
+  $('#hackathon_5day_input_content').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var hackathon_5day_content_length = $('.hackathon_5day_content').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_5day_content placeholder" id="hackathon_5day_content_0`+hackathon_5day_content_length+`">`
+      );
+
+      $('#hackathon_5day_input_content').append(addLine);
+    }
+    // $('.hackathon_5day_content').addClass('transparent');
+  });
+
+  $('#hackathon_participation_confirm_input').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var hackathon_participation_confirm_length = $('.hackathon_participation_confirm').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_participation_confirm placeholder" id="hackathon_participation_confirm_0`+hackathon_participation_confirm_length+`">`
+      );
+
+      $('#hackathon_participation_confirm_input').append(addLine);
+    }
+    // $('.hackathon_participation_confirm').addClass('transparent');
+  });
+
+  $('#hackathon_participation_ready_info_input').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var hackathon_participation_ready_info_length = $('.hackathon_participation_ready_info').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 hackathon_participation_ready_info placeholder" id="hackathon_participation_ready_info_0`+hackathon_participation_ready_info_length+`">`
+      );
+
+      $('#hackathon_participation_ready_info_input').append(addLine);
+    }
+    // $('.hackathon_participation_ready_info').addClass('transparent');
+  });
+
+  $('#hackathon_participation_reward').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var reward_addInputLine_length = $('.reward_addInputLine').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 reward_addInputLine placeholder" id="hackathon_participation_reward_0`+reward_addInputLine_length+`">`
+      );
+
+      $('#hackathon_participation_reward').append(addLine);
+    }
+    // $('.reward_addInputLine').addClass('transparent');
+  });
+
+  $('#hackathon_organizer').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var organizer_addInputLine_length = $('.organizer_addInputLine').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 organizer_addInputLine placeholder" id="hackathon_organizer_info_0`+organizer_addInputLine_length+`">`
+      );
+
+      $('#hackathon_organizer').append(addLine);
+    }
+    // $('.organizer_addInputLine').addClass('transparent');
+  });
+
+  $('#hackathon_supervisor').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var supervisor_addInputLine_length = $('.supervisor_addInputLine').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 supervisor_addInputLine placeholder" id="hackathon_supervisor_info_0`+supervisor_addInputLine_length+`">`
+      );
+
+      $('#hackathon_supervisor').append(addLine);
+    }
+    // $('.supervisor_addInputLine').addClass('transparent');
+  });
+
+  $('#hackathon_sponsor').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var sponsor_addInputLine_length = $('.sponsor_addInputLine').length + 1;
+      var addLine = (
+        `<input type="text" class="baseInputText_02 sponsor_addInputLine placeholder" id="hackathon_sponsor_info_0`+sponsor_addInputLine_length+`">`
+      );
+
+      $('#hackathon_sponsor').append(addLine);
+    }
+    // $('.sponsor_addInputLine').addClass('transparent');
+  });
+
+  //hide placeholder
+//  $('.user_profile_start_message').keydown(function (key) {
+//    $('.user_profile_start_message').addClass('transparent');
+//  });
+//
+//  $('.user_profile_not_ready_mesage').keydown(function (key) {
+//    $('.user_profile_not_ready_mesage').addClass('transparent');
+//  });
+//
+//  $('.baseInfo_placeHolder').keydown(function (key) {
+//    $('.baseInfo_placeHolder').addClass('transparent');
+//  });
+
+
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
+  var setting_remove_btn = $('#setting_remove_btn');
+
+  setting_remove_btn.click(function () {
+    $(this).css('background-color', '#bd292c');
+    var remove_modal = document.getElementById('remove_modal');
+    var modal_left_remove_btn = $('#modal_left_remove_btn');
+    var modal_right_remove_btn = $('#modal_right_remove_btn');
+    var modal_remove_context = $('#modal_remove_context');
+
+    modal_remove_context.text('“'+$('#baseInfo_name').val()+'”챗봇을 영구적으로 제거하시겠습니까?' +
+      '“'+$('#baseInfo_name').val()+'”챗봇의 모든 데이터가 영구적으로 삭제됩니다.' +
+      '이 동작은 실행 취소할 수 없습니다.');
+
+    remove_modal.style.display = "block";
+    console.log('is_telegram_connected=>' + is_telegram_connected);
+
+    modal_left_remove_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_left_remove_btn.click(function () {
+      remove_modal.style.display = "none";
+    });
+
+    modal_right_remove_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#fd6246');
+    });
+
+    modal_right_remove_btn.click(function () {
+      remove_modal.style.display = "none";
+
+      //disconnect telegram api
+      if (is_telegram_connected) {
+        //disconnect telegram api
+        $.ajax({
+          //TODO: url
+          url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
+          type: 'DELETE',
+//                  async: false,
+          crossDomain: true,
+          xhrFields: {withCredentials: true},
+          success: function (body, status, res) {
+
+            if (body.success) {
+              if (body.data.telegram.ok) {
+
+                //check end time
+                var date = new Date();
+                var end_time = date.getTime();
+                console.log('end_time=>' + end_time);
+                var tag = '텔레그램 페이지 앱 등록';
+                var remark = '텔레그램 페이지 앱 등록을 위해 사용';
+//                sendTimeLog(setId, start_time, end_time, tag, remark);
+
+
+                console.log('delete telegram.ok=>' + body.data.telegram.ok);
+                tg_connect_page.show();
+                tele_page_set.hide();
+
+                is_telegram_connected = false;
+              }
+            } else {
+              if (body.action == 'ERR0002') {
+                var default_error_modal = document.getElementById('default_error_modal');
+                var modal_one_error_btn = $('#modal_one_error_btn');
+
+                default_error_modal.style.display = "block";
+                $('#modal_error_context').text(body.msg);
+
+
+                modal_one_error_btn.hover(function () {
+                  $(this).css('background-color', '#fb7c7e');
+                }, function () {
+                  $(this).css('background-color', '#ff753c');
+                });
+
+                modal_one_error_btn.click(function () {
+                  default_error_modal.style.display = "none";
+                });
+              }
+            }
+          }
+          ,error:function(request,status,error) {
+            var default_server_error_modal = document.getElementById('default_server_error_modal');
+            var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+            default_server_error_modal.style.display = "block";
+
+            modal_one_server_error_btn.hover(function () {
+              $(this).css('background-color', '#fb7c7e');
+            }, function () {
+              $(this).css('background-color', '#ff753c');
+            });
+
+            modal_one_server_error_btn.click(function () {
+              default_server_error_modal.style.display = "none";
+            });
+          }
+//          ,beforeSend: function () {
+//            $("body").loading("start");
+//
+//          }
+//          ,complete: function () {
+//            $("body").loading("stop");
+//          }
+        });
+      }
+
+      //delete chatbrick project
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/' + setId + '/',
+        type: 'DELETE',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('success=>'+ body.success);
+            window.location.href = '/chatbot/list'
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+          }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
+      });
+
+    });
+
+  });
+
+  setting_remove_btn.hover(function () {
+    setting_remove_btn.css('background-color', '#fb7c7e');
+  }, function () {
+    setting_remove_btn.css('background-color', '#ff753c');
+  });
+
+  pre_page.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  next_page.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  pre_page.click(function () {
+    $(this).css('background-color', '#bd292c');
+    var cancel_modal = document.getElementById('cancel_modal');
+    var modal_left_btn = $('#modal_left_btn');
+    var modal_right_btn = $('#modal_right_btn');
+
+    cancel_modal.style.display = "block";
+
+    modal_left_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_left_btn.click(function () {
+      cancel_modal.style.display = "none";
+    });
+
+    modal_right_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_right_btn.click(function () {
+      cancel_modal.style.display = "none";
+      window.location.href = '/chatbot/list'
+    });
+  });
+
+  next_page.click(function () {
+    $(this).css('background-color', '#bd292c');
+
+    var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
+    var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
+    var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
+    var user_profile_start_message_result = user_profile_start_message_01 + '\n' + user_profile_start_message_02 + '\n' + user_profile_start_message_03;
+
+    var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
+    var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
+    var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
+    var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + '\n' + user_profile_not_ready_mesage_02 + '\n' + user_profile_not_ready_mesage_03;
+
+    //make award json data
+    var awardItemList = [];
+    for (var i = 1; i <= Number($('#hackathon_award_kind_count').val()); i++) {
+
+      console.log('i=>' + i);
+      console.log('name==>' + $('#hackathon_award_kind_name_0' + i).val());
+      var awardJson = {
+        "name": $('#hackathon_award_kind_name_0' + i).val(),
+        "desc": $('#hackathon_award_taken_number_0' + i).val(),
+        "benefit": $('#hackathon_award_reward_0' + i).val()
+      }
+
+      awardItemList.push(awardJson);
+    }
+    console.log('awardItemList=>' + JSON.stringify(awardItemList));
+
+    var hackathon_1day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_1day_content').length; i ++) {
+      if (1 == $('.hackathon_1day_content').length) {
+        hackathon_1day_content_result +=($('#hackathon_1day_content_0'+i).val());
+      } else if (i == $('.hackathon_1day_content').length) {
+        hackathon_1day_content_result +=($('#hackathon_1day_content_0'+i).val());
+      }else {
+        hackathon_1day_content_result +=($('#hackathon_1day_content_0'+i).val() + '\n');
+      }
+    }
+
+    var hackathon_2day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_2day_content').length; i ++) {
+      if (1 == $('.hackathon_2day_content').length) {
+        hackathon_2day_content_result +=($('#hackathon_2day_content_0'+i).val());
+      } else if (i == $('.hackathon_2day_content').length) {
+        hackathon_2day_content_result +=($('#hackathon_2day_content_0'+i).val());
+      }else {
+        hackathon_2day_content_result +=($('#hackathon_2day_content_0'+i).val() + '\n');
+      }
+    }
+
+    var hackathon_3day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_3day_content').length; i ++) {
+      if (1 == $('.hackathon_3day_content').length) {
+        hackathon_3day_content_result +=($('#hackathon_3day_content_0'+i).val());
+      } else if (i == $('.hackathon_3day_content').length) {
+        hackathon_3day_content_result +=($('#hackathon_3day_content_0'+i).val());
+      }else {
+        hackathon_3day_content_result +=($('#hackathon_3day_content_0'+i).val() + '\n');
+      }
+    }
+
+    var hackathon_4day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_4day_content').length; i ++) {
+      if (1 == $('.hackathon_4day_content').length) {
+        hackathon_4day_content_result +=($('#hackathon_4day_content_0'+i).val());
+      } else if (i == $('.hackathon_4day_content').length) {
+        hackathon_4day_content_result +=($('#hackathon_4day_content_0'+i).val());
+      }else {
+        hackathon_4day_content_result +=($('#hackathon_4day_content_0'+i).val() + '\n');
+      }
+    }
+
+    var hackathon_5day_content_result = '';
+    for (var i = 1; i <= $('.hackathon_5day_content').length; i ++) {
+      if (1 == $('.hackathon_5day_content').length) {
+        hackathon_5day_content_result +=($('#hackathon_5day_content_0'+i).val());
+      } else if (i == $('.hackathon_5day_content').length) {
+        hackathon_5day_content_result +=($('#hackathon_5day_content'+i).val());
+      }else {
+        hackathon_5day_content_result +=($('#hackathon_5day_content_0'+i).val() + '\n');
+      }
+    }
+
+    var before_meeting_clicked_content_result = '';
+    for (var i = 1; i <= $('.before_meeting_clicked_content').length; i ++) {
+      if (1 == $('.before_meeting_clicked_content').length) {
+        before_meeting_clicked_content_result +=($('#before_meeting_clicked_content_0'+i).val());
+      } else if (i == $('.before_meeting_clicked_content').length) {
+        before_meeting_clicked_content_result +=($('#before_meeting_clicked_content_0'+i).val());
+      }else {
+        before_meeting_clicked_content_result +=($('#before_meeting_clicked_content_0'+i).val() + '\n');
+      }
+    }
+
+    var hackathon_participation_confirm_result = '';
+    for (var i = 1; i <= $('.hackathon_participation_confirm').length; i ++) {
+      if (1 == $('.hackathon_participation_confirm').length) {
+        hackathon_participation_confirm_result +=($('#hackathon_participation_confirm_0'+i).val());
+      } else if (i == $('.hackathon_participation_confirm').length) {
+        hackathon_participation_confirm_result +=($('#hackathon_participation_confirm_0'+i).val());
+      }else {
+        hackathon_participation_confirm_result +=($('#hackathon_participation_confirm_0'+i).val() + '\n');
+      }
+    }
+
+    var hackathon_participation_ready_info_result = '';
+    for (var i = 1; i <= $('.hackathon_participation_ready_info').length; i ++) {
+      if (1 == $('.hackathon_participation_ready_info').length) {
+        hackathon_participation_ready_info_result +=($('#hackathon_participation_ready_info_0'+i).val());
+      } else if (i == $('.hackathon_participation_ready_info').length) {
+        hackathon_participation_ready_info_result +=($('#hackathon_participation_ready_info_0'+i).val());
+      }else {
+        hackathon_participation_ready_info_result +=($('#hackathon_participation_ready_info_0'+i).val() + '\n');
+      }
+    }
+
+    var reward_addInputLine_result = '';
+    for (var i = 1; i <= $('.reward_addInputLine').length; i ++) {
+      if (1 == $('.reward_addInputLine').length) {
+        reward_addInputLine_result +=($('#hackathon_participation_reward_0'+i).val());
+      } else if (i == $('.reward_addInputLine').length) {
+        reward_addInputLine_result +=($('#hackathon_participation_reward_0'+i).val());
+      }else {
+        reward_addInputLine_result +=($('#hackathon_participation_reward_0'+i).val() + '\n');
+      }
+    }
+
+
+    var organizer_addInputLine_result = '';
+    for (var i = 1; i <= $('.organizer_addInputLine').length; i ++) {
+      if (1 == $('.organizer_addInputLine').length) {
+        organizer_addInputLine_result +=($('#hackathon_organizer_info_0'+i).val());
+      } else if (i == $('.organizer_addInputLine').length) {
+        organizer_addInputLine_result +=($('#hackathon_organizer_info_0'+i).val());
+      }else {
+        organizer_addInputLine_result +=($('#hackathon_organizer_info_0'+i).val() + '\n');
+      }
+    }
+
+    var supervisor_addInputLine_result = '';
+    for (var i = 1; i <= $('.supervisor_addInputLine').length; i ++) {
+      if (1 == $('.supervisor_addInputLine').length) {
+        supervisor_addInputLine_result +=($('#hackathon_supervisor_info_0'+i).val());
+      } else if (i == $('.supervisor_addInputLine').length) {
+        supervisor_addInputLine_result +=($('#hackathon_supervisor_info_0'+i).val());
+      }else {
+        supervisor_addInputLine_result +=($('#hackathon_supervisor_info_0'+i).val() + '\n');
+      }
+    }
+
+    var sponsor_addInputLine_result = '';
+    for (var i = 1; i <= $('.sponsor_addInputLine').length; i ++) {
+      if (1 == $('.sponsor_addInputLine').length) {
+        sponsor_addInputLine_result +=($('#hackathon_sponsor_info_0'+i).val());
+      } else if (i == $('.sponsor_addInputLine').length) {
+        sponsor_addInputLine_result +=($('#hackathon_sponsor_info_0'+i).val());
+      }else {
+        sponsor_addInputLine_result +=($('#hackathon_sponsor_info_0'+i).val() + '\n');
+      }
+    }
+    // var organizer_addInputLine = "";
+    // $('.organizer_addInputLine').each(function () {
+    //   organizer_addInputLine += $(this).val() + '\n';
+    // })
+    // console.log('organizer_addInputLine=>' + organizer_addInputLine);
+    //
+    // var supervisor_addInputLine = "";
+    // $('.supervisor_addInputLine').each(function () {
+    //   supervisor_addInputLine += $(this).val() + '\n';
+    // })
+    // console.log('supervisor_addInputLine=>' + supervisor_addInputLine);
+    //
+    // var sponsor_addInputLine = "";
+    // $('.sponsor_addInputLine').each(function () {
+    //   sponsor_addInputLine += $(this).val() + '\n';
+    // })
+    // console.log('sponsor_addInputLine=>' + sponsor_addInputLine);
+
+    if (img_url == undefined) {
+      img_url = profile_img.src;
+    }
+
+    var submitData = {
+      "id": setId,
+      "type": "hackathon",
+      "name": $('#baseInfo_name').val(),
+      "desc": $('#baseInfo_context_01').val()+'\n'+$('#baseInfo_context_02').val(),
+      "data": {
+        "basic": {
+          "poster_image": img_url,
+          "name": $('#user_profile_data_name').val(),
+          "tel": $('#user_profile_data_tel').val(),
+          "email": $('#user_profile_data_professional').val()
+        },
+        "custom_settings": {
+          "get_started": user_profile_start_message_result,
+          "error_msg": user_profile_not_ready_mesage_result
+        },
+        "date": {
+          "application_period": {
+            "start": $('#start_date_participation').val(),
+            "end": $('#end_date_participation').val()
+          },
+//          "pre-meeting": $('#start_date_before_meeting').val(), //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+          "main-meeting": {
+            "start": $('#start_date_dday_meeting').val(),
+            "end": $('#end_date_dday_meeting').val()
+          }
+        },
+        "contents": {
+          "main-meeting": [
+//            $('.hackathon_1day_content').val(), $('.hackathon_2day_content').val(),
+//            $('.hackathon_3day_content').val(), $('.hackathon_4day_content').val(),
+//            $('.hackathon_5day_content').val()
+          ],
+//          "pre-meeting": before_meeting_clicked_content //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+        }
+        ,
+        "application": {
+          "url": $('#hackathon_participation_url').val(),
+          "requirements": hackathon_participation_confirm_result,
+          "preparation": hackathon_participation_ready_info_result
+        },
+        "place": {
+          "main-meeting": {
+            "name": $('#hackathon_place_name').val(),
+            "address": $('#hackathon_place_address').val(),
+            "url": $('#hackathon_place_navi_url').val()
+          },
+//          "pre-meeting": { //TODO:사전모임 체크가 안되어있는경우 필드에서 제외시켜야함
+//            "name": $('#before_meeting_place_name').val(),
+//            "address": $('#before_meeting_place_address').val(),
+//            "url": $('#before_meeting_place_navi_url').val()
+//          }
+        },
+        "prize": awardItemList, //typeof array
+        "benefit_of_participant": reward_addInputLine_result,
+        "thanks": {
+          "hoster": supervisor_addInputLine_result,
+          // "hoster": $('#hackathon_organizer_info_01').val() + '\n' + $('#hackathon_organizer_info_02').val() + '\n' +$('#hackathon_organizer_info_03').val(),
+          "organizer": organizer_addInputLine_result,
+          // "organizer": $('#hackathon_supervisor_info_01').val() + '\n' + $('#hackathon_supervisor_info_02').val() + '\n' +$('#hackathon_supervisor_info_03').val(),
+          "sponsor": sponsor_addInputLine_result
+          // "sponsor": $('#hackathon_sponsor_info_01').val() + '\n' + $('#hackathon_sponsor_info_02').val() + '\n' +$('#hackathon_sponsor_info_03').val(),
+        }
+      }
+    };
+
+    if ($('.hackathon_1day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_1day_content_result);
+    }
+    if ($('.hackathon_2day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_2day_content_result);
+    }
+    if ($('.hackathon_3day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_3day_content_result);
+    }
+    if ($('.hackathon_4day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_4day_content_result);
+    }
+    if ($('.hackathon_5day_content').val() != '') {
+      submitData.data.contents['main-meeting'].push(hackathon_5day_content_result);
+    }
+
+    //사전모임 날짜가 체크 되어 있는 경우
+    if (!($('#start_date_before_meeting').val() == '')) {
+      submitData.data.date['pre-meeting'] = $('#start_date_before_meeting').val();
+      submitData.data.contents['pre-meeting'] = before_meeting_clicked_content_result;
+      submitData.data.place['pre-meeting'] = {
+        "name": $('#user_profile_data_name').val(),
+        "address": $('#before_meeting_place_address').val(),
+        "url": $('#before_meeting_place_navi_url').val()
+      };
+    }
+    console.log('submitData=>' + JSON.stringify(submitData));
+
+    if (submitData.data.basic.name == '' || submitData.data.basic.email == ''
+      || submitData.data.basic.tel == ''
+      || ($('#profile_img').attr("src") == 'https://www.chatbrick.io/public/images/bg-img-upload-01.png' || $('#profile_img').attr("src") == '../public/images/bg-img-upload-01.png')
+      || (user_profile_start_message_01 == '' && user_profile_start_message_02 == '' && user_profile_start_message_03 == '')
+      || (user_profile_not_ready_mesage_01 == '' && user_profile_not_ready_mesage_02 == '' && user_profile_not_ready_mesage_03 == '')) {
+      console.log('in popup')
+      var default_modal = document.getElementById('default_modal');
+      var modal_one_btn = $('#modal_one_btn');
+
+      default_modal.style.display = "block";
+
+      modal_one_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_btn.click(function () {
+        default_modal.style.display = "none";
+      });
+    }else {
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/',
+        type: 'PATCH',
+//        async: false,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: 'JSON',
+        data: JSON.stringify(submitData),
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('upload success!');
+            window.location.href = '/chatbot/list';
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+          }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
+        ,beforeSend: function () {
+          $("body").loading("start");
+
+        }
+        ,complete: function () {
+          $("body").loading("stop");
+        }
+      });
+    }
+
+  });
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+
+      var fb_page_list = $('#fb_page_list');
+      var fb_id;
+      var fb_page_ids = [];
+      var fb_page_access_tokens = [];
+      var fb_page_names = [];
+      var fb_pages_info = {};
+      var registered_fb_name;
+      var registered_page_list_copy;
+
+      var is_check_fb_connected = false;
+      var fb_page_index;
+
+        var tg_connect_page = $('.tg_connect_page');
+        var tele_page_set = $('.tele_page_set');
+        var tele_page_btn = $('#tele_page_btn');
+        var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
+
+//              tg_connect_page.show();
+//              tele_page_set.hide();
+
+        tele_page_btn.click(function () {
+
+            //check start time
+            var date = new Date();
+            start_time_tele_task = date.getTime();
+            var log_id = 'reg_telegram' + start_time_tele_task;
+
+            console.log('start_time=>' + start_time_tele_task);
+
+            //connect telegram api
+            const anUrl = 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id
+            $.ajax({
+                //TODO: url
+                url: anUrl,
+                type: 'PUT',
+//                  async: false,
+                crossDomain: true,
+                xhrFields: {withCredentials: true},
+                success: function (body, status, res) {
+
+                    if (body.success) {
+                        if (body.data.telegram.ok) {
+
+                            console.log('connected telegram.ok=>' + body.data.telegram.ok);
+
+                            tg_connect_page.hide();
+                            tele_page_set.show();
+                            $('.tele_page_title').text(body.data.bot.username);
+                            is_telegram_connected = true;
+
+                            //check end time
+                            var date = new Date();
+                            end_time_tele_api_connect = date.getTime();
+                            console.log('end_time=>' + end_time_tele_api_connect);
+                            var api_code = 'connect_telegram';
+                            var api_provider_code = 'chatbrick';
+                            var tag = '텔레그램 페이지 앱 등록';
+                            var remark = '텔레그램 페이지 앱 등록을 위해 사용';
+                            sendAPILog(log_id, api_code, api_provider_code, start_time_tele_api_connect, end_time_tele_api_connect, remark)
+                            var task_code = 'connect_telegram';
+                            sendTaskLog(log_id, task_code, start_time_tele_task, end_time_tele_api_connect, remark);
+                        }
+                    } else {
+                        if (body.action == 'ERR0002') {
+                            var default_error_modal = document.getElementById('default_error_modal');
+                            var modal_one_error_btn = $('#modal_one_error_btn');
+
+                            default_error_modal.style.display = "block";
+                            $('#modal_error_context').text(body.msg);
+
+
+                            modal_one_error_btn.hover(function () {
+                                $(this).css('background-color', '#fb7c7e');
+                            }, function () {
+                                $(this).css('background-color', '#ff753c');
+                            });
+
+                            modal_one_error_btn.click(function () {
+                                default_error_modal.style.display = "none";
+                            });
+                        }
+                    }
+                }
+                ,error:function(request,status,error) {
+                    var default_server_error_modal = document.getElementById('default_server_error_modal');
+                    var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                    default_server_error_modal.style.display = "block";
+
+                    modal_one_server_error_btn.hover(function () {
+                        $(this).css('background-color', '#fb7c7e');
+                    }, function () {
+                        $(this).css('background-color', '#ff753c');
+                    });
+
+                    modal_one_server_error_btn.click(function () {
+                        default_server_error_modal.style.display = "none";
+                    });
+                }
+                ,beforeSend: function () {
+                    $("body").loading("start");
+
+                    //check start time
+                    var date = new Date();
+                    start_time_tele_api_connect = date.getTime();
+                }
+                ,complete: function () {
+                    $("body").loading("stop");
+//                        sendTimeLog(setId, start_time, end_time, tag, remark);
+                }
+            });
+        }); //tele_page_btn click event
+
+        tele_page_disconnect_btn.click(function () {
+
+            //check start time
+            var date = new Date();
+            start_time_tele_task = date.getTime();
+            var log_id = 'del_telegram' + start_time_tele_task;
+            console.log('start_time=>' + start_time_tele_task);
+
+            //disconnect telegram api
+            $.ajax({
+                url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/'+'?log_id='+log_id,
+                type: 'DELETE',
+//                  async: false,
+                crossDomain: true,
+                xhrFields: {withCredentials: true},
+                success: function (body, status, res) {
+
+                    if (body.success) {
+                        if (body.data.telegram.ok) {
+
+                            //check end time
+                            var date = new Date();
+                            var end_time = date.getTime();
+                            console.log('end_time=>' + end_time);
+                            var tag = '텔레그램 페이지 앱 삭제';
+                            var remark = '텔레그램 페이지 앱 삭제를 위해 사용';
+//                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
+                            console.log('delete telegram.ok=>' + body.data.telegram.ok);
+                            tg_connect_page.show();
+                            tele_page_set.hide();
+
+                            is_telegram_connected = false;
+                        }
+                    } else {
+                        if (body.action == 'ERR0002') {
+                            var default_error_modal = document.getElementById('default_error_modal');
+                            var modal_one_error_btn = $('#modal_one_error_btn');
+
+                            default_error_modal.style.display = "block";
+                            $('#modal_error_context').text(body.msg);
+
+
+                            modal_one_error_btn.hover(function () {
+                                $(this).css('background-color', '#fb7c7e');
+                            }, function () {
+                                $(this).css('background-color', '#ff753c');
+                            });
+
+                            modal_one_error_btn.click(function () {
+                                default_error_modal.style.display = "none";
+                            });
+                        }
+                    }
+                }
+                ,error:function(request,status,error) {
+                    var default_server_error_modal = document.getElementById('default_server_error_modal');
+                    var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                    default_server_error_modal.style.display = "block";
+
+                    modal_one_server_error_btn.hover(function () {
+                        $(this).css('background-color', '#fb7c7e');
+                    }, function () {
+                        $(this).css('background-color', '#ff753c');
+                    });
+
+                    modal_one_server_error_btn.click(function () {
+                        default_server_error_modal.style.display = "none";
+                    });
+                }
+                ,beforeSend: function () {
+                    $("body").loading("start");
+
+                    //check start time
+                    var date = new Date();
+                    start_time_tele_api_del_connect = date.getTime();
+
+                }
+                ,complete: function () {
+                    $("body").loading("stop");
+
+                    //check end time
+                    var date = new Date();
+                    end_time_tele_api_del_connect = date.getTime();
+                    console.log('end_time=>' + end_time_tele_api_del_connect);
+                    var tag = '텔레그램 페이지 앱 삭제';
+                    var remark = '텔레그램 페이지 앱 삭제를 위해 사용';
+//                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
+                    var api_code = 'del_telegram';
+                    var api_provider_code = 'chatbrick';
+                    sendAPILog(log_id, api_code, api_provider_code, start_time_tele_api_del_connect, end_time_tele_api_del_connect, remark)
+                    var task_code = 'del_telegram';
+                    sendTaskLog(log_id, task_code, start_time_tele_task, end_time_tele_api_del_connect, remark);
+
+                }
+            });
+        }); //tele_page_disconnect_btn click event
+
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'GET',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+
+            fb_name = body.facebook.fb_name;
+            login_logo.attr("src", body.facebook.fb_profile);
+            login_name.text(fb_name);
+
+            $('#title').text(project_name);
+            $('#sub_title').text('| 챗봇 수정하기')
+            $('#context').text(project_name+'에 내용을 수정하실 수 있어요. 기본정보 / 사용자 데이터 입력 / 플랫폼 연동하기 / 챗봇삭제 등을 하실 수 있어요. 챗봇의 내용을 수정해서 보다 '+fb_name+'에 잘맞는 챗봇으로 만들어보세요.');
+
+            fb_id = body.facebook.fb_id;
+            console.log('body.facebook.fb_id=>' + fb_id);
+
+            FB.api(body.facebook.fb_id + '/accounts',{"access_token":body.facebook.fb_client_access_token},function (response) {
+
+              response.data.forEach(function (item, index, array) {
+
+                fb_page_ids.push(response.data[index].id);
+                fb_page_access_tokens.push(response.data[index].access_token);
+                fb_page_names.push(response.data[index].name);
+                fb_pages_info = response.data;
+
+                var fb_messager = (
+                  `<div class="fb_page_set" id="fb_page_set` + index + `">` +
+                  `<img src="../public/images/img-facebook-page-default.png" class="fb_page_img">` +
+                  `<div class="fb_page_text">` +
+                  `<div class="fb_page_title" id="fb_page_title` + index + `">` + item.name + `</div>` +
+                  `<div class="fb_page_btn" id="fb_page_btn` + index + `">연결하기</p>` +
+                  `</div>` +
+                  `</div>` +
+                  `</div>`
+                );
+
+                fb_page_list.append(fb_messager);
+
+                if (fb_page_id_from_api == response.data[index].id) {
+                  console.log('find fb_page_id!!>>'+fb_page_id_from_api);
+                  console.log('find fb_page_id index!!>>'+index);
+
+                  // $(this).toggleClass('platform_connected');
+                  $('#fb_page_btn'+ index).toggleClass('platform_connected');
+                  $('#fb_page_set' + index).show();
+                  $('#fb_page_btn' + index).text("연결해제 하기");
+                  $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                  $('#fb_page_btn' + index).css('color', '#ffffff')
+                } else {
+//                  $('#fb_page_set' + index).hide();
+                }
+
+              }); //response.data.forEach
+
+              //get user connected page list
+              $.ajax({
+                url: 'https://www.chatbrick.io/api/user/platform/brick/'+setId+'/',
+                type: 'GET',
+                async: false,
+                crossDomain: true,
+                xhrFields: {withCredentials: true},
+                success: function (body, status, res) {
+
+                  console.log('get user connected page list=>' + body.success);
+                  if (body.success) {
+
+                    console.log('platform=>'+ JSON.stringify(fb_pages_info.length));
+
+                    if (isEmpty(body.data.telegram)) {
+                      console.log('telegram bot이 존재하지않음');
+                      $('.tg_connect_page').show();
+                      $('.tele_page_set').hide();
+                    } else {
+                      console.log('body.data.telegram=>' + JSON.stringify(body.data.telegram));
+                      $('.tg_connect_page').hide();
+                      $('.tele_page_set').show();
+                      $('#tele_page_title').text(body.data.telegram.username);
+                      console.log('tele_page_title username=>'+$('.tele_page_title').val());
+                    }
+
+                    registered_page_list_copy = body.data.registered_page_list;
+                    body.data.registered_page_list.forEach(function (item, index, array) {
+
+                      if (isEmpty(item.page_id)) {
+//                      if (item.page_id == undefined) {
+                        console.log('page_id가 없음 index=>'+ index +'='+JSON.stringify(item));
+
+
+                      } else {
+
+                        if (fb_page_id_from_api == item.page_id) {
+                          console.log('fb_page_id_from_api=>'+fb_page_id_from_api);
+
+                          fb_page_index = fb_page_ids.indexOf(fb_page_id_from_api);
+                          console.log('fb_page_index=>' + fb_page_index);
+//                          $('.fb_page_set').hide();
+                          $('#fb_page_set' + fb_page_index).show();
+                          $('#fb_page_btn' + fb_page_index).text("연결해제 하기");
+                          $('#fb_page_btn' + fb_page_index).css('border', 'solid 1px #fd6246')
+                          $('#fb_page_btn' + fb_page_index).css('color', '#ffffff')
+                          is_check_fb_connected = true;
+
+                        } else {
+                          for (var i = 0; i < fb_pages_info.length; i++) {
+                            if (item.page_id == fb_pages_info[i].id) {
+                              registered_fb_name = fb_pages_info[i].name;
+                              console.log('fb_pages_info[i].id=>' + fb_pages_info[i].id);
+                              console.log('registered_fb_name=>' + registered_fb_name);
+
+                              $('#fb_page_set' + i).hide();
+                            } else {
+//                              $('#fb_page_set' + i).show();
+                            }
+                          }
+
+                          var fb_messager = (
+                            `<div class="fb_page_set" id="fb_page_set_connected` + index + `">` +
+                            `<img src="../public/images/img-facebook-page-default.png" class="fb_page_img">` +
+                            `<div class="fb_page_text">` +
+                            `<div class="fb_page_title" id="fb_page_title_connected` + index + `">` + registered_fb_name + `</div>` +
+                            `<div class="fb_page_connected_status" id="fb_page_connected_status` + index + `">` + item.name + `에 연결된 페이지</p>` +
+                            `</div>` +
+                            `</div>` +
+                            `</div>`
+                          );
+
+                          fb_page_list.append(fb_messager);
+                        }
+
+                      }
+                    });
+
+                    if (is_check_fb_connected) {
+                      $('.fb_page_set').hide();
+                      $('#fb_page_set' + fb_page_index).show();
+                      $('#fb_page_btn' + fb_page_index).text("연결해제 하기");
+                      $('#fb_page_btn' + fb_page_index).css('border', 'solid 1px #fd6246')
+                      $('#fb_page_btn' + fb_page_index).css('color', '#ffffff')
+                    }
+
+                  } else {
+                    if (body.action == 'ERR0002') {
+                      var default_error_modal = document.getElementById('default_error_modal');
+                      var modal_one_error_btn = $('#modal_one_error_btn');
+
+                      default_error_modal.style.display = "block";
+                      $('#modal_error_context').text(body.msg);
+
+
+                      modal_one_error_btn.hover(function () {
+                        $(this).css('background-color', '#fb7c7e');
+                      }, function () {
+                        $(this).css('background-color', '#ff753c');
+                      });
+
+                      modal_one_error_btn.click(function () {
+                        default_error_modal.style.display = "none";
+                      });
+                    }
+                  }
+                }
+                ,error:function(request,status,error) {
+                  var default_server_error_modal = document.getElementById('default_server_error_modal');
+                  var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                  default_server_error_modal.style.display = "block";
+
+                  modal_one_server_error_btn.hover(function () {
+                    $(this).css('background-color', '#fb7c7e');
+                  }, function () {
+                    $(this).css('background-color', '#ff753c');
+                  });
+
+                  modal_one_server_error_btn.click(function () {
+                    default_server_error_modal.style.display = "none";
+                  });
+                }
+              });
+
+              console.log('fb_page_ids=>'+JSON.stringify(fb_page_ids));
+              console.log('fb_page_access_tokens=>'+JSON.stringify(fb_page_access_tokens));
+
+
+
+              var fb_page_btn = $('.fb_page_btn');
+              fb_page_btn.click(function () {
+
+                //check start time
+                var date = new Date();
+                var start_time = date.getTime();
+                console.log('start_time=>' + start_time);
+
+                var index = $(this).parent().parent().index();
+                console.log('index: ' + index);
+                console.log('fb_page_ids=>'+fb_page_ids[index]);
+                console.log('fb_page_access_tokens=>'+fb_page_access_tokens[index]);
+                $(this).toggleClass('platform_connected');
+
+                if ($(this).hasClass('platform_connected')) {
+
+                  //connect fb page api
+                  $.ajax({
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/'+fb_page_ids[index]+'/'+fb_page_access_tokens[index]+'/',
+                    type: 'PUT',
+//                    async: false,
+                    crossDomain: true,
+                    xhrFields: {withCredentials: true},
+                    success: function (body, status, res) {
+
+                      console.log('connect fb page api=>' + body.success);
+                      if (body.success) {
+
+                        //check end time
+                        var date = new Date();
+                        var end_time = date.getTime();
+                        console.log('end_time=>' + end_time);
+                        var tag = '페북 페이지 등록';
+                        var remark = '페북 페이지 등록을 위해 사용';
+//                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
+
+                        $('.fb_page_set').hide();
+                        $('#fb_page_set' + index).show();
+                        $('#fb_page_btn' + index).text("연결해제 하기");
+                        $('#fb_page_btn' + index).css('border', 'solid 1px #fd6246')
+                        $('#fb_page_btn' + index).css('color', '#ffffff')
+                      } else {
+                        if (body.action == 'ERR0002') {
+                          var default_error_modal = document.getElementById('default_error_modal');
+                          var modal_one_error_btn = $('#modal_one_error_btn');
+
+                          default_error_modal.style.display = "block";
+                          $('#modal_error_context').text(body.msg);
+
+
+                          modal_one_error_btn.hover(function () {
+                            $(this).css('background-color', '#fb7c7e');
+                          }, function () {
+                            $(this).css('background-color', '#ff753c');
+                          });
+
+                          modal_one_error_btn.click(function () {
+                            default_error_modal.style.display = "none";
+                          });
+                        }
+                      }
+                    }
+                    ,error:function(request,status,error) {
+                      var default_server_error_modal = document.getElementById('default_server_error_modal');
+                      var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                      default_server_error_modal.style.display = "block";
+
+                      modal_one_server_error_btn.hover(function () {
+                        $(this).css('background-color', '#fb7c7e');
+                      }, function () {
+                        $(this).css('background-color', '#ff753c');
+                      });
+
+                      modal_one_server_error_btn.click(function () {
+                        default_server_error_modal.style.display = "none";
+                      });
+                    }
+                    ,beforeSend: function () {
+                      $("body").loading("start");
+
+                    }
+                    ,complete: function () {
+                      $("body").loading("stop");
+                    }
+                  });
+
+                  //facebook subscribed
+                  FB.api(
+                    '/'+fb_page_ids[index]+'/subscribed_apps',
+                    'POST',
+                    {'access_token': fb_page_access_tokens[index]},
+                    function(response) {
+                      //check end time
+                      var date = new Date();
+                      var end_time = date.getTime();
+                      console.log('end_time=>' + end_time);
+                      var tag = '페북 페이지 앱 등록';
+                      var remark = '페북 페이지 subscribed 위해 사용';
+//                      sendTimeLog(setId, start_time, end_time, tag, remark);
+                    }
+                  );
+
+                } else {
+
+                  //delete fb page api
+                  $.ajax({
+                    //TODO: url
+                    url: 'https://www.chatbrick.io/api/brick/'+setId+'/facebook/',
+                    type: 'DELETE',
+//                    async: false,
+                    crossDomain: true,
+                    xhrFields: {withCredentials: true},
+                    success: function (body, status, res) {
+                      console.log('connect fb page api=>' + body.success);
+                      if (body.success) {
+
+                        //check end time
+                        var date = new Date();
+                        var end_time = date.getTime();
+                        console.log('end_time=>' + end_time);
+                        var tag = '페북 페이지 앱 삭제';
+                        var remark = '페북 페이지 삭제를 위해 사용';
+//                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
+                        $('.fb_page_set').show();
+                        $('#fb_page_btn' + index).text('연결하기');
+                        $('#fb_page_btn' + index).css('border', 'solid 3px #000000')
+                        $('#fb_page_btn' + index).css('color', '#000000')
+
+                        //find project page connected
+                        registered_page_list_copy.forEach(function (item, index, array) {
+                          if (isEmpty(item.page_id)) {
+                            console.log('page_id가 없음 index=>'+ index +'='+JSON.stringify(item));
+
+                          } else {
+
+                            if (fb_page_id_from_api == item.page_id) {
+                              console.log('fb_page_id_from_api=>'+fb_page_id_from_api);
+                            } else {
+                              for (var i = 0; i < fb_pages_info.length; i++) {
+                                if (item.page_id == fb_pages_info[i].id) {
+                                  registered_fb_name = fb_pages_info[i].name;
+                                  console.log('fb_pages_info[i].id=>' + fb_pages_info[i].id);
+                                  console.log('registered_fb_name=>' + registered_fb_name);
+
+                                  $('#fb_page_set' + i).hide();
+                                }
+                              } //for문
+                            }
+                          }
+                        });
+
+                      } else {
+                        if (body.action == 'ERR0002') {
+                          var default_error_modal = document.getElementById('default_error_modal');
+                          var modal_one_error_btn = $('#modal_one_error_btn');
+
+                          default_error_modal.style.display = "block";
+                          $('#modal_error_context').text(body.msg);
+
+
+                          modal_one_error_btn.hover(function () {
+                            $(this).css('background-color', '#fb7c7e');
+                          }, function () {
+                            $(this).css('background-color', '#ff753c');
+                          });
+
+                          modal_one_error_btn.click(function () {
+                            default_error_modal.style.display = "none";
+                          });
+                        }
+                      }
+                    }
+                    ,error:function(request,status,error) {
+                      var default_server_error_modal = document.getElementById('default_server_error_modal');
+                      var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                      default_server_error_modal.style.display = "block";
+
+                      modal_one_server_error_btn.hover(function () {
+                        $(this).css('background-color', '#fb7c7e');
+                      }, function () {
+                        $(this).css('background-color', '#ff753c');
+                      });
+
+                      modal_one_server_error_btn.click(function () {
+                        default_server_error_modal.style.display = "none";
+                      });
+                    }
+                    ,beforeSend: function () {
+                      $("body").loading("start");
+
+                    }
+                    ,complete: function () {
+                      $("body").loading("stop");
+                    }
+                  });
+                }
+              }) //fb.click event
+
+              var tg_connect_page = $('.tg_connect_page');
+              var tele_page_set = $('.tele_page_set');
+              var tele_page_btn = $('#tele_page_btn');
+              var tele_page_disconnect_btn = $('#tele_page_disconnect_btn');
+
+//              tg_connect_page.show();
+//              tele_page_set.hide();
+              tele_page_btn.click(function () {
+
+                //check start time
+                var date = new Date();
+                var start_time = date.getTime();
+                console.log('start_time=>' + start_time);
+
+                //connect telegram api
+                $.ajax({
+                  //TODO: url
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
+                  type: 'PUT',
+//                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    if (body.success) {
+                      if (body.data.telegram.ok) {
+                        console.log('connected telegram.ok=>' + body.data.telegram.ok);
+                        tg_connect_page.hide();
+                        tele_page_set.show();
+                        $('.tele_page_title').text(body.data.bot.username);
+                        is_telegram_connected = true;
+                      }
+                    } else {
+                      if (body.action == 'ERR0002') {
+                        var default_error_modal = document.getElementById('default_error_modal');
+                        var modal_one_error_btn = $('#modal_one_error_btn');
+
+                        default_error_modal.style.display = "block";
+                        $('#modal_error_context').text(body.msg);
+
+
+                        modal_one_error_btn.hover(function () {
+                          $(this).css('background-color', '#fb7c7e');
+                        }, function () {
+                          $(this).css('background-color', '#ff753c');
+                        });
+
+                        modal_one_error_btn.click(function () {
+                          default_error_modal.style.display = "none";
+                        });
+                      }
+                    }
+                  }
+                  ,error:function(request,status,error) {
+                    var default_server_error_modal = document.getElementById('default_server_error_modal');
+                    var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                    default_server_error_modal.style.display = "block";
+
+                    modal_one_server_error_btn.hover(function () {
+                      $(this).css('background-color', '#fb7c7e');
+                    }, function () {
+                      $(this).css('background-color', '#ff753c');
+                    });
+
+                    modal_one_server_error_btn.click(function () {
+                      default_server_error_modal.style.display = "none";
+                    });
+                  }
+                  ,beforeSend: function () {
+                    $("body").loading("start");
+
+                  }
+                  ,complete: function () {
+                    $("body").loading("stop");
+                  }
+                });
+              }); //tele_page_btn click event
+
+              tele_page_disconnect_btn.click(function () {
+
+                //check start time
+                var date = new Date();
+                var start_time = date.getTime();
+                console.log('start_time=>' + start_time);
+
+                //disconnect telegram api
+                $.ajax({
+                  //TODO: url
+                  url: 'https://www.chatbrick.io/api/brick/'+setId+'/telegram/'+$('#tg_content_name').val()+'/',
+                  type: 'DELETE',
+//                  async: false,
+                  crossDomain: true,
+                  xhrFields: {withCredentials: true},
+                  success: function (body, status, res) {
+
+                    if (body.success) {
+                      if (body.data.telegram.ok) {
+
+                        //check end time
+                        var date = new Date();
+                        var end_time = date.getTime();
+                        console.log('end_time=>' + end_time);
+                        var tag = '텔레그램 페이지 앱 등록';
+                        var remark = '텔레그램 페이지 앱 등록을 위해 사용';
+//                        sendTimeLog(setId, start_time, end_time, tag, remark);
+
+
+                        console.log('delete telegram.ok=>' + body.data.telegram.ok);
+                        tg_connect_page.show();
+                        tele_page_set.hide();
+
+                        is_telegram_connected = false;
+                      }
+                    } else {
+                      if (body.action == 'ERR0002') {
+                        var default_error_modal = document.getElementById('default_error_modal');
+                        var modal_one_error_btn = $('#modal_one_error_btn');
+
+                        default_error_modal.style.display = "block";
+                        $('#modal_error_context').text(body.msg);
+
+
+                        modal_one_error_btn.hover(function () {
+                          $(this).css('background-color', '#fb7c7e');
+                        }, function () {
+                          $(this).css('background-color', '#ff753c');
+                        });
+
+                        modal_one_error_btn.click(function () {
+                          default_error_modal.style.display = "none";
+                        });
+                      }
+                    }
+                  }
+                  ,error:function(request,status,error) {
+                    var default_server_error_modal = document.getElementById('default_server_error_modal');
+                    var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+                    default_server_error_modal.style.display = "block";
+
+                    modal_one_server_error_btn.hover(function () {
+                      $(this).css('background-color', '#fb7c7e');
+                    }, function () {
+                      $(this).css('background-color', '#ff753c');
+                    });
+
+                    modal_one_server_error_btn.click(function () {
+                      default_server_error_modal.style.display = "none";
+                    });
+                  }
+                  ,beforeSend: function () {
+                    $("body").loading("start");
+
+                  }
+                  ,complete: function () {
+                    $("body").loading("stop");
+                  }
+                });
+              }); //tele_page_disconnect_btn click event
+
+
+            });
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+          }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
+      });
+
+    } else if (response.status === 'not_authorized') {
+      console.log('not_authorized!')
+      window.location.href  = '/';
+      // window.location.href = 'http://www.localhost:3000';
+    } else {
+      console.log('connected error!')
+      window.location.href  = '/';
+      // window.location.href = 'http://www.localhost:3000';
+    }
+  }
+
+  //logout event
+  var logout_modal = document.getElementById('logout_modal');
+  var modal_left_logout_btn = $('#modal_left_logout_btn');
+  var modal_right_logout_btn = $('#modal_right_logout_btn');
+
+  login_dropdown.click(function () {
+    logout_modal.style.display = "block";
+  });
+
+  modal_left_logout_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  modal_right_logout_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  modal_left_logout_btn.click(function () {
+    logout_modal.style.display = "none";
+  });
+
+  modal_right_logout_btn.click(function () {
+    FB.logout(function(response) {
+      console.log('logout=>' + JSON.stringify(response));
+      window.location.href = '/';
+    });
+  });
+
+  var isEmpty = function (value) {
+    if (value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length )) {
+      return true
+    } else {
+      return false
+    }
+  };
+
+  function initHackathonDay() {
+    var start_dday = $('#start_date_dday_meeting').val();
+    var end_dday = $('#end_date_dday_meeting').val();
+    console.log('start_date_dday_meeting=>' + start_dday);
+    console.log('end_date_dday_meeting=>' + end_dday);
+
+    var startDateArray = start_dday.split("-");
+    var endDateArray = end_dday.split("-");
+
+    var startDateObj = new Date(startDateArray[0], Number(startDateArray[1]) - 1, startDateArray[2]);
+    var endDateObj = new Date(endDateArray[0], Number(endDateArray[1]) - 1, endDateArray[2]);
+
+    var betweenDay = (endDateObj.getTime() - startDateObj.getTime()) / 1000 / 60 / 60 / 24;
+    console.log('betweenDay=>' + betweenDay);
+
+    $('#section_04').show();
+    switch (betweenDay) {
+      case 0:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        break;
+
+      case 1:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        break;
+
+      case 2:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        $('#hackathon_3day').show();
+        break;
+
+      case 3:
+        $('.hackathon_day').hide();
+        $('#hackathon_1day').show();
+        $('#hackathon_2day').show();
+        $('#hackathon_3day').show();
+        $('#hackathon_4day').show();
+        break;
+
+      case 4:
+        $('.hackathon_day').show();
+        // $('.hackathon_day').hide();
+        // $('#hackathon_1day').show();
+        // $('#hackathon_2day').show();
+        // $('#hackathon_3day').show();
+        // $('#hackathon_4day').show();
+        // $('#hackathon_5day').show();
+        break;
+
+      // case 5:
+      //   $('.hackathon_day').show();
+      //   break;
+
+      default:
+        // alert('최대 4박 5일까지만 가능합니다.');
+        $('.hackathon_day').hide();
+        $('#section_04').hide();
+
+        break;
+    }
+  }
+
+  $('input[type=text]').addClass('placeholder');
+</script>
+<!--https://xdsoft.net/jqplugins/datetimepicker/#trigger-->
+<script src="/public/javascripts/jquery.datetimepicker.full.js"></script>
+<!--<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>-->
+<script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+</body>
+</html>

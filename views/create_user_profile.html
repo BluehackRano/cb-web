@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>ChatBrick</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.8.0/bodymovin.min.js'></script>
+	<!--<script src="../secret/config.js"></script>-->
+	<script src="../public/javascripts/config.js"></script>
+	<script type="text/javascript" src="/public/javascripts/href_event.js"></script>
+	<script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
+	<link rel="stylesheet" href="../public/stylesheets/style.css">
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="../public/javascripts/loading.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/loading.css">
+</head>
+<body>
+<header id="header">
+	<div class="wrapper wrapper_header">
+		<div class="top_01 top_common">
+			<img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+
+			<div class="top_01 top_user_profile_common">
+				<img id="login_logo" class="login_logo" src="../public/images/test_img.png" alt="login_logo">
+				<div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+				<img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png" alt="login_dropdown">
+			</div>
+		</div>
+
+		<div class="top_02 top_common">
+			<div class="top_02 title_area">
+				<div id="title">CREAT CHATBOT</div>
+				<div id="sub_title">| 데이터 정보 입력하기</div>
+			</div>
+			<div id="context">
+				<p>
+				</p>
+			</div>
+		</div>
+		<button id="test_full_input_text">클릭하면 전체항목을 채워줘요(테스트용)</button>
+	</div>
+</header>
+
+<div id="content">
+
+	<!--프로필정보 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_01" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 프로필정보 (PROFILE)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_01" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_photo_area">
+							<img src="../public/images/bg-img-upload-01.png" id="profile_img" class="user_profile_img">
+							<!--<div id="profile_img" class="user_profile_img">-->
+
+							<div class="user_profile_photo_guild_area">
+								<div class="user_profile_photo_title">
+									PROFILE IMAGE
+								</div>
+
+								<div class="user_profile_photo_context">
+									챗봇에서 사용될 프로필 이미지를 업로드해주세요.</br>
+									( 권장 해상도 : 800 x 800 )
+								</div>
+
+								<div class="user_profile_photo_upload_btn">
+									<label for="uploadBtn" class="btn_file">파일 업로드</label>
+									<input type="file" id="uploadBtn" class="uploadBtn">
+								</div>
+
+								<div id="after_upload">
+									<input id="file" type="file" class="imgeFile"/>
+									<div id="after_upload_motify"><p>변경하기</p></div>
+									<div id="after_upload_del"><p>제거하기</p></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								디자이너 이름
+							</div>
+							<input type="text" id="user_profile_data_name" class="baseInputText_02" placeholder="본인의 이름을 입력해주세요.">
+
+							<div class="article_title_profile">
+								전문분야
+							</div>
+							<input type="text" id="user_profile_data_professional" class="baseInputText_02" placeholder="본인의 전문분야를 입력해주세요.">
+
+							<div class="article_title_profile">
+								거주국가 및 지역
+							</div>
+							<input type="text" id="user_profile_data_location" class="baseInputText_02" placeholder="본인의 거주국가 및 지역을 입력해주세요.">
+
+							<div class="article_title_profile" id="">
+								홈페이지
+							</div>
+							<input type="text" id="user_profile_data_appeal" class="baseInputText_02" placeholder="본인의 홈페이지, 링크드인, SNS 중 하나의 URL을 입력해주세요.">
+
+							<div class="article_title_profile">
+								이메일 주소
+							</div>
+							<input type="text" id="user_profile_data_email" class="baseInputText_02" placeholder="본인의 이메일주소를 입력해주세요.">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--사용자 데이터 입력 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_02" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 기본정보
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_02" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								환영메세지
+							</div>
+							<input type="text" id="user_profile_start_message_01" class="baseInputText_02 user_profile_start_message" placeholder="방문자에게 처음으로 보낼 메세지를 입력해주세요.">
+							<input type="text" id="user_profile_start_message_02" class="baseInputText_02 user_profile_start_message">
+							<input type="text" id="user_profile_start_message_03" class="baseInputText_02 user_profile_start_message">
+
+							<div class="article_title_profile">
+								오류메세지
+							</div>
+							<input type="text" id="user_profile_not_ready_mesage_01" class="baseInputText_02 user_profile_not_ready_mesage" placeholder="방문자가 준비되지 않은 메세지를 보냈을 때, 보낼 메세지를 입력해주세요.">
+							<input type="text" id="user_profile_not_ready_mesage_02" class="baseInputText_02 user_profile_not_ready_mesage">
+							<input type="text" id="user_profile_not_ready_mesage_03" class="baseInputText_02 user_profile_not_ready_mesage">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--업무경험 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_03" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 업무경험 (WORK)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_03" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								[01] 근무회사 이름
+							</div>
+							<input type="text" id="user_profile_company_name_01" class="baseInputText_02 user_profile_company" placeholder="근무한 회사의 이름을 입력해주세요.">
+
+							<div class="article_title_profile">
+								[01] 근무기간
+							</div>
+							<input type="text" id="user_profile_company_term_01" class="baseInputText_02 user_profile_company" placeholder="근무기간을 입력해주세요. (예 : YYYY.MM - YYY.MM)">
+
+							<div class="article_title_profile">
+								[01] 근무분야
+							</div>
+							<input type="text" id="user_profile_company_major_01" class="baseInputText_02 user_profile_company" placeholder="근무분야를 입력해주세요. (예 : UX Design)">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[02] 근무회사 이름
+							</div>
+							<input type="text" id="user_profile_company_name_02" class="baseInputText_02 user_profile_company" placeholder="근무한 회사의 이름을 입력해주세요.">
+
+							<div class="article_title_profile">
+								[02] 근무기간
+							</div>
+							<input type="text" id="user_profile_company_term_02" class="baseInputText_02 user_profile_company" placeholder="근무기간을 입력해주세요. (예 : YYYY.MM - YYY.MM)">
+
+							<div class="article_title_profile">
+								[02] 근무분야
+							</div>
+							<input type="text" id="user_profile_company_major_02" class="baseInputText_02 user_profile_company" placeholder="근무분야를 입력해주세요. (예 : UX Design)">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[03] 근무회사 이름
+							</div>
+							<input type="text" id="user_profile_company_name_03" class="baseInputText_02 user_profile_company" placeholder="근무한 회사의 이름을 입력해주세요.">
+
+							<div class="article_title_profile">
+								[03] 근무기간
+							</div>
+							<input type="text" id="user_profile_company_term_03" class="baseInputText_02 user_profile_company" placeholder="근무기간을 입력해주세요. (예 : YYYY.MM - YYY.MM)">
+
+							<div class="article_title_profile">
+								[03] 근무분야
+							</div>
+							<input type="text" id="user_profile_company_major_03" class="baseInputText_02 user_profile_company" placeholder="근무분야를 입력해주세요. (예 : UX Design)">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--사용자 데이터 입력 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_04" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 보유기술 및 능력 (SPECIALTIES)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_04" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								[01] 보유기술 이름
+							</div>
+							<input type="text" id="user_profile_skill_name_01" class="baseInputText_02 user_profile_skill" placeholder="보유기술의 이름을 입력해주세요.">
+
+							<div class="article_title_profile">
+								[01] 보유기술 설명
+							</div>
+							<input type="text" id="user_profile_skill_info_01_1" class="baseInputText_02 user_profile_skill_info_01 user_profile_skill" placeholder="보유기술의 상세정보를 입력해주세요.">
+							<input type="text" id="user_profile_skill_info_01_2" class="baseInputText_02 user_profile_skill_info_01">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[02] 보유기술 이름
+							</div>
+							<input type="text" id="user_profile_skill_name_02" class="baseInputText_02 user_profile_skill" placeholder="보유기술의 이름을 입력해주세요.">
+
+							<div class="article_title_profile">
+								[02] 보유기술 설명
+							</div>
+							<input type="text" id="user_profile_skill_info_02_1" class="baseInputText_02 user_profile_skill_info_02 user_profile_skill" placeholder="보유기술의 상세정보를 입력해주세요.">
+							<input type="text" id="user_profile_skill_info_02_2" class="baseInputText_02 user_profile_skill_info_02">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[03] 보유기술 이름
+							</div>
+							<input type="text" id="user_profile_skill_name_03" class="baseInputText_02 user_profile_skill" placeholder="보유기술의 이름을 입력해주세요.">
+
+							<div class="article_title_profile">
+								[03] 보유기술 설명
+							</div>
+							<input type="text" id="user_profile_skill_info_03_1" class="baseInputText_02 user_profile_skill_info_03 user_profile_skill" placeholder="보유기술의 상세정보를 입력해주세요.">
+							<input type="text" id="user_profile_skill_info_03_2" class="baseInputText_02 user_profile_skill_info_03">
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--사용자 자기소개 영역-->
+	<div class="wrapper_section _user_profile_section">
+		<section id="section_05" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 간략한 자기소개 (SUMMARY)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_05" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								간략한 자기소개
+							</div>
+							<div id="self_introduction_area">
+							<input type="text" id="user_profile_self_introduction_01_1" class="baseInputText_02 user_profile_self_introduction_01" placeholder="자신을 간략하게 소개하는 내용을 입력해주세요.">
+							<input type="text" id="user_profile_self_introduction_01_2" class="baseInputText_02 user_profile_self_introduction_01">
+							<input type="text" id="user_profile_self_introduction_01_3" class="baseInputText_02 user_profile_self_introduction_01">
+							<input type="text" id="user_profile_self_introduction_01_4" class="baseInputText_02 user_profile_self_introduction_01">
+							<input type="text" id="user_profile_self_introduction_01_5" class="baseInputText_02 user_profile_self_introduction_01">
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--사용자 포트폴리오 영역-->
+	<div class="wrapper_section _user_profile_section" id="portfolio_endline">
+		<section id="section_06" class="_profile_section">
+			<div class="content_title">
+				<p>
+					사용자 데이터 입력 _ 포트폴리오 (PORTFOLIO)
+				</p>
+			</div>
+
+			<div class="wrapper_article _user_profile_wrapper">
+				<article id="article_06" class="_article">
+
+					<div class="wrapper">
+						<div class="user_profile_data_area">
+							<div class="article_title_profile">
+								[01] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_01" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[02] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_02" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[03] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_03" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[04] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_04" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[05] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_05" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[06] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_06" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[07] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_07" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[08] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_08" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[09] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_09" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+							<hr class="user_profile_line">
+
+							<div class="article_title_profile">
+								[10] 포트폴리오 URL (DRIBBBLE / BEHANCE)
+							</div>
+							<input type="text" id="user_profile_portfolio_10" class="baseInputText_02" placeholder="소개하고 싶은 포트폴리오의 URL(DRIBBBLE/BEHANCE)을 입력해주세요.">
+						</div>
+
+					</div>
+				</article>
+			</div>
+		</section>
+	</div>
+
+	<!--디폴트 모양 팝업-->
+	<div id="default_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">확인</div>
+			<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>
+			<div id="modal_one_btn" class="modal_one_btn">
+				<p>확인</p></div>
+		</div>
+	</div>
+
+	<!--로그아웃 모양 팝업-->
+	<div id="logout_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">로그아웃</div>
+			<div class="modal_context">chatbrick에서 로그아웃하시겠어요?</div>
+			<div class="modal_brick_api_two_btn_area">
+				<div id="modal_left_logout_btn" class="modal_left_btn">
+					<p>아니요</p>
+				</div>
+
+				<div id="modal_right_logout_btn" class="modal_right_btn">
+					<p>네</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--디포폴 체크 모양 팝업-->
+	<div id="lego_loading_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div id="animationWindow"></div>
+			<div class="modal_title" id="lego_loading_title">포트폴리오 불러오기</div>
+			<div class="lego_loading_context_area">
+				<div class="lego_loading_context" id="lego_loading_context_01">{{프로젝트명}}의 포트폴리오를 읽어오고 있어요.</div>
+				<div class="lego_loading_context" id="lego_loading_context_02">지금 {{순서}}. {{포트폴리오명}}의 정보를 불러오고 있어요.</div>
+			</div>
+			<div id="modal_one_lego_loading_btn" class="modal_one_btn">
+				<p>확인</p></div>
+		</div>
+	</div>
+
+	<!--에러 모양 팝업-->
+	<div id="default_error_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">확인</div>
+			<div class="modal_context" id="modal_error_context"></div>
+			<div id="modal_one_error_btn" class="modal_one_btn">
+				<p>확인</p></div>
+		</div>
+	</div>
+
+	<!--이전버튼 취소하기 팝업-->
+	<div id="cancel_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">입력취소</div>
+			<div class="modal_context">입력을 취소하시겠습니까?</div>
+			<div class="modal_brick_api_two_btn_area">
+				<div id="modal_left_cancel_btn" class="modal_left_btn">
+					<p>아니요</p>
+				</div>
+
+				<div id="modal_right_cancel_btn" class="modal_right_btn">
+					<p>네</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--다음화면으로 넘어가기전 확인 모양 팝업-->
+	<div id="next_step_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<img src="../public/images/img-cb-pop-logo.png" class="create_modal_img">
+			<div class="modal_title">프로젝트 생성확인</div>
+			<div class="create_context_area">
+				<div id="create_modal_context_01">챗봇을 생성하시겠어요?</div>
+				<div id="create_modal_context_02">이후단계에서 페이스북/텔레그램에 연동할 수 있어요.</div>
+			</div>
+			<!--<div class="modal_context">챗봇 생성을 완료하시곘습니까?</div>-->
+
+			<div class="modal_brick_api_two_btn_area">
+				<div id="modal_left_next_step_btn" class="modal_left_next_step_btn">
+					<p>아니요</p>
+				</div>
+
+				<div id="modal_right_next_step_btn" class="modal_right_next_step_btn">
+					<p>네</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--서버에러 모양 팝업-->
+	<div id="default_server_error_modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal_title">확인</div>
+			<div class="create_context_area">
+				<div class="server_error_modal_context_01">에러가 발생했어요.</div>
+				<div class="server_error_modal_context_02">잠시후 다시 시도해주세요.</div>
+			</div>
+			<!--<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>-->
+			<div id="modal_one_server_error_btn" class="modal_one_btn">
+				<p>확인</p></div>
+		</div>
+	</div>
+
+</div>
+
+<footer id="footer">
+	<div class="bottom_common">
+		<div id="pre_page">
+			<p>
+				이전
+			</p>
+		</div>
+		<div id="next_page" align="center">
+			<p>
+				저장
+			</p>
+		</div>
+	</div>
+</footer>
+
+<script type="text/javascript">
+
+  var start_time_set_click = '';
+  var start_time_next_btn = '';
+  var start_time_page = '';
+  var end_time_page = '';
+
+  var log_id_page = '';
+
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+      return null;
+    }
+    else{
+      return results[1] || 0;
+    }
+  }
+
+  $(document).ready(function() {
+    //check start time
+    var date = new Date();
+    start_time_page = date.getTime();
+    log_id_page = 'create_dpf_step1' + start_time_page;
+
+    start_time_set_click = $.urlParam('start_time_next_btn_click');
+
+    var task_code = 'create_dpf_step1';
+    var remark = '데이터 정보 입력하기 페이지에서 다음 버튼 눌렀을때';
+    var api_code = 'create_dpf_step1';
+    var api_provider_code = 'chatbrick';
+    sendAPILog(log_id_page, api_code, api_provider_code, start_time_set_click, start_time_page, remark);
+
+  });
+
+  $(window).load(function() {
+
+    //check end time
+    var date = new Date();
+    end_time_page = date.getTime();
+    var task_code = 'create_dpf_step1';
+    var remark = '디자이너 포토폴리오 입력페이지가 로드되었을때';
+    var api_code = 'create_bricks_step1';
+    var api_provider_code = 'chatbrick';
+    sendAPILog(log_id_page, api_code, api_provider_code, start_time_page, end_time_page, remark);
+    sendTaskLog(log_id_page, task_code, start_time_set_click, end_time_page, remark);
+    history.replaceState({}, null, location.pathname);
+  });
+
+	$('#logo').click(function () {
+    logoClickSendHomeEvent();
+  });
+  $('input[type=text]').addClass('placeholder');
+
+	var baseInfo_name = `<%=jsonData.baseInfo_name%>`;
+	var baseInfo_context = `<%=jsonData.baseInfo_context%>`;
+
+	console.log('baseInfo_name=>' + baseInfo_name +
+		'baseInfo_context=>' + baseInfo_context);
+
+  var portfolioList = [];
+
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+
+  var img_url;
+
+  var charLimit = 63;
+
+  var start_time_finish = '';
+  var start_time_file = '';
+  var start_time_crawling = '';
+  var start_time_one_crawling = '';
+
+  var end_time_finish = '';
+  var end_time_file = '';
+  var end_time_crawling = '';
+  var end_time_one_crawling = '';
+
+  var log_id_finish = '';
+  var log_id_crawling = '';
+
+  //enter key event
+  $('.user_profile_self_introduction_01').keydown(function (key) {
+//    $('.user_profile_self_introduction_01').addClass('transparent');
+
+		console.log('keyCode =>' + key.keyCode);
+    if(key.keyCode == 8 || key.keyCode ==91 || key.keyCode ==17 || key.keyCode ==63 || key.keyCode ==65 || key.keyCode ==67) {
+      console.log('backspace!');
+		} else {
+			if (this.value.length >= charLimit) {
+      console.log('this.value.length=>' + this.value.length);
+      $(this).next('.user_profile_self_introduction_01').focus();
+      return false;
+    }
+		}
+  });
+
+  $('#self_introduction_area').keydown(function (key) {
+
+    if (key.keyCode == 13) {
+      var self_introduction_length = $('.user_profile_self_introduction_01').length + 1;
+      console.log('self_introduction_length=>' + self_introduction_length);
+
+      var addLine = (
+        `<input type="text" id="user_profile_self_introduction_01_`+self_introduction_length+`" class="baseInputText_02 user_profile_self_introduction_01">`
+      );
+      $('#self_introduction_area').append(addLine);
+//      $(this).next('.user_profile_self_introduction_01').focus();
+    }
+//    $('.user_profile_self_introduction_01').addClass('transparent');
+  });
+
+
+  //복붙이벤트
+  $(".user_profile_self_introduction_01").bind('paste',function(e){
+    var el = $(this);
+    var strList = [];
+    setTimeout(function() {
+      var text = $(el).val();
+//      var charLimit = 68;
+      console.log('text length=>' + text.length);
+      if (text.length >= charLimit) {
+
+        //첫라인
+        strList.push(text.substring(0,charLimit));
+
+        for (var i = charLimit+1; i < text.length; i+=charLimit) {
+          console.log('i=>' +text.substring(i,i+charLimit));
+          strList.push(text.substring(i,i+charLimit));
+				}
+
+        var index = 0;
+				for (var i = 1; i <= strList.length; i ++) {
+				  if (i > 5) {
+
+				    if (i <= $('.user_profile_self_introduction_01').length) {
+				      console.log('이미 라인이 있음');
+						} else {
+              var addLine = (
+                `<input type="text" id="user_profile_self_introduction_01_`+i+`" class="baseInputText_02 user_profile_self_introduction_01">`
+              );
+              $('#self_introduction_area').append(addLine);
+						}
+//            $('.user_profile_self_introduction_01').addClass('transparent');
+            //todo: 지금은 복붙하면 첫줄부터 채움
+						$('#user_profile_self_introduction_01_'+i).val(strList[index]);
+
+					} else {
+            //todo: 지금은 복붙하면 첫줄부터 채움
+            $('#user_profile_self_introduction_01_'+i).val(strList[index]);
+					}
+          index ++;
+				}
+        return false;
+      } else {
+        console.log('한줄 텍스트!');
+//        $(this).next('#user_profile_self_introduction_01_1').val(text);
+//				$(this).next('#user_profile_self_introduction_01_1').focus();
+			}
+    },100);
+  });
+
+  $.ajax({
+    url: 'https://www.chatbrick.io/api/login/',
+    type: 'GET',
+    async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
+    success: function (body, status, res) {
+      if (body.success) {
+
+        var fb_name = body.facebook.fb_name;
+        login_logo.attr("src", body.facebook.fb_profile);
+        login_name.text(fb_name);
+
+        $('#context').text(baseInfo_name+'에 ' + fb_name + '님의 데이터 정보를 입력하는 단계에요. SET별로 비어있는 항목을 입력하거나 기존의 데이터를 수정하여 보다 더 ' + fb_name + '에 잘어울리는 챗봇으로 만들어보세요.');
+      } else {
+        if (body.action == 'ERR0002') {
+          var default_error_modal = document.getElementById('default_error_modal');
+          var modal_one_error_btn = $('#modal_one_error_btn');
+
+          default_error_modal.style.display = "block";
+          $('#modal_error_context').text(body.msg);
+
+
+          modal_one_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_error_btn.click(function () {
+            default_error_modal.style.display = "none";
+          });
+        }
+			}
+    }
+    ,error:function(request,status,error) {
+      var default_server_error_modal = document.getElementById('default_server_error_modal');
+      var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+      default_server_error_modal.style.display = "block";
+
+      modal_one_server_error_btn.hover(function () {
+        $(this).css('background-color', '#fb7c7e');
+      }, function () {
+        $(this).css('background-color', '#ff753c');
+      });
+
+      modal_one_server_error_btn.click(function () {
+        default_server_error_modal.style.display = "none";
+      });
+    }
+  });
+
+
+  var upload = document.getElementById('uploadBtn'),
+    profile_img = document.getElementById('profile_img');
+
+  var user_profile_photo_upload_btn = $('.user_profile_photo_upload_btn');
+  var after_upload = $('#after_upload');
+  var after_upload_motify = $('#after_upload_motify');
+  var after_upload_del = $('#after_upload_del');
+  var imgTmpFile = $('#file');
+
+  imgTmpFile.hide();
+  after_upload.hide();
+
+  upload.onchange = function (e) {
+    e.preventDefault();
+
+    var file = upload.files[0],
+      reader = new FileReader();
+
+    console.log('file=>' + file);
+    reader.onload = function (event) {
+      var img = new Image();
+      img.src = event.target.result;
+      if (img.width > 142) { // profile_img width
+        img.width = 142;
+      }
+      if (img.height > 32) {
+        img.height = 32;
+      }
+
+      profile_img.src = img.src;
+
+      //upload img file api
+      var fd = new FormData();
+      var uploadFile = $('#profile_img')[0].file;
+      console.log('uploadFile=>' + uploadFile);
+      fd.append('file', file);
+
+      //check start time
+      var date = new Date();
+      start_time_file = date.getTime();
+      var log_id = 'upload_profileimg' + start_time_file;
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/file/',
+        type: 'POST',
+        async: false,
+        crossDomain: true,
+        contentType: false,
+        data: fd,
+        processData: false,
+        success: function (body, status, res) {
+          if (body.success) {
+            img_url = body.data.url;
+            console.log('upload success!');
+            console.log('res img url=>' + img_url);
+
+            user_profile_photo_upload_btn.hide();
+            after_upload.show();
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+					}
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
+        ,beforeSend: function () {
+//         $("body").loading("start");
+        }
+        ,complete: function () {
+//         $("body").loading("stop");
+          //check end time
+          var date = new Date();
+          end_time_file = date.getTime();
+          var task_code = 'upload_profileimg';
+          var remark = '이미지 파일 업로드 버튼을 누른 후, 이미지가 로드되었을때';
+          var api_code = 'upload_profileimg';
+          var api_provider_code = 'chatbrick';
+          sendTaskAPILog(log_id, task_code, api_code, api_provider_code, start_time_file, end_time_file, remark);
+        }
+      });
+
+    };
+    reader.readAsDataURL(file);
+  };
+
+  $('#file').change(function (e) {
+    e.preventDefault();
+
+    var file = this.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+      var img = new Image();
+      img.src = event.target.result;
+      if (img.width > 142) { // profile_img width
+        img.width = 142;
+      }
+      if (img.height > 32) {
+        img.height = 32;
+      }
+
+      profile_img.src = img.src;
+
+      //upload img file api
+      var fd = new FormData();
+      var uploadFile = $('#profile_img')[0].file;
+      console.log('uploadFile=>' + uploadFile);
+      fd.append('file', file);
+
+      //check start time
+      var date = new Date();
+      start_time_file = date.getTime();
+      var log_id = 'upload_profileimg' + start_time_file;
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/file/',
+        type: 'POST',
+        async: false,
+        crossDomain: true,
+        contentType: false,
+        data: fd,
+        processData: false,
+        success: function (body, status, res) {
+          if (body.success) {
+            img_url = body.data.url;
+            console.log('upliad success!');
+            console.log('res img url=>' + img_url);
+
+            user_profile_photo_upload_btn.hide();
+            after_upload.show();
+          } else {
+            if (body.action == 'ERR0002') {
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+					}
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
+        ,beforeSend: function () {
+//         $("body").loading("start");
+        }
+        ,complete: function () {
+//         $("body").loading("stop");
+          //check end time
+          var date = new Date();
+          end_time_file = date.getTime();
+          var task_code = 'upload_profileimg';
+          var remark = '이미지 파일 업로드 버튼을 누른 후, 이미지가 로드되었을때';
+          var api_code = 'upload_profileimg';
+          var api_provider_code = 'chatbrick';
+          sendTaskAPILog(log_id, task_code, api_code, api_provider_code, start_time_file, end_time_file, remark);
+        }
+      });
+    }
+    reader.readAsDataURL(file);
+  })
+
+  after_upload_motify.click(function () {
+    $('#file').click();
+  });
+
+  after_upload_motify.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  after_upload_del.click(function () {
+    after_upload.hide();
+    user_profile_photo_upload_btn.show();
+    $('#uploadBtn').val('');
+    profile_img.src = '../public/images/bg-img-upload-01.png';
+  })
+
+  after_upload_del.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  var animData = {
+    wrapper: document.querySelector('#animationWindow'),
+    animType: 'svg',
+    loop: true,
+    prerender: true,
+    autoplay: true,
+    path: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/35984/LEGO_loader.json'
+  };
+  var anim = bodymovin.loadAnimation(animData);
+  anim.setSpeed(3.4);
+
+  var lego_loading_modal = document.getElementById('lego_loading_modal');
+  var modal_one_lego_loading_btn = $('#modal_one_lego_loading_btn');
+  modal_one_lego_loading_btn.css('background-color', '#c0c0c0');
+
+
+  var loading_click_error_handler = function() {
+    lego_loading_modal.style.display = "none";
+
+    //팝업 초기화
+//    $('#lego_loading_title').text('{{프로젝트명}} 포트폴리오');
+    $('#lego_loading_context_01').text('{{프로젝트명}}의 포트폴리오를 읽어오고 있어요.');
+    $('#lego_loading_context_02').text('지금 {{순서}}. {{포트폴리오명}}의 정보를 불러오고 있어요.');
+    $('#modal_one_lego_loading_btn').css('background-color', '#c0c0c0');
+    $('#modal_one_lego_loading_btn').off('click');
+    portfolioList = [];
+  }
+
+  var loading_click_handler = function() {
+    lego_loading_modal.style.display = "none";
+
+    sendDataInServer(portfolioList);
+  };
+
+  function sendDataInServer(portfolioList) {
+    if (portfolioList != undefined) {
+      console.log('portfolioList=>' + JSON.stringify(portfolioList));
+
+      //check start time
+      var date = new Date();
+      var start_time = date.getTime();
+      var log_id = 'confirm_portfolio' + start_time;
+
+      var user_profile_data_name =$('#user_profile_data_name').val();
+      var user_profile_data_professional =$('#user_profile_data_professional').val();
+      var user_profile_data_location =$('#user_profile_data_location').val();
+      var user_profile_data_appeal = $('#user_profile_data_appeal').val();
+      var user_profile_data_email = $('#user_profile_data_email').val();
+
+      var user_profile_start_message_01 = $('#user_profile_start_message_01').val();
+      var user_profile_start_message_02 = $('#user_profile_start_message_02').val();
+      var user_profile_start_message_03 = $('#user_profile_start_message_03').val();
+      var user_profile_start_message_result = user_profile_start_message_01 + '\n' + user_profile_start_message_02 + '\n' + user_profile_start_message_03;
+
+      var user_profile_not_ready_mesage_01 = $('#user_profile_not_ready_mesage_01').val();
+      var user_profile_not_ready_mesage_02 = $('#user_profile_not_ready_mesage_02').val();
+      var user_profile_not_ready_mesage_03 = $('#user_profile_not_ready_mesage_03').val();
+      var user_profile_not_ready_mesage_result = user_profile_not_ready_mesage_01 + '\n' + user_profile_not_ready_mesage_02 + '\n' + user_profile_not_ready_mesage_03;
+
+      var user_profile_company_name_01 = $('#user_profile_company_name_01').val();
+      var user_profile_company_name_02 = $('#user_profile_company_name_02').val();
+      var user_profile_company_name_03 = $('#user_profile_company_name_03').val();
+
+      var user_profile_company_term_01 = $('#user_profile_company_term_01').val();
+      var user_profile_company_term_02 = $('#user_profile_company_term_02').val();
+      var user_profile_company_term_03 = $('#user_profile_company_term_03').val();
+
+      var user_profile_company_major_01 = $('#user_profile_company_major_01').val();
+      var user_profile_company_major_02 = $('#user_profile_company_major_02').val();
+      var user_profile_company_major_03 = $('#user_profile_company_major_03').val();
+
+      var user_profile_skill_name_01 = $('#user_profile_skill_name_01').val();
+      var user_profile_skill_name_02 = $('#user_profile_skill_name_02').val();
+      var user_profile_skill_name_03 = $('#user_profile_skill_name_03').val();
+
+      var user_profile_skill_info_01_1 = $('#user_profile_skill_info_01_1').val();
+      var user_profile_skill_info_01_2 = $('#user_profile_skill_info_01_2').val();
+      var user_profile_skill_info_01_result = user_profile_skill_info_01_1 + '\n' + user_profile_skill_info_01_2;
+
+      var user_profile_skill_info_02_1 = $('#user_profile_skill_info_02_1').val();
+      var user_profile_skill_info_02_2 = $('#user_profile_skill_info_02_2').val();
+      var user_profile_skill_info_02_result = user_profile_skill_info_02_1 + '\n' + user_profile_skill_info_02_2;
+
+      var user_profile_skill_info_03_1 = $('#user_profile_skill_info_03_1').val();
+      var user_profile_skill_info_03_2 = $('#user_profile_skill_info_03_2').val();
+      var user_profile_skill_info_03_result = user_profile_skill_info_03_1 + '\n' + user_profile_skill_info_03_2;
+
+
+//      var user_profile_self_introduction_01_1 = $('#user_profile_self_introduction_01_1').val();
+//      var user_profile_self_introduction_01_2 = $('#user_profile_self_introduction_01_2').val();
+//      var user_profile_self_introduction_01_3 = $('#user_profile_self_introduction_01_3').val();
+//      var user_profile_self_introduction_01_4 = $('#user_profile_self_introduction_01_4').val();
+//      var user_profile_self_introduction_01_5 = $('#user_profile_self_introduction_01_5').val();
+//      var user_profile_self_introduction_01_result = user_profile_self_introduction_01_1 +'\n' + user_profile_self_introduction_01_2 +'\n'
+//        + user_profile_self_introduction_01_3 +'\n' + user_profile_self_introduction_01_4 +'\n' + user_profile_self_introduction_01_5;
+
+			var user_profile_self_introduction_01_result = '';
+			for (var i = 1; i <= $('.user_profile_self_introduction_01').length; i ++) {
+			  if (i == $('.user_profile_self_introduction_01').length) {
+          user_profile_self_introduction_01_result +=($('#user_profile_self_introduction_01_'+i).val());
+				} else if (i == $('.user_profile_self_introduction_01').length) {
+          user_profile_self_introduction_01_result +=($('#user_profile_self_introduction_01_'+i).val());
+        }else {
+          user_profile_self_introduction_01_result +=($('#user_profile_self_introduction_01_'+i).val() + '\n');
+				}
+			}
+      console.log('user name->' + $('#user_profile_data_name').val());
+
+      var submitData = {
+        "log_id": log_id_page,
+        "type": "designer_portfolio",
+        "name": baseInfo_name,
+        "desc": baseInfo_context,
+        "data": {
+          "basic": {
+            "profile_image": img_url,
+            "name": user_profile_data_name,
+            "special": user_profile_data_professional,
+            "residence": user_profile_data_location,
+            "social": user_profile_data_appeal,
+            "email": user_profile_data_email
+          },
+          "custom_settings": {
+            "get_started": user_profile_start_message_result,
+            "error_msg": user_profile_not_ready_mesage_result
+          },
+          "work": [
+//            {
+//            "name": user_profile_company_name_01,
+//            "period": user_profile_company_term_01,
+//            "field": user_profile_company_major_01
+//          }, {
+//            "name": user_profile_company_name_02,
+//            "period": user_profile_company_term_02,
+//            "field": user_profile_company_major_02
+//          }, {
+//            "name": user_profile_company_name_03,
+//            "period": user_profile_company_term_03,
+//            "field": user_profile_company_major_03
+//          }
+          ],
+          "specialties": [
+          //   {
+          //   "name": user_profile_skill_name_01,
+          //   "detail": user_profile_skill_info_01_result
+          // }, {
+          //   "name": user_profile_skill_name_02,
+          //   "detail": user_profile_skill_info_02_result
+          // }, {
+          //   "name": user_profile_skill_name_03,
+          //   "detail": user_profile_skill_info_03_result
+          // }
+          ],
+          "summary": user_profile_self_introduction_01_result,
+          "portfolio": portfolioList
+//        "portfolio": ["https://www.chatbrick.io", "https://www.naver.com"]
+        }
+      }
+
+      for (var i = 1; i <=3; i ++) {
+
+        if ($('#user_profile_company_name_0'+i).val() != ''
+          && $('#user_profile_company_term_0'+i).val() != ''
+          && $('#user_profile_company_major_0'+i).val() != '') {
+          submitData.data.work.push(
+            {"name": $('#user_profile_company_name_0'+i).val(),
+              "period": $('#user_profile_company_term_0'+i).val(),
+              "field": $('#user_profile_company_major_0'+i).val()
+            })
+        }
+      }
+
+      for (var i = 1; i<=3; i ++) {
+        if ($('#user_profile_skill_name_0'+i).val() != ''
+          && $('#user_profile_skill_info_0'+i+'_1').val() != '') {
+
+          var user_profile_skill_info__1 = $('#user_profile_skill_info_0'+i+'_1').val();
+          var user_profile_skill_info__2 = $('#user_profile_skill_info_0'+i+'_2').val();
+          var user_profile_skill_info_result = user_profile_skill_info__1 + '\n' + user_profile_skill_info__2;
+
+          submitData.data.specialties.push(
+            {"name": $('#user_profile_skill_name_0'+i).val(),
+              "detail": user_profile_skill_info_result
+            }
+          )
+        }
+      }
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/brick/',
+        type: 'PUT',
+//        async: false,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: 'JSON',
+        data: JSON.stringify(submitData),
+        success: function (body, status, res) {
+          if (body.success) {
+            console.log('upload success!');
+
+            var setId = body.data.id;
+            window.location.href = '/platform/connect' + '?setId=' + setId;
+          } else {
+            if (body.action == 'ERR0002') {
+              portfolioList = [];
+              var default_error_modal = document.getElementById('default_error_modal');
+              var modal_one_error_btn = $('#modal_one_error_btn');
+
+              default_error_modal.style.display = "block";
+              $('#modal_error_context').text(body.msg);
+
+
+              modal_one_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_error_btn.click(function () {
+                default_error_modal.style.display = "none";
+              });
+            }
+          }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
+        ,beforeSend: function () {
+          $("body").loading("start");
+
+          //check start time
+          var date = new Date();
+          start_time_finish = date.getTime();
+          log_id_finish = 'create_finish' + start_time_finish;
+        }
+        ,complete: function () {
+          $("body").loading("stop");
+
+          //check end time
+          var date = new Date();
+          end_time_finish = date.getTime();
+          var task_code = 'confirm_portfolio';
+          var remark = '디자이너 포토폴리오 생성을 위해 사용';
+          var api_code = 'create_finish';
+          var api_provider_code = 'chatbrick';
+          sendTaskAPILog(log_id_finish, task_code, api_code, api_provider_code, start_time_finish, end_time_finish, remark);
+        }
+      });
+
+    } else {
+      console.log('portfolioList=> 없음');
+    }
+  }
+
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
+
+  pre_page.click( function () {
+    $(this).css('background-color','#bd292c');
+//    window.location.href = '/chatbot/create';
+//    window.history.back();
+
+    var cancel_modal = document.getElementById('cancel_modal');
+    var modal_left_cancel_btn = $('#modal_left_cancel_btn');
+    var modal_right_cancel_btn = $('#modal_right_cancel_btn');
+
+    cancel_modal.style.display = "block";
+
+    modal_left_cancel_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_left_cancel_btn.click(function () {
+      cancel_modal.style.display = "none";
+    });
+
+    modal_right_cancel_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_right_cancel_btn.click(function () {
+      cancel_modal.style.display = "none";
+//      window.location.href = '/chatbot/list'
+      window.history.back();
+    });
+  });
+
+  next_page.click(function () {
+    $(this).css('background-color', '#bd292c');
+
+    var next_step_modal = document.getElementById('next_step_modal');
+    var modal_left_next_step_btn = $('#modal_left_next_step_btn');
+    var modal_right_next_step_btn = $('#modal_right_next_step_btn');
+    next_step_modal.style.display = "block";
+
+    modal_left_next_step_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#ff753c');
+    });
+
+    modal_right_next_step_btn.hover(function () {
+      $(this).css('background-color', '#fb7c7e');
+    }, function () {
+      $(this).css('background-color', '#fd6246');
+    });
+
+    modal_left_next_step_btn.click(function () {
+      next_step_modal.style.display = "none";
+    });
+
+    modal_right_next_step_btn.click(function () {
+      next_step_modal.style.display = "none";
+
+      var user_profile_check = false;
+      for (var i = 1; i <= 3; i++) {
+
+        if (!($('#user_profile_company_name_0' + i).val() != ''
+            && $('#user_profile_company_term_0' + i).val() != ''
+            && $('#user_profile_company_major_0' + i).val() != '')
+          && (!($('#user_profile_company_name_0' + i).val() == ''
+            && $('#user_profile_company_term_0' + i).val() == ''
+            && $('#user_profile_company_major_0' + i).val() == ''))) {
+
+          user_profile_check = true;
+        }
+
+        if (!($('#user_profile_skill_name_0' + i).val() != ''
+            && $('#user_profile_skill_info_0' + i + '_1').val() != '')
+          && (!($('#user_profile_skill_name_0' + i).val() == ''
+            && $('#user_profile_skill_info_0' + i + '_1').val() == ''))) {
+          user_profile_check = true;
+        }
+      }
+
+      if (($('#user_profile_company_name_01').val() == ''
+          && $('#user_profile_company_term_01').val() == ''
+          && $('#user_profile_company_major_01').val() == '')
+        && ($('#user_profile_company_name_02').val() == ''
+          && $('#user_profile_company_term_02').val() == ''
+          && $('#user_profile_company_major_02').val() == '')
+        && ($('#user_profile_company_name_03').val() == ''
+          && $('#user_profile_company_term_03').val() == ''
+          && $('#user_profile_company_major_03').val() == '')) {
+        user_profile_check = true;
+      }
+
+      if (($('#user_profile_skill_name_01').val() == ''
+          && $('#user_profile_skill_info_01_1').val() == '')
+        && ($('#user_profile_skill_name_02').val() == ''
+          && $('#user_profile_skill_info_02_1').val() == '')
+        && ($('#user_profile_skill_name_03').val() == ''
+          && $('#user_profile_skill_info_03_1').val() == '')) {
+        user_profile_check = true;
+      }
+
+//    if ($('.user_profile_company').val() == '' || $('.user_profile_skill').val() == '') {
+//
+//      console.log('user_profile_company=>' + $('.user_profile_company').val())
+//      console.log('user_profile_skill=>' + $('.user_profile_skill').val())
+//      user_profile_check = true;
+//		}
+
+      if ($('#user_profile_data_name').val() == '' || $('#user_profile_data_professional').val() == ''
+        || $('#user_profile_data_location').val() == '' || $('#user_profile_data_appeal').val() == ''
+        || ($('#profile_img').attr("src") == 'https://www.chatbrick.io/public/images/bg-img-upload-01.png' || $('#profile_img').attr("src") == '../public/images/bg-img-upload-01.png')
+        || ($('#user_profile_start_message_01').val() == '' && $('#user_profile_start_message_02').val() == '' && $('#user_profile_start_message_03').val() == '')
+        || ($('#user_profile_not_ready_mesage_01').val() == '' && $('#user_profile_not_ready_mesage_02').val() == '' && $('#user_profile_not_ready_mesage_03').val() == '')
+        || user_profile_check == true) {
+        //      portfolioList = [];
+
+        console.log('user_profile_check1 =>' + user_profile_check);
+        var default_modal = document.getElementById('default_modal');
+        var modal_one_btn = $('#modal_one_btn');
+
+        default_modal.style.display = "block";
+
+        modal_one_btn.hover(function () {
+          $(this).css('background-color', '#fb7c7e');
+        }, function () {
+          $(this).css('background-color', '#ff753c');
+        });
+
+        modal_one_btn.click(function () {
+          default_modal.style.display = "none";
+        });
+
+      } else {
+        console.log('user_profile_check2 =>' + user_profile_check);
+
+        //check start time
+        var date = new Date();
+        start_time_crawling = date.getTime();
+        log_id_crawling = 'crawling_portfolio' + start_time_crawling;
+
+        lego_loading_modal.style.display = "block";
+        var designer_portfolio_url_list = [];
+        var user_profile_portfolio_01 = $('#user_profile_portfolio_01').val();
+        var user_profile_portfolio_02 = $('#user_profile_portfolio_02').val();
+        var user_profile_portfolio_03 = $('#user_profile_portfolio_03').val();
+        var user_profile_portfolio_04 = $('#user_profile_portfolio_04').val();
+        var user_profile_portfolio_05 = $('#user_profile_portfolio_05').val();
+        var user_profile_portfolio_06 = $('#user_profile_portfolio_06').val();
+        var user_profile_portfolio_07 = $('#user_profile_portfolio_07').val();
+        var user_profile_portfolio_08 = $('#user_profile_portfolio_08').val();
+        var user_profile_portfolio_09 = $('#user_profile_portfolio_09').val();
+        var user_profile_portfolio_10 = $('#user_profile_portfolio_10').val();
+
+        designer_portfolio_url_list.push(user_profile_portfolio_01, user_profile_portfolio_02,
+          user_profile_portfolio_03, user_profile_portfolio_04, user_profile_portfolio_05,
+          user_profile_portfolio_06, user_profile_portfolio_07, user_profile_portfolio_08,
+          user_profile_portfolio_09, user_profile_portfolio_10)
+
+        getAllImages(designer_portfolio_url_list, 10);
+      }
+    });
+
+  });
+
+  pre_page.hover(function () {
+    $(this).css('background-color','#fb7c7e');
+  }, function () {
+    $(this).css('background-color','#ff753c');
+  });
+
+  next_page.hover(function () {
+    $(this).css('background-color','#fb7c7e');
+  }, function () {
+    $(this).css('background-color','#fd6246');
+  });
+
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+      console.log('connected!')
+      // alert('connected!2');
+      // getFBAPI();
+//      window.location.href = '/chatbot/list';
+
+    } else if (response.status === 'not_authorized') {
+      console.log('not_authorized!')
+      window.location.href  = '/';
+      // window.location.href = 'http://www.localhost:3000';
+    } else {
+      console.log('connected error!')
+      window.location.href  = '/';
+      // window.location.href = 'http://www.localhost:3000';
+    }
+  }
+
+  //logout event
+  var logout_modal = document.getElementById('logout_modal');
+  var modal_left_logout_btn = $('#modal_left_logout_btn');
+  var modal_right_logout_btn = $('#modal_right_logout_btn');
+
+  login_dropdown.click(function () {
+    logout_modal.style.display = "block";
+  });
+
+  modal_left_logout_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#ff753c');
+  });
+
+  modal_right_logout_btn.hover(function () {
+    $(this).css('background-color', '#fb7c7e');
+  }, function () {
+    $(this).css('background-color', '#fd6246');
+  });
+
+  modal_left_logout_btn.click(function () {
+    logout_modal.style.display = "none";
+  });
+
+  modal_right_logout_btn.click(function () {
+    var start_time_next_btn_click = '?start_time_next_btn_click=';
+    //check start time
+    var date = new Date();
+    var start_time_create_bot_click = date.getTime();
+
+    FB.logout(function(response) {
+      console.log('logout=>' + JSON.stringify(response));
+
+      //check end time
+      var date = new Date();
+      var end_time_page = date.getTime();
+      var log_id_page = 'logout_facebook' + start_time_create_bot_click;
+      var task_code = 'logout_facebook';
+      var remark = '로그아웃 버튼을 클릭후 페이스북에서 로그아웃를 성공적으로 처리했을때';
+      var api_code = 'logout_facebook';
+      var api_provider_code = 'facebook';
+      sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, end_time_page, remark);
+      window.location.href = '/' + start_time_next_btn_click + start_time_create_bot_click;
+    });
+  });
+
+
+  function getAllImages(list, maxCount) {
+    var count = 0;
+    var query = '';
+    var queryList = [];
+    queryList = list;
+
+    console.log('designer_portfolio_url_list=>' + JSON.stringify(queryList));
+    modal_one_lego_loading_btn.off('click');
+    modal_one_lego_loading_btn.off('hover');
+
+    function getNextImage(count) {
+      query = queryList[count];
+      console.log('query=>' + query);
+
+      setTimeout(function() {
+      if (query == '') {
+        console.log('query는 null입니다');
+
+        count ++;
+
+        if (count == maxCount) {
+          console.log('확인 버튼 활성화');
+
+          //check end time
+          var date = new Date();
+          var last_end_time_crawling = date.getTime();
+          var task_code = 'crawling_portfolio';
+          var remark = '요청한 디자이너 포토폴리오 url을 모두 크롤링 했을때﻿';
+          var api_code = 'crawling_portfolio';
+          var api_provider_code = 'chatbrick';
+
+          console.log('last_end_time_crawling=>' + end_time_crawling);
+//          sendAPILog(log_id_crawling, api_code, api_provider_code, end_time_crawling, last_end_time_crawling, remark);
+          sendTaskLog(log_id_crawling, task_code, start_time_crawling, last_end_time_crawling, remark);
+          console.log('호출3!' + log_id_crawling + ',' + end_time_crawling + ',' + last_end_time_crawling);
+
+
+          //확인 누르면 서버에 데이터 전송
+//          $('#lego_loading_title').text($('#baseInfo_name').val() + '포트폴리오');
+          $('#lego_loading_context_01').text(baseInfo_name + '의 포트폴리오를 읽어오고 있어요.');
+          $('#lego_loading_context_02').text('포트폴리오를 모두 불러왔어요.');
+          $('#modal_one_lego_loading_btn').css('background-color', '#ff753c');
+
+          $("#modal_one_lego_loading_btn").bind( "click", loading_click_handler);
+
+        } else {
+          getNextImage(count);
+        }
+
+      } else {
+
+          $.ajax({
+            url: 'https://www.chatbrick.io/api/meta/?url='+ queryList[count] + '&log_id=' + log_id_crawling,
+            method: 'GET',
+            async: true,
+            success: function(body) {
+              count++;
+              console.log('count=>' + count);
+              console.log('queryList[count]=>' + queryList[count]);
+              console.log('body=>' + JSON.stringify(body));
+
+              if (body.success == true && count <= maxCount) {
+                console.log('body.data.title=>' + body.data.title);
+                portfolioList.push(body.data);
+
+                //마지막에 "확인"버튼 활성화
+                if (count == maxCount) {
+                  console.log('확인 버튼 활성화');
+
+                  //check end time
+                  var date = new Date();
+                  end_time_crawling = date.getTime();
+                  var task_code = 'crawling_portfolio';
+                  var remark = '요청한 디자이너 포토폴리오 url을 모두 크롤링 했을때﻿';
+                  var api_code = 'crawling_portfolio';
+                  var api_provider_code = 'chatbrick';
+
+//                  sendAPILog(log_id_crawling, api_code, api_provider_code, start_time_crawling, end_time_crawling, remark);
+                  sendTaskLog(log_id_crawling, task_code, start_time_crawling, end_time_crawling, remark);
+                  console.log('호출3!' + log_id_crawling + ',' + start_time_crawling + ',' + end_time_crawling);
+
+
+                  //확인 누르면 서버에 데이터 전송
+//                  $('#lego_loading_title').text(baseInfo_name + '포트폴리오');
+                  $('#lego_loading_context_01').text(baseInfo_name + '의 포트폴리오를 읽어오고 있어요.');
+                  $('#lego_loading_context_02').text('지금 '+count+'. '+body.data.title + '의 정보를 불러오고 있어요.');
+
+                  setTimeout(function() {
+
+                  $('#lego_loading_context_02').text('포트폴리오를 모두 불러왔어요.');
+                  $('#modal_one_lego_loading_btn').css('background-color', '#ff753c');
+                  $("#modal_one_lego_loading_btn").bind( "click", loading_click_handler);
+                  }, 0);
+
+                } else {
+                  $("#modal_one_lego_loading_btn").unbind( "click", loading_click_handler);
+                  $("#modal_one_lego_loading_btn").unbind( "click", loading_click_error_handler);
+
+//                  $('#lego_loading_title').text(baseInfo_name + '포트폴리오');
+                  $('#lego_loading_context_01').text(baseInfo_name + '의 포트폴리오를 읽어오고 있어요.');
+                  $('#lego_loading_context_02').text('지금 '+count+'. '+body.data.title + '의 정보를 불러오고 있어요.');
+                  $('#modal_one_lego_loading_btn').css('background-color', '#c0c0c0');
+                  getNextImage(count);
+                }
+
+//              getNextImage(count);
+              } else {
+                //error
+                //"확인"버튼 클릭가능한 상태
+                $('#modal_one_lego_loading_btn').css('background-color', '#ff753c');
+                $("#modal_one_lego_loading_btn").bind( "click", loading_click_error_handler);
+                $('#lego_loading_context_02').text('지금 '+count+'. '+'번째 포트폴리오의 정보를 불러오는데 실패했어요.');
+                $('#user_profile_portfolio_0'+count).val('').end();
+                $('#user_profile_portfolio_0'+count).addClass('placeholder');
+
+
+              }
+            }
+            ,error:function(request,status,error) {
+              var default_server_error_modal = document.getElementById('default_server_error_modal');
+              var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+              default_server_error_modal.style.display = "block";
+
+              modal_one_server_error_btn.hover(function () {
+                $(this).css('background-color', '#fb7c7e');
+              }, function () {
+                $(this).css('background-color', '#ff753c');
+              });
+
+              modal_one_server_error_btn.click(function () {
+                default_server_error_modal.style.display = "none";
+              });
+            }
+            ,beforeSend: function () {
+//              $("body").loading("start");
+
+              //check start time
+              var date = new Date();
+              start_time_one_crawling = date.getTime();
+            }
+            ,complete: function () {
+//              $("body").loading("stop");
+
+              //check end time
+              var date = new Date();
+              end_time_one_crawling = date.getTime();
+              var task_code = 'crawling_portfolio';
+              var remark = '디자이너 포토폴리오 하나의 url을 크롤링 했을때';
+              var api_code = 'crawling_portfolio';
+              var api_provider_code = 'chatbrick';
+              sendAPILog(log_id_crawling, api_code, api_provider_code, start_time_one_crawling, end_time_one_crawling, remark);
+            }
+
+          });
+
+      } //else
+      }, 0);
+    }
+    getNextImage(count);
+  }
+
+
+  $('#test_full_input_text').click(function () {
+    //기본 정보 영역
+//    $('#baseInfo_name').val('Jordan');
+//    $('#baseInfo_context_01').val('디자이너포폴 소개용 챗봇입니다.');
+
+		//프로필 정보 영역
+    $('#profile_img').attr("src", 'http://www.chatbrick.io/api/file/fccfaabd-c475-497e-899b-3808d50f6e23_2018-01-12_11.56.00.png');
+    img_url = 'http://www.chatbrick.io/api/file/fccfaabd-c475-497e-899b-3808d50f6e23_2018-01-12_11.56.00.png';
+    $('#user_profile_data_name').val('Kai Jordan');
+    $('#user_profile_data_professional').val('UX Design');
+    $('#user_profile_data_location').val('Cupertino, CA');
+    $('#user_profile_data_appeal').val('https://dribbble.com/Chon_June');
+    $('#user_profile_data_email').val('devops@bluehack.net');
+
+    //사용자 데이터 입력 영역 (챗봇방문, 준비되지 않았을때 보내는 메시지)
+    $('#user_profile_start_message_01').val('안녕하세요, Jordan의 디자인포트폴리오입니다.');
+    $('#user_profile_not_ready_mesage_01').val('제가 알수없는 키워드가 입력되었습니다. 다른 키워드를 입력하시거나 시작하기(or /start)를 입력해서 다시 시작해보세요');
+
+    //사용자 데이터 입력 _ 업무경험 (WORK)
+    $('#user_profile_company_name_01').val('Apple');
+    $('#user_profile_company_name_02').val('QILA ENERGY');
+    $('#user_profile_company_name_03').val('삼성전자');
+
+    $('#user_profile_company_term_01').val('2016.05 - 2017.12');
+    $('#user_profile_company_term_02').val('2015.09 - 2015.12');
+    $('#user_profile_company_term_03').val('2012.09 - 2014.12');
+
+    $('#user_profile_company_major_01').val('UX Designer');
+    $('#user_profile_company_major_02').val('UX Engineering');
+    $('#user_profile_company_major_03').val('Visual Designer Intern');
+
+    //사용자 데이터 입력 _ 보유기술 및 능력 (SPECIALTIES)
+    $('#user_profile_skill_name_01').val('UX Design');
+    $('#user_profile_skill_name_02').val('GUI Design');
+    $('#user_profile_skill_info_01_1').val('User Flow, Scenario, Wireframe 설계 및 제작');
+    $('#user_profile_skill_info_02_1').val('Mobile/Web Design / Sketch, Zeplin, Flinto, Framer, Adobe XD, Photoshop, illrustrator 사용');
+
+    //사용자 데이터 입력 _ 간략한 자기소개 (SUMMARY)
+    $('#user_profile_self_introduction_01_1').val('안녕하세요.');
+    $('#user_profile_self_introduction_01_2').val('저는 디자이너를 준비 중입니다.');
+    $('#user_profile_self_introduction_01_3').val('현재 아래와 같이 디자인 포토폴리오를 준비 했으며,');
+    $('#user_profile_self_introduction_01_4').val('더 나은 디자이너가 되고 싶습니다.');
+    $('#user_profile_self_introduction_01_5').val('저의 경력은 다음과 같습니다.');
+
+    //사용자 데이터 입력 _ 포트폴리오 (PORTFOLIO)
+    $('#user_profile_portfolio_01').val('https://www.behance.net/gallery/61584443/Taylor-Francis');
+    $('#user_profile_portfolio_02').val('https://www.behance.net/gallery/58406567/Waze-Carpool');
+    $('#user_profile_portfolio_03').val('https://www.behance.net/gallery/61185723/LANTERN');
+    $('#user_profile_portfolio_04').val('https://www.behance.net/gallery/60734601/The-Shura-and-winter');
+    $('#user_profile_portfolio_05').val('https://www.behance.net/gallery/35129169/POP-UP-Library-exhibition');
+    $('#user_profile_portfolio_06').val('https://dribbble.com/shots/4204027-Saying-no-to-the-customer');
+    $('#user_profile_portfolio_07').val('https://dribbble.com/shots/4203218-Messenger-App');
+    $('#user_profile_portfolio_08').val('https://dribbble.com/shots/4072614-ADER-Website-Concept');
+    $('#user_profile_portfolio_09').val('https://dribbble.com/shots/4201166-T-letter-mark-blockchain-software-developer-logo-design');
+    $('#user_profile_portfolio_10').val('https://dribbble.com/shots/4201566-Pop-Payment-confirmation-Make-list');
+
+  })
+
+</script>
+<!--<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>-->
+<script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+</body>
+</html>

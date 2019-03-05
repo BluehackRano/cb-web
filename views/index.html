@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>chatbrick</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="../public/javascripts/config.js"></script>
+	<script type="text/javascript" src="/public/javascripts/send_time_log.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="../public/javascripts/loading.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/loading.css">
+	<script type="text/javascript">
+
+		var start_time;
+		var data_access_token = '';
+		var start_time_login_task = '';
+    var start_time_login_post = '';
+    var start_time_login_get = '';
+    var start_time_login_put = '';
+    var end_time_login_task = '';
+    var end_time_login_post = '';
+    var end_time_login_get = '';
+    var end_time_login_put = '';
+
+    var start_time_set_click = '';
+    var start_time_create_bot_click = '';
+    var start_time_page = '';
+    var end_time_page = '';
+
+    var log_id_page = '';
+
+    $.urlParam = function(name){
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      if (results==null){
+        return null;
+      }
+      else{
+        return results[1] || 0;
+      }
+    }
+
+    $(document).ready(function() {
+        $.ajaxSetup({ cache: true });
+        $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+            FB.init({
+                appId: '134243977372890',
+                version: 'v2.11'
+            });
+        });
+
+      start_time_create_bot_click = $.urlParam('start_time_next_btn_click');
+
+
+      if (start_time_create_bot_click != null) {
+
+        console.log('ready_start_time_create_bot_click=>' + start_time_create_bot_click);
+        //check start time
+        var date = new Date();
+        start_time_page = date.getTime();
+
+        log_id_page = 'logout_facebook' + start_time_create_bot_click;
+
+        var task_code = 'logout_facebook';
+        var remark = '로그아웃 팝업에서 확인 버튼을 눌렀을때';
+        var api_code = 'logout_facebook';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_create_bot_click, start_time_page, remark);
+      }
+    });
+
+    $(window).load(function() {
+
+//      console.log('load_start_time_create_bot_click=>' + start_time_create_bot_click);
+      if (start_time_create_bot_click != null) {
+
+        console.log('ready_start_time_create_bot_click=>' + start_time_create_bot_click);
+        //check end time
+        var date = new Date();
+        end_time_page = date.getTime();
+        var task_code = 'logout_facebook';
+        var remark = '로그인 페이지가 로드되었을때';
+        var api_code = 'logout_facebook';
+        var api_provider_code = 'chatbrick';
+        sendAPILog(log_id_page, api_code, api_provider_code, start_time_page, end_time_page, remark);
+        sendTaskLog(log_id_page, task_code, start_time_create_bot_click, end_time_page, remark);
+        history.replaceState({}, null, location.pathname);
+      }
+    });
+
+    var startbtn = $('#landing_start_btn');
+    startbtn.click(function () {
+      $(this).css('background-color', '#bd292c');
+    })
+
+    startbtn.hover(function () {
+      startbtn.css('background-color', '#fb7c7e');
+    }, function () {
+      startbtn.css('background-color', '#fd6246');
+    });
+
+    function statusChangeCallback(response) {
+      console.log('statusChangeCallback');
+      console.log(response);
+      if (response.status === 'connected') {
+        // alert('connected!2');
+        // getFBAPI();
+				getLoginInfo();
+//        window.location.href = '/chatbot/list';
+
+      } else if (response.status === 'not_authorized') {
+        // window.location.href  = '/';
+        // window.location.href = 'http://www.localhost:3000';
+      } else {
+        // window.location.href  = '/';
+        // window.location.href = 'http://www.localhost:3000';
+      }
+    }
+
+    function getLoginInfo() {
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'GET',
+        async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        success: function (body, status, res) {
+          if (body.success) {
+            window.location.href = '/chatbot/list';
+          } else {
+
+          }
+        }
+        ,error:function(request,status,error) {
+          var default_server_error_modal = document.getElementById('default_server_error_modal');
+          var modal_one_server_error_btn = $('#modal_one_server_error_btn');
+
+          default_server_error_modal.style.display = "block";
+
+          modal_one_server_error_btn.hover(function () {
+            $(this).css('background-color', '#fb7c7e');
+          }, function () {
+            $(this).css('background-color', '#ff753c');
+          });
+
+          modal_one_server_error_btn.click(function () {
+            default_server_error_modal.style.display = "none";
+          });
+        }
+      });
+    }
+
+    function getFBAPI(authResponse) {
+      console.log('Welcome! Fetching your information.... ');
+
+      var log_id = 'login_facebook' + start_time_login_task;
+      console.log('log_id=>' + log_id);
+
+      var data_code = '';
+      var redirect_url = '';
+      var client_id = '';
+
+
+
+      $.ajax({
+        url: 'https://www.chatbrick.io/api/login/',
+        type: 'POST',
+        // async: false,
+        crossDomain: true,
+        xhrFields: {withCredentials: true},
+        data: {
+          fb_access_token: authResponse.accessToken,
+          log_id: log_id
+		},
+        success: function (data, textStatus, res) {
+          console.log(data);
+          console.log('code=>' + data.code);
+
+					data_code = data.code;
+          redirect_url = appConfig.redirect_url;
+          client_id = appConfig.client_id;
+
+        }
+        ,beforeSend: function () {
+          $("body").loading("start");
+
+          var date = new Date();
+          start_time_login_post = date.getTime();
+
+
+        }
+        ,complete: function () {
+          $("body").loading("stop");
+
+          //check end time
+          var date = new Date();
+          end_time_login_post = date.getTime();
+          var remark = '챗브릭서버로 페이스북 토큰 전달';
+          var api_code = 'login_facebook_post_api';
+          var api_provider_code = 'chatbrick';
+          sendAPILog(log_id, api_code, api_provider_code, start_time_login_post, end_time_login_post, remark)
+
+          $.ajax({
+            url: 'https://graph.facebook.com/oauth/access_token?code=' + data_code + '&client_id=' + client_id + '&redirect_uri=' + redirect_url,
+            type: 'GET',
+//								 async: false,
+//                 crossDomain: true,
+//                 xhrFields: {withCredentials: true},
+            // data: {},
+            success: function (data, textStatus, res) {
+              console.log('장기토근 res=>' + JSON.stringify(data));
+              data_access_token = data.access_token;
+            }
+            ,beforeSend: function () {
+//              $("body").loading("start");
+
+              var date = new Date();
+              start_time_login_get = date.getTime();
+
+            }
+            ,complete: function () {
+//              $("body").loading("stop");
+
+              //check end time
+              var date = new Date();
+              end_time_login_task = date.getTime();
+              end_time_login_get = date.getTime();
+
+              var remark = '페북 페이지에서 장기토큰을 가지고 오는 API';
+              var api_code = 'login_facebook_get_long_access_token';
+              var api_provider_code = 'facebook';
+              sendAPILog(log_id, api_code, api_provider_code, start_time_login_get, end_time_login_get, remark)
+
+              $.ajax({
+                url: 'https://www.chatbrick.io/api/login/',
+                type: 'PUT',
+                // async: false,
+                crossDomain: true,
+                xhrFields: {withCredentials: true},
+                data: {
+                  fb_client_access_token: data_access_token,
+                },
+                success: function (data, textStatus, res) {
+                  console.log(data);
+
+                }
+                ,beforeSend: function () {
+//              $("body").loading("start");
+                  var date = new Date();
+                  start_time_login_put = date.getTime();
+
+                }
+                ,complete: function () {
+//                  $("body").loading("stop");
+                  //check end time
+                  var date = new Date();
+                  end_time_login_put = date.getTime();
+                  var remark = '페북 페이지의 장기토큰을 챗브릭서버에 업데이트';
+                  var api_code = 'login_facebook_put_api';
+                  var api_provider_code = 'chatbrick';
+                  var task_code = 'login_facebook';
+
+                  sendAPILog(log_id, api_code, api_provider_code, start_time_login_put, end_time_login_put, remark)
+                  sendTaskLog(log_id, task_code, start_time_login_task, end_time_login_put, remark);
+									window.location.href = "/chatbot/list";
+                }
+              });
+
+            }
+          });
+        }
+      });
+    }
+
+    function login() {
+      FB.login(function (response) {
+
+        // handle the response
+        console.log("Response goes here!");
+        console.log(response);
+
+        var date = new Date();
+        start_time_login_task = date.getTime();
+
+        var authResponse = response.authResponse;
+        console.log('authResponse =>' + JSON.stringify(authResponse));
+        getFBAPI(authResponse);
+
+      }, {
+        scope: 'public_profile, pages_manage_cta, pages_manage_instant_articles,' +
+        'pages_messaging, pages_messaging_subscriptions, pages_messaging_phone_number,' +
+        'manage_pages, pages_show_list,read_insights'
+      });
+    }
+
+
+	</script>
+	<link rel="stylesheet" href="../public/stylesheets/style.css">
+	<script src="../public/javascripts/send_time_log.js"></script>
+</head>
+
+<body>
+<header id="header"></header>
+
+<div id="content">
+	<div class="wrapper_section _landing_section">
+		<section id="section_01">
+			<div class="section_01 landing_set_device">
+
+				<div class="device_img">
+					<img src="../public/images/gif_main.gif" id="landing_device_gif">
+					<img src="../public/images/img-device1.png" id="landing_device_img">
+				</div>
+				<div class="landing_device_content">
+					<div class="landing_device_logo_content">
+						<img src="../public/images/img-logo-large.png" id="landing_device_logo_img">
+
+						<div class="landing_device_logo_sub_content">
+							<img src="../public/images/img-text-logo-large.png" id="landing_device_logo_sub_img">
+							<div id="landing_device_logo_title">가장 쉬운 챗봇 제작 서비스</div>
+						</div>
+					</div>
+
+					<div class="landing_device_context">
+						<div id="landing_device_context_desc">
+							이제 비개발자도 챗봇을 손쉽게 만들 수 있어요. 더이상 챗봇을 만들기 위해 챗봇빌더를 학습하거나 챗봇을 어떻게 설계할까 고민하지마세요. 당신이 원하는 챗봇세트를 선택하고 세트에서 필요로 하는
+							항목만 입력하면 챗봇이 완성됩니다. 지금 무료로 시도해보세요.
+						</div>
+
+						<hr id="landing_device_underline">
+
+						<div id="landing_start_btn" class="landing_start" onclick="javascript:login();">
+							<!--<div id="landing_start_btn" class="landing_start">-->
+							<p>GET STARTED FOR FREE</p>
+						</div>
+
+						<div id="landing_start_guide">
+							* CHATBRICK을 사용하기위해서는 페이스북 로그인이 필요합니다.
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<section id="section_02">
+			<div class="section_02 landing_set_list">
+				<div class="landing_set_title">FEATURE</div>
+
+				<div class="landing_feature">
+					<img src="../public/images/img-feture-codingless.png" class="landing_item_image" alt="item image">
+					<div class="landing_item_name">코딩없이<br>챗봇제작</div>
+					<div class="landing_item_context">챗봇을 제작하는 과정에서 코딩은 <br>필요하지 않아요.</div>
+				</div>
+
+				<div class="landing_feature">
+					<img src="../public/images/img-feture-easy.png" class="landing_item_image" alt="item image">
+					<div class="landing_item_name">비개발자도 가능한<br>쉬운 챗봇제작</div>
+					<div class="landing_item_context">타 챗봇빌더와 다르게 정보설계 없이<br>데이터만 입력하면 챗봇을<br>제작할 수 있어요.</div>
+				</div>
+
+				<div class="landing_feature">
+					<img src="../public/images/img-feture-platform.png" class="landing_item_image" alt="item image">
+					<div class="landing_item_name">간단한 멀티플랫폼<br>지원</div>
+					<div class="landing_item_context">하나의 챗봇을 제작하여<br>페이스북 메신저와 텔레그램에 챗봇을<br>적용할 수 있어요.</div>
+				</div>
+
+				<div class="landing_feature">
+					<img src="../public/images/img-feture-free.png" class="landing_item_image" alt="item image">
+					<div class="landing_item_name">무료로<br>챗봇제작</div>
+					<div class="landing_item_context">“CHATBRICK”에서 챗봇을 제작하려면<br>0원이 필요해요.</div>
+				</div>
+
+			</div>
+		</section>
+
+		<section id="section_03">
+			<div class="section_03 landing_set_list">
+				<div class="landing_set_title">HOW TO USE</div>
+
+				<div class="landing_how_to_use">
+					<img src="../public/images/img-how-01.png" class="landing_item_image" alt="item image">
+					<div class="landing_item_name">기본정보 입력 및<br>SET 선택하기</div>
+					<div class="landing_item_context">챗봇의 이름/설명을 입력하고 제작하고<br>싶은 챗봇의 종류에 맞는<br>세트를 선택합니다.</div>
+				</div>
+
+				<div class="landing_arror_area">
+					<img src="../public/images/img-arrow-01.png" class="landing_item_image_arrow" alt="item image">
+				</div>
+
+				<div class="landing_how_to_use">
+					<img src="../public/images/img-how-02.png" class="landing_item_image" alt="item image">
+					<div class="landing_item_name">데이터정보<br>입력하기</div>
+					<div class="landing_item_context">각 세트에서 요청하는 항목에<br>데이터를 입력합니다.</div>
+				</div>
+
+				<div class="landing_arror_area">
+					<img src="../public/images/img-arrow-01.png" class="landing_item_image_arrow" alt="item image">
+				</div>
+
+				<div class="landing_how_to_use">
+					<img src="../public/images/img-how-03.png" class="landing_item_image" alt="item image">
+					<div class="landing_item_name">플랫폼<br>연결하기</div>
+					<div class="landing_item_context">챗봇을 적용하고 싶은 페이스북의 페이지 및<br>텔레그램의 봇을 선택하면<br>챗봇 제작이 끝납니다.</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="section_04">
+			<div class="section_04 landing_set_list">
+				<div class="landing_set_title">SET LIST</div>
+				<div class="landing_my_bot">
+					<img src="../public/images/img-designer-portfolio-01.png" class="landing_item_image" alt="bot image">
+					<div class="landing_item_name">DESIGNER<br>PORTFOLIO</div>
+					<div class="landing_item_context">디자이너로서 자신의 포트폴리오를 <br>효과적으로 홍보할 수 <br>있는 세트에요.</div>
+				</div>
+
+				<div class="landing_my_bot">
+					<img src="../public/images/img-hackathon.png" class="landing_item_image" alt="bot image">
+					<div class="landing_item_name">HACKATHON</div>
+					<div class="landing_item_context">해커톤을 효과적으로 운영하기 <br>위한 세트에요.</div>
+				</div>
+
+				<div class="landing_my_bot">
+					<img src="../public/images/img-bricks.png" class="landing_item_image" alt="bot image">
+					<div class="landing_item_name">BRICKS</div>
+					<div class="landing_item_context">내가 사용하고 싶은 요소들을 조합하여 <br>나만을 위한 챗봇을 만들 수 <br>있는 세트에요..</div>
+				</div>
+
+				<div class="landing_my_bot">
+					<img src="../public/images/img-commingsoon.png" class="landing_item_image" alt="bot image">
+					<div id="landing_commingsoon_name">COMMING<br>SOON</div>
+					<div id="landing_commingsoon_context">더 다양한 세트가 제공될 <br>예정입니다.</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+<!--서버에러 모양 팝업-->
+<div id="default_server_error_modal" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+
+		<div class="modal_title">확인</div>
+		<div class="create_context_area">
+			<div class="server_error_modal_context_01">에러가 발생했어요.</div>
+			<div class="server_error_modal_context_02">잠시후 다시 시도해주세요.</div>
+		</div>
+		<!--<div class="modal_context">올바르지 않은 항목이 존재합니다. (미입력, 잘못입력된 항목)</div>-->
+		<div id="modal_one_server_error_btn" class="modal_one_btn">
+			<p>확인</p></div>
+	</div>
+</div>
+
+<footer id="footer"></footer>
+<!--<button onclick="javascript:login();">Login Facebook</button>-->
+
+<!--<script>-->
+  <!--var startbtn = $('#landing_start_btn');-->
+  <!--startbtn.click(function () {-->
+    <!--$(this).css('background-color', '#bd292c');-->
+    <!---->
+  <!--})-->
+
+  <!--startbtn.hover(function () {-->
+    <!--startbtn.css('background-color', '#fb7c7e');-->
+  <!--}, function () {-->
+    <!--startbtn.css('background-color', '#fd6246');-->
+  <!--});-->
+
+<!--</script>-->
+<script type="text/javascript" src="/public/javascripts/connect_facebook.js"></script>
+</body>
+</html>

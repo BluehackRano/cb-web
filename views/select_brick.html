@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>ChatBrick</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head>
+<body>
+<header id="header">
+  <div class="wrapper wrapper_header">
+    <div class="top_01 top_common">
+      <img id="logo" class="logo" src="../public/images/img-chatbrick-logo.png" alt="logo">
+
+      <div class="top_01 top_user_profile_common">
+        <img id="login_logo" class="login_logo">
+        <div id="login_name" class="login_name" name="login_name"><p id="login_name_text"></p></div>
+        <img id="login_dropdown" class="login_dropdown" src="../public/images/btn-dropdown-down.png" alt="login_dropdown">
+      </div>
+    </div>
+
+    <div class="top_02 top_common">
+      <div class="top_02 title_area">
+        <div id="title">CREAT CHATBOT</div>
+        <div id="sub_title">| BRICK 선택하기</div>
+      </div>
+      <div id="context">
+        <p>
+          BRICK은 챗봇 기능의 최소단위에요. BRICK 세트에서는 최소 1개에서 최대 10개까지의 BRICK을 선택하여 적용할 수 있어요.
+          세트와 마찬가지로 “미리보기”버튼을 통해 해당 BRICK을 미리 체험해볼 수 있어요.
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="content">
+  <section id="section_01">
+    <div class="content_title">
+      <p>
+        브릭선택
+      </p>
+    </div>
+
+    <div class="wrapper_article _select_brick_wrapper">
+      <article id="article_01" class="_article">
+        <div class="wrapper">
+          <div class="select_brick bricklist" id="brick_list">
+
+            <!--<div class="brick_item">-->
+            <!--<img src="http://localhost:63342/cb-web/dist/824126bd7bcc1478656d0c85f8e11038.png" alt="brick image"-->
+            <!--class="brick_img">-->
+            <!--<div class="brick_name">날씨정보-->
+            <!--</div>-->
+            <!--<div class="item_brick_event">-->
+            <!--<div class="brick_choice">브릭 선택하기</div>-->
+            <!--<div class="brick_preview">-->
+            <!--<img src="http://localhost:63342/cb-web/dist/36301c74710f6da599bd68485babe274.png"-->
+            <!--alt="preview_img">-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<footer id="footer">
+  <div class="bottom_common">
+    <div id="pre_page">
+      <p>
+        이전
+      </p>
+    </div>
+    <div id="next_page" align="center">
+      <p>
+        다음
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+  var brick_list = $('#brick_list');
+  var login_logo = $('#login_logo');
+  var login_name = $('#login_name_text');
+  var login_dropdown = $('#login_dropdown');
+
+  $.ajax({
+    url: 'https://www.chatbrick.io/api/brick/list/',
+    async: false,
+    crossDomain: true,
+    xhrFields: {withCredentials: true},
+    type: 'GET',
+    success: function (body, status, res) {
+
+      console.log(body.success);
+      console.log(body.data[0].name);
+
+      login_logo.attr("src", body.facebook.fb_profile);
+      login_name.text(body.facebook.fb_name);
+
+      if (body.success) {
+        body.data.forEach(function (item, index, array) {
+          console.log(index);
+          console.log(item);
+          var brick = (`<div class="brick_item">` +
+            // `<img src="`+item.img+`" alt="brick image" class="brick_img"> ` +
+            `<img src="../public/images/img-brick-01.png" alt="brick image" class="brick_img"> ` +
+            `<div class="brick_name">` + item.name + `</div> ` +
+            `<div class="item_brick_event"> ` +
+            `<div class="brick_choice">브릭 선택하기</div> ` +
+            `<div class="brick_preview"> ` +
+            `<img src="../public/images/btn-preview-01-nor.png" alt="preview_img"> ` +
+            `</div> ` +
+            `</div>` +
+            `</div>`);
+
+          brick_list.append(brick);
+        });
+      }
+    }
+  })
+
+  var brick_choice = $('.brick_choice');
+  console.log('brick_choice->' + brick_choice.text());
+
+  brick_choice.click(function () {
+    $(this).toggleClass("black");
+  })
+
+
+  var pre_page = $('#pre_page');
+  var next_page = $('#next_page');
+
+  pre_page.click( function () {
+    $(this).css('background-color','#bd292c');
+    window.location.href = '/chatbot/create';
+  });
+
+  next_page.click( function () {
+    $(this).css('background-color','#bd292c');
+    window.location.href = '/bricks/create';
+  });
+
+</script>
+<script type="text/javascript" src="/public/javascripts/footer_mouseover.js"></script>
+</body>
+</html>
